@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Paraná Moda Park — Projeto de Gestão de Marca</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   GRADE MESTRA
+   Palco 1920 x 1080
+   Faixa HUD superior ....... 0 → 128px   (intocável)
+   Área segura de conteúdo .. 128 → 952px (824px úteis)
+   Faixa HUD inferior ....... 952 → 1080px (intocável)
+   Margem lateral ........... 112px
+   ========================================================= */
+:root{
+  --bg:#07080A;
+  --panel:rgba(255,255,255,.038);
+  --stroke:rgba(255,255,255,.10);
+  --stroke-2:rgba(255,255,255,.17);
+  --tx:#F2F4F6;
+  --tx-2:#A6AEB8;
+  --tx-3:#6B7480;
+  --gold:#BCD397;
+  --gold-2:#DEEBC5;
+  --pos:#4FD69C;
+  --neg:#FF7B6B;
+  --c1:#9FB8E0;
+  --c2:#8FCDB9;
+  --c3:#D9C892;
+  --c4:#D9A0B0;
+  --ease:cubic-bezier(.19,1,.22,1);
+  --safe-top:128px;
+  --safe-bot:128px;
+  --side:112px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:#000;overflow:hidden}
+body{font-family:"Manrope",ui-sans-serif,-apple-system,"Segoe UI",Roboto,sans-serif;
+  color:var(--tx);-webkit-font-smoothing:antialiased}
+
+#wrap{position:fixed;inset:0;display:grid;place-items:center;background:#000}
+#stage{width:1920px;height:1080px;position:relative;transform-origin:center center;
+  background:var(--bg);overflow:hidden}
+
+/* ---------- fundo ---------- */
+.aurora{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.blob{position:absolute;border-radius:50%;filter:blur(130px);opacity:.5}
+.b1{width:900px;height:900px;left:-280px;top:-320px;background:rgba(188,211,151,.20);animation:f1 26s ease-in-out infinite}
+.b2{width:820px;height:820px;right:-260px;bottom:-340px;background:rgba(159,184,224,.16);animation:f2 32s ease-in-out infinite}
+.b3{width:620px;height:620px;left:54%;top:40%;background:rgba(143,205,185,.10);animation:f3 38s ease-in-out infinite}
+@keyframes f1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(120px,90px) scale(1.15)}}
+@keyframes f2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-140px,-80px) scale(1.1)}}
+@keyframes f3{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-90px,110px) scale(1.2)}}
+.grain{position:absolute;inset:-50%;opacity:.045;pointer-events:none;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/></filter><rect width='200' height='200' filter='url(%23n)' opacity='.5'/></svg>");
+  animation:gr 8s steps(6) infinite}
+@keyframes gr{0%{transform:translate(0,0)}20%{transform:translate(-3%,2%)}40%{transform:translate(2%,-3%)}60%{transform:translate(-2%,-2%)}80%{transform:translate(3%,1%)}100%{transform:translate(0,0)}}
+.vig{position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse at 50% 45%,transparent 42%,rgba(0,0,0,.55) 100%)}
+
+/* ---------- slides ---------- */
+.slide{position:absolute;left:0;right:0;top:var(--safe-top);bottom:var(--safe-bot);
+  padding:0 var(--side);display:flex;flex-direction:column;justify-content:center;
+  opacity:0;visibility:hidden;transform:scale(.985);overflow:hidden;
+  transition:opacity .6s var(--ease),transform .6s var(--ease),visibility .6s;z-index:1}
+.slide.active{opacity:1;visibility:visible;transform:none;z-index:2}
+.slide.top{justify-content:flex-start}
+
+.r{opacity:0;transform:translateY(28px);
+  transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:var(--d,0s)}
+.slide.active .r{opacity:1;transform:none}
+.rx{opacity:0;transform:translateX(-24px);
+  transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:var(--d,0s)}
+.slide.active .rx{opacity:1;transform:none}
+
+/* ---------- HUD ---------- */
+.hud{position:absolute;z-index:20;pointer-events:none}
+.hud-tl{top:52px;left:112px;display:flex;align-items:center;gap:13px;height:24px}
+.mark{width:9px;height:9px;border-radius:50%;background:var(--gold);box-shadow:0 0 18px rgba(188,211,151,.9)}
+.hud-tl span{font-size:13px;letter-spacing:.26em;text-transform:uppercase;color:var(--tx-3);font-weight:700}
+.hud-tr{top:52px;right:112px;height:24px;display:flex;align-items:center;
+  font-size:13px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);font-weight:700}
+.hud-br{bottom:52px;right:112px;height:26px;display:flex;align-items:center;gap:6px;
+  font-size:14px;color:var(--tx-3);font-weight:700;letter-spacing:.12em}
+.hud-br b{color:var(--tx);font-size:20px}
+.dots{position:absolute;bottom:56px;left:112px;display:flex;gap:7px;z-index:21;height:18px;align-items:center}
+.dots i{width:20px;height:4px;border-radius:99px;background:rgba(255,255,255,.14);
+  cursor:pointer;transition:background .35s,width .35s}
+.dots i.on{background:var(--gold);width:42px}
+.pbar{position:absolute;bottom:0;left:0;height:3px;
+  background:linear-gradient(90deg,var(--gold),var(--gold-2));z-index:22;
+  transition:width .55s var(--ease);box-shadow:0 0 20px rgba(188,211,151,.6)}
+
+/* guias de diagnóstico (tecla G) */
+#guides{position:absolute;inset:0;z-index:40;pointer-events:none;display:none}
+#guides.on{display:block}
+#guides .h{position:absolute;left:0;right:0;background:rgba(255,80,80,.10);
+  border-top:1px solid rgba(255,80,80,.5);border-bottom:1px solid rgba(255,80,80,.5)}
+#guides .v{position:absolute;top:0;bottom:0;width:var(--side);background:rgba(255,80,80,.07)}
+
+/* ---------- tipografia ---------- */
+.eyebrow{font-size:14px;letter-spacing:.3em;text-transform:uppercase;font-weight:800;color:var(--gold)}
+h1{font-size:104px;line-height:.98;font-weight:800;letter-spacing:-.045em}
+h2{font-size:78px;line-height:1.04;font-weight:800;letter-spacing:-.04em}
+h3{font-size:54px;line-height:1.08;font-weight:800;letter-spacing:-.035em}
+.lead{font-size:27px;line-height:1.45;color:var(--tx-2);font-weight:500;max-width:1120px}
+.gold{color:var(--gold)}
+em.s{font-family:"Instrument Serif",Georgia,serif;font-style:italic;font-weight:400;color:var(--gold-2)}
+.statement{font-size:74px;line-height:1.12;font-weight:800;letter-spacing:-.04em;max-width:1560px}
+
+.card{background:var(--panel);border:1px solid var(--stroke);border-radius:20px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+
+/* pontos */
+.pt{padding:34px 32px 36px}
+.pt .ic{width:52px;height:52px;border-radius:15px;display:grid;place-items:center;
+  background:rgba(188,211,151,.13);border:1px solid rgba(188,211,151,.3);margin-bottom:22px;font-size:22px}
+.pt .t{font-size:25px;font-weight:800;letter-spacing:-.02em;line-height:1.2;margin-bottom:12px}
+.pt .d{font-size:18px;color:var(--tx-2);line-height:1.5;font-weight:500}
+
+/* chips */
+.chips{display:flex;flex-wrap:wrap;gap:13px;max-width:1600px}
+.chip{border:1px solid var(--stroke-2);border-radius:99px;padding:15px 26px;font-size:19px;
+  font-weight:600;color:var(--tx-2);background:rgba(255,255,255,.03)}
+.chip.w{border-color:rgba(255,123,107,.34);color:#FFB3A8;background:rgba(255,123,107,.07)}
+
+/* gap */
+.gaprow{display:flex;align-items:center;gap:52px;margin-top:52px}
+.gapend{flex:1}
+.gapend .lb{font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:var(--tx-3);font-weight:800;margin-bottom:16px}
+.gapend .vl{font-size:38px;font-weight:800;letter-spacing:-.03em;line-height:1.15}
+.gapmid{flex:0 0 280px;text-align:center}
+.gapmid .dash{height:5px;border-radius:99px;
+  background:repeating-linear-gradient(90deg,var(--neg) 0 14px,transparent 14px 26px);
+  background-size:26px 5px;animation:march 1.2s linear infinite}
+@keyframes march{to{background-position:26px 0}}
+.gapmid .cap{margin-top:18px;font-size:14px;letter-spacing:.24em;text-transform:uppercase;color:var(--neg);font-weight:800}
+
+/* contadores */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:48px}
+.st{padding:32px 28px}
+.st .n{font-size:64px;font-weight:800;letter-spacing:-.045em;line-height:1;
+  background:linear-gradient(135deg,#fff,var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+.st .l{margin-top:14px;font-size:17px;color:var(--tx-2);font-weight:600;line-height:1.35}
+
+/* cascata */
+.casc{display:flex;flex-direction:column;gap:11px;margin-top:38px}
+.cs{display:flex;align-items:center;gap:24px;padding:17px 28px;border-radius:15px;
+  background:var(--panel);border:1px solid var(--stroke);border-left:4px solid var(--gold);position:relative}
+.cs .n{width:44px;height:44px;border-radius:13px;display:grid;place-items:center;
+  font-size:19px;font-weight:800;color:#07080A;flex:0 0 44px}
+.cs .w{font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--tx-3);font-weight:800}
+.cs .t{font-size:26px;font-weight:800;letter-spacing:-.025em;margin-top:3px}
+.cs .ar{position:absolute;right:30px;font-size:22px;color:var(--tx-3)}
+
+/* ---------- CAMADA ---------- */
+.lay-head{display:flex;align-items:center;justify-content:space-between;gap:40px}
+.lay-head h3{font-size:48px;margin-top:14px}
+.lay-num{font-size:104px;font-weight:800;line-height:.8;letter-spacing:-.06em;
+  color:transparent;-webkit-text-stroke:2px rgba(255,255,255,.16);flex:0 0 auto}
+.qbar{margin-top:26px;padding:24px 30px;border-radius:16px;
+  background:rgba(188,211,151,.07);border:1px solid rgba(188,211,151,.26);
+  display:flex;align-items:center;gap:26px}
+.qbar .lb{flex:0 0 168px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold);font-weight:800;line-height:1.4}
+.qbar .q{font-size:29px;line-height:1.3;font-family:"Instrument Serif",Georgia,serif;font-style:italic;color:#fff}
+.keys{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
+.k{padding:20px 24px;border-radius:14px;background:var(--panel);border:1px solid var(--stroke)}
+.k .kt{font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--tx-3);font-weight:800;margin-bottom:10px}
+.k .kv{font-size:19px;font-weight:700;letter-spacing:-.012em;line-height:1.35}
+.risk{margin-top:16px;padding:20px 26px;border-radius:14px;background:rgba(255,123,107,.09);
+  border:1px solid rgba(255,123,107,.3);display:flex;gap:18px;align-items:flex-start}
+.risk .ri{font-size:21px;line-height:1.2;flex:0 0 auto}
+.risk .rt{font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--neg);font-weight:800;margin-bottom:8px}
+.risk .rk{font-size:18.5px;line-height:1.42;color:#FFC4BB;font-weight:500}
+.risk .rk b{color:#fff;font-weight:800}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:20px}
+.sp{padding:22px 26px;border-radius:16px;border:1px solid var(--stroke)}
+.sp.g{background:rgba(79,214,156,.07);border-color:rgba(79,214,156,.26)}
+.sp.b{background:rgba(255,123,107,.06);border-color:rgba(255,123,107,.22)}
+.sp h5{font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:800;margin-bottom:12px}
+.sp.g h5{color:var(--pos)} .sp.b h5{color:var(--neg)}
+.sp li{list-style:none;font-size:18px;font-weight:600;line-height:1.35;color:var(--tx-2);
+  padding:7px 0 7px 28px;position:relative}
+.sp.g li::before{content:"↑";position:absolute;left:0;top:7px;color:var(--pos);font-weight:800;font-size:17px}
+.sp.b li::before{content:"↓";position:absolute;left:0;top:7px;color:var(--neg);font-weight:800;font-size:17px}
+
+/* placar */
+.board{margin-top:40px;display:flex;flex-direction:column;gap:15px}
+.br{display:flex;align-items:center;gap:28px;padding:22px 30px;border-radius:15px;
+  background:var(--panel);border:1px solid var(--stroke)}
+.br .bn{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;
+  font-size:17px;font-weight:800;color:#07080A;flex:0 0 40px}
+.br .bl{flex:0 0 430px;font-size:23px;font-weight:800;letter-spacing:-.02em}
+.br .bt{flex:1;height:13px;border-radius:99px;background:rgba(255,255,255,.07);position:relative;overflow:hidden}
+.br .bt::after{content:"";position:absolute;inset:0;
+  background:repeating-linear-gradient(90deg,rgba(255,255,255,.13) 0 2px,transparent 2px 10%)}
+.br .bv{flex:0 0 110px;text-align:right;font-size:21px;font-weight:800;color:var(--tx-3);letter-spacing:.04em}
+
+/* termômetro */
+.track{height:18px;border-radius:99px;
+  background:linear-gradient(90deg,var(--neg) 0%,#D9C892 52%,var(--pos) 100%);
+  box-shadow:0 0 46px rgba(188,211,151,.28)}
+.tends{display:flex;justify-content:space-between;margin-top:26px;gap:60px}
+.tend .th{font-size:42px;font-weight:800;letter-spacing:-.03em}
+.tend .td{font-size:19px;color:var(--tx-2);margin-top:8px;font-weight:500;max-width:500px;line-height:1.45}
+.tend.r{text-align:right}.tend.r .td{margin-left:auto}
+.tend.l .th{color:var(--neg)}.tend.r .th{color:var(--pos)}
+
+/* tabela */
+table{width:100%;border-collapse:collapse;margin-top:36px;table-layout:fixed}
+th{text-align:left;font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:800;
+  color:var(--tx-3);padding:0 18px 15px;border-bottom:1px solid var(--stroke-2)}
+td{padding:16px 18px;border-bottom:1px solid rgba(255,255,255,.06);font-size:18px;
+  color:var(--tx-2);font-weight:500;line-height:1.35;vertical-align:top}
+td:first-child,th:first-child{width:23%}
+td:first-child{color:#fff;font-weight:800;font-size:19px}
+td.n{color:#FFB3A8}td.p{color:#9CEBC6}
+td .ar{font-weight:800;margin-right:9px;font-size:17px}
+
+/* é / não é */
+.isnt{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:42px}
+.col{border-radius:20px;overflow:hidden;border:1px solid var(--stroke)}
+.col .ch{padding:18px 32px;font-size:13px;letter-spacing:.24em;text-transform:uppercase;font-weight:800;color:#07080A}
+.col.no .ch{background:var(--neg)}.col.yes .ch{background:var(--pos)}
+.col ul{padding:10px 32px 24px}
+.col li{list-style:none;font-size:20px;font-weight:600;color:var(--tx-2);
+  padding:15px 0 15px 36px;position:relative;border-bottom:1px solid rgba(255,255,255,.06);line-height:1.35}
+.col li:last-child{border-bottom:none}
+.col.no li::before{content:"✕";position:absolute;left:0;top:15px;color:var(--neg);font-weight:800}
+.col.yes li::before{content:"✓";position:absolute;left:0;top:15px;color:var(--pos);font-weight:800}
+
+/* roadmap */
+.road{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:46px}
+.rd{padding:32px 28px 36px;border-radius:20px;background:var(--panel);border:1px solid var(--stroke);position:relative}
+.rd.on{background:rgba(188,211,151,.10);border-color:rgba(188,211,151,.45);box-shadow:0 0 60px rgba(188,211,151,.16)}
+.rd .rn{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;font-size:17px;
+  font-weight:800;background:rgba(255,255,255,.07);color:var(--tx-3);margin-bottom:22px}
+.rd.on .rn{background:var(--gold);color:#07080A}
+.rd .rt{font-size:24px;font-weight:800;letter-spacing:-.025em;line-height:1.2;margin-bottom:10px}
+.rd .rs{font-size:16.5px;color:var(--tx-2);line-height:1.45;font-weight:500}
+.rd .bg{position:absolute;top:24px;right:26px;font-size:10.5px;letter-spacing:.2em;
+  text-transform:uppercase;font-weight:800;color:var(--gold)}
+
+.note{margin-top:36px;padding-left:24px;border-left:2px solid rgba(188,211,151,.5);
+  font-size:20px;color:var(--tx-2);line-height:1.5;font-weight:500;max-width:1440px}
+.note b{color:#fff;font-weight:800}
+
+.metarow{margin-top:56px;padding-top:30px;border-top:1px solid var(--stroke);display:flex;gap:64px}
+.metarow .ml{font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--tx-3);font-weight:800}
+.metarow .mv{font-size:21px;font-weight:700;margin-top:7px}
+
+/* ---------- ETAPA 2 · coleta ---------- */
+.flow{display:flex;flex-direction:column;gap:12px;margin-top:34px}
+.fw{display:grid;grid-template-columns:330px 1fr 1fr;align-items:stretch;border-radius:15px;
+  background:var(--panel);border:1px solid var(--stroke);border-left:4px solid var(--gold);overflow:hidden}
+.fw .fc{padding:16px 26px;display:flex;flex-direction:column;justify-content:center}
+.fw .fc+.fc{border-left:1px solid var(--stroke)}
+.fw .wn{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--tx-3);font-weight:800}
+.fw .wt{font-size:23px;font-weight:800;letter-spacing:-.025em;margin-top:2px}
+.fw .fl{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--tx-3);font-weight:800;margin-bottom:5px}
+.fw .fv{font-size:18.5px;font-weight:700;line-height:1.3}
+.fv .tg{color:var(--gold)}.fv .tp{color:var(--pos)}.fv .tn{color:var(--neg)}
+
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:24px}
+.mt2{padding:20px 24px;border-radius:14px;background:var(--panel);border:1px solid var(--stroke)}
+.mt2 .ml2{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--tx-3);font-weight:800;margin-bottom:9px}
+.mt2 .mv2{font-size:19px;font-weight:800;letter-spacing:-.015em;line-height:1.32}
+
+.two{display:grid;grid-template-columns:1.15fr 1fr;gap:22px;margin-top:20px;align-items:start}
+.box{padding:24px 28px;border-radius:16px;background:var(--panel);border:1px solid var(--stroke)}
+.box h6{font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--tx-3);font-weight:800;margin-bottom:14px}
+.box li{list-style:none;font-size:18px;font-weight:600;color:var(--tx-2);line-height:1.35;
+  padding:6px 0 6px 24px;position:relative}
+.box li::before{content:"—";position:absolute;left:0;top:6px;color:var(--gold)}
+.box .ov{font-size:21px;font-weight:800;line-height:1.35}
+.box .os{font-size:16.5px;color:var(--tx-2);margin-top:9px;font-weight:500;line-height:1.4}
+.box.out{background:rgba(188,211,151,.08);border-color:rgba(188,211,151,.3)}
+.box.out h6{color:var(--gold)}
+.box.ref{background:rgba(159,184,224,.07);border-color:rgba(159,184,224,.3)}
+.box.ref h6{color:var(--c1)}
+
+.dims{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:36px}
+.dim{padding:22px 24px;border-radius:14px;background:var(--panel);border:1px solid var(--stroke)}
+.dim .dn{font-size:11.5px;font-weight:800;color:var(--gold);margin-bottom:9px;letter-spacing:.12em}
+.dim .dt2{font-size:20px;font-weight:800;letter-spacing:-.02em;margin-bottom:6px}
+.dim .dd2{font-size:16px;color:var(--tx-2);line-height:1.4;font-weight:500}
+
+.ret{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:38px}
+.rt3{padding:26px 24px;border-radius:16px;border:1px solid var(--stroke);background:var(--panel)}
+.rt3 .rh{font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:800;margin-bottom:12px}
+.rt3 .rv{font-size:18.5px;font-weight:700;line-height:1.35;margin-bottom:14px}
+.rt3 .re{font-size:16px;color:var(--tx-2);line-height:1.4;font-weight:500;padding-top:13px;border-top:1px solid var(--stroke)}
+.rt3 .re b{color:#fff;font-weight:800}
+
+.rd.done{border-color:rgba(79,214,156,.4);background:rgba(79,214,156,.06)}
+.rd.done .rn{background:var(--pos);color:#07080A}
+
+/* matriz de cruzamento */
+.mxwrap{display:grid;grid-template-columns:1fr 560px;gap:26px;margin-top:36px;align-items:start}
+.mx{border:1px solid var(--stroke);border-radius:16px;background:var(--panel);padding:22px 26px}
+.mxh{display:grid;grid-template-columns:200px repeat(4,1fr);gap:8px;margin-bottom:10px}
+.mxh span{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:var(--tx-3);text-align:center}
+.mxr{display:grid;grid-template-columns:200px repeat(4,1fr);gap:8px;align-items:center;padding:5px 0}
+.mxl{font-size:15px;font-weight:700;color:var(--tx-2)}
+.mxc{height:24px;border-radius:6px;border:1.5px dashed rgba(255,255,255,.16)}
+.reads{display:flex;flex-direction:column;gap:14px}
+.read{padding:18px 22px;border-radius:14px;background:var(--panel);border:1px solid var(--stroke)}
+.read .rh2{font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:800;color:var(--gold);margin-bottom:7px}
+.read .rb2{font-size:16.5px;color:var(--tx-2);line-height:1.42;font-weight:500}
+.read .rb2 b{color:#fff;font-weight:800}
+
+/* estratégico → tático */
+.stgrid{display:grid;grid-template-columns:1fr 96px 1fr;align-items:stretch;margin-top:44px}
+.stcol{border-radius:26px;padding:40px 44px;border:1.5px solid}
+.stcol.sa{background:rgba(188,211,151,.10);border-color:rgba(188,211,151,.5);
+  box-shadow:0 0 70px rgba(188,211,151,.10)}
+.stcol.sb{background:rgba(159,184,224,.09);border-color:rgba(159,184,224,.45);
+  box-shadow:0 0 70px rgba(159,184,224,.09)}
+.stcol .sk{font-size:14px;letter-spacing:.26em;text-transform:uppercase;font-weight:800}
+.stcol.sa .sk{color:var(--gold)} .stcol.sb .sk{color:var(--c1)}
+.stcol .sT{font-size:52px;font-weight:800;letter-spacing:-.035em;line-height:1;margin-top:10px}
+.stcol .sS{font-family:"Instrument Serif",Georgia,serif;font-style:italic;font-size:25px;
+  color:var(--tx-2);margin-top:10px}
+.stcol ul{list-style:none;margin-top:26px}
+.stcol li{padding:15px 0;border-top:1px solid rgba(255,255,255,.09)}
+.stcol li .li1{font-size:24px;font-weight:800;letter-spacing:-.015em;line-height:1.25}
+.stcol li .li2{font-size:16.5px;color:var(--tx-2);font-weight:500;margin-top:4px;line-height:1.35}
+.stmid{display:flex;align-items:center;justify-content:center;position:relative}
+.stmid::before{content:"";position:absolute;top:12%;bottom:12%;left:50%;
+  border-left:2px dashed rgba(255,255,255,.14)}
+.stmid .arr{width:76px;height:76px;border-radius:50%;background:var(--gold);color:#07080A;
+  display:grid;place-items:center;font-size:34px;font-weight:800;position:relative;z-index:1;
+  box-shadow:0 0 50px rgba(188,211,151,.55)}
+
+/* cronograma */
+.gantt{margin-top:38px;border:1px solid var(--stroke);border-radius:18px;background:var(--panel);padding:26px 30px 22px}
+.ghead{display:grid;grid-template-columns:310px repeat(12,1fr);gap:5px;margin-bottom:16px}
+.ghead .gm{grid-column:span 4;text-align:center;font-size:12px;letter-spacing:.18em;
+  text-transform:uppercase;font-weight:800;color:var(--gold);
+  border-bottom:1.5px solid rgba(188,211,151,.4);padding-bottom:9px}
+.grow{display:grid;grid-template-columns:310px repeat(12,1fr);gap:5px;align-items:center;padding:7px 0}
+.grow+.grow{border-top:1px solid rgba(255,255,255,.05)}
+.gl{font-size:17px;font-weight:700;color:var(--tx-2);padding-right:14px}
+.gb{height:21px;border-radius:6px;box-shadow:0 0 18px rgba(0,0,0,.3)}
+.gpay{display:grid;grid-template-columns:310px repeat(12,1fr);gap:5px;margin-top:16px;
+  padding-top:14px;border-top:1px solid var(--stroke)}
+.gpay .gp{grid-column:span 4;text-align:center;font-size:13.5px;font-weight:800;color:var(--gold);
+  background:rgba(188,211,151,.09);border:1px solid rgba(188,211,151,.3);
+  border-radius:99px;padding:8px 6px}
+.gpay .gp small{display:block;font-size:11px;color:var(--tx-3);font-weight:700;letter-spacing:.08em;margin-top:2px}
+
+#hint{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);z-index:60;font-size:11.5px;
+  letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.32);font-weight:700;
+  transition:opacity .6s;pointer-events:none}
+</style>
+</head>
+<body>
+<div id="wrap"><div id="stage">
+
+  <div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+  <div class="grain"></div><div class="vig"></div>
+
+  <div class="hud hud-tl"><span class="mark"></span><span>MAM Brand · Paraná Moda Park</span></div>
+  <div class="hud hud-tr" id="secLabel">Abertura</div>
+  <div class="hud hud-br"><b id="cur">01</b><span>/</span><span id="tot">20</span></div>
+  <div class="dots" id="dots"></div>
+  <div class="pbar" id="pbar" style="width:5%"></div>
+
+  <div id="guides">
+    <div class="h" style="top:0;height:128px"></div>
+    <div class="h" style="bottom:0;height:128px"></div>
+    <div class="v" style="left:0"></div><div class="v" style="right:0"></div>
+  </div>
+
+  <!-- 0 ABERTURA MAM -->
+  <section class="slide" data-sec="MAM Brand" style="align-items:center;text-align:center">
+    <div class="r" style="--d:.15s;width:1240px;max-width:100%">
+      <svg viewBox="0 0 743.9 150" style="width:100%;height:auto;fill:#F2F4F6;filter:drop-shadow(0 0 60px rgba(188,211,151,.25))" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="690.5 17.9 657.7 106.2 651.9 121.8 646.1 106.2 613.3 17.9 581.2 17.9 581.2 132.1 599.9 132.1 599.9 35.3 635.9 132.1 667.9 132.1 703.9 35.3 703.9 132.1 722.6 132.1 722.6 17.9 690.5 17.9"/>
+        <path d="M473,17.9l-45.4,114.2h20l19.6-49.3,6.3,15.9h43.3l13.3,33.4h20l-45.4-114.2h-31.6ZM467.1,82.7l21.6-54.4,21.6,54.4h-43.2Z"/>
+        <polygon points="364.2 17.9 325.6 121.8 287 17.9 254.9 17.9 254.9 132.1 273.7 132.1 273.7 35.3 309.7 132.1 341.6 132.1 377.6 35.3 377.6 132.1 396.3 132.1 396.3 17.9 364.2 17.9"/>
+        <path d="M92,61.9L46.9,18h-25.7v114.1h25.7l31.6-30.9v-26.2l6.9,6.7h0s51.6,50.3,51.6,50.3h25.7V18h-25.7l-45.1,43.9ZM40,112.6V37.4l38.5,37.6-38.5,37.6ZM144,112.6l-38.5-37.6,38.5-37.6v75.2Z"/>
+      </svg>
+    </div>
+    <div class="r" style="--d:.45s;margin-top:54px;display:flex;align-items:center;justify-content:center;gap:26px">
+      <span style="display:block;width:90px;height:1px;background:rgba(255,255,255,.25)"></span>
+      <span style="font-size:15px;letter-spacing:.42em;text-transform:uppercase;font-weight:700;color:var(--gold)">Consultoria estratégica de marcas</span>
+      <span style="display:block;width:90px;height:1px;background:rgba(255,255,255,.25)"></span>
+    </div>
+    <p class="r" style="--d:.65s;margin-top:44px;font-size:27px;font-weight:600;color:var(--tx-2)">Projeto de Gestão de Marca · <span style="color:#fff;font-weight:800">Paraná Moda Park</span></p>
+  </section>
+
+  <!-- 1 CAPA -->
+  <section class="slide" data-sec="Abertura">
+    <p class="eyebrow r" style="--d:.1s">Projeto de Gestão de Marca · Etapa 1 de 4</p>
+    <h1 class="r" style="--d:.22s;margin-top:30px">Antes de construir<br>a marca, alinhar<br><em class="s">quem a entrega.</em></h1>
+    <p class="lead r" style="--d:.42s;margin-top:38px;max-width:880px">Diagnóstico de alinhamento de marca do Paraná Moda Park — as quatro camadas que constroem, ou destroem, o significado de uma marca.</p>
+    <div class="metarow r" style="--d:.6s">
+      <div><div class="ml">Cliente</div><div class="mv">Complexo Paraná Park</div></div>
+      <div><div class="ml">Etapa</div><div class="mv">Fundamentos e nomenclatura</div></div>
+      <div><div class="ml">Escopo</div><div class="mv">Diagnóstico das quatro camadas</div></div>
+    </div>
+  </section>
+
+  <!-- 2 PREMISSA -->
+  <section class="slide" data-sec="01 · A premissa">
+    <p class="eyebrow r" style="--d:.05s">A premissa</p>
+    <h2 class="r" style="--d:.18s;margin-top:28px">Marca não é o que<br>a empresa diz.<br><em class="s">É o que o mercado percebe.</em></h2>
+    <p class="lead r" style="--d:.4s;margin-top:40px">E a percepção não se constrói na campanha. Constrói-se, repetidamente, em cada ponto de contato.</p>
+  </section>
+
+  <!-- 3 TRÊS PONTOS -->
+  <section class="slide" data-sec="01 · A premissa">
+    <p class="eyebrow r" style="--d:.05s">Por que o desalinhamento acontece</p>
+    <h3 class="r" style="--d:.16s;margin-top:22px">A marca é entregue por pessoas —<br>uma de cada vez.</h3>
+    <div class="grid3" style="margin-top:52px">
+      <div class="card pt r" style="--d:.34s"><div class="ic">📍</div>
+        <div class="t">Ela vive nos pontos de contato</div>
+        <div class="d">Comercial, portaria, recepção do hotel, WhatsApp, atendimento da loja. Não no anúncio.</div></div>
+      <div class="card pt r" style="--d:.46s"><div class="ic">👤</div>
+        <div class="t">Cada ponto é uma pessoa</div>
+        <div class="d">E cada pessoa entrega a marca conforme o que entendeu que a marca é.</div></div>
+      <div class="card pt r" style="--d:.58s"><div class="ic">🔀</div>
+        <div class="t">Dez entendimentos, dez marcas</div>
+        <div class="d">O mercado recebe versões diferentes — e não fixa nenhuma delas.</div></div>
+    </div>
+  </section>
+
+  <!-- 4 FRASE -->
+  <section class="slide" data-sec="01 · A premissa">
+    <p class="statement r" style="--d:.15s">Campanha não conserta cultura.<br>Campanha <span class="gold">amplifica o que já existe</span> —<br><em class="s">inclusive o desalinhamento.</em></p>
+  </section>
+
+  <!-- 5 BRAND GAP -->
+  <section class="slide" data-sec="02 · O conceito">
+    <p class="eyebrow r" style="--d:.05s">O conceito central</p>
+    <h2 class="r" style="--d:.16s;margin-top:24px">Brand Gap</h2>
+    <p class="lead r" style="--d:.3s;margin-top:24px">A distância entre o que a marca <em class="s" style="font-size:30px">pretende</em> significar e o que ela <em class="s" style="font-size:30px">de fato</em> entrega.</p>
+    <div class="gaprow r" style="--d:.46s">
+      <div class="gapend"><div class="lb">Intenção estratégica</div>
+        <div class="vl">O que a liderança quer<br>que a marca signifique</div></div>
+      <div class="gapmid"><div class="dash"></div><div class="cap">Brand Gap</div></div>
+      <div class="gapend" style="text-align:right"><div class="lb">Percepção real</div>
+        <div class="vl">O que o mercado entendeu,<br>somando todas as entregas</div></div>
+    </div>
+  </section>
+
+  <!-- 6 SINTOMAS -->
+  <section class="slide" data-sec="02 · O conceito">
+    <p class="eyebrow r" style="--d:.05s">Como o gap se manifesta</p>
+    <h3 class="r" style="--d:.16s;margin-top:22px">Não aparece em relatório.<br>Aparece como sintoma.</h3>
+    <div class="chips" style="margin-top:52px">
+      <span class="chip w r" style="--d:.32s">"A comunicação não nos representa" — mas ninguém sabe dizer o que falta</span>
+      <span class="chip w r" style="--d:.42s">Cada área comunica um argumento diferente</span>
+      <span class="chip w r" style="--d:.52s">Decisão de marca vira gosto pessoal: "eu não gostei"</span>
+      <span class="chip w r" style="--d:.62s">Reconhecidos pelo tamanho, não pelo significado</span>
+      <span class="chip w r" style="--d:.72s">Contra concorrente novo, a única defesa é preço</span>
+    </div>
+  </section>
+
+  <!-- 7 ECOSSISTEMA -->
+  <section class="slide" data-sec="02 · O conceito">
+    <p class="statement r" style="--d:.12s;font-size:62px">O shopping não entrega a promessa.<br>Ele <span class="gold">licencia a promessa</span> para<br>130 marcas executarem em seu nome.</p>
+    <div class="stats">
+      <div class="card st r" style="--d:.4s"><div class="n" data-count="130" data-suf="+">0</div><div class="l">marcas independentes operando a promessa</div></div>
+      <div class="card st r" style="--d:.5s"><div class="n" data-count="47" data-suf=" mil">0</div><div class="l">m² de complexo — shopping, hotel, eventos</div></div>
+      <div class="card st r" style="--d:.6s"><div class="n" data-count="640" data-suf="+">0</div><div class="l">leitos entre hotel e pousada</div></div>
+      <div class="card st r" style="--d:.7s"><div class="n" data-count="15" data-suf=" mil+">0</div><div class="l">clientes ativos na base</div></div>
+    </div>
+    <div class="note r" style="--d:.82s">Quanto mais frentes, mais pontos de contato. Quanto mais pontos de contato, <b>maior o retorno do alinhamento — e maior o custo do desalinhamento.</b></div>
+  </section>
+
+  <!-- 8 PRINCÍPIO -->
+  <section class="slide" data-sec="03 · O princípio">
+    <p class="eyebrow r" style="--d:.05s">O princípio de construção</p>
+    <h3 class="r" style="--d:.16s;margin-top:20px">De dentro para fora.<br>Nessa ordem, sem pular etapa.</h3>
+    <div class="casc">
+      <div class="cs rx" style="--d:.3s;border-left-color:var(--c1)"><div class="n" style="background:var(--c1)">1</div>
+        <div><div class="w">Donos e acionistas</div><div class="t">Intenção estratégica de marca</div></div><span class="ar">↓</span></div>
+      <div class="cs rx" style="--d:.4s;border-left-color:var(--c2)"><div class="n" style="background:var(--c2)">2</div>
+        <div><div class="w">Alta liderança</div><div class="t">Co-autoria e tradução em critério</div></div><span class="ar">↓</span></div>
+      <div class="cs rx" style="--d:.5s;border-left-color:var(--c3)"><div class="n" style="background:var(--c3)">3</div>
+        <div><div class="w">Equipe</div><div class="t">Tradução operacional vivida</div></div><span class="ar">↓</span></div>
+      <div class="cs rx" style="--d:.6s;border-left-color:var(--c4)"><div class="n" style="background:var(--c4)">4</div>
+        <div><div class="w">Lojistas</div><div class="t">Advocacy do ecossistema</div></div><span class="ar">↓</span></div>
+      <div class="cs rx" style="--d:.7s;border-left-color:var(--gold);background:rgba(188,211,151,.09)">
+        <div class="n" style="background:var(--gold)">★</div>
+        <div><div class="w">Mercado</div><div class="t">Percepção — o resultado da soma anterior</div></div></div>
+    </div>
+    <div class="note r" style="--d:.84s">Comunicar para fora antes de alinhar por dentro <b>acelera a decepção</b>.</div>
+  </section>
+
+  <!-- 9 DIVISOR -->
+  <section class="slide" data-sec="04 · As camadas">
+    <p class="eyebrow r" style="--d:.05s">Capítulo 04</p>
+    <h1 class="r" style="--d:.18s;margin-top:28px">As quatro<br>camadas.</h1>
+    <p class="lead r" style="--d:.4s;margin-top:38px">Cada uma responde uma pergunta e produz um ativo diferente.<br>O valor só aparece quando as quatro dizem <em class="s" style="font-size:30px">a mesma coisa</em>.</p>
+  </section>
+
+  <!-- 10 CAMADA 1 -->
+  <section class="slide" data-sec="Camada 01 · Donos">
+    <div class="lay-head r" style="--d:.08s">
+      <div><p class="eyebrow" style="color:var(--c1)">Camada 01 · Donos e acionistas</p>
+        <h3>Intenção Estratégica de Marca</h3></div>
+      <div class="lay-num">01</div>
+    </div>
+    <div class="qbar r" style="--d:.26s;border-color:rgba(159,184,224,.3);background:rgba(159,184,224,.07)">
+      <div class="lb" style="color:var(--c1)">A pergunta<br>desta camada</div>
+      <div class="q">"O que queremos que digam de nós quando não estivermos na sala?"</div>
+    </div>
+    <div class="keys">
+      <div class="k r" style="--d:.36s"><div class="kt">O que é</div><div class="kv">A decisão fundadora sobre o significado da marca</div></div>
+      <div class="k r" style="--d:.44s"><div class="kt">O que reúne</div><div class="kv">Propósito · posicionamento · promessa · valores inegociáveis</div></div>
+      <div class="k r" style="--d:.52s"><div class="kt">O que produz</div><div class="kv">Direção — o critério que encerra discussões de gosto</div></div>
+    </div>
+    <div class="risk r" style="--d:.6s"><span class="ri">⚠️</span><div>
+      <div class="rt">O ponto sensível</div>
+      <div class="rk">Essa intenção existe — mas <b>vive na cabeça do dono</b>. O que não é codificado não pode ser delegado. O primeiro trabalho não é criar: é <b>extrair e codificar</b>.</div></div></div>
+    <div class="split">
+      <div class="sp g r" style="--d:.7s"><h5>✓ Quando está escrita e clara</h5><ul>
+        <li>Qualquer decisão segue o mesmo critério — mesmo sem o dono na sala</li>
+        <li>A marca fica difícil de copiar: prédio se copia, visão não</li></ul></div>
+      <div class="sp b r" style="--d:.78s"><h5>✕ Quando fica só na cabeça</h5><ul>
+        <li>Cada um decide pela própria opinião — ganha quem falou por último</li>
+        <li>Trocou o gestor? A marca recomeça do zero</li></ul></div>
+    </div>
+  </section>
+
+  <!-- 11 CAMADA 2 -->
+  <section class="slide" data-sec="Camada 02 · Liderança">
+    <div class="lay-head r" style="--d:.08s">
+      <div><p class="eyebrow" style="color:var(--c2)">Camada 02 · Alta liderança e executivos</p>
+        <h3>Co-autoria e Tradução em Critério</h3></div>
+      <div class="lay-num">02</div>
+    </div>
+    <div class="qbar r" style="--d:.26s;border-color:rgba(143,205,185,.3);background:rgba(143,205,185,.07)">
+      <div class="lb" style="color:var(--c2)">A pergunta<br>desta camada</div>
+      <div class="q">"O que essa intenção me obriga a fazer — e a deixar de fazer — toda semana?"</div>
+    </div>
+    <div class="keys">
+      <div class="k r" style="--d:.36s"><div class="kt">Função A · Co-autoria</div><div class="kv">A liderança tem informação de mercado que o acionista não tem</div></div>
+      <div class="k r" style="--d:.44s"><div class="kt">Função B · Tradução</div><div class="kv">Vira critério: quem aceitar, que mix, que preço, que evento</div></div>
+      <div class="k r" style="--d:.52s"><div class="kt">O que produz</div><div class="kv">Política — decisão consistente entre áreas e ao longo do tempo</div></div>
+    </div>
+    <div class="risk r" style="--d:.6s"><span class="ri">⚠️</span><div>
+      <div class="rt">Risco de tratar como mera execução</div>
+      <div class="rk"><b>Ninguém defende aquilo que não ajudou a construir.</b> Liderança que só recebe ordem cumpre a marca — não a vive. E marca cumprida cai na primeira pressão de meta.</div></div></div>
+    <div class="split">
+      <div class="sp g r" style="--d:.7s"><h5>✓ Quando a diretoria participa</h5><ul>
+        <li>Comercial, locação e marketing falam a mesma língua</li>
+        <li>A empresa sabe dizer "não" ao que dá dinheiro mas estraga a marca</li></ul></div>
+      <div class="sp b r" style="--d:.78s"><h5>✕ Quando cada área segue a sua</h5><ul>
+        <li>Um vende preço, outro vende experiência — três marcas com o mesmo nome</li>
+        <li>O mercado não entende o que o shopping é</li></ul></div>
+    </div>
+  </section>
+
+  <!-- 12 CAMADA 3 -->
+  <section class="slide" data-sec="Camada 03 · Equipe">
+    <div class="lay-head r" style="--d:.08s">
+      <div><p class="eyebrow" style="color:var(--c3)">Camada 03 · Equipe</p>
+        <h3>Tradução Operacional Vivida</h3></div>
+      <div class="lay-num">03</div>
+    </div>
+    <div class="qbar r" style="--d:.26s">
+      <div class="lb">A pergunta<br>desta camada</div>
+      <div class="q">"Eu sei o que a marca promete — e sei qual é o meu papel em cumprir isso?"</div>
+    </div>
+    <div class="keys">
+      <div class="k r" style="--d:.36s"><div class="kt">O que é</div><div class="kv">O último metro da marca: onde estratégia vira comportamento</div></div>
+      <div class="k r" style="--d:.44s"><div class="kt">Não basta conhecer</div><div class="kv">É preciso traduzir o posicionamento no gesto de cada cargo</div></div>
+      <div class="k r" style="--d:.52s"><div class="kt">Exemplo</div><div class="kv">"Consultivo" é uma coisa no WhatsApp, outra na recepção do hotel</div></div>
+    </div>
+    <div class="risk r" style="--d:.6s"><span class="ri">💸</span><div>
+      <div class="rt">O desalinhamento mais caro — porque é o mais invisível</div>
+      <div class="rk">O comprador insatisfeito não reclama com o dono. Compra no concorrente na próxima viagem. <b>Não gera reclamação: gera evasão silenciosa.</b></div></div></div>
+    <div class="split">
+      <div class="sp g r" style="--d:.7s"><h5>✓ Quando a equipe sabe</h5><ul>
+        <li>O cliente ouve a mesma promessa em todo lugar — e passa a confiar</li>
+        <li>Até no imprevisto o time acerta, porque entende a ideia</li></ul></div>
+      <div class="sp b r" style="--d:.78s"><h5>✕ Quando a equipe não sabe</h5><ul>
+        <li>A propaganda promete uma coisa, o balcão entrega outra</li>
+        <li>Cada um atende de um jeito — a experiência vira sorte</li></ul></div>
+    </div>
+  </section>
+
+  <!-- 13 CAMADA 4 -->
+  <section class="slide" data-sec="Camada 04 · Lojistas">
+    <div class="lay-head r" style="--d:.08s">
+      <div><p class="eyebrow" style="color:var(--c4)">Camada 04 · Lojistas</p>
+        <h3>Advocacy do Ecossistema</h3></div>
+      <div class="lay-num">04</div>
+    </div>
+    <div class="qbar r" style="--d:.26s;border-color:rgba(217,160,176,.3);background:rgba(217,160,176,.07)">
+      <div class="lb" style="color:var(--c4)">A pergunta<br>desta camada</div>
+      <div class="q">"Eu falo do shopping para o meu cliente — ou só da minha loja?"</div>
+    </div>
+    <div class="keys">
+      <div class="k r" style="--d:.36s"><div class="kt">O que é</div><div class="kv">Marca guarda-chuva: quem executa a promessa não é funcionário</div></div>
+      <div class="k r" style="--d:.44s"><div class="kt">Direção 1</div><div class="kv">O lojista precisa entender o posicionamento para vender coerente</div></div>
+      <div class="k r" style="--d:.52s"><div class="kt">Direção 2 · o ativo esquecido</div><div class="kv">Lojista alinhado é mídia de credibilidade máxima e custo zero</div></div>
+    </div>
+    <div class="risk r" style="--d:.6s"><span class="ri">🚨</span><div>
+      <div class="rt">O risco existencial</div>
+      <div class="rk">Sem comprar o posicionamento, o lojista usa o shopping só como endereço. <b>O empreendimento deixa de ser marca e vira CEP.</b> E CEP não tem poder de precificação.</div></div></div>
+    <div class="split">
+      <div class="sp g r" style="--d:.7s"><h5>✓ Quando o lojista abraça</h5><ul>
+        <li>130 vozes contando a mesma história — força que mídia nenhuma compra</li>
+        <li>Ele traz cliente para o shopping, não só para a própria loja</li></ul></div>
+      <div class="sp b r" style="--d:.78s"><h5>✕ Quando o lojista ignora</h5><ul>
+        <li>O shopping vira só o lugar onde a loja fica</li>
+        <li>Se um concorrente novo oferecer aluguel menor, ele vai</li></ul></div>
+    </div>
+  </section>
+
+  <!-- 14 PLACAR -->
+  <section class="slide" data-sec="05 · O entregável">
+    <p class="eyebrow r" style="--d:.05s">O entregável</p>
+    <h3 class="r" style="--d:.16s;margin-top:20px">Placar de Alinhamento de Marca</h3>
+    <p class="lead r" style="--d:.3s;margin-top:20px">É o que transforma "sinto que tem algo desalinhado" em dado — e dado em decisão.</p>
+    <div class="board">
+      <div class="br r" style="--d:.42s"><div class="bn" style="background:var(--c1)">1</div>
+        <div class="bl">Intenção estratégica · Donos</div><div class="bt"></div><div class="bv">— / 10</div></div>
+      <div class="br r" style="--d:.5s"><div class="bn" style="background:var(--c2)">2</div>
+        <div class="bl">Co-autoria e tradução · Liderança</div><div class="bt"></div><div class="bv">— / 10</div></div>
+      <div class="br r" style="--d:.58s"><div class="bn" style="background:var(--c3)">3</div>
+        <div class="bl">Tradução vivida · Equipe</div><div class="bt"></div><div class="bv">— / 10</div></div>
+      <div class="br r" style="--d:.66s"><div class="bn" style="background:var(--c4)">4</div>
+        <div class="bl">Advocacy · Lojistas</div><div class="bt"></div><div class="bv">— / 10</div></div>
+    </div>
+    <div class="note r" style="--d:.78s">O placar chega em branco. <b>Preenchê-lo é exatamente o que este projeto entrega.</b></div>
+  </section>
+
+  <!-- 15 TERMÔMETRO -->
+  <section class="slide" data-sec="05 · O entregável">
+    <p class="eyebrow r" style="--d:.05s">A pergunta que o diagnóstico responde</p>
+    <h2 class="r" style="--d:.16s;margin-top:24px">Para onde essa<br>marca está caminhando?</h2>
+    <div class="r" style="--d:.36s;margin-top:70px">
+      <div class="track"></div>
+      <div class="tends">
+        <div class="tend l"><div class="th">CEP</div>
+          <div class="td">Endereço bem localizado. Compete por valor de aluguel e distância da rodovia.</div></div>
+        <div class="tend r"><div class="th">MARCA</div>
+          <div class="td">Destino com significado. Compete por preferência e sustenta prêmio de preço.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 16 CONSEQUÊNCIA -->
+  <section class="slide" data-sec="06 · Consequência">
+    <p class="eyebrow r" style="--d:.05s">Consequência de negócio</p>
+    <h3 class="r" style="--d:.16s;margin-top:18px">Isso não é tema de marketing.<br>É valor do ativo.</h3>
+    <table>
+      <thead><tr class="r" style="--d:.3s"><th>Dimensão</th><th style="color:var(--neg)">Desalinhado</th><th style="color:var(--pos)">Alinhado</th></tr></thead>
+      <tbody>
+        <tr class="r" style="--d:.38s"><td>Atração de comprador</td>
+          <td class="n"><span class="ar">↓</span>Mídia sem lastro. Custo por comprador sobe a cada ciclo.</td>
+          <td class="p"><span class="ar">↑</span>A promessa é confirmada. Parte da mídia vira indicação.</td></tr>
+        <tr class="r" style="--d:.44s"><td>Poder de precificação</td>
+          <td class="n"><span class="ar">↓</span>A locação se resolve por desconto.</td>
+          <td class="p"><span class="ar">↑</span>Paga-se mais para estar associado à marca.</td></tr>
+        <tr class="r" style="--d:.5s"><td>Retenção de lojista</td>
+          <td class="n"><span class="ar">↓</span>Inquilino troca de endereço por proposta melhor.</td>
+          <td class="p"><span class="ar">↑</span>Sócio avalia posicionamento, não só custo.</td></tr>
+        <tr class="r" style="--d:.56s"><td>Defesa competitiva</td>
+          <td class="n"><span class="ar">↓</span>Concorrente replica a estrutura física em poucos anos.</td>
+          <td class="p"><span class="ar">↑</span>Estrutura se copia; significado compartilhado, não.</td></tr>
+        <tr class="r" style="--d:.62s"><td>Expansão geográfica</td>
+          <td class="n"><span class="ar">↓</span>A marca não viaja. Fica presa ao raio já conquistado.</td>
+          <td class="p"><span class="ar">↑</span>Marca coerente viaja. Menos mídia por mercado novo.</td></tr>
+        <tr class="r" style="--d:.68s"><td>Valor do ativo</td>
+          <td class="n"><span class="ar">↓</span>Avaliado por m² e taxa de ocupação.</td>
+          <td class="p"><span class="ar">↑</span>Avaliado também por marca e capacidade de atração.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 17 É / NÃO É -->
+  <section class="slide" data-sec="07 · Delimitação">
+    <p class="eyebrow r" style="--d:.05s">Delimitação</p>
+    <h3 class="r" style="--d:.16s;margin-top:18px">O que este projeto é —<br>e o que ele não é.</h3>
+    <div class="isnt">
+      <div class="col no r" style="--d:.34s"><div class="ch">Não é</div><ul>
+        <li>Redesenho de logo ou identidade visual</li>
+        <li>Campanha publicitária ou plano de mídia</li>
+        <li>Pesquisa de satisfação de cliente</li>
+        <li>Substituição do comercial que já funciona</li></ul></div>
+      <div class="col yes r" style="--d:.46s"><div class="ch">É</div><ul>
+        <li>Codificar a intenção estratégica dos acionistas</li>
+        <li>Medir o alinhamento nas quatro camadas</li>
+        <li>Traduzir os gaps em risco e oportunidade</li>
+        <li>Definir a linha estratégica da organização</li></ul></div>
+    </div>
+  </section>
+
+  <!-- 18 FRASE -->
+  <section class="slide" data-sec="07 · Delimitação">
+    <p class="statement r" style="--d:.15s">Primeiro se descobre<br>o que a marca é.<br>Depois se alinha <span class="gold">quem a entrega</span>.<br><em class="s">Só então se comunica ao mercado.</em></p>
+  </section>
+
+  <!-- E2-A DIVISOR -->
+  <section class="slide" data-sec="Etapa 02 · Instrumentos">
+    <p class="eyebrow r" style="--d:.05s">Etapa 02 · Instrumentos de coleta</p>
+    <h1 class="r" style="--d:.18s;margin-top:28px">Como vamos ouvir<br>cada camada.</h1>
+    <p class="lead r" style="--d:.4s;margin-top:38px">Quatro instrumentos, um por camada — <em class="s" style="font-size:30px">entrevista em profundidade no topo, questionário estruturado na base.</em><br>Aqui, o formato de cada um. O cruzamento dos dados vem na arquitetura metodológica.</p>
+  </section>
+
+  <!-- E2-1 ONDA 1 -->
+  <section class="slide" data-sec="Onda 01 · Acionistas">
+    <div class="lay-head r" style="--d:.08s">
+      <div><p class="eyebrow" style="color:var(--c1)">Onda 01 · Donos e acionistas</p>
+        <h3>Entrevista de Intenção Estratégica</h3></div>
+      <div class="lay-num">01</div>
+    </div>
+    <div class="metrics">
+      <div class="mt2 r" style="--d:.24s"><div class="ml2">Método</div><div class="mv2">Entrevista em profundidade 1:1</div></div>
+      <div class="mt2 r" style="--d:.3s"><div class="ml2">Quem</div><div class="mv2">Censo — todos os sócios e acionistas</div></div>
+      <div class="mt2 r" style="--d:.36s"><div class="ml2">Duração</div><div class="mv2">75 a 90 min por entrevistado</div></div>
+      <div class="mt2 r" style="--d:.42s"><div class="ml2">Formato</div><div class="mv2">Presencial · semiestruturada · gravada</div></div>
+    </div>
+    <div class="two">
+      <div class="box r" style="--d:.5s"><h6>O que se levanta</h6><ul>
+        <li>Propósito do negócio e ambição para os próximos cinco anos</li>
+        <li>Posicionamento pretendido — que lugar ocupar, e contra quem</li>
+        <li>Promessa central e diferencial que ninguém mais entrega</li>
+        <li>Público que se quer — e o público que não se quer</li>
+        <li>Valores inegociáveis e tom de voz da marca</li></ul></div>
+      <div class="box r" style="--d:.58s"><h6>Estrutura do roteiro</h6><ul>
+        <li>Bloco 1 · História, visão de futuro e ambição</li>
+        <li>Bloco 2 · As oito dimensões da marca, em pergunta aberta</li>
+        <li>Bloco 3 · Trade-offs — o que se sacrifica pelo quê</li>
+        <li>Fecho · "Se o mercado só pudesse dizer uma coisa de nós, qual seria?"</li></ul></div>
+    </div>
+  </section>
+
+  <!-- E2-2 ONDA 2 -->
+  <section class="slide" data-sec="Onda 02 · Liderança">
+    <div class="lay-head r" style="--d:.08s">
+      <div><p class="eyebrow" style="color:var(--c2)">Onda 02 · Alta liderança e executivos</p>
+        <h3>Entrevista de Convergência e Co-autoria</h3></div>
+      <div class="lay-num">02</div>
+    </div>
+    <div class="metrics">
+      <div class="mt2 r" style="--d:.24s"><div class="ml2">Método</div><div class="mv2">Entrevista em profundidade 1:1</div></div>
+      <div class="mt2 r" style="--d:.3s"><div class="ml2">Quem</div><div class="mv2">Censo dos executivos de cada área</div></div>
+      <div class="mt2 r" style="--d:.36s"><div class="ml2">Duração</div><div class="mv2">50 a 60 min por entrevistado</div></div>
+      <div class="mt2 r" style="--d:.42s"><div class="ml2">Formato</div><div class="mv2">Roteiro espelhado ao da Onda 01</div></div>
+    </div>
+    <div class="two">
+      <div class="box r" style="--d:.5s"><h6>O que se levanta</h6><ul>
+        <li>As mesmas dimensões — sem revelar a resposta do acionista</li>
+        <li>Que critérios a liderança usa hoje, na prática, para decidir</li>
+        <li>O que ela acredita que o mercado percebe da marca</li>
+        <li>Leitura de concorrência e de ameaça competitiva</li>
+        <li>O que ela acrescentaria à intenção — bloco de co-autoria</li></ul></div>
+      <div class="box r" style="--d:.58s"><h6>Estrutura do roteiro</h6><ul>
+        <li>Bloco 1 · Abertura — leitura de mercado da própria área</li>
+        <li>Bloco 2 · Dimensões da marca, espelhadas ao roteiro do topo</li>
+        <li>Bloco 3 · Critérios de decisão praticados hoje</li>
+        <li>Bloco 4 · Co-autoria — o que acrescentaria à intenção</li></ul></div>
+    </div>
+  </section>
+
+  <!-- E2-3 ONDA 3 -->
+  <section class="slide" data-sec="Onda 03 · Equipe">
+    <div class="lay-head r" style="--d:.08s">
+      <div><p class="eyebrow" style="color:var(--c3)">Onda 03 · Equipe</p>
+        <h3>Diagnóstico de Alinhamento Interno</h3></div>
+      <div class="lay-num">03</div>
+    </div>
+    <div class="metrics">
+      <div class="mt2 r" style="--d:.24s"><div class="ml2">Método</div><div class="mv2">Questionário online autoaplicável</div></div>
+      <div class="mt2 r" style="--d:.3s"><div class="ml2">Quem</div><div class="mv2">Censo — toda a equipe do complexo</div></div>
+      <div class="mt2 r" style="--d:.36s"><div class="ml2">Duração</div><div class="mv2">8 a 10 min de resposta</div></div>
+      <div class="mt2 r" style="--d:.42s"><div class="ml2">Formato</div><div class="mv2">Anônimo · corte por área, cargo e tempo de casa</div></div>
+    </div>
+    <div class="two">
+      <div class="box r" style="--d:.5s"><h6>O que se levanta</h6><ul>
+        <li>As mesmas dimensões, traduzidas para a linguagem do dia a dia</li>
+        <li>O que ela responderia a um cliente que perguntasse "por que aqui?"</li>
+        <li>O que entende como o seu papel específico na promessa</li>
+        <li>Onde sente que a operação não sustenta o que se comunica</li>
+        <li>Grau de clareza percebida — e de onde vem a informação que tem</li></ul></div>
+      <div class="box r" style="--d:.58s"><h6>Estrutura do questionário</h6><ul>
+        <li>Bloco 1 · Perfil anônimo — área, cargo, tempo de casa</li>
+        <li>Bloco 2 · Dimensões da marca, traduzidas para o dia a dia</li>
+        <li>Bloco 3 · Papel próprio na promessa</li>
+        <li>Bloco 4 · Coerência percebida entre discurso e operação</li></ul></div>
+    </div>
+  </section>
+
+  <!-- E2-4 ONDA 4 -->
+  <section class="slide" data-sec="Onda 04 · Lojistas">
+    <div class="lay-head r" style="--d:.08s">
+      <div><p class="eyebrow" style="color:var(--c4)">Onda 04 · Lojistas</p>
+        <h3>Diagnóstico de Advocacy do Ecossistema</h3></div>
+      <div class="lay-num">04</div>
+    </div>
+    <div class="metrics">
+      <div class="mt2 r" style="--d:.24s"><div class="ml2">Método</div><div class="mv2">Questionário online autoaplicável</div></div>
+      <div class="mt2 r" style="--d:.3s"><div class="ml2">Quem</div><div class="mv2">Amostra estratificada das lojas</div></div>
+      <div class="mt2 r" style="--d:.36s"><div class="ml2">Duração</div><div class="mv2">6 a 8 min de resposta</div></div>
+      <div class="mt2 r" style="--d:.42s"><div class="ml2">Estratos</div><div class="mv2">Segmento · porte · tempo de casa</div></div>
+    </div>
+    <div class="two">
+      <div class="box r" style="--d:.5s"><h6>O que se levanta</h6><ul>
+        <li>O que ele diz que o shopping é, quando fala com o cliente dele</li>
+        <li>Por que acredita que o comprador escolhe vir até aqui</li>
+        <li>O que valoriza no empreendimento — e o que sente falta</li>
+        <li>Se enxerga o shopping como marca ou apenas como endereço</li>
+        <li>Disposição de comunicar junto, sob a mesma bandeira</li></ul></div>
+      <div class="box r" style="--d:.58s"><h6>Estrutura do questionário</h6><ul>
+        <li>Bloco 1 · Perfil do estrato — segmento, porte, tempo de casa</li>
+        <li>Bloco 2 · Dimensões da marca, em linguagem de balcão</li>
+        <li>Bloco 3 · Relação com a marca do shopping</li>
+        <li>Bloco 4 · Disposição de comunicar sob a mesma bandeira</li></ul></div>
+    </div>
+  </section>
+
+  <!-- E2-C RÉGUA COMUM -->
+  <section class="slide" data-sec="Etapa 02 · Instrumentos">
+    <p class="eyebrow r" style="--d:.05s">A espinha dorsal dos quatro instrumentos</p>
+    <h3 class="r" style="--d:.16s;margin-top:18px">Mesma régua nas quatro camadas.<br>Linguagens diferentes.</h3>
+    <div class="dims">
+      <div class="dim r" style="--d:.3s"><div class="dn">01</div><div class="dt2">Propósito</div><div class="dd2">Por que essa marca existe</div></div>
+      <div class="dim r" style="--d:.36s"><div class="dn">02</div><div class="dt2">Posicionamento</div><div class="dd2">Que lugar ocupa — e contra quem</div></div>
+      <div class="dim r" style="--d:.42s"><div class="dn">03</div><div class="dt2">Público</div><div class="dd2">Para quem é, e para quem não é</div></div>
+      <div class="dim r" style="--d:.48s"><div class="dn">04</div><div class="dt2">Promessa</div><div class="dd2">O que garante que ninguém mais garante</div></div>
+      <div class="dim r" style="--d:.54s"><div class="dn">05</div><div class="dt2">Diferencial</div><div class="dd2">O motivo racional de escolher</div></div>
+      <div class="dim r" style="--d:.6s"><div class="dn">06</div><div class="dt2">Valores</div><div class="dd2">O que não se faz nem por receita</div></div>
+      <div class="dim r" style="--d:.66s"><div class="dn">07</div><div class="dt2">Tom de voz</div><div class="dd2">Como a marca fala e se comporta</div></div>
+      <div class="dim r" style="--d:.72s"><div class="dn">08</div><div class="dt2">Papel próprio</div><div class="dd2">O que eu faço que constrói isso — camadas 3 e 4</div></div>
+    </div>
+    <div class="note r" style="--d:.84s">O acionista responde em linguagem de estratégia; o lojista, em linguagem de balcão. <b>As oito dimensões são as mesmas nas quatro camadas</b> — como elas se cruzam é assunto da arquitetura metodológica, a seguir.</div>
+  </section>
+
+  <!-- E2-E CUIDADOS -->
+  <section class="slide" data-sec="Etapa 02 · Instrumentos">
+    <p class="eyebrow r" style="--d:.05s">O que protege a qualidade do dado</p>
+    <h3 class="r" style="--d:.16s;margin-top:18px">Sem estes seis cuidados,<br>o diagnóstico mente.</h3>
+    <div class="chips" style="margin-top:46px">
+      <span class="chip r" style="--d:.32s">Sequência inegociável — nenhuma camada antes de a anterior fechar</span>
+      <span class="chip r" style="--d:.4s">Anonimato com corte por grupo — quem teme a resposta não responde a verdade</span>
+      <span class="chip r" style="--d:.48s">Pergunta aberta antes da fechada — não se entrega a resposta dentro da pergunta</span>
+      <span class="chip r" style="--d:.56s">Não se avalia pessoa — mede-se clareza da marca, nunca desempenho individual</span>
+      <span class="chip r" style="--d:.64s">Taxa mínima de resposta por camada — abaixo dela, não se conclui</span>
+      <span class="chip r" style="--d:.72s">Mesma régua, linguagens diferentes — é o que torna o cruzamento legítimo</span>
+    </div>
+  </section>
+
+  <!-- E3-A DIVISOR -->
+  <section class="slide" data-sec="Etapa 03 · Arquitetura">
+    <p class="eyebrow r" style="--d:.05s">Etapa 03 · Arquitetura metodológica</p>
+    <h1 class="r" style="--d:.18s;margin-top:28px">Como os dados<br>viram diagnóstico.</h1>
+    <p class="lead r" style="--d:.4s;margin-top:38px">A coleta produz respostas. A arquitetura produz leitura: <em class="s" style="font-size:30px">cada instrumento nasce das respostas do anterior</em> — e os gaps aparecem no cruzamento.</p>
+  </section>
+
+  <!-- E3-B DERIVAÇÃO -->
+  <section class="slide" data-sec="Etapa 03 · Arquitetura">
+    <p class="eyebrow r" style="--d:.05s">O princípio da arquitetura</p>
+    <h3 class="r" style="--d:.16s;margin-top:18px">Nenhum instrumento nasce pronto.<br>Cada um é construído com as respostas do anterior.</h3>
+    <div class="flow">
+      <div class="fw rx" style="--d:.3s;border-left-color:var(--c1)">
+        <div class="fc"><div class="wn">Onda 01</div><div class="wt">Roteiro dos donos</div></div>
+        <div class="fc"><div class="fl">Construído a partir de</div><div class="fv"><span class="tg">Da metodologia — as oito dimensões</span></div></div>
+        <div class="fc"><div class="fl">Revela</div><div class="fv">Régua v0 · a intenção declarada</div></div>
+      </div>
+      <div class="fw rx" style="--d:.4s;border-left-color:var(--c2)">
+        <div class="fc"><div class="wn">Onda 02</div><div class="wt">Instrumento da liderança</div></div>
+        <div class="fc"><div class="fl">Construído a partir de</div><div class="fv">Das respostas dos donos, pergunta a pergunta</div></div>
+        <div class="fc"><div class="fl">Revela</div><div class="fv"><span class="tn">Gap 1</span> + Régua v1 consolidada</div></div>
+      </div>
+      <div class="fw rx" style="--d:.5s;border-left-color:var(--c3)">
+        <div class="fc"><div class="wn">Onda 03</div><div class="wt">Questionário da equipe</div></div>
+        <div class="fc"><div class="fl">Construído a partir de</div><div class="fv">Da Régua v1, traduzida para o dia a dia</div></div>
+        <div class="fc"><div class="fl">Revela</div><div class="fv"><span class="tn">Gap 2</span> · quanto chegou à operação</div></div>
+      </div>
+      <div class="fw rx" style="--d:.6s;border-left-color:var(--c4)">
+        <div class="fc"><div class="wn">Onda 04</div><div class="wt">Questionário dos lojistas</div></div>
+        <div class="fc"><div class="fl">Construído a partir de</div><div class="fv">Da Régua v1, em linguagem de balcão</div></div>
+        <div class="fc"><div class="fl">Revela</div><div class="fv"><span class="tn">Gap 3</span> · quanto o ecossistema reproduz</div></div>
+      </div>
+    </div>
+    <div class="note r" style="--d:.74s">Por isso a ordem é inegociável: nenhuma onda abre antes de a anterior fechar. Coletar em paralelo mede opinião. <b>Coletar em cascata mede alinhamento.</b></div>
+  </section>
+
+  <!-- E3-C CRUZAMENTO -->
+  <section class="slide" data-sec="Etapa 03 · Arquitetura">
+    <p class="eyebrow r" style="--d:.05s">O cruzamento dos dados</p>
+    <h3 class="r" style="--d:.16s;margin-top:18px">Uma matriz. Três leituras.</h3>
+    <div class="mxwrap">
+      <div class="mx r" style="--d:.32s">
+        <div class="mxh"><span style="text-align:left">Dimensão</span>
+          <span style="color:var(--c1)">Donos</span><span style="color:var(--c2)">Lider.</span>
+          <span style="color:var(--c3)">Equipe</span><span style="color:var(--c4)">Lojistas</span></div>
+        <div class="mxr"><div class="mxl">Propósito</div><div class="mxc"></div><div class="mxc"></div><div class="mxc"></div><div class="mxc"></div></div>
+        <div class="mxr"><div class="mxl">Posicionamento</div><div class="mxc"></div><div class="mxc"></div><div class="mxc"></div><div class="mxc"></div></div>
+        <div class="mxr"><div class="mxl">Público</div><div class="mxc"></div><div class="mxc"></div><div class="mxc"></div><div class="mxc"></div></div>
+        <div class="mxr"><div class="mxl">Promessa</div><div class="mxc"></div><div class="mxc"></div><div class="mxc"></div><div class="mxc"></div></div>
+        <div class="mxr"><div class="mxl">Diferencial</div><div class="mxc"></div><div class="mxc"></div><div class="mxc"></div><div class="mxc"></div></div>
+        <div class="mxr"><div class="mxl">Valores</div><div class="mxc"></div><div class="mxc"></div><div class="mxc"></div><div class="mxc"></div></div>
+        <div class="mxr"><div class="mxl">Tom de voz</div><div class="mxc"></div><div class="mxc"></div><div class="mxc"></div><div class="mxc"></div></div>
+        <div class="mxr"><div class="mxl">Papel próprio</div><div class="mxc"></div><div class="mxc"></div><div class="mxc"></div><div class="mxc"></div></div>
+      </div>
+      <div class="reads">
+        <div class="read r" style="--d:.44s"><div class="rh2">Leitura vertical · por camada</div>
+          <div class="rb2">Quanto cada grupo acerta da régua. <b>Vira a nota do Placar de Alinhamento.</b></div></div>
+        <div class="read r" style="--d:.54s"><div class="rh2">Leitura horizontal · por dimensão</div>
+          <div class="rb2">Em qual dimensão a mensagem se perde primeiro. <b>O propósito pode chegar intacto — e a promessa se perder no caminho.</b></div></div>
+        <div class="read r" style="--d:.64s"><div class="rh2">Leitura de percurso · pelos três gaps</div>
+          <div class="rb2">Comparando Gap 1, 2 e 3, localiza-se <b>onde o significado vazou</b>: no topo, na gestão ou no ecossistema. É isso que diz quem precisa de quê.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- E3-D DEVOLUTIVA -->
+  <section class="slide" data-sec="Etapa 03 · Arquitetura">
+    <p class="eyebrow r" style="--d:.05s">A entrega dos dados às camadas</p>
+    <h3 class="r" style="--d:.16s;margin-top:18px">A devolutiva já é intervenção.</h3>
+    <p class="lead r" style="--d:.28s;margin-top:18px">Cada camada recebe o próprio gap. Ver a distância é o que produz o movimento.</p>
+    <div class="ret">
+      <div class="rt3 r" style="--d:.42s;border-color:rgba(159,184,224,.3)">
+        <div class="rh" style="color:var(--c1)">Acionistas</div>
+        <div class="rv">Veem quanto da própria intenção chegou ao mercado</div>
+        <div class="re">Efeito: <b>decisão</b> — sabem onde investir e onde parar de investir.</div></div>
+      <div class="rt3 r" style="--d:.5s;border-color:rgba(143,205,185,.3)">
+        <div class="rh" style="color:var(--c2)">Liderança</div>
+        <div class="rv">Vê quanto converge com o acionista, e onde diverge</div>
+        <div class="re">Efeito: <b>adesão</b> — deixa de ser executora e vira co-autora.</div></div>
+      <div class="rt3 r" style="--d:.58s;border-color:rgba(188,211,151,.3)">
+        <div class="rh" style="color:var(--c3)">Equipe</div>
+        <div class="rv">Vê quanto sabe do que foi de fato definido</div>
+        <div class="re">Efeito: <b>consciência</b> — o invisível vira visível e discutível.</div></div>
+      <div class="rt3 r" style="--d:.66s;border-color:rgba(217,160,176,.3)">
+        <div class="rh" style="color:var(--c4)">Lojistas</div>
+        <div class="rv">Veem quanto operam a marca do shopping, não só a própria</div>
+        <div class="re">Efeito: <b>sociedade</b> — deixam de se ver como inquilinos.</div></div>
+    </div>
+  </section>
+
+  <!-- E3-E ENTREGÁVEIS -->
+  <section class="slide" data-sec="Etapa 03 · Arquitetura">
+    <p class="eyebrow r" style="--d:.05s">Fechamento da arquitetura</p>
+    <h3 class="r" style="--d:.16s;margin-top:18px">O que sai do diagnóstico.</h3>
+    <div class="grid3" style="margin-top:44px">
+      <div class="card pt r" style="--d:.32s"><div class="ic">📄</div>
+        <div class="t">Documento de Intenção Estratégica</div>
+        <div class="d">A régua final — intenção dos acionistas consolidada com a co-autoria da liderança.</div></div>
+      <div class="card pt r" style="--d:.42s"><div class="ic">📊</div>
+        <div class="t">Matriz de gaps + Placar preenchido</div>
+        <div class="d">As oito dimensões nas quatro camadas, com os três gaps localizados e evidenciados.</div></div>
+      <div class="card pt r" style="--d:.52s"><div class="ic">🧭</div>
+        <div class="t">Linha estratégica da marca</div>
+        <div class="d">A direção definida — o que passa a orientar comunicação, decisão e comportamento.</div></div>
+    </div>
+    <div class="note r" style="--d:.66s">Com os gaps medidos, a intervenção deixa de ser opinião: <b>cada treinamento e cada workshop nasce de um gap localizado na matriz.</b></div>
+  </section>
+
+  <!-- E4-A DIVISOR -->
+  <section class="slide" data-sec="Etapa 04 · Intervenção">
+    <p class="eyebrow r" style="--d:.05s">Etapa 04 · Intervenção</p>
+    <h1 class="r" style="--d:.18s;margin-top:28px">Onde o diagnóstico<br>vira mudança.</h1>
+    <p class="lead r" style="--d:.4s;margin-top:38px">Quatro frentes de entrega, mais um anel de sustentação.<br>Cada conteúdo nasce de um gap medido na matriz — <em class="s" style="font-size:30px">nada aqui é prateleira.</em></p>
+  </section>
+
+  <!-- E4-B AS QUATRO FRENTES -->
+  <section class="slide" data-sec="Etapa 04 · Intervenção">
+    <p class="eyebrow r" style="--d:.05s">Visão geral</p>
+    <h3 class="r" style="--d:.16s;margin-top:18px">As quatro frentes da intervenção.</h3>
+    <div class="grid4" style="margin-top:40px;gap:18px">
+      <div class="card pt r" style="--d:.32s;padding:26px 24px 28px"><div class="ic" style="margin-bottom:16px">📘</div>
+        <div class="t" style="font-size:21px">Plataforma de Marca documentada</div>
+        <div class="d" style="font-size:16px">A estratégia codificada em material de referência.</div></div>
+      <div class="card pt r" style="--d:.42s;padding:26px 24px 28px"><div class="ic" style="margin-bottom:16px">🎓</div>
+        <div class="t" style="font-size:21px">Workshop presencial · equipe</div>
+        <div class="d" style="font-size:16px">A estratégia traduzida por função, sobre o Gap 2.</div></div>
+      <div class="card pt r" style="--d:.52s;padding:26px 24px 28px"><div class="ic" style="margin-bottom:16px">💻</div>
+        <div class="t" style="font-size:21px">Workshop online · lojistas</div>
+        <div class="d" style="font-size:16px">A marca coletiva apresentada ao ecossistema, sobre o Gap 3.</div></div>
+      <div class="card pt r" style="--d:.62s;padding:26px 24px 28px"><div class="ic" style="margin-bottom:16px">🖨️</div>
+        <div class="t" style="font-size:21px">Impresso do lojista</div>
+        <div class="d" style="font-size:16px">A visão do shopping para os próximos anos — no balcão.</div></div>
+    </div>
+    <div class="note r" style="--d:.74s">Duas frentes olham para dentro — documentação e equipe. Duas olham para o ecossistema — lojistas. <b>As quatro instalam a mesma linha estratégica.</b></div>
+  </section>
+
+  <!-- E4-C DENTRO DE CASA -->
+  <section class="slide" data-sec="Etapa 04 · Intervenção">
+    <p class="eyebrow r" style="--d:.05s">Frentes 1 e 2 · dentro de casa</p>
+    <h3 class="r" style="--d:.16s;margin-top:18px">Codificar a estratégia.<br>Instalar na equipe.</h3>
+    <div class="two" style="grid-template-columns:1fr 1fr;margin-top:36px">
+      <div class="box r" style="--d:.34s"><h6>📘 Frente 1 · Plataforma de Marca</h6><ul>
+        <li>Propósito, posicionamento, promessa e tom de voz codificados</li>
+        <li>Mensagens-chave por área — comercial, locação, marketing, hotelaria</li>
+        <li>O que dizer, e o que não dizer, em cada ponto de contato</li>
+        <li>Critérios de decisão: o "isso é a nossa marca?" em forma de guia</li>
+        <li>Formato: documento mestre + guias rápidos por função</li></ul></div>
+      <div class="box r" style="--d:.46s"><h6>🎓 Frente 2 · Workshop presencial da equipe</h6><ul>
+        <li>Meio período, em turmas — a operação não para</li>
+        <li>Abertura da liderança: a estratégia apresentada por quem a definiu</li>
+        <li>Dinâmica do último metro: cada função traduz a promessa no próprio gesto</li>
+        <li>Conteúdo montado sobre o Gap 2 — ataca o que a equipe não sabia</li>
+        <li>Fecho: compromissos de marca por área, registrados</li></ul></div>
+    </div>
+  </section>
+
+  <!-- E4-D ECOSSISTEMA -->
+  <section class="slide" data-sec="Etapa 04 · Intervenção">
+    <p class="eyebrow r" style="--d:.05s">Frentes 3 e 4 · no ecossistema</p>
+    <h3 class="r" style="--d:.16s;margin-top:18px">Levar a marca coletiva<br>até o lojista.</h3>
+    <div class="two" style="grid-template-columns:1fr 1fr;margin-top:36px">
+      <div class="box r" style="--d:.34s"><h6>💻 Frente 3 · Workshop online dos lojistas</h6><ul>
+        <li>Online, ao vivo e gravado — lojista não fecha loja para treinar</li>
+        <li>A visão do shopping e o papel de cada loja na marca coletiva</li>
+        <li>Conteúdo montado sobre o Gap 3 — ataca o que o ecossistema não reproduz</li>
+        <li>O argumento central: o que o lojista ganha vendendo o destino, não só a vitrine</li></ul></div>
+      <div class="box r" style="--d:.46s"><h6>🖨️ Frente 4 · Impresso do lojista</h6><ul>
+        <li>Peça física, entregue loja a loja — presença permanente no balcão</li>
+        <li>A visão e os objetivos do shopping para os próximos anos</li>
+        <li>As mensagens que shopping e lojas passam a repetir juntos</li>
+        <li>QR code para a versão viva — vídeos, materiais e atualizações</li></ul></div>
+    </div>
+    <div class="note r" style="--d:.6s">O online alcança os 130 sem custo de agenda; o impresso fica quando o workshop termina. <b>Uma frente convence, a outra lembra todos os dias.</b></div>
+  </section>
+
+  <!-- E4-E SUSTENTAÇÃO -->
+  <section class="slide" data-sec="Etapa 04 · Intervenção">
+    <p class="eyebrow r" style="--d:.05s">O anel de sustentação</p>
+    <h3 class="r" style="--d:.16s;margin-top:18px">O que impede a estratégia<br>de evaporar em noventa dias.</h3>
+    <div class="grid3" style="margin-top:40px;gap:18px">
+      <div class="card pt r" style="--d:.3s;padding:26px 26px 28px"><div class="ic" style="margin-bottom:16px">🎬</div>
+        <div class="t" style="font-size:21px">Lançamento interno</div>
+        <div class="d" style="font-size:16px">Manifesto e momento de virada — a estratégia como acontecimento, não como memorando.</div></div>
+      <div class="card pt r" style="--d:.38s;padding:26px 26px 28px"><div class="ic" style="margin-bottom:16px">🚪</div>
+        <div class="t" style="font-size:21px">Onboarding de marca</div>
+        <div class="d" style="font-size:16px">Novo colaborador e novo lojista passam pela estratégia no primeiro dia — o alinhamento não se dilui com a rotatividade.</div></div>
+      <div class="card pt r" style="--d:.46s;padding:26px 26px 28px"><div class="ic" style="margin-bottom:16px">📣</div>
+        <div class="t" style="font-size:21px">Kit do lojista</div>
+        <div class="d" style="font-size:16px">Selo, templates e legendas prontas — comunicar sob a mesma bandeira sem esforço.</div></div>
+      <div class="card pt r" style="--d:.54s;padding:26px 26px 28px"><div class="ic" style="margin-bottom:16px">⭐</div>
+        <div class="t" style="font-size:21px">Programa de embaixadores</div>
+        <div class="d" style="font-size:16px">Os lojistas de maior advocacy viram vitrine e referência do posicionamento.</div></div>
+      <div class="card pt r" style="--d:.62s;padding:26px 26px 28px"><div class="ic" style="margin-bottom:16px">🧭</div>
+        <div class="t" style="font-size:21px">Governança de marca</div>
+        <div class="d" style="font-size:16px">Comitê e brand check nas decisões de mix, evento e comunicação — o critério em uso, não na gaveta.</div></div>
+      <div class="card pt r" style="--d:.7s;padding:26px 26px 28px"><div class="ic" style="margin-bottom:16px">🔁</div>
+        <div class="t" style="font-size:21px">Re-medição semestral</div>
+        <div class="d" style="font-size:16px">O Placar re-aplicado vira KPI — a marca passa a ser gerida por número, não por sensação.</div></div>
+    </div>
+    <div class="note r" style="--d:.8s">Sem sustentação, o workshop é um bom dia que se dissipa. Com ela, o alinhamento vira rotina — <b>e o Placar de Alinhamento vira indicador de gestão do shopping.</b></div>
+  </section>
+
+  <!-- H1 FRASE ESTRATÉGIA/TÁTICA -->
+  <section class="slide" data-sec="O horizonte">
+    <p class="statement r" style="--d:.15s">Estratégia é concordar<br>sobre o destino.<br><em class="s">Tática é construir o caminho.</em></p>
+  </section>
+
+  <!-- H2 ESTRATÉGICO → TÁTICO -->
+  <section class="slide" data-sec="O horizonte">
+    <h3 class="r" style="--d:.08s;font-size:58px">O que este projeto entrega.<br><span class="gold">E o que ele abre.</span></h3>
+    <div class="stgrid">
+      <div class="stcol sa r" style="--d:.26s">
+        <div class="sk">Este projeto</div>
+        <div class="sT">Estratégico</div>
+        <div class="sS">concordar sobre o destino</div>
+        <ul>
+          <li><div class="li1">Objetivos e futuro pactuados</div>
+              <div class="li2">Onde a marca quer chegar — escrito e assinado por todos</div></li>
+          <li><div class="li1">Quatro camadas na mesma linha</div>
+              <div class="li2">Donos, liderança, equipe e lojistas sob a mesma estratégia</div></li>
+          <li><div class="li1">Gaps localizados e medidos</div>
+              <div class="li2">O que não está sendo feito pela marca, com evidência</div></li>
+          <li><div class="li1">Placar instalado como régua</div>
+              <div class="li2">A marca passa a ser gerida por número</div></li>
+        </ul>
+      </div>
+      <div class="stmid r" style="--d:.44s"><div class="arr">→</div></div>
+      <div class="stcol sb r" style="--d:.5s">
+        <div class="sk">A partir dele</div>
+        <div class="sT">Tático</div>
+        <div class="sS">construir o caminho</div>
+        <ul>
+          <li><div class="li1">Programa de ação priorizado</div>
+              <div class="li2">Cada gap do diagnóstico vira uma frente de trabalho</div></li>
+          <li><div class="li1">O que falta, começa a ser feito</div>
+              <div class="li2">Comunicação, presença, experiência, relacionamento</div></li>
+          <li><div class="li1">Prioridade definida pelo dado</div>
+              <div class="li2">Ataca-se primeiro o gap que mais custa ao negócio</div></li>
+          <li><div class="li1">Placar como bússola</div>
+              <div class="li2">Cada ciclo re-medido — progresso visível, mês a mês</div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 19 ROADMAP -->
+  <section class="slide" data-sec="08 · Sequência">
+    <p class="eyebrow r" style="--d:.05s">Sequência do projeto</p>
+    <h3 class="r" style="--d:.16s;margin-top:18px">Onde estamos.</h3>
+    <div class="road" style="grid-template-columns:repeat(5,1fr)">
+      <div class="rd done r" style="--d:.3s"><span class="bg" style="color:var(--pos)">✓</span><div class="rn">1</div>
+        <div class="rt">Fundamentos</div><div class="rs">Os conceitos e o custo do desalinhamento</div></div>
+      <div class="rd done r" style="--d:.38s"><span class="bg" style="color:var(--pos)">✓</span><div class="rn">2</div>
+        <div class="rt">Instrumentos de coleta</div><div class="rs">Um instrumento por camada, mesma espinha dorsal</div></div>
+      <div class="rd done r" style="--d:.46s"><span class="bg" style="color:var(--pos)">✓</span><div class="rn">3</div>
+        <div class="rt">Arquitetura metodológica</div><div class="rs">Cascata, cruzamento e matriz de gaps</div></div>
+      <div class="rd done r" style="--d:.54s"><span class="bg" style="color:var(--pos)">✓</span><div class="rn">4</div>
+        <div class="rt">Intervenção</div><div class="rs">Quatro frentes + anel de sustentação</div></div>
+      <div class="rd on r" style="--d:.62s"><span class="bg">A seguir</span><div class="rn">5</div>
+        <div class="rt">Investimento</div><div class="rs">Escopo, cronograma e condições</div></div>
+    </div>
+    <div class="note r" style="--d:.76s">Da nomenclatura ao workshop, tudo desce da mesma lógica: <b>primeiro medir, depois alinhar, só então comunicar.</b></div>
+  </section>
+
+  <!-- ENTREGÁVEIS -->
+  <section class="slide" data-sec="Entregáveis">
+    <p class="eyebrow r" style="--d:.05s">Resumo de entregáveis</p>
+    <h3 class="r" style="--d:.16s;margin-top:18px">Tudo o que fica com vocês.</h3>
+    <div class="two" style="grid-template-columns:1fr 1fr;margin-top:36px">
+      <div class="box out r" style="--d:.32s"><h6>Diagnóstico e estratégia</h6><ul>
+        <li>Entrevistas com acionistas e liderança, conduzidas e documentadas</li>
+        <li>Questionários de equipe e lojistas, aplicados e tabulados</li>
+        <li>Matriz de gaps — 8 dimensões × 4 camadas</li>
+        <li>Placar de Alinhamento de Marca preenchido</li>
+        <li>Documento de Intenção Estratégica — a régua da marca</li>
+        <li>Linha estratégica definida e apresentada</li></ul></div>
+      <div class="box ref r" style="--d:.44s"><h6>Intervenção</h6><ul>
+        <li>Plataforma de Marca documentada + guias rápidos por função</li>
+        <li>Workshop presencial com a equipe interna</li>
+        <li>Workshop online com os lojistas — ao vivo e gravado</li>
+        <li>Impresso do lojista — visão e objetivos do shopping</li>
+        <li>Devolutivas de gap para as quatro camadas</li></ul></div>
+    </div>
+    <div class="note r" style="--d:.58s">Nada fica retido: régua, matriz, placar e materiais são do Paraná Moda Park. <b>O conhecimento entra na casa — e permanece nela.</b></div>
+  </section>
+
+  <!-- CRONOGRAMA -->
+  <section class="slide" data-sec="Cronograma">
+    <p class="eyebrow r" style="--d:.05s">Cronograma sugerido</p>
+    <h3 class="r" style="--d:.16s;margin-top:18px">Sessenta dias,<br>do kickoff ao workshop.</h3>
+    <div class="gantt r" style="--d:.32s">
+      <div class="ghead">
+        <span></span>
+        <div class="gm">Mês 01 · Diagnóstico</div>
+        <div class="gm">Mês 02 · Estratégia e intervenção</div>
+        <div class="gm" style="color:var(--tx-3);border-bottom-color:rgba(255,255,255,.18)">Mês 03 · Próximo ciclo</div>
+      </div>
+      <div class="grow"><div class="gl">Kickoff e roteiro zero</div>
+        <div class="gb" style="grid-column:2/span 1;background:rgba(255,255,255,.35)"></div></div>
+      <div class="grow"><div class="gl">Onda 01 · Acionistas</div>
+        <div class="gb" style="grid-column:2/span 2;background:var(--c1)"></div></div>
+      <div class="grow"><div class="gl">Onda 02 · Liderança</div>
+        <div class="gb" style="grid-column:3/span 2;background:var(--c2)"></div></div>
+      <div class="grow"><div class="gl">Onda 03 · Equipe</div>
+        <div class="gb" style="grid-column:5/span 2;background:var(--c3)"></div></div>
+      <div class="grow"><div class="gl">Onda 04 · Lojistas</div>
+        <div class="gb" style="grid-column:6/span 2;background:var(--c4)"></div></div>
+      <div class="grow"><div class="gl">Cruzamento e matriz de gaps</div>
+        <div class="gb" style="grid-column:7/span 1;background:var(--gold)"></div></div>
+      <div class="grow"><div class="gl">Linha estratégica e devolutivas</div>
+        <div class="gb" style="grid-column:8/span 1;background:var(--gold)"></div></div>
+      <div class="grow"><div class="gl">Intervenção · workshops e materiais</div>
+        <div class="gb" style="grid-column:8/span 2;background:linear-gradient(90deg,var(--gold),var(--gold-2))"></div></div>
+      <div class="grow"><div class="gl" style="color:var(--tx-3)">Estruturação do plano tático</div>
+        <div class="gb" style="grid-column:10/span 4;background:transparent;border:2px dashed rgba(188,211,151,.5)"></div></div>
+    </div>
+    <div class="note r" style="--d:.5s">O projeto se encerra em sessenta dias, com o workshop entregue. O terceiro mês já é o próximo ciclo: <b>com a matriz de gaps na mão, estrutura-se o plano tático da marca.</b></div>
+  </section>
+
+  <!-- INVESTIMENTO -->
+  <section class="slide" data-sec="Investimento">
+    <p class="eyebrow r" style="--d:.05s">Investimento</p>
+    <h1 class="r" style="--d:.18s;margin-top:24px;font-size:150px;background:linear-gradient(135deg,#fff 20%,var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent">R$ 10.000</h1>
+    <p class="lead r" style="--d:.34s;margin-top:16px">Projeto completo — fundamentos, diagnóstico das quatro camadas, linha estratégica e intervenção.</p>
+    <div class="grid3" style="margin-top:48px">
+      <div class="card pt r" style="--d:.46s;border-color:rgba(188,211,151,.45);background:rgba(188,211,151,.08)">
+        <div class="ic" style="margin-bottom:16px">✍️</div>
+        <div class="t" style="font-size:34px">R$ 3.334</div>
+        <div class="d" style="font-size:18px;margin-top:6px">Entrada · na assinatura</div></div>
+      <div class="card pt r" style="--d:.56s">
+        <div class="ic" style="margin-bottom:16px">📅</div>
+        <div class="t" style="font-size:34px">R$ 3.333</div>
+        <div class="d" style="font-size:18px;margin-top:6px">30 dias</div></div>
+      <div class="card pt r" style="--d:.66s">
+        <div class="ic" style="margin-bottom:16px">📅</div>
+        <div class="t" style="font-size:34px">R$ 3.333</div>
+        <div class="d" style="font-size:18px;margin-top:6px">60 dias</div></div>
+    </div>
+    <div class="note r" style="--d:.78s">O investimento cobre as quatro etapas apresentadas. <b>O programa tático — construído sobre os gaps do diagnóstico — é dimensionado e orçado à parte, ao final desta jornada.</b></div>
+  </section>
+
+  <!-- 20 FECHAMENTO -->
+  <section class="slide" data-sec="Encerramento">
+    <p class="eyebrow r" style="--d:.08s">Próxima etapa</p>
+    <h1 class="r" style="--d:.2s;margin-top:28px">Vamos medir<br>o que hoje é<br><em class="s">apenas percepção.</em></h1>
+    <div class="metarow r" style="--d:.46s">
+      <div><div class="ml">Diagnóstico</div><div class="mv">Quatro ondas em cascata</div></div>
+      <div><div class="ml">Leitura</div><div class="mv">Matriz de gaps e linha estratégica</div></div>
+      <div><div class="ml">Intervenção</div><div class="mv">Treinamentos e workshops</div></div>
+    </div>
+  </section>
+
+</div></div>
+
+<div id="hint">← → navegar · F tela cheia · G guias</div>
+
+<script>
+(function(){
+  var stage=document.getElementById('stage');
+  var slides=[].slice.call(document.querySelectorAll('.slide'));
+  var dots=document.getElementById('dots'),pbar=document.getElementById('pbar');
+  var cur=document.getElementById('cur'),tot=document.getElementById('tot');
+  var secLabel=document.getElementById('secLabel'),hint=document.getElementById('hint');
+  var guides=document.getElementById('guides');
+  var i=0,lock=false;
+  tot.textContent=String(slides.length).padStart(2,'0');
+  slides.forEach(function(s,n){var d=document.createElement('i');
+    d.addEventListener('click',function(e){e.stopPropagation();go(n);});dots.appendChild(d);});
+  var dotEls=dots.querySelectorAll('i');
+
+  function fit(){stage.style.transform='scale('+Math.min(window.innerWidth/1920,window.innerHeight/1080)+')';}
+  window.addEventListener('resize',fit);fit();
+
+  function counters(sl){
+    sl.querySelectorAll('[data-count]').forEach(function(el){
+      var t=parseFloat(el.getAttribute('data-count')),suf=el.getAttribute('data-suf')||'';
+      var s=null,dur=1300;el.textContent='0';
+      function step(ts){if(!s)s=ts;var p=Math.min((ts-s)/dur,1),e=1-Math.pow(1-p,3);
+        el.textContent=Math.round(t*e)+(p===1?suf:'');if(p<1)requestAnimationFrame(step);}
+      requestAnimationFrame(step);
+    });
+  }
+  function go(n){
+    if(lock)return;n=Math.max(0,Math.min(slides.length-1,n));
+    if(n===i&&slides[i].classList.contains('active'))return;
+    lock=true;slides[i].classList.remove('active');i=n;
+    var sl=slides[i];sl.classList.add('active');
+    dotEls.forEach(function(d,k){d.classList.toggle('on',k===i);});
+    pbar.style.width=((i+1)/slides.length*100)+'%';
+    cur.textContent=String(i+1).padStart(2,'0');
+    secLabel.textContent=sl.getAttribute('data-sec')||'';
+    setTimeout(function(){counters(sl);},380);
+    setTimeout(function(){lock=false;},460);
+  }
+  window.__go=go;window.__count=slides.length;
+
+  document.addEventListener('keydown',function(e){
+    if(['ArrowRight','ArrowDown','PageDown',' '].indexOf(e.key)>-1){e.preventDefault();go(i+1);}
+    else if(['ArrowLeft','ArrowUp','PageUp'].indexOf(e.key)>-1){e.preventDefault();go(i-1);}
+    else if(e.key==='Home')go(0); else if(e.key==='End')go(slides.length-1);
+    else if(e.key==='g'||e.key==='G')guides.classList.toggle('on');
+    else if(e.key==='f'||e.key==='F'){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen();}
+  });
+  var wl=false;
+  window.addEventListener('wheel',function(e){
+    if(wl||Math.abs(e.deltaY)<18)return;wl=true;go(e.deltaY>0?i+1:i-1);
+    setTimeout(function(){wl=false;},700);},{passive:true});
+  var tx=0;
+  window.addEventListener('touchstart',function(e){tx=e.touches[0].clientX;},{passive:true});
+  window.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-tx;
+    if(Math.abs(dx)>60)go(dx<0?i+1:i-1);},{passive:true});
+  window.addEventListener('click',function(e){
+    if(e.target.closest('.dots'))return;go(e.clientX>window.innerWidth*0.35?i+1:i-1);});
+  setTimeout(function(){hint.style.opacity='0';},6000);
+  go(0);
+})();
+</script>
+</body>
+</html>
