@@ -158,7 +158,7 @@ textarea:focus,.meta-in input:focus{outline:2px solid var(--gold);outline-offset
   <section id="capa" class="cover">
     <p class="eyebrow">MAM Brand · Consultoria estratégica de marcas</p>
     <h1 id="capa-t">Fechamento da <em>intenção estratégica.</em></h1>
-    <p class="lede" id="capa-s">Este questionário fecha o que a nossa conversa deixou em aberto. Ele é diferente da entrevista: aqui quase tudo é marcar, não escrever. Todas as alternativas foram escritas a partir do que você disse — o seu trabalho é dizer qual delas é a certa.</p>
+    <p class="lede" id="capa-s">Este questionário completa o que a nossa conversa não chegou a definir. Nada aqui repete o que você já respondeu. Aqui quase tudo é marcar, não escrever — e as alternativas foram escritas a partir do que você disse, para você reconhecer as suas próprias palavras.</p>
     <ul class="rules" id="rules">
       <li>Onde diz <b>escolha 1</b>, só uma. Onde diz <b>marque até N</b>, no máximo N.</li>
       <li>Nas escalas, o meio é “nem um nem outro” — não “tanto faz”.</li>
@@ -171,7 +171,7 @@ textarea:focus,.meta-in input:focus{outline:2px solid var(--gold);outline-offset
       <input id="respondente" placeholder="Seu nome">
     </div>
     <button class="btn btn-1" id="btnComecar">Começar →</button>
-    <p class="capa-meta" id="capa-meta">19 blocos · 65 perguntas · 25 a 35 minutos</p>
+    <p class="capa-meta" id="capa-meta">16 blocos · 51 perguntas · 20 a 30 minutos</p>
     <div class="err" id="capa-err" hidden></div>
   </section>
 
@@ -220,92 +220,64 @@ const LS_KEY = 'pmp_intencao_' + (chave || 'demo');
    Cada item pode ter: said (trecho da entrevista), hint, other (campo livre) */
 const PSL = ['P','S'];
 const BLOCOS = [
-{n:"A", t:"Propósito", i:"Por que o Paraná Moda Park existe — além de dar resultado.", qs:[
- {id:"a1", type:"single", q:"Qual destas frases chega mais perto do motivo de existir do Paraná Moda Park? Escolha 1.",
-  said:["Nós queremos desonerar o custo operacional do lojista.","Não tem outro local tão preocupado com ver nossas marcas crescerem como nós. A nossa consultoria prova isso."],
-  o:["Existimos para fazer marca de moda crescer — entramos na gestão, no treinamento e no acompanhamento de quem opera aqui.",
-     "Existimos para reduzir o que fica no caminho entre o fabricante e o comprador — desonerar o custo operacional do lojista.",
-     "Existimos para ser o lugar onde o lojista de moda encontra estrutura, mix e apoio que não encontraria sozinho.",
-     "Existimos para conectar fabricantes de expressão a compradores do Brasil inteiro, no melhor ambiente do país para isso."], other:true},
- {id:"a2", type:"single", q:"Das quatro acima, qual você NUNCA usaria? Escolha 1.", o:["A primeira","A segunda","A terceira","A quarta"]},
- {id:"a3", type:"scale", q:"O propósito é mais sobre quem?", l:"O lojista", r:"O comprador"},
- {id:"a4", type:"vf", q:"Verdadeiro ou falso:", o:["O propósito continuaria verdadeiro se o shopping mudasse de cidade.","O propósito continuaria verdadeiro se não existisse hotel.","Esse propósito é só nosso — nenhum outro polo poderia dizer o mesmo."]}
-]},
-{n:"B", t:"Visão", i:"Onde a marca quer estar daqui a cinco anos.", qs:[
- {id:"b1", type:"vf", q:"Marque V ou F para cada afirmação sobre o Paraná Moda Park em 2031:",
-  said:["O desejo é fazer o Paraná ultrapassar as fronteiras do estado. Estar em nível nacional. O melhor complexo atacadista do Brasil."],
-  o:["É reconhecido como o melhor complexo atacadista de moda do Brasil.","Vende para o Brasil inteiro, não só para o raio atual.","A operação online e a equipe comercial ativa são tão relevantes quanto a venda presencial.","O lojista daqui tem custo operacional menor do que teria em qualquer outro polo.","O desfile de lançamento é o evento de referência da moda atacadista nacional.","O comprador que vem uma vez volta pelo menos duas vezes por ano.","O hotel é lotado principalmente por compradores, não por hóspedes avulsos."]},
- {id:"b2", type:"rank", q:"Agora ordene as cinco primeiras por prioridade. Clique na ordem: 1º, 2º, 3º…", o:["Melhor complexo atacadista do Brasil","Vender para o Brasil inteiro","Online e comercial ativo relevantes","Menor custo operacional do lojista","Desfile como referência nacional"]},
- {id:"b3", type:"multi", max:2, q:"Qual indicador provaria que chegamos lá? Marque até 2.", o:["Faturamento médio dos lojistas","Número de compradores ativos fora do Paraná","Ocupação do shopping","Reconhecimento espontâneo da marca no setor","Marcas fabricantes de outros estados querendo entrar","Uso do VIP Card","Público do desfile"], other:true},
- {id:"b4", type:"single", q:"“Ultrapassar as fronteiras do estado” quer dizer, principalmente:", o:["Compradores de outros estados vindo até aqui","Vendendo à distância, sem o comprador precisar vir","Marcas de outros estados abrindo loja aqui","As três coisas, nessa ordem","As três coisas, em outra ordem"], other:true}
-]},
-{n:"C", t:"Missão", i:"O que a casa faz, todo dia, para chegar lá.", qs:[
+{n:"A", t:"Missão", i:"A entrevista definiu propósito e visão. Falta a frase do que a casa faz todo dia.", qs:[
  {id:"c1", type:"single", q:"Qual frase descreve melhor o que o Paraná Moda Park faz? Escolha 1.",
   o:["Reunir marcas fabricantes de expressão, dar a elas estrutura, gestão e apoio, e levar compradores qualificados até elas.","Operar o complexo mais completo do atacado de moda — shopping, hotelaria e eventos — para que comprar aqui seja fácil e valha a pena.","Cuidar do projeto de cada lojista como se fosse nosso, com treinamento, acompanhamento e uma central de inteligência que coordena todas as frentes.","Fazer o comprador de moda encontrar em um só lugar mix, estrutura e conveniência que não encontra em nenhum outro polo."], other:true}
 ]},
-{n:"D", t:"Valores", i:"O que não se negocia nem por receita.", qs:[
- {id:"d1", type:"multi", max:4, q:"Marque os 4 inegociáveis. Só 4.",
-  said:["Compromissos assumidos com o time. Compromissos com o projeto do lojista. Financeiro saudável. Honestidade, lealdade, verdade, serenidade. Não abrimos mão do padrão."],
-  o:["Compromisso com o time","Compromisso com o projeto do lojista","Saúde financeira","Palavra cumprida — o que se promete, se entrega","Padrão — não vender o que é patrimônio visual","Honestidade","Lealdade","Serenidade","Ética nas relações comerciais"]},
- {id:"d2", type:"vf", q:"Já recusamos dinheiro por causa deste valor? Verdadeiro ou falso.", hint:"Valor que nunca custou nada ainda não é valor — é adjetivo.",
-  o:["Por compromisso com o time.","Por compromisso com o projeto do lojista.","Para manter o financeiro saudável.","Para cumprir uma palavra dada.","Para manter o padrão.","Por ética."]},
- {id:"d3", type:"rank", q:"Ordene os valores abaixo — 1º é o que vence quando dois deles brigam. Clique na ordem.", o:["Compromisso com o time","Compromisso com o projeto do lojista","Saúde financeira","Palavra cumprida","Padrão","Ética"]},
- {id:"d4", type:"vf", q:"Verdadeiro ou falso:", o:["Um lojista que fatura muito mas trata mal a equipe dele deveria ser convidado a sair.","Se um valor e uma meta de ocupação brigarem, o valor vence."]}
-]},
-{n:"E", t:"Essência", i:"A marca em uma ou duas palavras. É a parte mais difícil — e a que ninguém diz sozinho.", qs:[
+{n:"B", t:"Essência", i:"A marca em uma ou duas palavras. É a parte mais difícil — e a que ninguém diz sozinho.", qs:[
  {id:"e1", type:"multi", max:2, q:"Se o Paraná Moda Park fosse resumido em uma palavra, qual? Marque até 2.", hint:"Cada palavra abaixo foi extraída de algo que você disse. Escolha a que o concorrente jamais poderia usar sobre si.",
   o:["Estrutura","Parceria","Padrão","Crescimento","Conveniência","Referência","Segurança","Facilidade","Completo","Cuidado","Inteligência","Glamour"], other:true, otherLabel:"Outra palavra:"},
  {id:"e2", type:"single", q:"Complete escolhendo 1: “No fundo, o que a gente vende é…”",
   o:["…a chance de o lojista crescer com alguém cuidando junto.","…um lugar onde comprar moda no atacado é fácil e vale a pena.","…estrutura e padrão que ninguém mais tem no mesmo endereço.","…acesso a marcas fabricantes que o comprador não encontra sozinho.","…tranquilidade: o comprador chega, dorme, compra e volta sem susto."], other:true},
  {id:"e3", type:"single", q:"Das palavras que você marcou, qual delas o Mega Polo poderia usar sobre si mesmo?", o:["Nenhuma — as duas são só nossas","Uma delas","As duas — preciso repensar"], other:true, otherLabel:"Qual?"}
 ]},
-{n:"F", t:"Crença e ponto de vista", i:"O que a marca acredita sobre o mundo que os outros não acreditam.", qs:[
+{n:"C", t:"Crença e ponto de vista", i:"O que a marca acredita sobre o mundo que os outros não acreditam.", qs:[
  {id:"f1", type:"vf", q:"V para as crenças que a casa assinaria em voz alta; F para as que não:",
   o:["O lojista cresce quando alguém cuida do projeto dele — não só do ponto.","Comprar moda no atacado deveria ser fácil, e hoje não é.","Estrutura se copia. Coordenação e relacionamento, não.","O intermediário tira do lojista o que deveria ficar com ele.","Padrão alto atrai o cliente certo e afasta o errado — e isso é bom.","Quem vem uma vez e é bem tratado volta sem precisar de desconto.","O shopping tem obrigação de trazer comprador, não só de alugar espaço."]},
  {id:"f2", type:"single", q:"Das que você marcou V, qual é A crença — a que define a casa? Escolha 1.", o:["A primeira","A segunda","A terceira","A quarta","A quinta","A sexta","A sétima"]}
 ]},
-{n:"G", t:"A tensão", i:"Toda marca forte nasce contra alguma coisa.", qs:[
+{n:"D", t:"A tensão", i:"Toda marca forte nasce contra alguma coisa.", qs:[
  {id:"g1", type:"ps", q:"Contra o que o Paraná Moda Park existe? Marque 1 principal (P) e 1 secundária (S).",
   said:["A maior ameaça são os custos da intermediação."],
   o:["O custo da intermediação — o que fica no caminho entre fabricante e lojista","O atacado desorganizado — improviso, falta de estrutura, falta de padrão","Polos que competem só por preço","O modelo “só endereço” — shopping que aluga e não cuida","A distância — comprador que não vem porque é longe ou caro","A desconfiança — comprador que acha que vai ser enganado"], other:true},
  {id:"g2", type:"vf", q:"Verdadeiro ou falso:", o:["Essa tensão deve aparecer na nossa comunicação.","O guia é parte do problema que a marca combate.","O guia é parte da solução."]}
 ]},
-{n:"H", t:"O comprador que queremos", i:"Quem é o comprador que a marca escolhe — e o que queremos que ele encontre aqui.", qs:[
+{n:"E", t:"O comprador", i:"O perfil você já definiu. Falta o que ele pensa — e o que oferecemos a ele em primeiro lugar.", qs:[
  {id:"h1", type:"single", q:"Qual frase o comprador ideal mais assinaria? Escolha 1.",
   said:["Hoje pensam: é muito, não consigo comprar. Quero que pensem: é mais caro, mas é melhor, e o mix deles me traz muitos benefícios."],
   o:["“Quero comprar melhor, não mais barato — mas tenho medo de não conseguir girar o que é mais caro.”","“Se eu compro certo, meu cliente paga mais. O difícil é acertar.”","“Vir até aqui custa. Preciso que a viagem valha muito a pena.”","“Preciso de marcas que meu cliente conhece e que o meu concorrente não tem.”","“Eu não quero só produto. Quero alguém que me diga o que vai vender.”"], other:true},
- {id:"h2", type:"single", q:"Quanto disso é certeza?", o:["Chute honesto","Acha que sim","Tem base — já ouvi isso do comprador"]},
  {id:"h3", type:"rank", q:"Na nossa proposta para o comprador, o que vem primeiro? Clique na ordem, do mais ao menos importante.", o:["O mix de marcas fabricantes","A estrutura — hotel, conveniência, tudo no mesmo lugar","O padrão e a seriedade","A relação e o atendimento","O desfile e a apresentação de coleção","O preço"]},
  {id:"h4", type:"single", q:"O que queremos que o comprador diga do Paraná Moda Park para outro lojista? Escolha 1.", o:["“Lá é caro, mas é onde tem coisa boa.”","“Lá é fácil — você chega, dorme, compra, volta.”","“Lá eles cuidam de você.”","“Lá tem marca que ninguém mais tem.”","“Lá é sério, não tem picaretagem.”"]},
+ {id:"h7", type:"single", q:"O comprador ideal vem, na maior parte, de onde?", hint:"Persona: a entrevista definiu faturamento e padrão de loja. Falta o resto.", o:["Do Paraná, num raio de até 300 km","De estados vizinhos — SC, SP, MS","De qualquer lugar do Brasil, se a viagem valer","Cada vez menos ele vem — compra à distância"], other:true},
+ {id:"h8", type:"single", q:"Ele compra aqui com que frequência?", o:["Toda coleção — de 2 a 4 vezes por ano","Uma vez por ano, no lançamento","Quando o guia traz","Ainda não tem rotina — cada compra é uma decisão nova"]},
+ {id:"h9", type:"single", q:"O que mais o impede de comprar mais aqui? Escolha 1.", o:["O custo da viagem e da estadia","O preço das peças","O medo de não girar o que é mais caro","A falta de tempo para vir","O guia levar para outro lugar","Não saber o que vai vender"], other:true},
  {id:"h5", type:"multi", max:2, q:"Se o comprador NÃO vem até aqui, ele: marque até 2.", hint:"Esta ficou em branco na entrevista.", o:["Compra no Mega Polo","Compra em Rio Preto","Compra em Cianorte","Compra online","Compra de representante que vai até ele","Compra menos — ou não compra"]},
  {id:"h6", type:"multi", max:6, q:"O comprador que a gente NÃO quer é:", o:["O que só compra em promoção","O que compra pouco e negocia muito","O que não tem loja com padrão","O que não paga em dia","O que vem só pelo guia e não cria relação","Não existe comprador que a gente não quer"]}
 ]},
-{n:"I", t:"O lojista que queremos", i:"O segundo cliente — e o que a marca se compromete a oferecer a ele.", qs:[
+{n:"F", t:"O lojista", i:"Quem entra e quem não entra, você já definiu. Falta o que oferecemos a quem entra.", qs:[
  {id:"i1", type:"single", q:"O que queremos que o lojista diga sobre estar aqui? Escolha 1.", o:["“Aqui eu tenho estrutura que não conseguiria sozinho.”","“Aqui alguém se importa se a minha marca cresce.”","“Aqui o comprador chega até mim.”","“Aqui eu pago mais, mas o resultado compensa.”","“Aqui é sério — eu sei com quem estou lidando.”"], other:true},
  {id:"i2", type:"rank", q:"Na nossa proposta para o lojista, o que vem primeiro? Clique na ordem.", o:["O fluxo de compradores","A consultoria e o acompanhamento","A estrutura física","O hotel como argumento de venda","O desfile e a visibilidade","O nome do shopping no cartão dele"]}
 ]},
-{n:"J", t:"Posicionamento", i:"O lugar que só nós ocupamos.", qs:[
+{n:"G", t:"Posicionamento", i:"O lugar que só nós ocupamos.", qs:[
  {id:"j1", type:"single", q:"Complete: “Somos o único complexo atacadista de moda que…” Escolha 1.", hint:"Se a frase pode ser dita por um concorrente, não é posicionamento — é descrição.",
   o:["…cuida do crescimento das marcas que abriga, com consultoria, treinamento e acompanhamento.","…reúne fabricantes de expressão, hotelaria e centro de eventos no mesmo endereço.","…faz o comprador chegar, dormir, comprar e voltar sem nenhum atrito.","…trabalha para reduzir o custo do lojista em vez de só cobrar dele.","…virou referência nacional na apresentação de coleção."], other:true},
  {id:"j2", type:"vf", q:"Para a frase escolhida — verdadeiro ou falso:", o:["Nenhum concorrente pode dizer isso hoje.","Isso é o motivo pelo qual pagam mais para estar aqui."]},
  {id:"j3", type:"classify", q:"Classifique cada atributo:", legend:"O = obrigatório para estar na categoria · N = só nós temos · X = não importa", labels:["O","N","X"],
-  o:["Mix de marcas","Marcas fabricantes (não revendedores)","Preço competitivo","Estrutura física de alto padrão","Hotel no complexo","Centro de eventos","Consultoria ao lojista","Capacidade logística","Localização — Maringá","Atendimento e relação","Desfile / lançamento de coleção","Seriedade — ausência de picaretagem"]},
- {id:"j4", type:"ps", q:"Contra quem, de verdade? Marque 1 principal (P) e 1 secundário (S).", o:["Mega Polo — São Paulo","Polo — São José do Rio Preto","Cianorte","Brás / Bom Retiro","Atacado online","Representantes comerciais","Nenhum — competimos com a decisão de não comprar"]}
+  o:["Mix de marcas","Marcas fabricantes (não revendedores)","Preço competitivo","Estrutura física de alto padrão","Hotel no complexo","Centro de eventos","Consultoria ao lojista","Capacidade logística","Localização — Maringá","Atendimento e relação","Desfile / lançamento de coleção","Seriedade — ausência de picaretagem"]}
 ]},
-{n:"K", t:"Arquétipo", i:"O papel que a marca faz na história. Não é rótulo — define o enredo de tudo o que a marca diz.", qs:[
+{n:"H", t:"Arquétipo", i:"O papel que a marca faz na história. Não é rótulo — define o enredo de tudo o que a marca diz.", qs:[
  {id:"k1", type:"ps", q:"Se o Paraná Moda Park fosse um personagem, qual? Marque 1 principal (P) e 1 de apoio (S).",
   o:["O Governante — ordem, padrão, liderança. “Aqui as coisas são feitas direito.”","O Cuidador — cuida do projeto do outro. “Sua marca é nossa responsabilidade.”","O Sábio — inteligência, consultoria. “A gente sabe o que vai vender.”","O Criador — referência, coleção, desfile. “Aqui nasce a tendência.”","O Herói — faz acontecer, supera. “A gente entrega o que prometeu.”","O Explorador — expansão, Brasil. “Vamos mais longe.”","O Cara Comum — próximo, parceiro. “A gente é do ramo, como você.”","O Mago — transforma o negócio do lojista. “Você entra de um jeito e sai de outro.”"]},
  {id:"k2", type:"single", q:"Numa festa em que ninguém a conhece, a marca…", o:["Conversa fundo com poucos","Chega abraçando todo mundo","Vira o centro sem esforço","Fica quieta — mas todo mundo repara","Age como anfitriã"]},
  {id:"k3", type:"vf", q:"Verdadeiro ou falso:", o:["Esse personagem deve guiar toda a comunicação daqui em diante.","O desfile é o momento em que a marca mais parece esse personagem."]}
 ]},
-{n:"L", t:"Território", i:"O campo cultural que a marca ocupa — de onde vêm as imagens, as referências e as metáforas.", qs:[
+{n:"I", t:"Território", i:"O campo cultural que a marca ocupa — de onde vêm as imagens, as referências e as metáforas.", qs:[
  {id:"l1", type:"ps", q:"Em que território a marca vive? Marque 1 principal (P) e 1 de apoio (S).",
   o:["Herança e raiz — a história da família, o que foi construído","Técnica e performance — logística, gestão, inteligência","Comunidade e pertencimento — o ecossistema, o time, os lojistas","Sofisticação e exclusividade — padrão, marcas de expressão","Cuidado e proximidade — o acompanhamento, a relação","Liberdade e expansão — o Brasil, a estrada, ir mais longe","Ordem e confiança — seriedade, padrão, palavra cumprida","Glamour e espetáculo — o desfile, a passarela, a coleção"]},
  {id:"l2", type:"multi", max:2, q:"De onde vêm as imagens da marca? Marque até 2.", o:["O desfile e a passarela","A estrutura e a arquitetura do complexo","O balcão, a negociação, o produto na mão","O lojista trabalhando na loja","A viagem — o comprador chegando","A cidade de Maringá","A família fundadora"]},
  {id:"l3", type:"multi", max:2, q:"O que a marca NÃO é, nem de longe? Marque até 2.", o:["Popular","Luxo","Descolada / jovem","Tradicionalista","Tecnológica","Informal","Agressiva comercialmente"]}
 ]},
-{n:"M", t:"Tom de voz", i:"Como a marca fala — em exemplos, não em adjetivos.", qs:[
- {id:"m1", type:"vf", q:"Verdadeiro ou falso — a marca fala com:", said:["Com segurança, respeito, firmeza e propriedade."], o:["Segurança","Respeito","Firmeza","Propriedade","Calor","Humor","Urgência","Simplicidade"]},
+{n:"J", t:"Tom de voz", i:"Segurança, respeito, firmeza e propriedade — você já disse. Falta o que isso vira em situação real.", qs:[,
  {id:"m2", type:"single", q:"Um lojista pediu para entrar e não tem o perfil. Qual resposta é a nossa? Escolha 1.",
   o:["“Agradecemos o interesse, mas neste momento o seu perfil não se encaixa no mix que estamos construindo.”","“Vamos ser diretos: hoje a gente não abre espaço para operação sem estoque e sem escala. Se isso mudar, conversamos.”","“Infelizmente não temos espaço disponível no momento.”","“A gente tem um padrão, e ele existe para proteger quem já está aqui. Hoje você não entra — e a gente te explica o porquê.”"]},
  {id:"m3", type:"single", q:"Um comprador reclama que está caro. Qual resposta é a nossa? Escolha 1.",
@@ -314,43 +286,42 @@ const BLOCOS = [
  {id:"m5", type:"multi", max:6, q:"As palavras da marca — marque até 6:", o:["Parceria","Padrão","Estrutura","Referência","Seriedade","Proximidade","Crescimento","Exclusividade","Facilidade","Conveniência","Resultado","Tradição","Inovação","Complexo","Negócio","Família","Inteligência","Cuidado"]},
  {id:"m6", type:"multi", max:5, q:"As palavras proibidas — marque até 5:", o:["Barato","Promoção","Liquidação","Popular","Luxo","Imperdível","Revolucionário","Garantido","Sem igual","Oportunidade","Facilitado","Descontão","Top","Número 1"]}
 ]},
-{n:"N", t:"A narrativa", i:"A história da marca — com começo, conflito e para onde ela vai.", qs:[
+{n:"K", t:"A narrativa", i:"A história da marca — com começo, conflito e para onde ela vai.", qs:[
  {id:"n1", type:"single", q:"Qual foi a aposta de origem que os outros não fizeram? Escolha 1.", hint:"Esta ficou em branco na entrevista.",
   o:["Construir estrutura de alto padrão antes de a demanda existir","Reunir fabricantes em vez de revendedores","Apostar em Maringá como polo","Colocar hotel e shopping no mesmo terreno","Tratar o lojista como projeto, não como inquilino"], other:true},
  {id:"n2", type:"vf", q:"Verdadeiro ou falso — a estrutura da história:", o:["O ponto de virada foi o desfile virar referência nacional.","O conflito central da história é o custo da intermediação.","O que a marca luta para construir é o comprador chegando do Brasil inteiro.","A história já teve um erro reconhecido e corrigido (a unificação dos shoppings).","A história tem um momento em que os guias achavam que o shopping ia abandoná-los — e não abandonou."]},
- {id:"n3", type:"single", q:"Quem é o herói da história? Escolha 1.", o:["O lojista — que cresce","O comprador — que acerta a compra","O complexo — que faz tudo acontecer","A família fundadora","O time — que entrega todo dia"]},
- {id:"n4", type:"single", q:"Como a história termina, daqui a cinco anos? Escolha 1.", o:["O Paraná Moda Park é o melhor complexo atacadista do Brasil, e o mercado sabe disso.","O lojista daqui tem o menor custo operacional do país — e todo mundo quer entrar.","O comprador do Brasil inteiro compra aqui sem precisar vir — e vem quando quer.","O desfile é o calendário da moda atacadista nacional."]}
+ {id:"n5", type:"single", q:"Qual foi a decisão mais difícil do caminho? Escolha 1.", hint:"Esta ficou em branco na entrevista.",
+  o:["Recusar o grupo que queria ocupar espaço","Desfazer a unificação dos shoppings","Investir em hotel junto ao shopping","Segurar o preço da locação com loja vazia","Deixar sair lojista que não tinha o perfil"], other:true},
+ {id:"n3", type:"single", q:"Quem é o herói da história? Escolha 1.", o:["O lojista — que cresce","O comprador — que acerta a compra","O complexo — que faz tudo acontecer","A família fundadora","O time — que entrega todo dia"]}
 ]},
-{n:"O", t:"Mensagens-chave", i:"A frase que cada público precisa ouvir.", qs:[
+{n:"L", t:"Mensagens-chave", i:"A frase que cada público precisa ouvir.", qs:[
  {id:"o1", type:"single", q:"Para o LOJISTA, a mensagem central é: escolha 1.", o:["“Aqui a sua marca cresce.”","“Aqui você tem estrutura, comprador e apoio.”","“Aqui você paga menos para operar.”","“Aqui você é sócio, não inquilino.”"], other:true},
  {id:"o2", type:"single", q:"Para o COMPRADOR, a mensagem central é: escolha 1.", o:["“Aqui você compra certo.”","“Chegue, durma, compre, volte — é fácil.”","“As marcas que o seu cliente quer — e o seu concorrente não tem.”","“É mais caro. E é por isso que vale.”"], other:true},
  {id:"o3", type:"single", q:"Para o HÓSPEDE do hotel, a mensagem central é: escolha 1.", o:["“Você está dentro do complexo — tudo é fácil.”","“Um hotel feito para quem vem comprar.”","“Descanse. O resto a gente resolve.”","“O hotel é parte da compra.”"]},
  {id:"o4", type:"single", q:"Para o GUIA, a mensagem central é: escolha 1.", o:["“Quem traz para cá, volta com cliente satisfeito.”","“Aqui o seu cliente compra mais — e volta a te procurar.”","“Parceiro de verdade, não só comissão.”","Não temos mensagem para o guia — ele é canal, não público."]},
  {id:"o5", type:"single", q:"Se houvesse uma assinatura de marca — escolha 1 ou nenhuma:", o:["O melhor complexo atacadista do Brasil","Onde a marca cresce","Estrutura para vender mais","Tudo em um lugar. Tudo com padrão.","Referência em moda atacadista","Nenhuma — não queremos assinatura"], other:true, otherLabel:"Outra:"}
 ]},
-{n:"P", t:"Arquitetura de marca", i:"Quem é marca-mãe, quem é serviço, quem tem nome próprio.", qs:[
+{n:"M", t:"Arquitetura de marca", i:"Quem é marca-mãe, quem é serviço, quem tem nome próprio.", qs:[
  {id:"p1", type:"single", q:"Como hotel, pousada e eventos se organizam em relação ao Paraná Moda Park? Escolha 1.",
   o:["Tudo é Paraná Moda Park — hotel, pousada e eventos são serviços do complexo, sem nome próprio destacado.","Paraná Moda Park é a marca-mãe; hotel e eventos têm nome próprio, sempre endossados (“by Paraná Moda Park”).","São marcas independentes que dividem o mesmo terreno — cada uma fala por si.","Hoje é a terceira opção; deveria ser a primeira.","Hoje é a terceira opção; deveria ser a segunda."]},
  {id:"p2", type:"vf", q:"Verdadeiro ou falso:", said:["90% é negócio próprio. Se fosse vendido amanhã, mudaria muito pouco. Sozinho se sustenta tranquilamente."],
   o:["O hotel deve ser avaliado também pelo que gera para o shopping, não só pela ocupação.","O hóspede que não é comprador é bem-vindo, mas não é o público.","Os eventos devem existir só quando trazem comprador para as lojas.","A pousada tem o mesmo papel do hotel, para outro perfil de comprador."]},
  {id:"p3", type:"multi", max:2, q:"Se o hotel for tratado como parte da promessa, o que muda primeiro? Marque até 2.", o:["A recepção passa a conhecer o mix e as marcas","Aparece um pacote comprador: hospedagem + compra","O hotel passa a ter meta ligada a compra, não só a ocupação","O guia passa a ter vantagem por hospedar aqui","O nome do hotel muda","Nada muda — está certo como está"]}
 ]},
-{n:"Q", t:"Pontos de contato", i:"Onde a marca é entregue — qual ponto pesa mais, e quem responde por ele.", qs:[
+{n:"N", t:"Pontos de contato", i:"Onde a marca é entregue — qual ponto pesa mais, e quem responde por ele.", qs:[
  {id:"q2", type:"single", q:"Qual desses pontos é o mais decisivo para o comprador voltar? Escolha 1.", o:["O guia","A recepção do hotel","O atendimento na loja","O WhatsApp","A chegada","O desfile","O online","O lojista","O financeiro"]},
  {id:"q3", type:"multi", max:10, q:"Qual desses pontos hoje NÃO tem dono — ninguém é responsável por como a marca aparece ali? Marque todos que se aplicam.", o:["O guia","A recepção do hotel","O atendimento na loja","O WhatsApp","A chegada","O desfile","O online","As redes","O lojista","O financeiro"]}
 ]},
-{n:"R", t:"Governança e medição", i:"O que impede a estratégia de evaporar.", qs:[
+{n:"O", t:"Governança e medição", i:"O que impede a estratégia de evaporar.", qs:[
  {id:"r1", type:"multi", max:3, q:"Os 3 números pelos quais a marca deve ser cobrada. Marque 3.", said:["Não sabemos. Não temos um canal."],
   o:["Faturamento médio por lojista","Compradores ativos","Compradores ativos fora do Paraná","Taxa de recompra do comprador","Ocupação do shopping","Retenção de lojista","NPS do comprador","NPS do lojista","Reconhecimento espontâneo no setor","Uso do VIP Card","Ocupação do hotel por compradores","Público do desfile"]},
  {id:"r2", type:"single", q:"Quem deveria ser o dono de medir se a promessa foi cumprida? Escolha 1.", o:["A diretoria","O comercial","O marketing","Uma pessoa nova, dedicada","Um comitê de marca","Ainda não sei"]},
- {id:"r3", type:"vf", q:"Verdadeiro ou falso:", o:["Existe hoje um canal onde o comprador diz se a promessa foi cumprida.","Existe hoje um canal onde o lojista diz isso.","Uma decisão de marca já foi revertida porque contrariava o combinado.","Uma nova ideia já mudou a comunicação da marca sem passar por critério."]},
- {id:"r4", type:"vf", q:"Os combinados — confirme:", o:["Decisão de marca se avalia pelo combinado, não pelo gosto de quem está na sala.","Ideia nova não muda a marca na hora — passa pelo critério antes.","Estes combinados valem para o Ricardo também."]}
+ {id:"r3", type:"vf", q:"Verdadeiro ou falso:", o:["Uma decisão de marca já foi revertida porque contrariava o combinado.","Uma nova ideia já mudou a comunicação da marca sem passar por critério."]}
 ]},
-{n:"S", t:"O que ficou em branco", i:"Perguntas da entrevista sem resposta, agora em formato fechado.", qs:[
+{n:"P", t:"O que ficou em branco", i:"Perguntas da entrevista sem resposta, agora em formato fechado.", qs:[
  {id:"s1", type:"multi", max:3, q:"Para as escolhas da entrevista serem verdade, o que teríamos que parar de fazer? Marque até 3.",
   o:["Aceitar lojista sem estoque ou sem escala","Dar desconto na locação para fechar","Pagar mais ao guia para reter fluxo","Aceitar comprador que só vem por preço","Tratar hotel como negócio isolado","Fazer evento que não traz comprador","Comunicar sem critério de marca"], other:true},
- {id:"s2", type:"multi", max:12, q:"Em quais destes temas o Ricardo responderia diferente de você? Marque todos.", o:["Propósito","Visão","Valores","Comprador ideal","Lojista ideal","Preço","O papel do hotel","O papel do guia","Tom de voz","O desfile","A expansão nacional","Nenhum"]},
- {id:"s3", type:"vf", q:"Verdadeiro ou falso:", o:["Esta intenção estratégica precisa do aval do Ricardo antes de seguir.","Se o Ricardo discordar em algum ponto, esse ponto deve ficar como está até vocês fecharem.","Posso enviar este documento respondido diretamente ao Ricardo."]}
+ {id:"s2", type:"multi", max:12, q:"Em quais destes temas o Ricardo responderia diferente de você? Marque todos.", o:["Propósito","Visão","Valores","Comprador ideal","Lojista ideal","Preço","O papel do hotel","O papel do guia","Tom de voz","O desfile","A expansão nacional","Nenhum"]}
 ]}
 ];
 
