@@ -1,0 +1,668 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Fechamento da Intenção Estratégica — Paraná Moda Park</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F6F7F3; --panel:#FFFFFF; --panel-2:#F1F3EC;
+  --stroke:rgba(26,31,24,.13); --stroke-2:rgba(26,31,24,.28);
+  --tx:#1A1F18; --tx-2:#4C554A; --tx-3:#798376;
+  --gold:#54742C; --gold-2:#3E5720; --gold-dim:rgba(84,116,44,.09);
+  --pos:#2E7350; --warn:#8A6A12; --neg:#B4443A;
+  --sans:"Manrope",ui-sans-serif,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --serif:"Instrument Serif",Georgia,"Times New Roman",serif;
+}
+*{box-sizing:border-box}
+html{background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:var(--sans);font-size:15px;line-height:1.6}
+.wrap{max-width:820px;margin:0 auto;padding-inline:20px;padding-block:0 120px}
+
+/* barra */
+.bar{position:sticky;top:0;z-index:20;background:rgba(246,247,243,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--stroke)}
+.bar-in{max-width:820px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.bar-id{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--tx-3);flex:1 1 auto;min-width:150px}
+.bar-id b{color:var(--gold);font-weight:700}
+.meter{flex:0 0 120px;height:3px;background:rgba(26,31,24,.12);border-radius:2px;overflow:hidden}
+.meter i{display:block;height:100%;width:0;background:var(--gold);transition:width .4s cubic-bezier(.19,1,.22,1)}
+.status{font-size:11.5px;color:var(--tx-3);white-space:nowrap;display:flex;align-items:center;gap:6px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--tx-3)}
+.status.ok .dot{background:var(--pos)} .status.saving .dot{background:var(--warn)} .status.err .dot{background:var(--neg)}
+
+/* capa */
+.cover{padding-block:56px 40px}
+.eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin:0 0 18px}
+.cover h1{font-family:var(--serif);font-weight:400;font-size:clamp(34px,7vw,52px);line-height:1.04;letter-spacing:-.015em;margin:0 0 18px;text-wrap:balance}
+.cover h1 em{font-style:italic;color:var(--gold-2)}
+.lede{color:var(--tx-2);max-width:60ch;margin:0 0 24px;font-size:16.5px}
+.rules{margin:0 0 28px;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px}
+.rules li{padding-left:22px;position:relative;color:var(--tx-2);font-size:14.5px}
+.rules li::before{content:"";position:absolute;left:0;top:10px;width:9px;height:9px;border-radius:50%;background:var(--gold)}
+.meta-in{margin:0 0 26px}
+.meta-in label{display:block;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--tx-3);margin-bottom:6px}
+.meta-in input{width:100%;max-width:420px;background:var(--panel);border:1px solid var(--stroke);border-radius:8px;color:var(--tx);font-family:var(--sans);font-size:15px;padding:11px 13px}
+.capa-meta{font-size:13px;color:var(--tx-3);margin-top:14px}
+.err{margin:20px 0 0;padding:14px 16px;border-radius:9px;border:1px solid rgba(180,68,58,.32);background:rgba(180,68,58,.07);color:#8E3229;font-size:14px}
+
+/* botões */
+.btn{font-family:var(--sans);font-size:14.5px;font-weight:700;cursor:pointer;border-radius:8px;padding:12px 20px;transition:.18s;border:1px solid var(--gold)}
+.btn-1{background:var(--gold);color:#FFF} .btn-1:hover{background:var(--gold-2);border-color:var(--gold-2)}
+.btn-2{background:transparent;color:var(--gold);border-color:var(--stroke-2)} .btn-2:hover{border-color:var(--gold);background:var(--gold-dim)}
+.btn[disabled]{opacity:.5;cursor:default}
+.btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+
+/* bloco */
+.part{padding-block:40px 0}
+.part-head{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
+.part-n{font-family:var(--serif);font-size:30px;line-height:1;color:var(--gold);font-variant-numeric:tabular-nums}
+.part-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(26px,4.8vw,35px);line-height:1.1;margin:0;letter-spacing:-.01em;text-wrap:balance}
+.part-intro{color:var(--tx-2);font-size:15px;margin:10px 0 22px;max-width:62ch}
+.part-count{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--tx-3);margin-bottom:22px}
+
+/* pergunta */
+.q{border-top:1px solid var(--stroke);padding-block:22px}
+.q-h{display:flex;gap:13px;align-items:flex-start;margin-bottom:12px}
+.q-n{flex:0 0 auto;font-size:11.5px;font-weight:700;color:var(--gold);font-variant-numeric:tabular-nums;padding-top:4px;min-width:22px}
+.q-txt{margin:0;font-size:16px;line-height:1.5}
+.q-hint{margin:6px 0 0;font-size:13px;color:var(--tx-3)}
+.said{margin:8px 0 0;padding-left:12px;border-left:2px solid rgba(84,116,44,.45);font-size:13.5px;color:var(--tx-2);font-style:italic}
+.said b{font-style:normal;font-weight:700;color:var(--gold);font-size:11px;letter-spacing:.12em;text-transform:uppercase;display:block;margin-bottom:2px}
+.body{margin-left:35px}
+.stack{display:flex;flex-direction:column;gap:8px}
+
+.opt{display:flex;align-items:flex-start;gap:12px;text-align:left;cursor:pointer;transition:.18s;width:100%;
+  background:var(--panel);border:1px solid var(--stroke);border-radius:9px;color:var(--tx-2);
+  font-family:var(--sans);font-size:14.5px;line-height:1.45;padding:12px 15px}
+.opt:hover{border-color:var(--stroke-2);color:var(--tx)}
+.opt:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.opt .mk{flex:0 0 auto;width:18px;height:18px;margin-top:2px;border:1.5px solid var(--stroke-2);background:var(--panel);transition:.18s;border-radius:50%;display:grid;place-items:center;font-size:10px;font-weight:800;color:#fff}
+.opt.sq .mk{border-radius:5px}
+.opt[aria-pressed="true"]{background:var(--gold-dim);border-color:var(--gold);color:var(--gold-2);font-weight:600}
+.opt[aria-pressed="true"] .mk{background:var(--gold);border-color:var(--gold)}
+.opt.dis{opacity:.45}
+
+/* V/F */
+.vf{display:grid;grid-template-columns:auto 1fr;gap:10px 14px;align-items:start}
+.vf-btns{display:flex;gap:6px}
+.vf-b{width:42px;height:34px;border-radius:7px;border:1px solid var(--stroke);background:var(--panel);font-family:var(--sans);font-weight:800;font-size:13px;color:var(--tx-3);cursor:pointer;transition:.18s}
+.vf-b:hover{border-color:var(--stroke-2);color:var(--tx)}
+.vf-b[aria-pressed="true"].v{background:rgba(46,115,80,.12);border-color:var(--pos);color:var(--pos)}
+.vf-b[aria-pressed="true"].f{background:rgba(180,68,58,.10);border-color:var(--neg);color:var(--neg)}
+.vf-t{font-size:14.5px;color:var(--tx-2);padding-top:6px}
+
+/* escala */
+.sc{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px;margin-top:4px}
+.sc-l{text-align:right;font-size:13.5px;color:var(--tx-2)} .sc-r{font-size:13.5px;color:var(--tx-2)}
+.dots{display:flex;gap:8px}
+.dot-b{width:22px;height:22px;border-radius:50%;padding:0;cursor:pointer;border:1px solid var(--stroke-2);background:var(--panel);transition:.16s}
+.dot-b:hover{border-color:var(--gold);background:var(--gold-dim)}
+.dot-b[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-dim)}
+.sc-lab{font-size:12.5px;color:var(--tx-3);margin:12px 0 4px}
+
+/* ranking */
+.rk{display:flex;flex-direction:column;gap:8px}
+.rk .opt .mk{border-radius:5px;font-size:11px}
+.rk-hint{font-size:12.5px;color:var(--tx-3);margin:0 0 8px}
+
+/* classificação por item */
+.cl{display:grid;grid-template-columns:1fr auto;gap:8px 12px;align-items:center}
+.cl-t{font-size:14.5px;color:var(--tx-2)}
+.cl-b{display:flex;gap:5px}
+.cl-b button{height:32px;padding:0 11px;border-radius:7px;border:1px solid var(--stroke);background:var(--panel);font-family:var(--sans);font-weight:700;font-size:12px;color:var(--tx-3);cursor:pointer;transition:.18s}
+.cl-b button:hover{border-color:var(--stroke-2);color:var(--tx)}
+.cl-b button[aria-pressed="true"]{background:var(--gold-dim);border-color:var(--gold);color:var(--gold-2)}
+.cl-leg{font-size:12.5px;color:var(--tx-3);margin:0 0 10px}
+
+/* texto livre */
+textarea{width:100%;background:var(--panel);border:1px solid var(--stroke);border-radius:8px;color:var(--tx);font-family:var(--sans);font-size:14.5px;line-height:1.55;padding:10px 13px;resize:none;min-height:48px;overflow:hidden;margin-top:10px}
+textarea::placeholder{color:#A3ACA0}
+textarea:focus,.meta-in input:focus{outline:2px solid var(--gold);outline-offset:1px;border-color:transparent}
+
+/* navegação */
+.nav{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:40px;padding-top:24px;border-top:1px solid var(--stroke)}
+.nav .mid{font-size:12.5px;color:var(--tx-3)}
+
+/* fim */
+.fim{padding-block:60px 40px}
+.fim h2{font-family:var(--serif);font-weight:400;font-size:clamp(30px,6vw,44px);line-height:1.08;margin:0 0 16px}
+.faltam{margin:18px 0 0;padding:14px 16px;border-radius:9px;background:var(--panel-2);border:1px solid var(--stroke);font-size:14px;color:var(--tx-2)}
+.faltam b{color:var(--warn)}
+[hidden]{display:none!important}
+@media (max-width:540px){
+  .body{margin-left:0}
+  .sc{grid-template-columns:1fr;gap:6px;justify-items:center}
+  .sc-l,.sc-r{text-align:center}
+  .cl{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <div class="bar-in">
+    <div class="bar-id">Paraná Moda Park · <b>Intenção Estratégica</b></div>
+    <div class="meter" aria-hidden="true"><i id="meter"></i></div>
+    <div class="status" id="status"><span class="dot"></span><span id="statusTx">Conectando…</span></div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- CAPA -->
+  <section id="capa" class="cover">
+    <p class="eyebrow">MAM Brand · Consultoria estratégica de marcas</p>
+    <h1 id="capa-t">Fechamento da <em>intenção estratégica.</em></h1>
+    <p class="lede" id="capa-s">Este questionário fecha o que a nossa conversa deixou em aberto. Ele é diferente da entrevista: aqui quase tudo é marcar, não escrever. Todas as alternativas foram escritas a partir do que você disse — o seu trabalho é dizer qual delas é a certa.</p>
+    <ul class="rules" id="rules">
+      <li>Onde diz <b>escolha 1</b>, só uma. Onde diz <b>marque até N</b>, no máximo N.</li>
+      <li>Nas escalas, o meio é “nem um nem outro” — não “tanto faz”.</li>
+      <li><b>V ou F</b>: verdadeiro se a frase pode ser dita hoje, em voz alta, para um lojista.</li>
+      <li>Toda pergunta tem um campo “eu diria assim”. Use só se nenhuma alternativa serve.</li>
+      <li>Salva sozinho. Dá para parar e continuar depois, pelo mesmo link, de qualquer aparelho.</li>
+    </ul>
+    <div class="meta-in" id="meta-in">
+      <label for="respondente">Quem responde</label>
+      <input id="respondente" placeholder="Seu nome">
+    </div>
+    <button class="btn btn-1" id="btnComecar">Começar →</button>
+    <p class="capa-meta" id="capa-meta">19 blocos · 70 perguntas · 30 a 40 minutos</p>
+    <div class="err" id="capa-err" hidden></div>
+  </section>
+
+  <!-- QUESTIONÁRIO -->
+  <main id="quiz" hidden></main>
+
+  <!-- FIM -->
+  <section id="fim" class="fim" hidden>
+    <p class="eyebrow">Recebido</p>
+    <h2>Obrigado. A intenção estratégica <em style="color:var(--gold-2)">está fechada.</em></h2>
+    <p class="lede">Suas respostas foram registradas. A partir delas, a MAM consolida o guia de marca — e é contra ele que vamos ouvir a liderança, a equipe e os lojistas.</p>
+  </section>
+
+</div>
+
+<script>
+/* ═══════════════════════════════════════════════════════════
+   Paraná Moda Park · Fechamento da Intenção Estratégica
+   Conectado ao Supabase do gestor MAM. Sem ?chave= na URL, roda
+   em demonstração: nada é enviado.
+   ═══════════════════════════════════════════════════════════ */
+const SUPABASE_URL = 'https://zokmlfocjalehjvczwep.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_jiTPujKev4H4m-H_ABFE1w_rRvHNCVZ';
+const TABELA = 'pmp_intencao_respostas';
+const VERSAO = 'pmp-intencao-v1';
+
+async function supaFetch(method, path, body = null, prefer = null){
+  const p = prefer !== null ? prefer : (method === 'POST' ? 'return=representation' : '');
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/${path}`, {
+    method,
+    headers: {'Content-Type':'application/json','apikey':SUPABASE_KEY,'Authorization':`Bearer ${SUPABASE_KEY}`,'Prefer':p},
+    body: body ? JSON.stringify(body) : null
+  });
+  if(res.status === 204) return null;
+  if(!res.ok) throw new Error('supabase ' + res.status + ' ' + (await res.text()));
+  const t = await res.text();
+  return t ? JSON.parse(t) : null;
+}
+
+const chave = new URLSearchParams(location.search).get('chave');
+const DEMO = !chave;
+const LS_KEY = 'pmp_intencao_' + (chave || 'demo');
+
+/* ═══════════════ CONTEÚDO ═══════════════
+   Tipos: single · multi(max) · vf · scale · rank · classify · ps
+   Cada item pode ter: said (trecho da entrevista), hint, other (campo livre) */
+const PSL = ['P','S'];
+const BLOCOS = [
+{n:"A", t:"Propósito", i:"Por que o Paraná Moda Park existe — além de dar resultado.", qs:[
+ {id:"a1", type:"single", q:"Qual destas frases chega mais perto do motivo de existir do Paraná Moda Park? Escolha 1.",
+  said:["Nós queremos desonerar o custo operacional do lojista.","Não tem outro local tão preocupado com ver nossas marcas crescerem como nós. A nossa consultoria prova isso."],
+  o:["Existimos para fazer marca de moda crescer — entramos na gestão, no treinamento e no acompanhamento de quem opera aqui.",
+     "Existimos para reduzir o que fica no caminho entre o fabricante e o comprador — desonerar o custo operacional do lojista.",
+     "Existimos para ser o lugar onde o lojista de moda encontra estrutura, mix e apoio que não encontraria sozinho.",
+     "Existimos para conectar fabricantes de expressão a compradores do Brasil inteiro, no melhor ambiente do país para isso."], other:true},
+ {id:"a2", type:"single", q:"Das quatro acima, qual você NUNCA usaria? Escolha 1.", o:["A primeira","A segunda","A terceira","A quarta"]},
+ {id:"a3", type:"scale", q:"O propósito é mais sobre quem?", l:"O lojista", r:"O comprador"},
+ {id:"a4", type:"vf", q:"Verdadeiro ou falso:", o:["O propósito continuaria verdadeiro se o shopping mudasse de cidade.","O propósito continuaria verdadeiro se não existisse hotel.","Um funcionário da recepção conseguiria explicar esse propósito em uma frase.","Um lojista de outro polo diria que o polo dele tem o mesmo propósito."]}
+]},
+{n:"B", t:"Visão", i:"Onde a marca quer estar daqui a cinco anos.", qs:[
+ {id:"b1", type:"vf", q:"Marque V ou F para cada afirmação sobre o Paraná Moda Park em 2031:",
+  said:["O desejo é fazer o Paraná ultrapassar as fronteiras do estado. Estar em nível nacional. O melhor complexo atacadista do Brasil."],
+  o:["É reconhecido como o melhor complexo atacadista de moda do Brasil.","Vende para o Brasil inteiro, não só para o raio atual.","A operação online e a equipe comercial ativa são tão relevantes quanto a venda presencial.","O lojista daqui tem custo operacional menor do que teria em qualquer outro polo.","O desfile de lançamento é o evento de referência da moda atacadista nacional.","O comprador que vem uma vez volta pelo menos duas vezes por ano.","O hotel é lotado principalmente por compradores, não por hóspedes avulsos."]},
+ {id:"b2", type:"rank", q:"Agora ordene as cinco primeiras por prioridade. Clique na ordem: 1º, 2º, 3º…", o:["Melhor complexo atacadista do Brasil","Vender para o Brasil inteiro","Online e comercial ativo relevantes","Menor custo operacional do lojista","Desfile como referência nacional"]},
+ {id:"b3", type:"multi", max:2, q:"Qual indicador provaria que chegamos lá? Marque até 2.", o:["Faturamento médio dos lojistas","Número de compradores ativos fora do Paraná","Ocupação do shopping","Reconhecimento espontâneo da marca no setor","Marcas fabricantes de outros estados querendo entrar","Uso do VIP Card","Público do desfile"], other:true},
+ {id:"b4", type:"single", q:"“Ultrapassar as fronteiras do estado” quer dizer, principalmente:", o:["Compradores de outros estados vindo até aqui","Vendendo à distância, sem o comprador precisar vir","Marcas de outros estados abrindo loja aqui","As três coisas, nessa ordem","As três coisas, em outra ordem"], other:true}
+]},
+{n:"C", t:"Missão", i:"O que a casa faz, todo dia, para chegar lá.", qs:[
+ {id:"c1", type:"single", q:"Qual frase descreve melhor o que o Paraná Moda Park faz? Escolha 1.",
+  o:["Reunir marcas fabricantes de expressão, dar a elas estrutura, gestão e apoio, e levar compradores qualificados até elas.","Operar o complexo mais completo do atacado de moda — shopping, hotelaria e eventos — para que comprar aqui seja fácil e valha a pena.","Cuidar do projeto de cada lojista como se fosse nosso, com treinamento, acompanhamento e uma central de inteligência que coordena todas as frentes.","Fazer o comprador de moda encontrar em um só lugar mix, estrutura e conveniência que não encontra em nenhum outro polo."], other:true},
+ {id:"c2", type:"vf", q:"Verdadeiro ou falso — hoje, na prática:", o:["Todo lojista novo passa por algum acompanhamento da nossa parte.","Existe alguém responsável por trazer comprador até o lojista.","A central de inteligência que coordena lojista, gerente, funcionário e guia tem nome, equipe e rotina.","O lojista sabe que pode pedir apoio de gestão — e pede."]}
+]},
+{n:"D", t:"Valores", i:"O que não se negocia nem por receita.", qs:[
+ {id:"d1", type:"multi", max:4, q:"Marque os 4 inegociáveis. Só 4.",
+  said:["Compromissos assumidos com o time. Compromissos com o projeto do lojista. Financeiro saudável. Honestidade, lealdade, verdade, serenidade. Não abrimos mão do padrão."],
+  o:["Compromisso com o time","Compromisso com o projeto do lojista","Saúde financeira","Palavra cumprida — o que se promete, se entrega","Padrão — não vender o que é patrimônio visual","Honestidade","Lealdade","Serenidade","Ética nas relações comerciais"]},
+ {id:"d2", type:"vf", q:"Já recusamos dinheiro por causa deste valor? Verdadeiro ou falso.", hint:"Valor que nunca custou nada ainda não é valor — é adjetivo.",
+  o:["Por compromisso com o time.","Por compromisso com o projeto do lojista.","Para manter o financeiro saudável.","Para cumprir uma palavra dada.","Para manter o padrão.","Por ética."]},
+ {id:"d3", type:"rank", q:"Ordene os valores abaixo — 1º é o que vence quando dois deles brigam. Clique na ordem.", o:["Compromisso com o time","Compromisso com o projeto do lojista","Saúde financeira","Palavra cumprida","Padrão","Ética"]},
+ {id:"d4", type:"vf", q:"Verdadeiro ou falso:", o:["Um lojista que fatura muito mas trata mal a equipe dele deveria ser convidado a sair.","Se um valor e uma meta de ocupação brigarem, o valor vence.","A equipe conhece os valores pelo nome."]}
+]},
+{n:"E", t:"Essência", i:"A marca em uma ou duas palavras. É a parte mais difícil — e a que ninguém diz sozinho.", qs:[
+ {id:"e1", type:"multi", max:2, q:"Se o Paraná Moda Park fosse resumido em uma palavra, qual? Marque até 2.", hint:"Cada palavra abaixo foi extraída de algo que você disse. Escolha a que o concorrente jamais poderia usar sobre si.",
+  o:["Estrutura","Parceria","Padrão","Crescimento","Conveniência","Referência","Segurança","Facilidade","Completo","Cuidado","Inteligência","Glamour"], other:true, otherLabel:"Outra palavra:"},
+ {id:"e2", type:"single", q:"Complete escolhendo 1: “No fundo, o que a gente vende é…”",
+  o:["…a chance de o lojista crescer com alguém cuidando junto.","…um lugar onde comprar moda no atacado é fácil e vale a pena.","…estrutura e padrão que ninguém mais tem no mesmo endereço.","…acesso a marcas fabricantes que o comprador não encontra sozinho.","…tranquilidade: o comprador chega, dorme, compra e volta sem susto."], other:true},
+ {id:"e3", type:"single", q:"Das palavras que você marcou, qual delas o Mega Polo poderia usar sobre si mesmo?", o:["Nenhuma — as duas são só nossas","Uma delas","As duas — preciso repensar"], other:true, otherLabel:"Qual?"}
+]},
+{n:"F", t:"Crença e ponto de vista", i:"O que a marca acredita sobre o mundo que os outros não acreditam.", qs:[
+ {id:"f1", type:"vf", q:"V para as crenças que a casa assinaria em voz alta; F para as que não:",
+  o:["O lojista cresce quando alguém cuida do projeto dele — não só do ponto.","Comprar moda no atacado deveria ser fácil, e hoje não é.","Estrutura se copia. Coordenação e relacionamento, não.","O intermediário tira do lojista o que deveria ficar com ele.","Padrão alto atrai o cliente certo e afasta o errado — e isso é bom.","Quem vem uma vez e é bem tratado volta sem precisar de desconto.","O shopping tem obrigação de trazer comprador, não só de alugar espaço."]},
+ {id:"f2", type:"single", q:"Das que você marcou V, qual é A crença — a que define a casa? Escolha 1.", o:["A primeira","A segunda","A terceira","A quarta","A quinta","A sexta","A sétima"]}
+]},
+{n:"G", t:"A tensão", i:"Toda marca forte nasce contra alguma coisa.", qs:[
+ {id:"g1", type:"ps", q:"Contra o que o Paraná Moda Park existe? Marque 1 principal (P) e 1 secundária (S).",
+  said:["A maior ameaça são os custos da intermediação."],
+  o:["O custo da intermediação — o que fica no caminho entre fabricante e lojista","O atacado desorganizado — improviso, falta de estrutura, falta de padrão","Polos que competem só por preço","O modelo “só endereço” — shopping que aluga e não cuida","A distância — comprador que não vem porque é longe ou caro","A desconfiança — comprador que acha que vai ser enganado"], other:true},
+ {id:"g2", type:"vf", q:"Verdadeiro ou falso:", o:["Essa tensão aparece na nossa comunicação hoje.","O lojista reconheceria essa tensão como sendo dele também.","O guia é parte do problema que a marca combate.","O guia é parte da solução."]}
+]},
+{n:"H", t:"O comprador", i:"Quem é, o que ele quer, e o que ele diria sobre si.", qs:[
+ {id:"h1", type:"single", q:"Qual frase o comprador ideal mais assinaria? Escolha 1.",
+  said:["Hoje pensam: é muito, não consigo comprar. Quero que pensem: é mais caro, mas é melhor, e o mix deles me traz muitos benefícios."],
+  o:["“Quero comprar melhor, não mais barato — mas tenho medo de não conseguir girar o que é mais caro.”","“Se eu compro certo, meu cliente paga mais. O difícil é acertar.”","“Vir até aqui custa. Preciso que a viagem valha muito a pena.”","“Preciso de marcas que meu cliente conhece e que o meu concorrente não tem.”","“Eu não quero só produto. Quero alguém que me diga o que vai vender.”"], other:true},
+ {id:"h2", type:"single", q:"Quanto disso é certeza?", o:["Chute honesto","Acha que sim","Tem base — já ouvi isso do comprador"]},
+ {id:"h3", type:"rank", q:"O que o comprador ideal MAIS valoriza aqui? Clique na ordem, do mais ao menos.", o:["O mix de marcas fabricantes","A estrutura — hotel, conveniência, tudo no mesmo lugar","O padrão e a seriedade","A relação e o atendimento","O desfile e a apresentação de coleção","O preço"]},
+ {id:"h4", type:"single", q:"Quando o comprador ideal fala do Paraná Moda Park para outro lojista, ele diz:", o:["“Lá é caro, mas é onde tem coisa boa.”","“Lá é fácil — você chega, dorme, compra, volta.”","“Lá eles cuidam de você.”","“Lá tem marca que ninguém mais tem.”","“Lá é sério, não tem picaretagem.”"]},
+ {id:"h5", type:"multi", max:2, q:"Se o comprador NÃO vem até aqui, ele: marque até 2.", hint:"Esta ficou em branco na entrevista.", o:["Compra no Mega Polo","Compra em Rio Preto","Compra em Cianorte","Compra online","Compra de representante que vai até ele","Compra menos — ou não compra"]},
+ {id:"h6", type:"multi", max:6, q:"O comprador que a gente NÃO quer é:", o:["O que só compra em promoção","O que compra pouco e negocia muito","O que não tem loja com padrão","O que não paga em dia","O que vem só pelo guia e não cria relação","Não existe comprador que a gente não quer"]}
+]},
+{n:"I", t:"O lojista", i:"O segundo cliente — e o primeiro canal.", qs:[
+ {id:"i1", type:"single", q:"Qual frase o lojista ideal mais assinaria? Escolha 1.", o:["“Aqui eu tenho estrutura que não conseguiria sozinho.”","“Aqui alguém se importa se a minha marca cresce.”","“Aqui o comprador chega até mim.”","“Aqui eu pago mais, mas o resultado compensa.”","“Aqui é sério — eu sei com quem estou lidando.”"], other:true},
+ {id:"i2", type:"rank", q:"O que o lojista MAIS valoriza no complexo? Clique na ordem.", o:["O fluxo de compradores","A consultoria e o acompanhamento","A estrutura física","O hotel como argumento de venda","O desfile e a visibilidade","O nome do shopping no cartão dele"]},
+ {id:"i3", type:"vf", q:"Verdadeiro ou falso:", o:["O lojista usa o nome Paraná Moda Park quando fala com o cliente dele.","O lojista trocaria de polo por aluguel 20% menor.","O lojista se sente sócio do projeto, não inquilino.","O lojista sabe o que o shopping promete ao comprador.","O lojista defende o shopping quando alguém fala mal."]}
+]},
+{n:"J", t:"Posicionamento", i:"O lugar que só nós ocupamos.", qs:[
+ {id:"j1", type:"single", q:"Complete: “Somos o único complexo atacadista de moda que…” Escolha 1.", hint:"Se a frase pode ser dita por um concorrente, não é posicionamento — é descrição.",
+  o:["…cuida do crescimento das marcas que abriga, com consultoria, treinamento e acompanhamento.","…reúne fabricantes de expressão, hotelaria e centro de eventos no mesmo endereço.","…faz o comprador chegar, dormir, comprar e voltar sem nenhum atrito.","…trabalha para reduzir o custo do lojista em vez de só cobrar dele.","…virou referência nacional na apresentação de coleção."], other:true},
+ {id:"j2", type:"vf", q:"Para a frase escolhida — verdadeiro ou falso:", o:["Nenhum concorrente pode dizer isso hoje.","Um comprador confirmaria isso sem eu explicar.","Isso é o motivo pelo qual pagam mais para estar aqui."]},
+ {id:"j3", type:"classify", q:"Classifique cada atributo:", legend:"O = obrigatório para estar na categoria · N = só nós temos · X = não importa", labels:["O","N","X"],
+  o:["Mix de marcas","Marcas fabricantes (não revendedores)","Preço competitivo","Estrutura física de alto padrão","Hotel no complexo","Centro de eventos","Consultoria ao lojista","Capacidade logística","Localização — Maringá","Atendimento e relação","Desfile / lançamento de coleção","Seriedade — ausência de picaretagem"]},
+ {id:"j4", type:"ps", q:"Contra quem, de verdade? Marque 1 principal (P) e 1 secundário (S).", o:["Mega Polo — São Paulo","Polo — São José do Rio Preto","Cianorte","Brás / Bom Retiro","Atacado online","Representantes comerciais","Nenhum — competimos com a decisão de não comprar"]}
+]},
+{n:"K", t:"Arquétipo", i:"O papel que a marca faz na história. Não é rótulo — define o enredo de tudo o que a marca diz.", qs:[
+ {id:"k1", type:"ps", q:"Se o Paraná Moda Park fosse um personagem, qual? Marque 1 principal (P) e 1 de apoio (S).",
+  o:["O Governante — ordem, padrão, liderança. “Aqui as coisas são feitas direito.”","O Cuidador — cuida do projeto do outro. “Sua marca é nossa responsabilidade.”","O Sábio — inteligência, consultoria. “A gente sabe o que vai vender.”","O Criador — referência, coleção, desfile. “Aqui nasce a tendência.”","O Herói — faz acontecer, supera. “A gente entrega o que prometeu.”","O Explorador — expansão, Brasil. “Vamos mais longe.”","O Cara Comum — próximo, parceiro. “A gente é do ramo, como você.”","O Mago — transforma o negócio do lojista. “Você entra de um jeito e sai de outro.”"]},
+ {id:"k2", type:"single", q:"Numa festa em que ninguém a conhece, a marca…", o:["Conversa fundo com poucos","Chega abraçando todo mundo","Vira o centro sem esforço","Fica quieta — mas todo mundo repara","Age como anfitriã"]},
+ {id:"k3", type:"vf", q:"Verdadeiro ou falso:", o:["Esse personagem já aparece na nossa comunicação hoje.","A equipe reconheceria a marca nesse personagem.","O desfile é o momento em que a marca mais parece esse personagem."]}
+]},
+{n:"L", t:"Território", i:"O campo cultural que a marca ocupa — de onde vêm as imagens, as referências e as metáforas.", qs:[
+ {id:"l1", type:"ps", q:"Em que território a marca vive? Marque 1 principal (P) e 1 de apoio (S).",
+  o:["Herança e raiz — a história da família, o que foi construído","Técnica e performance — logística, gestão, inteligência","Comunidade e pertencimento — o ecossistema, o time, os lojistas","Sofisticação e exclusividade — padrão, marcas de expressão","Cuidado e proximidade — o acompanhamento, a relação","Liberdade e expansão — o Brasil, a estrada, ir mais longe","Ordem e confiança — seriedade, padrão, palavra cumprida","Glamour e espetáculo — o desfile, a passarela, a coleção"]},
+ {id:"l2", type:"multi", max:2, q:"De onde vêm as imagens da marca? Marque até 2.", o:["O desfile e a passarela","A estrutura e a arquitetura do complexo","O balcão, a negociação, o produto na mão","O lojista trabalhando na loja","A viagem — o comprador chegando","A cidade de Maringá","A família fundadora"]},
+ {id:"l3", type:"multi", max:2, q:"O que a marca NÃO é, nem de longe? Marque até 2.", o:["Popular","Luxo","Descolada / jovem","Tradicionalista","Tecnológica","Informal","Agressiva comercialmente"]}
+]},
+{n:"M", t:"Tom de voz", i:"Como a marca fala — em exemplos, não em adjetivos.", qs:[
+ {id:"m1", type:"vf", q:"Verdadeiro ou falso — a marca fala com:", said:["Com segurança, respeito, firmeza e propriedade."], o:["Segurança","Respeito","Firmeza","Propriedade","Calor","Humor","Urgência","Simplicidade"]},
+ {id:"m2", type:"single", q:"Um lojista pediu para entrar e não tem o perfil. Qual resposta é a nossa? Escolha 1.",
+  o:["“Agradecemos o interesse, mas neste momento o seu perfil não se encaixa no mix que estamos construindo.”","“Vamos ser diretos: hoje a gente não abre espaço para operação sem estoque e sem escala. Se isso mudar, conversamos.”","“Infelizmente não temos espaço disponível no momento.”","“A gente tem um padrão, e ele existe para proteger quem já está aqui. Hoje você não entra — e a gente te explica o porquê.”"]},
+ {id:"m3", type:"single", q:"Um comprador reclama que está caro. Qual resposta é a nossa? Escolha 1.",
+  o:["“Entendo. Nosso preço reflete o mix e a estrutura que você não encontra em outro lugar.”","“É mais caro mesmo. E é por isso que o seu cliente vai pagar mais por ele.”","“Vamos ver o que dá para fazer no preço.”","“Você está comparando com quem? Porque marca fabricante, com essa estrutura, não tem em outro lugar.”"]},
+ {id:"m4", type:"single", q:"O desfile vai ser anunciado. Qual chamada é a nossa? Escolha 1.", o:["“O lançamento que o mercado espera.”","“A coleção que o Brasil vai vender.”","“Imperdível! O maior desfile do atacado!”","“Uma vez por ano, a referência se apresenta.”"]},
+ {id:"m5", type:"multi", max:6, q:"As palavras da marca — marque até 6:", o:["Parceria","Padrão","Estrutura","Referência","Seriedade","Proximidade","Crescimento","Exclusividade","Facilidade","Conveniência","Resultado","Tradição","Inovação","Complexo","Negócio","Família","Inteligência","Cuidado"]},
+ {id:"m6", type:"multi", max:5, q:"As palavras proibidas — marque até 5:", o:["Barato","Promoção","Liquidação","Popular","Luxo","Imperdível","Revolucionário","Garantido","Sem igual","Oportunidade","Facilitado","Descontão","Top","Número 1"]}
+]},
+{n:"N", t:"A narrativa", i:"A história da marca — com começo, conflito e para onde ela vai.", qs:[
+ {id:"n1", type:"single", q:"Qual foi a aposta de origem que os outros não fizeram? Escolha 1.", hint:"Esta ficou em branco na entrevista.",
+  o:["Construir estrutura de alto padrão antes de a demanda existir","Reunir fabricantes em vez de revendedores","Apostar em Maringá como polo","Colocar hotel e shopping no mesmo terreno","Tratar o lojista como projeto, não como inquilino"], other:true},
+ {id:"n2", type:"vf", q:"Verdadeiro ou falso — a estrutura da história:", o:["O ponto de virada foi o desfile virar referência nacional.","O conflito central da história é o custo da intermediação.","O que a marca luta para construir é o comprador chegando do Brasil inteiro.","A história já teve um erro reconhecido e corrigido (a unificação dos shoppings).","A história tem um momento em que os guias achavam que o shopping ia abandoná-los — e não abandonou."]},
+ {id:"n3", type:"single", q:"Quem é o herói da história? Escolha 1.", o:["O lojista — que cresce","O comprador — que acerta a compra","O complexo — que faz tudo acontecer","A família fundadora","O time — que entrega todo dia"]},
+ {id:"n4", type:"single", q:"Como a história termina, daqui a cinco anos? Escolha 1.", o:["O Paraná Moda Park é o melhor complexo atacadista do Brasil, e o mercado sabe disso.","O lojista daqui tem o menor custo operacional do país — e todo mundo quer entrar.","O comprador do Brasil inteiro compra aqui sem precisar vir — e vem quando quer.","O desfile é o calendário da moda atacadista nacional."]}
+]},
+{n:"O", t:"Mensagens-chave", i:"A frase que cada público precisa ouvir.", qs:[
+ {id:"o1", type:"single", q:"Para o LOJISTA, a mensagem central é: escolha 1.", o:["“Aqui a sua marca cresce.”","“Aqui você tem estrutura, comprador e apoio.”","“Aqui você paga menos para operar.”","“Aqui você é sócio, não inquilino.”"], other:true},
+ {id:"o2", type:"single", q:"Para o COMPRADOR, a mensagem central é: escolha 1.", o:["“Aqui você compra certo.”","“Chegue, durma, compre, volte — é fácil.”","“As marcas que o seu cliente quer — e o seu concorrente não tem.”","“É mais caro. E é por isso que vale.”"], other:true},
+ {id:"o3", type:"single", q:"Para o HÓSPEDE do hotel, a mensagem central é: escolha 1.", o:["“Você está dentro do complexo — tudo é fácil.”","“Um hotel feito para quem vem comprar.”","“Descanse. O resto a gente resolve.”","“O hotel é parte da compra.”"]},
+ {id:"o4", type:"single", q:"Para o GUIA, a mensagem central é: escolha 1.", o:["“Quem traz para cá, volta com cliente satisfeito.”","“Aqui o seu cliente compra mais — e volta a te procurar.”","“Parceiro de verdade, não só comissão.”","Não temos mensagem para o guia — ele é canal, não público."]},
+ {id:"o5", type:"single", q:"Se houvesse uma assinatura de marca — escolha 1 ou nenhuma:", o:["O melhor complexo atacadista do Brasil","Onde a marca cresce","Estrutura para vender mais","Tudo em um lugar. Tudo com padrão.","Referência em moda atacadista","Nenhuma — não queremos assinatura"], other:true, otherLabel:"Outra:"}
+]},
+{n:"P", t:"Arquitetura de marca", i:"Quem é marca-mãe, quem é serviço, quem tem nome próprio.", qs:[
+ {id:"p1", type:"single", q:"Como hotel, pousada e eventos se organizam em relação ao Paraná Moda Park? Escolha 1.",
+  o:["Tudo é Paraná Moda Park — hotel, pousada e eventos são serviços do complexo, sem nome próprio destacado.","Paraná Moda Park é a marca-mãe; hotel e eventos têm nome próprio, sempre endossados (“by Paraná Moda Park”).","São marcas independentes que dividem o mesmo terreno — cada uma fala por si.","Hoje é a terceira opção; deveria ser a primeira.","Hoje é a terceira opção; deveria ser a segunda."]},
+ {id:"p2", type:"vf", q:"Verdadeiro ou falso:", said:["90% é negócio próprio. Se fosse vendido amanhã, mudaria muito pouco. Sozinho se sustenta tranquilamente."],
+  o:["O hotel deve ser avaliado também pelo que gera para o shopping, não só pela ocupação.","O gerente do hotel sabe qual é a promessa do Paraná Moda Park.","O hóspede que não é comprador é bem-vindo, mas não é o público.","Os eventos devem existir só quando trazem comprador para as lojas.","A pousada tem o mesmo papel do hotel, para outro perfil de comprador."]},
+ {id:"p3", type:"multi", max:2, q:"Se o hotel for tratado como parte da promessa, o que muda primeiro? Marque até 2.", o:["A recepção passa a conhecer o mix e as marcas","Aparece um pacote comprador: hospedagem + compra","O hotel passa a ter meta ligada a compra, não só a ocupação","O guia passa a ter vantagem por hospedar aqui","O nome do hotel muda","Nada muda — está certo como está"]}
+]},
+{n:"Q", t:"Pontos de contato", i:"Onde a marca é entregue — e quanto cada ponto entrega hoje.", qs:[
+ {id:"q1", type:"scales", q:"Para cada ponto, quanto ele entrega a marca hoje?", l:"Não entrega", r:"Entrega exatamente",
+  o:["O guia","A recepção do hotel","O atendimento dentro da loja","O WhatsApp comercial","A portaria / chegada","O desfile e os eventos","O site e o online","As redes sociais","O próprio lojista falando do shopping","A cobrança / financeiro"]},
+ {id:"q2", type:"single", q:"Qual desses pontos é o mais decisivo para o comprador voltar? Escolha 1.", o:["O guia","A recepção do hotel","O atendimento na loja","O WhatsApp","A chegada","O desfile","O online","O lojista","O financeiro"]},
+ {id:"q3", type:"multi", max:10, q:"Qual desses pontos hoje NÃO tem dono — ninguém é responsável por como a marca aparece ali? Marque todos que se aplicam.", o:["O guia","A recepção do hotel","O atendimento na loja","O WhatsApp","A chegada","O desfile","O online","As redes","O lojista","O financeiro"]}
+]},
+{n:"R", t:"Governança e medição", i:"O que impede a estratégia de evaporar.", qs:[
+ {id:"r1", type:"multi", max:3, q:"Os 3 números pelos quais a marca deve ser cobrada. Marque 3.", said:["Não sabemos. Não temos um canal."],
+  o:["Faturamento médio por lojista","Compradores ativos","Compradores ativos fora do Paraná","Taxa de recompra do comprador","Ocupação do shopping","Retenção de lojista","NPS do comprador","NPS do lojista","Reconhecimento espontâneo no setor","Uso do VIP Card","Ocupação do hotel por compradores","Público do desfile"]},
+ {id:"r2", type:"single", q:"Quem deveria ser o dono de medir se a promessa foi cumprida? Escolha 1.", o:["A diretoria","O comercial","O marketing","Uma pessoa nova, dedicada","Um comitê de marca","Ainda não sei"]},
+ {id:"r3", type:"vf", q:"Verdadeiro ou falso:", o:["Existe hoje um canal onde o comprador diz se a promessa foi cumprida.","Existe hoje um canal onde o lojista diz isso.","Uma decisão de marca já foi revertida porque contrariava o combinado.","Uma nova ideia já mudou a comunicação da marca sem passar por critério."]},
+ {id:"r4", type:"vf", q:"Os combinados — confirme:", o:["Decisão de marca se avalia pelo combinado, não pelo gosto de quem está na sala.","Ideia nova não muda a marca na hora — passa pelo critério antes.","Estes combinados valem para o Ricardo também."]}
+]},
+{n:"S", t:"O que ficou em branco", i:"Perguntas da entrevista sem resposta, agora em formato fechado.", qs:[
+ {id:"s1", type:"multi", max:3, q:"Para as escolhas da entrevista serem verdade, o que teríamos que parar de fazer? Marque até 3.",
+  o:["Aceitar lojista sem estoque ou sem escala","Dar desconto na locação para fechar","Pagar mais ao guia para reter fluxo","Aceitar comprador que só vem por preço","Tratar hotel como negócio isolado","Fazer evento que não traz comprador","Comunicar sem critério de marca"], other:true},
+ {id:"s2", type:"multi", max:12, q:"Em quais destes temas o Ricardo responderia diferente de você? Marque todos.", o:["Propósito","Visão","Valores","Comprador ideal","Lojista ideal","Preço","O papel do hotel","O papel do guia","Tom de voz","O desfile","A expansão nacional","Nenhum"]},
+ {id:"s3", type:"vf", q:"Verdadeiro ou falso:", o:["Esta intenção estratégica precisa do aval do Ricardo antes de seguir.","Se o Ricardo discordar em algum ponto, esse ponto deve ficar como está até vocês fecharem.","Posso enviar este documento respondido diretamente ao Ricardo."]},
+ {id:"s4", type:"scale", q:"Quanto do que está neste questionário você acha que a liderança responderia igual a você?", l:"Quase nada", r:"Quase tudo"},
+ {id:"s5", type:"scale", q:"E os lojistas?", l:"Quase nada", r:"Quase tudo"}
+]}
+];
+
+/* numeração contínua */
+let NUM = 0; BLOCOS.forEach(b => b.qs.forEach(q => { q.num = ++NUM; }));
+
+/* ═══════════════ ESTADO ═══════════════ */
+const R = {};            // respostas por id
+let atual = 0, CLIENTE = null, finalizado = false, syncTimer = null, fila = Promise.resolve();
+const el = id => document.getElementById(id);
+const enfileira = fn => (fila = fila.then(fn, fn));
+
+function setStatus(kind, text){ const s = el('status'); s.className = 'status' + (kind ? ' ' + kind : ''); el('statusTx').textContent = text; }
+
+/* ═══════════════ LEGÍVEL ═══════════════ */
+function legivelDe(q){
+  const v = R[q.id];
+  const o = q.o || [];
+  let txt = '—';
+  if(v == null) return txt;
+  switch(q.type){
+    case 'single': txt = v.v != null ? o[v.v] : '—'; break;
+    case 'multi':  txt = (v.v || []).map(i => o[i]).join(' · ') || '—'; break;
+    case 'vf':     txt = o.map((s,i) => (v.v && v.v[i] ? (v.v[i] === 'V' ? '[V] ' : '[F] ') : '[ ] ') + s).join('\n'); break;
+    case 'scale':  txt = v.v != null ? `${v.v + 1} de 5  (${q.l} → ${q.r})` : '—'; break;
+    case 'scales': txt = o.map((s,i) => `${s}: ${v.v && v.v[i] != null ? (v.v[i] + 1) + '/5' : '—'}`).join('\n'); break;
+    case 'rank':   txt = (v.v || []).map((idx,pos) => `${pos+1}º ${o[idx]}`).join('\n') || '—'; break;
+    case 'classify': txt = o.map((s,i) => `${s}: ${v.v && v.v[i] ? v.v[i] : '—'}`).join('\n'); break;
+    case 'ps':     txt = `P: ${v.p != null ? o[v.p] : '—'}\nS: ${v.s != null ? o[v.s] : '—'}`; break;
+  }
+  if(v.outro && v.outro.trim()) txt += `\nEu diria assim: ${v.outro.trim()}`;
+  return txt;
+}
+function respostasLegiveis(){
+  return BLOCOS.map(b => ({ bloco: `${b.n} · ${b.t}`, itens: b.qs.map(q => ({ n: q.num, pergunta: q.q, resposta: legivelDe(q) })) }));
+}
+function respondida(q){
+  const v = R[q.id]; if(!v) return false;
+  if(v.outro && v.outro.trim()) return true;
+  switch(q.type){
+    case 'single': return v.v != null;
+    case 'multi': return (v.v || []).length > 0;
+    case 'vf': return v.v && v.v.filter(Boolean).length === (q.o || []).length;
+    case 'scale': return v.v != null;
+    case 'scales': return v.v && v.v.filter(x => x != null).length === (q.o || []).length;
+    case 'rank': return (v.v || []).length === (q.o || []).length;
+    case 'classify': return v.v && v.v.filter(Boolean).length === (q.o || []).length;
+    case 'ps': return v.p != null;
+  }
+  return false;
+}
+function progresso(){
+  const all = BLOCOS.flatMap(b => b.qs);
+  const n = all.filter(respondida).length;
+  el('meter').style.width = Math.round(n / all.length * 100) + '%';
+  return {n, total: all.length};
+}
+
+/* ═══════════════ PERSISTÊNCIA ═══════════════ */
+function salvaLocal(){ try{ localStorage.setItem(LS_KEY, JSON.stringify({R, atual, respondente: el('respondente').value})); }catch{} }
+function sincroniza(agora = false){
+  salvaLocal(); progresso();
+  if(DEMO || !CLIENTE || finalizado) return;
+  clearTimeout(syncTimer);
+  const manda = () => {
+    if(finalizado) return;
+    setStatus('saving', 'Salvando…');
+    return enfileira(() => supaFetch('POST', `${TABELA}?on_conflict=chave_acesso`, {
+      chave_acesso: chave, versao_questionario: VERSAO,
+      respondente: el('respondente').value || null,
+      respostas: R, legivel: respostasLegiveis(), bloco_atual: atual, status: 'parcial'
+    }, 'resolution=merge-duplicates,return=minimal')
+      .then(() => setStatus('ok', 'Salvo · ' + progresso().n + ' de ' + NUM))
+      .catch(() => setStatus('err', 'Sem conexão — guardado neste aparelho')));
+  };
+  if(agora) manda(); else syncTimer = setTimeout(manda, 2500);
+}
+
+function capaErro(titulo, texto){
+  el('capa-t').innerHTML = titulo; el('capa-s').textContent = texto;
+  el('rules').hidden = true; el('btnComecar').hidden = true; el('meta-in').hidden = true; el('capa-meta').hidden = true;
+}
+
+async function boot(){
+  if(DEMO){ el('capa-meta').textContent = 'Modo demonstração · sem chave de acesso, nada é enviado'; setStatus('', 'Demonstração'); return; }
+  let rows;
+  try{ rows = await supaFetch('GET', `${TABELA}?chave_acesso=eq.${encodeURIComponent(chave)}&select=respondente,respostas,bloco_atual,status`); }
+  catch{ setStatus('err','Sem conexão'); return capaErro('Não consegui <em>carregar</em>.', 'Houve um problema de conexão. Recarregue a página em instantes — se continuar, fala com a equipe MAM.'); }
+  if(!rows || !rows.length){ setStatus('err','Link inválido'); return capaErro('Esse link não é <em>válido</em>.', 'Confira o link que você recebeu da equipe MAM — ele precisa vir completo, com a chave de acesso.'); }
+  CLIENTE = rows[0];
+  if(CLIENTE.status === 'enviado'){ setStatus('ok','Enviado'); return capaErro('Já <em>recebemos</em> as suas respostas.', 'Obrigado! A equipe MAM está com o material. Se precisar ajustar alguma coisa, fala direto com a gente.'); }
+
+  let salvo = null;
+  try{ salvo = JSON.parse(localStorage.getItem(LS_KEY) || 'null'); }catch{}
+  const temLocal = salvo && salvo.R && Object.keys(salvo.R).length;
+  const temRemoto = CLIENTE.respostas && Object.keys(CLIENTE.respostas).length;
+  if(temRemoto && (!temLocal || Object.keys(CLIENTE.respostas).length >= Object.keys(salvo.R).length)){
+    salvo = { R: CLIENTE.respostas, atual: CLIENTE.bloco_atual || 0, respondente: CLIENTE.respondente };
+  }
+  if(salvo && salvo.R && Object.keys(salvo.R).length){
+    Object.assign(R, salvo.R); atual = Math.min(salvo.atual || 0, BLOCOS.length - 1);
+    if(salvo.respondente) el('respondente').value = salvo.respondente;
+    el('btnComecar').textContent = 'Continuar de onde parei →';
+    el('capa-meta').textContent = `Você parou no bloco ${atual + 1} de ${BLOCOS.length} · dá para continuar de qualquer aparelho`;
+  } else if(CLIENTE.respondente){ el('respondente').value = CLIENTE.respondente; }
+  setStatus('ok', 'Pronto');
+  progresso();
+}
+
+/* ═══════════════ RENDER ═══════════════ */
+function h(tag, cls, html){ const n = document.createElement(tag); if(cls) n.className = cls; if(html != null) n.innerHTML = html; return n; }
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
+
+function renderBloco(){
+  const b = BLOCOS[atual];
+  const main = el('quiz'); main.innerHTML = '';
+  const sec = h('section','part');
+  const head = h('div','part-head'); head.appendChild(h('div','part-n', b.n)); head.appendChild(h('h2', null, esc(b.t))); sec.appendChild(head);
+  if(b.i) sec.appendChild(h('p','part-intro', esc(b.i)));
+  sec.appendChild(h('p','part-count', `Bloco ${atual+1} de ${BLOCOS.length}`));
+  b.qs.forEach(q => sec.appendChild(renderQ(q)));
+
+  const nav = h('div','nav');
+  const back = h('button','btn btn-2', '← Anterior'); back.type='button'; back.disabled = atual === 0;
+  back.onclick = () => { atual--; sincroniza(true); renderBloco(); scrollTo(0,0); };
+  const mid = h('span','mid', '');
+  const next = h('button','btn btn-1', atual === BLOCOS.length-1 ? 'Revisar e enviar →' : 'Próximo bloco →'); next.type='button';
+  next.onclick = () => { if(atual === BLOCOS.length-1){ renderRevisao(); } else { atual++; sincroniza(true); renderBloco(); scrollTo(0,0); } };
+  nav.append(back, mid, next); sec.appendChild(nav);
+  main.appendChild(sec);
+  atualizaBloco();
+}
+function atualizaBloco(){
+  const b = BLOCOS[atual]; const falt = b.qs.filter(q => !respondida(q)).length;
+  const mid = document.querySelector('.nav .mid'); if(mid) mid.textContent = falt ? `${falt} sem resposta neste bloco` : 'Bloco completo';
+}
+
+function renderQ(q){
+  const box = h('div','q'); box.dataset.id = q.id;
+  const hd = h('div','q-h'); hd.appendChild(h('div','q-n', String(q.num).padStart(2,'0')));
+  const bd = h('div'); bd.appendChild(h('p','q-txt', esc(q.q)));
+  if(q.hint) bd.appendChild(h('p','q-hint', esc(q.hint)));
+  (q.said || []).forEach(s => bd.appendChild(h('div','said', '<b>Na entrevista</b>“' + esc(s) + '”')));
+  hd.appendChild(bd); box.appendChild(hd);
+  const body = h('div','body'); box.appendChild(body);
+  R[q.id] = R[q.id] || {};
+  const v = R[q.id];
+  const o = q.o || [];
+  const upd = () => { paintQ(q, body); atualizaBloco(); sincroniza(); };
+
+  if(q.type === 'single' || q.type === 'multi'){
+    const st = h('div','stack');
+    o.forEach((t,i) => {
+      const b = h('button','opt' + (q.type==='multi' ? ' sq' : ''), '<span class="mk"></span><span>' + esc(t) + '</span>'); b.type='button';
+      b.onclick = () => {
+        if(q.type === 'single'){ v.v = (v.v === i) ? null : i; }
+        else { v.v = v.v || []; const k = v.v.indexOf(i); if(k >= 0) v.v.splice(k,1); else if(v.v.length < (q.max||99)) v.v.push(i); }
+        upd();
+      };
+      b.dataset.i = i; st.appendChild(b);
+    });
+    body.appendChild(st);
+  }
+  else if(q.type === 'vf'){
+    const g = h('div','vf');
+    o.forEach((t,i) => {
+      const bt = h('div','vf-btns');
+      ['V','F'].forEach(k => { const b = h('button','vf-b ' + k.toLowerCase(), k); b.type='button'; b.dataset.i=i; b.dataset.k=k;
+        b.onclick = () => { v.v = v.v || []; v.v[i] = (v.v[i] === k) ? null : k; upd(); }; bt.appendChild(b); });
+      g.appendChild(bt); g.appendChild(h('div','vf-t', esc(t)));
+    });
+    body.appendChild(g);
+  }
+  else if(q.type === 'scale'){
+    body.appendChild(scaleRow(q.l, q.r, (i) => { v.v = (v.v === i) ? null : i; upd(); }, () => v.v));
+  }
+  else if(q.type === 'scales'){
+    o.forEach((t,i) => {
+      body.appendChild(h('p','sc-lab', esc(t)));
+      body.appendChild(scaleRow(q.l, q.r, (k) => { v.v = v.v || []; v.v[i] = (v.v[i] === k) ? null : k; upd(); }, () => (v.v||[])[i], i));
+    });
+  }
+  else if(q.type === 'rank'){
+    body.appendChild(h('p','rk-hint','Clique nos itens na ordem. Clique de novo para tirar.'));
+    const st = h('div','rk');
+    o.forEach((t,i) => { const b = h('button','opt sq','<span class="mk"></span><span>' + esc(t) + '</span>'); b.type='button'; b.dataset.i=i;
+      b.onclick = () => { v.v = v.v || []; const k = v.v.indexOf(i); if(k >= 0) v.v.splice(k,1); else v.v.push(i); upd(); }; st.appendChild(b); });
+    body.appendChild(st);
+  }
+  else if(q.type === 'classify'){
+    body.appendChild(h('p','cl-leg', esc(q.legend || '')));
+    const g = h('div','cl');
+    o.forEach((t,i) => {
+      g.appendChild(h('div','cl-t', esc(t)));
+      const bt = h('div','cl-b');
+      q.labels.forEach(L => { const b = h('button',null,L); b.type='button'; b.dataset.i=i; b.dataset.k=L;
+        b.onclick = () => { v.v = v.v || []; v.v[i] = (v.v[i] === L) ? null : L; upd(); }; bt.appendChild(b); });
+      g.appendChild(bt);
+    });
+    body.appendChild(g);
+  }
+  else if(q.type === 'ps'){
+    body.appendChild(h('p','cl-leg','P = principal · S = secundário. Um de cada.'));
+    const g = h('div','cl');
+    o.forEach((t,i) => {
+      g.appendChild(h('div','cl-t', esc(t)));
+      const bt = h('div','cl-b');
+      PSL.forEach(L => { const b = h('button',null,L); b.type='button'; b.dataset.i=i; b.dataset.k=L;
+        b.onclick = () => {
+          if(L === 'P'){ v.p = (v.p === i) ? null : i; if(v.s === i) v.s = null; }
+          else { v.s = (v.s === i) ? null : i; if(v.p === i) v.p = null; }
+          upd();
+        }; bt.appendChild(b); });
+      g.appendChild(bt);
+    });
+    body.appendChild(g);
+  }
+
+  if(q.other){
+    const ta = document.createElement('textarea'); ta.rows = 1;
+    ta.placeholder = q.otherLabel || 'Nenhuma dessas — eu diria assim…';
+    ta.value = v.outro || '';
+    ta.oninput = () => { v.outro = ta.value; ta.style.height='auto'; ta.style.height = (ta.scrollHeight+2)+'px'; atualizaBloco(); sincroniza(); };
+    body.appendChild(ta);
+    requestAnimationFrame(() => { ta.style.height='auto'; ta.style.height=(ta.scrollHeight+2)+'px'; });
+  }
+  paintQ(q, body);
+  return box;
+}
+
+function scaleRow(l, r, onPick, get, idx){
+  const row = h('div','sc');
+  row.appendChild(h('span','sc-l', esc(l)));
+  const d = h('div','dots');
+  for(let i=0;i<5;i++){ const b = h('button','dot-b'); b.type='button'; b.dataset.i=i; b.setAttribute('aria-label', `${l} a ${r}, ponto ${i+1}`); b.onclick = () => onPick(i); d.appendChild(b); }
+  row.appendChild(d); row.appendChild(h('span','sc-r', esc(r)));
+  row.dataset.scale = idx == null ? '' : String(idx);
+  return row;
+}
+
+function paintQ(q, body){
+  const v = R[q.id] || {};
+  if(q.type === 'single') body.querySelectorAll('.opt').forEach(b => b.setAttribute('aria-pressed', String(v.v === +b.dataset.i)));
+  if(q.type === 'multi'){ const sel = v.v || []; const full = sel.length >= (q.max||99);
+    body.querySelectorAll('.opt').forEach(b => { const on = sel.includes(+b.dataset.i); b.setAttribute('aria-pressed', String(on)); b.classList.toggle('dis', full && !on); }); }
+  if(q.type === 'vf') body.querySelectorAll('.vf-b').forEach(b => b.setAttribute('aria-pressed', String((v.v||[])[+b.dataset.i] === b.dataset.k)));
+  if(q.type === 'scale') body.querySelectorAll('.dot-b').forEach(b => b.setAttribute('aria-pressed', String(v.v === +b.dataset.i)));
+  if(q.type === 'scales') body.querySelectorAll('.sc').forEach(row => { const i = +row.dataset.scale; row.querySelectorAll('.dot-b').forEach(b => b.setAttribute('aria-pressed', String((v.v||[])[i] === +b.dataset.i))); });
+  if(q.type === 'rank'){ const sel = v.v || []; body.querySelectorAll('.opt').forEach(b => { const pos = sel.indexOf(+b.dataset.i); b.setAttribute('aria-pressed', String(pos >= 0)); b.querySelector('.mk').textContent = pos >= 0 ? String(pos+1) : ''; }); }
+  if(q.type === 'classify') body.querySelectorAll('.cl-b button').forEach(b => b.setAttribute('aria-pressed', String((v.v||[])[+b.dataset.i] === b.dataset.k)));
+  if(q.type === 'ps') body.querySelectorAll('.cl-b button').forEach(b => { const i = +b.dataset.i; b.setAttribute('aria-pressed', String((b.dataset.k === 'P' && v.p === i) || (b.dataset.k === 'S' && v.s === i))); });
+}
+
+/* ═══════════════ REVISÃO E ENVIO ═══════════════ */
+function renderRevisao(){
+  sincroniza(true);
+  const main = el('quiz'); main.innerHTML = '';
+  const sec = h('section','part');
+  const head = h('div','part-head'); head.appendChild(h('div','part-n','✓')); head.appendChild(h('h2',null,'Revisar e enviar')); sec.appendChild(head);
+  const faltam = BLOCOS.flatMap(b => b.qs.filter(q => !respondida(q)).map(q => ({b, q})));
+  if(faltam.length){
+    const box = h('div','faltam', `<b>${faltam.length} pergunta${faltam.length>1?'s':''} sem resposta.</b> Pode enviar assim mesmo — mas o que ficar em branco entra no relatório como “não respondido”.`);
+    const ul = h('ul'); ul.style.margin='10px 0 0'; ul.style.paddingLeft='18px';
+    faltam.slice(0,12).forEach(({b,q}) => { const li = h('li', null, `<a href="#" data-b="${BLOCOS.indexOf(b)}" style="color:var(--gold)">${String(q.num).padStart(2,'0')} · ${esc(b.t)}</a>`); ul.appendChild(li); });
+    if(faltam.length > 12) ul.appendChild(h('li',null,`… e mais ${faltam.length-12}`));
+    box.appendChild(ul); sec.appendChild(box);
+    box.querySelectorAll('a').forEach(a => a.onclick = e => { e.preventDefault(); atual = +a.dataset.b; renderBloco(); scrollTo(0,0); });
+  } else {
+    sec.appendChild(h('p','part-intro','Tudo respondido. Ao enviar, as respostas ficam fechadas — para ajustar depois, é com a equipe MAM.'));
+  }
+  const nav = h('div','nav');
+  const back = h('button','btn btn-2','← Voltar'); back.type='button'; back.onclick = () => { renderBloco(); scrollTo(0,0); };
+  const send = h('button','btn btn-1', DEMO ? 'Concluir (demonstração)' : 'Enviar respostas'); send.type='button'; send.id='btnEnviar';
+  send.onclick = () => enviar(send);
+  nav.append(back, h('span','mid',''), send); sec.appendChild(nav);
+  main.appendChild(sec);
+}
+
+async function enviar(btn){
+  if(!DEMO && CLIENTE){
+    btn.disabled = true; btn.textContent = 'Enviando…';
+    clearTimeout(syncTimer); finalizado = true; await fila;
+    try{
+      await supaFetch('POST', `${TABELA}?on_conflict=chave_acesso`, {
+        chave_acesso: chave, versao_questionario: VERSAO,
+        respondente: el('respondente').value || null,
+        respostas: R, legivel: respostasLegiveis(), bloco_atual: BLOCOS.length-1,
+        status: 'enviado', enviado_em: new Date().toISOString()
+      }, 'resolution=merge-duplicates,return=minimal');
+      try{ localStorage.removeItem(LS_KEY); }catch{}
+      setStatus('ok','Enviado');
+    }catch(e){
+      finalizado = false; btn.disabled = false; btn.textContent = 'Tentar enviar de novo';
+      setStatus('err','Não consegui enviar — suas respostas estão guardadas');
+      return;
+    }
+  }
+  el('quiz').hidden = true; el('fim').hidden = false; scrollTo(0,0);
+}
+
+/* ═══════════════ BOOT ═══════════════ */
+el('btnComecar').onclick = () => { el('capa').hidden = true; el('quiz').hidden = false; salvaLocal(); renderBloco(); scrollTo(0,0); };
+el('respondente').oninput = () => sincroniza();
+document.addEventListener('visibilitychange', () => { if(document.hidden && !finalizado) sincroniza(true); });
+window.addEventListener('pagehide', () => { if(!finalizado) sincroniza(true); });
+boot();
+</script>
+</body>
+</html>
