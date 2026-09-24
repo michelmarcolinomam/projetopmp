@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
+<meta http-equiv="Cache-Control" content="no-cache">
 <title>Fechamento da Intenção Estratégica — Paraná Moda Park</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -196,7 +197,7 @@ textarea:focus,.meta-in input:focus{outline:2px solid var(--gold);outline-offset
 const SUPABASE_URL = 'https://zokmlfocjalehjvczwep.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_jiTPujKev4H4m-H_ABFE1w_rRvHNCVZ';
 const TABELA = 'pmp_intencao_respostas';
-const VERSAO = 'pmp-intencao-v1';
+const VERSAO = 'pmp-intencao-v2';
 
 async function supaFetch(method, path, body = null, prefer = null){
   const p = prefer !== null ? prefer : (method === 'POST' ? 'return=representation' : '');
@@ -382,9 +383,12 @@ function progresso(){
 
 /* ═══════════════ PERSISTÊNCIA ═══════════════ */
 function salvaLocal(){ try{ localStorage.setItem(LS_KEY, JSON.stringify({R, atual, respondente: el('respondente').value})); }catch{} }
+function jaEnviado(){ try{ return localStorage.getItem(LS_KEY + '_enviado') === '1'; }catch{ return false; } }
 function sincroniza(agora = false){
-  salvaLocal(); progresso();
+  salvaLocal(); const pr = progresso();
   if(DEMO || !CLIENTE || finalizado) return;
+  if(jaEnviado()){ finalizado = true; return; }
+  if(pr.n === 0) return;   // nada respondido ainda: não há o que gravar, e não se apaga o que já está lá
   clearTimeout(syncTimer);
   const manda = () => {
     if(finalizado) return;
@@ -412,8 +416,9 @@ async function boot(){
   catch{ setStatus('err','Sem conexão'); return capaErro('Não consegui <em>carregar</em>.', 'Houve um problema de conexão. Recarregue a página em instantes — se continuar, fala com a equipe MAM.'); }
   if(!rows || !rows.length){ setStatus('err','Link inválido'); return capaErro('Esse link não é <em>válido</em>.', 'Confira o link que você recebeu da equipe MAM — ele precisa vir completo, com a chave de acesso.'); }
   CLIENTE = rows[0];
-  if(CLIENTE.status === 'enviado'){ setStatus('ok','Enviado'); return capaErro('Já <em>recebemos</em> as suas respostas.', 'Obrigado! A equipe MAM está com o material. Se precisar ajustar alguma coisa, fala direto com a gente.'); }
+  if(CLIENTE.status === 'enviado'){ finalizado = true; setStatus('ok','Enviado'); return capaErro('Já <em>recebemos</em> as suas respostas.', 'Obrigado! A equipe MAM está com o material. Se precisar ajustar alguma coisa, fala direto com a gente.'); }
 
+  if(jaEnviado()){ finalizado = true; setStatus('ok','Enviado'); return capaErro('Já <em>recebemos</em> as suas respostas.', 'Obrigado! A equipe MAM está com o material. Se precisar ajustar alguma coisa, fala direto com a gente.'); }
   let salvo = null;
   try{ salvo = JSON.parse(localStorage.getItem(LS_KEY) || 'null'); }catch{}
   const temLocal = salvo && salvo.R && Object.keys(salvo.R).length;
@@ -611,7 +616,7 @@ async function enviar(btn){
         respostas: R, legivel: respostasLegiveis(), bloco_atual: BLOCOS.length-1,
         status: 'enviado', enviado_em: new Date().toISOString()
       }, 'resolution=merge-duplicates,return=minimal');
-      try{ localStorage.removeItem(LS_KEY); }catch{}
+      try{ localStorage.removeItem(LS_KEY); localStorage.setItem(LS_KEY + '_enviado', '1'); }catch{}
       setStatus('ok','Enviado');
     }catch(e){
       finalizado = false; btn.disabled = false; btn.textContent = 'Tentar enviar de novo';
@@ -627,6 +632,7 @@ el('btnComecar').onclick = () => { el('capa').hidden = true; el('quiz').hidden =
 el('respondente').oninput = () => sincroniza();
 document.addEventListener('visibilitychange', () => { if(document.hidden && !finalizado) sincroniza(true); });
 window.addEventListener('pagehide', () => { if(!finalizado) sincroniza(true); });
+window.addEventListener('storage', e => { if(e.key === LS_KEY + '_enviado' && e.newValue === '1'){ finalizado = true; clearTimeout(syncTimer); } });
 boot();
 </script>
 </body>
