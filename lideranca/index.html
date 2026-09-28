@@ -170,6 +170,15 @@ const LS_KEY='pmp_lid_'+(chave||'demo');
 const RID_KEY='pmp_lid_rid_'+(chave||'demo');
 function rid(){ try{ let r=localStorage.getItem(RID_KEY); if(!r){ r=(crypto.randomUUID?crypto.randomUUID():'r'+Date.now()+Math.random().toString(16).slice(2)); localStorage.setItem(RID_KEY,r);} return r; }catch{ return 'r'+Date.now(); } }
 const RESPONDENTE=rid();
+/* embaralha as alternativas por respondente: mesma ordem se recarregar, ordem diferente entre pessoas */
+function semente(str){let h=2166136261;for(const c of str){h^=c.charCodeAt(0);h=Math.imul(h,16777619)>>>0;}return h;}
+function ordem(q){
+  const n=(q.o||[]).length; const idx=[...Array(n).keys()];
+  if(q.fixed||q.type==='vf'||q.type==='classify'||q.type==='rank'||n<3) return idx;
+  let x=semente(RESPONDENTE+'|'+q.id)||1;
+  for(let i=n-1;i>0;i--){ x^=x<<13; x>>>=0; x^=x>>>17; x^=x<<5; x>>>=0; const j=x%(i+1); [idx[i],idx[j]]=[idx[j],idx[i]]; }
+  return idx;
+}
 
 const AREAS=["Comercial","Locação","Marketing","Hotelaria","Eventos","Financeiro / administrativo","Operações","Outra"];
 const TEMPOS=["Até 1 ano","1 a 3 anos","3 a 7 anos","Mais de 7 anos"];
@@ -211,7 +220,7 @@ const BLOCOS=[
 {n:"D",t:"Tensão e posicionamento",i:"Contra o que a marca existe, e o lugar que só ela ocupa.",qs:[
  {id:"d1",type:"ps",q:"Contra o que o Paraná Moda Park existe? Marque 1 principal (P) e 1 secundária (S).",
   o:["O custo da intermediação — o que fica no caminho entre fabricante e lojista","O atacado desorganizado — improviso, falta de estrutura, falta de padrão","Polos que competem só por preço","O modelo “só endereço” — shopping que aluga e não cuida","A distância — comprador que não vem porque é longe ou caro","A desconfiança — comprador que acha que vai ser enganado"]},
- {id:"d2",type:"single",q:"O guia, para a marca, é:",o:["Parte do problema que a marca combate","Parte da solução","Um canal neutro — nem um nem outro"]},
+ {id:"d2",fixed:true,type:"single",q:"O guia, para a marca, é:",o:["Parte do problema que a marca combate","Parte da solução","Um canal neutro — nem um nem outro"]},
  {id:"d3",type:"single",q:"Complete: “Somos o único complexo atacadista de moda que…” Escolha 1.",
   o:["…cuida do crescimento das marcas que abriga, com consultoria, treinamento e acompanhamento.","…reúne fabricantes de expressão, hotelaria e centro de eventos no mesmo endereço.","…faz o comprador chegar, dormir, comprar e voltar sem nenhum atrito.","…trabalha para reduzir o custo do lojista em vez de só cobrar dele.","…virou referência nacional na apresentação de coleção."]},
  {id:"d4",type:"single",q:"O que sustenta o prêmio de preço do complexo hoje — o motivo pelo qual pagam mais para estar aqui? Escolha 1.",
@@ -222,7 +231,7 @@ const BLOCOS=[
   o:["Mega Polo — São Paulo","Polo — São José do Rio Preto","Cianorte","Brás / Bom Retiro","Atacado online","Representantes comerciais","Nenhum — competimos com a decisão de não comprar"]}
 ]},
 {n:"E",t:"O comprador",i:"Quem é o comprador que a marca escolhe, e o que se oferece a ele.",qs:[
- {id:"e1",type:"single",q:"Faturamento mínimo do comprador ideal — a partir de que porte de loja a proposta faz sentido? Escolha 1.",
+ {id:"e1",fixed:true,type:"single",q:"Faturamento mínimo do comprador ideal — a partir de que porte de loja a proposta faz sentido? Escolha 1.",
   o:["Qualquer porte","Acima de R$ 50 mil por mês","Acima de R$ 100 mil por mês","Acima de R$ 300 mil por mês"]},
  {id:"e2",type:"single",q:"O comprador ideal vem, na maior parte, de onde?",o:["Do Paraná, num raio de até 300 km","De estados vizinhos — SC, SP, MS","De qualquer lugar do Brasil, se a viagem valer","Cada vez menos ele vem — compra à distância"]},
  {id:"e3",type:"single",q:"Ele compra aqui com que frequência?",o:["Toda coleção — de 2 a 4 vezes por ano","Uma vez por ano, no lançamento","Quando o guia traz","Ainda não tem rotina — cada compra é uma decisão nova"]},
@@ -231,8 +240,8 @@ const BLOCOS=[
   o:["“Quero comprar melhor, não mais barato — mas tenho medo de não conseguir girar o que é mais caro.”","“Se eu compro certo, meu cliente paga mais. O difícil é acertar.”","“Vir até aqui custa. Preciso que a viagem valha muito a pena.”","“Preciso de marcas que meu cliente conhece e que o meu concorrente não tem.”","“Eu não quero só produto. Quero alguém que me diga o que vai vender.”"]},
  {id:"e6",type:"rank",q:"Na proposta ao comprador, o que vem primeiro? Clique na ordem, do mais ao menos importante.",o:["O mix de marcas fabricantes","A estrutura — hotel, conveniência, tudo no mesmo lugar","O padrão e a seriedade","A relação e o atendimento","O desfile e a apresentação de coleção","O preço"]},
  {id:"e7",type:"single",q:"O que queremos que o comprador diga do Paraná Moda Park para outro lojista? Escolha 1.",o:["“Lá é caro, mas é onde tem coisa boa.”","“Lá é fácil — você chega, dorme, compra, volta.”","“Lá eles cuidam de você.”","“Lá tem marca que ninguém mais tem.”","“Lá é sério, não tem picaretagem.”"]},
- {id:"e8",type:"single",q:"Como o mercado percebe o preço do complexo hoje?",o:["Mais acessível do que é","Um pouco mais acessível","Exatamente o que é","Um pouco mais caro","Mais caro do que é"]},
- {id:"e9",type:"single",q:"E daqui a cinco anos, como deveria parecer?",o:["Mais acessível do que é","Um pouco mais acessível","Exatamente o que é","Um pouco mais caro","Mais caro do que é"]}
+ {id:"e8",fixed:true,type:"single",q:"Como o mercado percebe o preço do complexo hoje?",o:["Mais acessível do que é","Um pouco mais acessível","Exatamente o que é","Um pouco mais caro","Mais caro do que é"]},
+ {id:"e9",fixed:true,type:"single",q:"E daqui a cinco anos, como deveria parecer?",o:["Mais acessível do que é","Um pouco mais acessível","Exatamente o que é","Um pouco mais caro","Mais caro do que é"]}
 ]},
 {n:"F",t:"O lojista",i:"Quem entra, e o que se oferece a quem entra.",qs:[
  {id:"f1",type:"multi",max:3,q:"O que define a marca que queremos aqui dentro? Marque até 3.",o:["Mix de produto diferencial","Moda atualizada","Capacidade logística e estoque","Faturamento alto","Marca conhecida nacionalmente","Caráter — honestidade, lealdade, gestão de pessoas","Disposição para investir em ponto e visual"]},
@@ -270,12 +279,12 @@ const BLOCOS=[
  {id:"i1",type:"single",q:"Como hotel, pousada e eventos se organizam em relação ao Paraná Moda Park? Escolha 1.",
   o:["Tudo é Paraná Moda Park — hotel, pousada e eventos são serviços do complexo, sem nome próprio destacado.","Paraná Moda Park é a marca-mãe; hotel e eventos têm nome próprio, sempre endossados.","São marcas independentes que dividem o mesmo terreno — cada uma fala por si."]},
  {id:"i2",type:"vf",q:"Verdadeiro ou falso:",o:["O hotel deve ser avaliado também pelo que gera para o shopping, não só pela ocupação.","O hóspede que não é comprador é bem-vindo, mas não é o público.","Os eventos devem existir só quando trazem comprador para as lojas.","A pousada tem o mesmo papel do hotel, para outro perfil de comprador."]},
- {id:"i3",type:"single",q:"Hoje, na prática, o hotel se comporta como o quê?",o:["Infraestrutura da compra — existe para o comprador","Negócio próprio — tem ambição e cliente dele","Os dois, em conflito"]},
- {id:"i4",type:"choice",q:"Se fosse obrigado a escolher: ocupação máxima, ou curadoria de mix mesmo com loja vazia?",o:["Ocupação máxima","Curadoria de mix"]},
- {id:"i5",type:"choice",q:"Fechar a locação com desconto, ou segurar o preço e esperar o inquilino certo?",o:["Fechar com desconto","Segurar o preço"]},
- {id:"i6",type:"choice",q:"Mais compradores, ou melhores compradores?",o:["Mais compradores","Melhores compradores"]},
- {id:"i7",type:"choice",q:"Crescer em metros quadrados, ou aprofundar o que já existe?",o:["Crescer em m²","Aprofundar o que existe"]},
- {id:"i8",type:"choice",q:"Hotel e eventos como apoio ao shopping, ou como negócios próprios com ambição própria?",o:["Apoio ao shopping","Negócios próprios"]}
+ {id:"i3",fixed:true,type:"single",q:"Hoje, na prática, o hotel se comporta como o quê?",o:["Infraestrutura da compra — existe para o comprador","Negócio próprio — tem ambição e cliente dele","Os dois, em conflito"]},
+ {id:"i4",fixed:true,type:"choice",q:"Se fosse obrigado a escolher: ocupação máxima, ou curadoria de mix mesmo com loja vazia?",o:["Ocupação máxima","Curadoria de mix"]},
+ {id:"i5",fixed:true,type:"choice",q:"Fechar a locação com desconto, ou segurar o preço e esperar o inquilino certo?",o:["Fechar com desconto","Segurar o preço"]},
+ {id:"i6",fixed:true,type:"choice",q:"Mais compradores, ou melhores compradores?",o:["Mais compradores","Melhores compradores"]},
+ {id:"i7",fixed:true,type:"choice",q:"Crescer em metros quadrados, ou aprofundar o que já existe?",o:["Crescer em m²","Aprofundar o que existe"]},
+ {id:"i8",fixed:true,type:"choice",q:"Hotel e eventos como apoio ao shopping, ou como negócios próprios com ambição própria?",o:["Apoio ao shopping","Negócios próprios"]}
 ]},
 {n:"J",t:"Entrega e medição",i:"Onde a marca é entregue, e como se sabe se foi.",qs:[
  {id:"j1",type:"single",q:"Qual ponto de contato é o mais decisivo para o comprador voltar? Escolha 1.",o:["O guia","A recepção do hotel","O atendimento na loja","O WhatsApp comercial","A chegada / portaria","O desfile e os eventos","O online","O próprio lojista","O financeiro / cobrança"]},
@@ -288,7 +297,7 @@ const BLOCOS=[
  {id:"k1",type:"single",q:"Da sua cadeira, qual é a maior ameaça ao complexo nos próximos cinco anos? Escolha 1.",o:["O custo da intermediação","Um concorrente copiar a estrutura","O comprador deixar de vir — comprar online ou de representante","Perder lojistas de expressão para outro polo","O guia levar o comprador para outro lugar","A casa crescer sem critério de marca","Outra"],other:true},
  {id:"k2",type:"single",q:"O que o comprador mais reclama, hoje, para a sua área? Escolha 1.",o:["Preço","Falta de novidade no mix","Atendimento na loja","Dificuldade de chegar ou se hospedar","Prazo e logística","Não reclama — não temos esse canal"],other:true},
  {id:"k3",type:"single",q:"O que o lojista mais pede, hoje, para a sua área? Escolha 1.",o:["Mais fluxo de compradores","Desconto ou condição na locação","Apoio de gestão e treinamento","Visibilidade — evento, desfile, comunicação","Melhorias de estrutura","Não pede — não temos esse canal"],other:true},
- {id:"k4",type:"single",q:"Quando uma decisão da sua área envolve a marca, o que decide na prática?",o:["Um critério escrito","O que a diretoria disse da última vez","O gosto de quem está na sala","A meta do mês","Cada caso é um caso"]},
+ {id:"k4",fixed:true,type:"single",q:"Quando uma decisão da sua área envolve a marca, o que decide na prática?",o:["Um critério escrito","O que a diretoria disse da última vez","O gosto de quem está na sala","A meta do mês","Cada caso é um caso"]},
  {id:"k5",type:"text",q:"Essa intenção estratégica te obriga a fazer o quê — e a deixar de fazer o quê — toda semana? Duas ou três linhas.",placeholder:"O que muda na minha rotina se isso for verdade…"},
  {id:"k6",type:"text",q:"O que falta nessa intenção que só se vê da sua cadeira?",placeholder:"O que a diretoria não vê e eu vejo…"}
 ]}
@@ -404,7 +413,7 @@ function renderQ(q){
   const upd=()=>{paintQ(q,body);atualizaBloco();sincroniza();};
   if(q.type==='single'||q.type==='multi'||q.type==='choice'){
     const st=h('div','stack');
-    o.forEach((t,i)=>{const b=h('button','opt'+(q.type==='multi'?' sq':''),'<span class="mk"></span><span>'+esc(t)+'</span>');b.type='button';
+    ordem(q).forEach(i=>{const t=o[i];const b=h('button','opt'+(q.type==='multi'?' sq':''),'<span class="mk"></span><span>'+esc(t)+'</span>');b.type='button';
       b.onclick=()=>{ if(q.type==='multi'){v.v=v.v||[];const k=v.v.indexOf(i);if(k>=0)v.v.splice(k,1);else if(v.v.length<(q.max||99))v.v.push(i);} else {v.v=(v.v===i)?null:i;} upd(); };
       b.dataset.i=i;st.appendChild(b);});
     body.appendChild(st);
@@ -425,7 +434,7 @@ function renderQ(q){
     body.appendChild(g);
   } else if(q.type==='ps'){
     body.appendChild(h('p','cl-leg','P = principal · S = secundário. Um de cada.'));const g=h('div','cl');
-    o.forEach((t,i)=>{g.appendChild(h('div','cl-t',esc(t)));const bt=h('div','cl-b');['P','S'].forEach(L=>{const b=h('button',null,L);b.type='button';b.dataset.i=i;b.dataset.k=L;
+    ordem(q).forEach(i=>{const t=o[i];g.appendChild(h('div','cl-t',esc(t)));const bt=h('div','cl-b');['P','S'].forEach(L=>{const b=h('button',null,L);b.type='button';b.dataset.i=i;b.dataset.k=L;
       b.onclick=()=>{if(L==='P'){v.p=(v.p===i)?null:i;if(v.s===i)v.s=null;}else{v.s=(v.s===i)?null:i;if(v.p===i)v.p=null;}upd();};bt.appendChild(b);});g.appendChild(bt);});
     body.appendChild(g);
   } else if(q.type==='text'){
