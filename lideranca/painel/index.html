@@ -128,6 +128,7 @@ async function atualiza(){
     if(env>=TOTAL) nota='<b>Censo completo.</b> A leitura do Gap 1 pode ser fechada.';
     else if(env>=10) nota=`<b>${env} de ${TOTAL}.</b> Já dá para fechar com ressalva — o método pede censo; abaixo de 10 não se fecha.`;
     else if(and>0) nota=`<b>${and} em andamento</b>${r.media_respondidas_parciais!=null?`, com cerca de ${r.media_respondidas_parciais} perguntas respondidas em média`:''}. Vale um lembrete: quem começou e parou costuma terminar em uma cobrança.`;
+    else if(env>0) nota=`<b>${env} de ${TOTAL}</b> já enviaram. Faltam ${TOTAL-env}.`;
     else nota='Ninguém começou ainda. Se o link foi enviado há mais de dois dias, vale um lembrete.';
     el('nota').innerHTML=nota;
     el('quando').textContent='Atualizado às '+new Date().toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'})+' · atualiza sozinho a cada minuto';
