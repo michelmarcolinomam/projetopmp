@@ -72,6 +72,7 @@ body.na-capa .wrap{max-width:1120px}
 .btn-1{background:var(--ink);color:#FFF} .btn-1:hover{background:#2A2A28;border-color:#2A2A28}
 .btn-2{background:transparent;color:var(--ink);border-color:var(--stroke-2)} .btn-2:hover{border-color:var(--ink);background:var(--panel-2)}
 .btn[disabled]{opacity:.5;cursor:default}
+.btn-lg{font-size:16px;padding:15px 26px}
 .part{padding-block:40px 0}
 .part-head{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
 .part-n{font-family:var(--serif);font-weight:700;font-size:28px;line-height:1;color:var(--gold);font-variant-numeric:tabular-nums}
@@ -173,8 +174,9 @@ textarea:focus{outline:2px solid var(--gold);outline-offset:1px;border-color:tra
   </section>
   <main id="quiz" hidden></main>
   <section id="fim" class="fim" hidden>
-    <p class="eyebrow">Recebido</p>
-    <h2>Obrigado. Sua leitura <em style="color:var(--gold-2)">está registrada.</em></h2>
+    <p class="eyebrow">✓ Respostas enviadas</p>
+    <h2>Concluído. Suas respostas <em style="color:var(--gold)">foram enviadas.</em></h2>
+    <p class="capa-meta" id="fim-quando"></p>
     <p class="lede">As respostas da liderança serão consolidadas e devolvidas aos sócios por dimensão — onde a casa converge, onde diverge, e o que isso pede.</p>
   </section>
 </div>
@@ -187,7 +189,7 @@ textarea:focus{outline:2px solid var(--gold);outline-offset:1px;border-color:tra
    ═════════════════════════════════════════════════════════ */
 const SUPABASE_URL='https://zokmlfocjalehjvczwep.supabase.co';
 const SUPABASE_KEY='sb_publishable_jiTPujKev4H4m-H_ABFE1w_rRvHNCVZ';
-const TABELA='pmp_lideranca_respostas', ACESSO='pmp_lideranca_acesso', VERSAO='pmp-lideranca-v10';
+const TABELA='pmp_lideranca_respostas', ACESSO='pmp_lideranca_acesso', VERSAO='pmp-lideranca-v11';
 async function supaFetch(method,path,body=null,prefer=null){
   const p=prefer!==null?prefer:(method==='POST'?'return=representation':'');
   const res=await fetch(`${SUPABASE_URL}/rest/v1/${path}`,{method,headers:{'Content-Type':'application/json','apikey':SUPABASE_KEY,'Authorization':`Bearer ${SUPABASE_KEY}`,'Prefer':p},body:body?JSON.stringify(body):null});
@@ -423,7 +425,7 @@ function renderBloco(){
   const nav=h('div','nav');
   const back=h('button','btn btn-2','← Anterior');back.type='button';back.disabled=atual===0;back.onclick=()=>{atual--;sincroniza(true);renderBloco();scrollTo(0,0);};
   const mid=h('span','mid','');
-  const next=h('button','btn btn-1',atual===BLOCOS.length-1?'Revisar e enviar →':'Próximo bloco →');next.type='button';
+  const next=h('button','btn btn-1',atual===BLOCOS.length-1?'Concluir e enviar →':'Próximo bloco →');next.type='button';
   next.onclick=()=>{if(atual===BLOCOS.length-1){renderRevisao();}else{atual++;sincroniza(true);renderBloco();scrollTo(0,0);}};
   nav.append(back,mid,next);sec.appendChild(nav);main.appendChild(sec);atualizaBloco();
 }
@@ -483,24 +485,25 @@ function paintQ(q,body){
 }
 function renderRevisao(){
   sincroniza(true); const main=el('quiz'); main.innerHTML='';
-  const sec=h('section','part'); const head=h('div','part-head'); head.appendChild(h('div','part-n','✓')); head.appendChild(h('h2',null,'Revisar e enviar')); sec.appendChild(head);
+  const sec=h('section','part'); const head=h('div','part-head'); head.appendChild(h('div','part-n','✓')); head.appendChild(h('h2',null,'Enviar minhas respostas')); sec.appendChild(head);
   const faltam=BLOCOS.flatMap(b=>b.qs.filter(q=>!respondida(q)).map(q=>({b,q})));
-  if(faltam.length){const box=h('div','faltam',`<b>${faltam.length} pergunta${faltam.length>1?'s':''} sem resposta.</b> Pode enviar assim mesmo — o que ficar em branco não entra na conta.`);
+  if(faltam.length){const box=h('div','faltam',`<b>${faltam.length} pergunta${faltam.length>1?'s':''} sem resposta.</b> Pode enviar assim mesmo — o que ficar em branco não entra na conta. Nada foi enviado ainda.`);
     const ul=h('ul');ul.style.margin='10px 0 0';ul.style.paddingLeft='18px';faltam.slice(0,12).forEach(({b,q})=>{const li=h('li',null,`<a href="#" data-b="${BLOCOS.indexOf(b)}" style="color:var(--gold)">${String(q.num).padStart(2,'0')} · ${esc(b.t)}</a>`);ul.appendChild(li);});
     if(faltam.length>12)ul.appendChild(h('li',null,`… e mais ${faltam.length-12}`));box.appendChild(ul);sec.appendChild(box);
     box.querySelectorAll('a').forEach(a=>a.onclick=e=>{e.preventDefault();atual=+a.dataset.b;renderBloco();scrollTo(0,0);});
-  } else sec.appendChild(h('p','part-intro','Tudo respondido. Ao enviar, a sua leitura fica registrada e não pode ser alterada.'));
+  } else sec.appendChild(h('p','part-intro','Tudo respondido. Nada foi enviado ainda — suas respostas só chegam à MAM quando você clicar no botão abaixo.'));
   const nav=h('div','nav');const back=h('button','btn btn-2','← Voltar');back.type='button';back.onclick=()=>{renderBloco();scrollTo(0,0);};
-  const send=h('button','btn btn-1',DEMO?'Concluir (demonstração)':'Enviar');send.type='button';send.id='btnEnviar';send.onclick=()=>enviar(send);
+  const send=h('button','btn btn-1 btn-lg',DEMO?'Enviar minhas respostas (demonstração)':'Enviar minhas respostas');send.type='button';send.id='btnEnviar';send.onclick=()=>enviar(send);
   nav.append(back,h('span','mid',''),send);sec.appendChild(nav);main.appendChild(sec);
 }
 async function enviar(btn){
   if(!DEMO&&ACESSO_OK){
     btn.disabled=true;btn.textContent='Enviando…';clearTimeout(syncTimer);finalizado=true;await fila;
     try{ await supaFetch('POST',`${TABELA}?on_conflict=respondente_id`,{chave_acesso:chave,respondente_id:RESPONDENTE,versao_questionario:VERSAO,respostas:R,legivel:respostasLegiveis(),bloco_atual:BLOCOS.length-1,status:'enviado',enviado_em:new Date().toISOString()},'resolution=merge-duplicates,return=minimal');
-      try{localStorage.removeItem(LS_KEY);localStorage.setItem(LS_KEY+'_enviado','1');}catch{} setStatus('ok','Enviado');
+      try{localStorage.removeItem(LS_KEY);localStorage.setItem(LS_KEY+'_enviado','1');}catch{} setStatus('ok','Enviado ✓');
     }catch(e){finalizado=false;btn.disabled=false;btn.textContent='Tentar enviar de novo';setStatus('err','Não consegui enviar — suas respostas estão guardadas');return;}
   }
+  el('fim-quando').textContent=(DEMO?'Demonstração — nada foi enviado de verdade. ':'')+'Registrado em '+new Date().toLocaleString('pt-BR',{dateStyle:'short',timeStyle:'short'})+'. Você já pode fechar esta página.';
   el('quiz').hidden=true;el('fim').hidden=false;scrollTo(0,0);
 }
 el('btnComecar').onclick=()=>{ document.body.classList.remove('na-capa'); el('capa').hidden=true;el('quiz').hidden=false;salvaLocal();renderBloco();scrollTo(0,0);};
