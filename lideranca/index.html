@@ -14,9 +14,9 @@
   --bg:#FFFFFF; --panel:#FFFFFF; --panel-2:#F6F7F4;
   --stroke:#E4E4DE; --stroke-2:#C6C6BF;
   --tx:#0D0D0D; --tx-2:#4A4A45; --tx-3:#8A8A83;
-  --gold:#3A8F4A; --gold-2:#2C7A3C; --gold-dim:#F0F7EA;
+  --gold:#3A7A2F; --gold-2:#2F6526; --gold-dim:#F0F7EA; --gold-soft:#E7F2E2; --gold-line:#C9E4BD;
   --ink:#0D0D0D;
-  --pos:#3A8F4A; --warn:#C49A00; --neg:#C0392B;
+  --pos:#3A7A2F; --warn:#C49A00; --neg:#C0392B;
   --sans:"Inter",ui-sans-serif,-apple-system,"Segoe UI",Roboto,sans-serif;
   --serif:"Fraunces",Georgia,"Times New Roman",serif;
 }
@@ -45,7 +45,7 @@ body.na-capa .wrap{max-width:1120px}
 .cv-main h1 em{font-style:italic;font-weight:500;color:var(--gold)}
 .cv-lede{color:var(--tx-2);max-width:52ch;margin:0 0 34px;font-size:17px;line-height:1.65}
 .cv-side{background:var(--gold-dim);border-radius:18px;padding:30px 32px 28px;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;min-height:420px}
-.cv-num{position:absolute;right:18px;top:-18px;font-family:var(--serif);font-weight:700;font-variation-settings:"opsz" 144;font-size:240px;line-height:1;color:#D8ECDC;letter-spacing:-.06em;user-select:none;pointer-events:none}
+.cv-num{position:absolute;right:18px;top:-18px;font-family:var(--serif);font-weight:700;font-variation-settings:"opsz" 144;font-size:240px;line-height:1;color:var(--gold-line);letter-spacing:-.06em;user-select:none;pointer-events:none}
 .cv-side-k{position:relative;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:14px}
 .cv-side .rules{position:relative;margin:0}
 .cv-side .rules li{font-size:14px;color:var(--tx-2)}
@@ -103,7 +103,7 @@ body.na-capa .wrap{max-width:1120px}
 .dots{display:flex;gap:8px}
 .dot-b{width:22px;height:22px;border-radius:50%;padding:0;cursor:pointer;border:1px solid var(--stroke-2);background:var(--panel);transition:.16s}
 .dot-b:hover{border-color:var(--gold);background:var(--gold-dim)}
-.dot-b[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);box-shadow:0 0 0 3px #D4EBD9}
+.dot-b[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-line)}
 .sc-lab{font-size:12.5px;color:var(--tx-3);margin:12px 0 4px}
 .rk{display:flex;flex-direction:column;gap:8px}
 .rk .opt .mk{border-radius:5px;font-size:11px}
@@ -186,7 +186,7 @@ textarea:focus{outline:2px solid var(--gold);outline-offset:1px;border-color:tra
    ═════════════════════════════════════════════════════════ */
 const SUPABASE_URL='https://zokmlfocjalehjvczwep.supabase.co';
 const SUPABASE_KEY='sb_publishable_jiTPujKev4H4m-H_ABFE1w_rRvHNCVZ';
-const TABELA='pmp_lideranca_respostas', ACESSO='pmp_lideranca_acesso', VERSAO='pmp-lideranca-v4';
+const TABELA='pmp_lideranca_respostas', ACESSO='pmp_lideranca_acesso', VERSAO='pmp-lideranca-v5';
 async function supaFetch(method,path,body=null,prefer=null){
   const p=prefer!==null?prefer:(method==='POST'?'return=representation':'');
   const res=await fetch(`${SUPABASE_URL}/rest/v1/${path}`,{method,headers:{'Content-Type':'application/json','apikey':SUPABASE_KEY,'Authorization':`Bearer ${SUPABASE_KEY}`,'Prefer':p},body:body?JSON.stringify(body):null});
