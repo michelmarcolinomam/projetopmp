@@ -42,7 +42,7 @@ body.na-capa .wrap{max-width:1120px}
 .cv-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:stretch;flex:1;padding-block:56px 40px}
 .cv-kicker{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin:0 0 22px;font-weight:700}
 .cv-main h1{font-family:var(--serif);font-weight:600;font-variation-settings:"opsz" 144;font-size:clamp(40px,6.2vw,76px);line-height:1.0;letter-spacing:-.025em;margin:0 0 26px;text-wrap:balance}
-.cv-main h1 em{font-style:italic;font-weight:500;color:var(--gold)}
+.cv-main h1 em{font-style:italic;font-weight:500;color:var(--ink);background:#EEF5E9;padding:.02em .12em .04em;margin-inline:-.06em;border-radius:.12em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 .cv-lede{color:var(--tx-2);max-width:52ch;margin:0 0 34px;font-size:17px;line-height:1.65}
 .cv-side{background:var(--gold-dim);border-radius:18px;padding:30px 32px 28px;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;min-height:420px}
 .cv-num{position:absolute;right:18px;top:-18px;font-family:var(--serif);font-weight:700;font-variation-settings:"opsz" 144;font-size:240px;line-height:1;color:#CFE6C2;letter-spacing:-.06em;user-select:none;pointer-events:none}
@@ -186,7 +186,7 @@ textarea:focus{outline:2px solid var(--gold);outline-offset:1px;border-color:tra
    ═════════════════════════════════════════════════════════ */
 const SUPABASE_URL='https://zokmlfocjalehjvczwep.supabase.co';
 const SUPABASE_KEY='sb_publishable_jiTPujKev4H4m-H_ABFE1w_rRvHNCVZ';
-const TABELA='pmp_lideranca_respostas', ACESSO='pmp_lideranca_acesso', VERSAO='pmp-lideranca-v7';
+const TABELA='pmp_lideranca_respostas', ACESSO='pmp_lideranca_acesso', VERSAO='pmp-lideranca-v8';
 async function supaFetch(method,path,body=null,prefer=null){
   const p=prefer!==null?prefer:(method==='POST'?'return=representation':'');
   const res=await fetch(`${SUPABASE_URL}/rest/v1/${path}`,{method,headers:{'Content-Type':'application/json','apikey':SUPABASE_KEY,'Authorization':`Bearer ${SUPABASE_KEY}`,'Prefer':p},body:body?JSON.stringify(body):null});
