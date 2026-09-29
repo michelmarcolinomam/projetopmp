@@ -33,11 +33,30 @@ body{margin:0;background:var(--bg);color:var(--tx);font-family:var(--sans);font-
 .status{font-size:11.5px;color:var(--tx-3);white-space:nowrap;display:flex;align-items:center;gap:6px}
 .dot{width:6px;height:6px;border-radius:50%;background:var(--tx-3)}
 .status.ok .dot{background:var(--pos)} .status.saving .dot{background:var(--warn)} .status.err .dot{background:var(--neg)}
-.cover{padding-block:56px 40px}
-.eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin:0 0 18px}
-.cover h1{font-family:var(--serif);font-weight:600;font-variation-settings:"opsz" 96;font-size:clamp(34px,7vw,50px);line-height:1.06;letter-spacing:-.02em;margin:0 0 18px;text-wrap:balance}
-.cover h1 em{font-style:italic;font-weight:500;color:var(--gold)}
+body.na-capa .wrap{max-width:1120px}
+.cover{padding-block:28px 48px;min-height:calc(100vh - 52px);display:flex;flex-direction:column}
+.cv-top{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-bottom:22px;border-bottom:1px solid var(--stroke)}
+.cv-logo{height:20px;width:auto;color:var(--ink);display:block}
+.cv-tag{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--tx-3);white-space:nowrap}
+.cv-tag b{color:var(--gold);font-weight:700}
+.cv-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:stretch;flex:1;padding-block:56px 40px}
+.cv-kicker{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin:0 0 22px;font-weight:700}
+.cv-main h1{font-family:var(--serif);font-weight:600;font-variation-settings:"opsz" 144;font-size:clamp(40px,6.2vw,76px);line-height:1.0;letter-spacing:-.025em;margin:0 0 26px;text-wrap:balance}
+.cv-main h1 em{font-style:italic;font-weight:500;color:var(--gold)}
+.cv-lede{color:var(--tx-2);max-width:52ch;margin:0 0 34px;font-size:17px;line-height:1.65}
+.cv-side{background:var(--gold-dim);border-radius:18px;padding:30px 32px 28px;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;min-height:420px}
+.cv-num{position:absolute;right:18px;top:-18px;font-family:var(--serif);font-weight:700;font-variation-settings:"opsz" 144;font-size:240px;line-height:1;color:#D8ECDC;letter-spacing:-.06em;user-select:none;pointer-events:none}
+.cv-side-k{position:relative;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:14px}
+.cv-side .rules{position:relative;margin:0}
+.cv-side .rules li{font-size:14px;color:var(--tx-2)}
+.cv-side .rules li::before{background:var(--gold)}
+.cv-quote{padding-top:24px;border-top:1px solid var(--stroke);display:flex;justify-content:space-between;align-items:baseline;gap:24px;flex-wrap:wrap}
+.cv-quote q{font-family:var(--serif);font-style:italic;font-weight:500;font-size:20px;color:var(--ink)}
+.cv-quote span{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--tx-3)}
+.capa-meta{font-size:13px;color:var(--tx-3);margin-top:14px}
+@media (max-width:820px){.cv-grid{grid-template-columns:1fr;gap:28px;padding-block:36px 28px}.cv-side{min-height:0;padding:26px 24px}.cv-num{font-size:160px;top:-10px;right:10px}.cv-top{flex-wrap:wrap}.cv-tag{white-space:normal}}
 .lede{color:var(--tx-2);max-width:60ch;margin:0 0 24px;font-size:16.5px}
+.fim .eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin:0 0 18px}
 .rules{margin:0 0 28px;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px}
 .rules li{padding-left:22px;position:relative;color:var(--tx-2);font-size:14.5px}
 .rules li::before{content:"";position:absolute;left:0;top:10px;width:9px;height:9px;border-radius:50%;background:var(--gold)}
@@ -110,7 +129,7 @@ textarea:focus{outline:2px solid var(--gold);outline-offset:1px;border-color:tra
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
-<body>
+<body class="na-capa">
 <div class="bar"><div class="bar-in">
   <div class="bar-id">Paraná Moda Park · <b>Liderança</b><span class="demo" id="demoTag" hidden>Demonstração</span></div>
   <div class="meter" aria-hidden="true"><i id="meter"></i></div>
@@ -119,19 +138,37 @@ textarea:focus{outline:2px solid var(--gold);outline-offset:1px;border-color:tra
 
 <div class="wrap">
   <section id="capa" class="cover">
-    <p class="eyebrow">MAM Brand · Projeto Brand Gap · Etapa 2</p>
-    <h1 id="capa-t">Alinhamento estratégico <em>da liderança.</em></h1>
-    <p class="lede" id="capa-s">Os sócios do Paraná Moda Park fecharam, por escrito, a intenção estratégica da marca. Este questionário verifica em que medida essa intenção é compartilhada pela liderança que a conduz. Não há resposta certa: o que se mede é convergência, não desempenho.</p>
-    <ul class="rules" id="rules">
-      <li>Responda sozinho, sem consultar colegas nem documentos. O que vale é a sua leitura hoje.</li>
-      <li>Nenhuma resposta é associada a você — não se pede nome, área nem cargo. A análise é agregada, por dimensão.</li>
-      <li>Onde diz <b>escolha 1</b>, só uma. Onde diz <b>marque até N</b>, no máximo N.</li>
-      <li>Nas escalas, o meio é “nem um nem outro” — não “tanto faz”. <b>V ou F</b>: verdadeiro se a frase pode ser dita hoje, em voz alta, a um lojista.</li>
-      <li>Salva sozinho. Dá para parar e continuar depois, no mesmo navegador.</li>
-    </ul>
-    <button class="btn btn-1" id="btnComecar">Começar →</button>
-    <p class="capa-meta" id="capa-meta"></p>
-    <div class="err" id="capa-err" hidden></div>
+    <div class="cv-top">
+      <svg class="cv-logo" role="img" aria-label="MAM Brand" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 743.9 150" fill="currentColor">
+  <polygon points="690.5 17.9 657.7 106.2 651.9 121.8 646.1 106.2 613.3 17.9 581.2 17.9 581.2 132.1 599.9 132.1 599.9 35.3 635.9 132.1 667.9 132.1 703.9 35.3 703.9 132.1 722.6 132.1 722.6 17.9 690.5 17.9"/>
+  <path d="M473,17.9l-45.4,114.2h20l19.6-49.3,6.3,15.9h43.3l13.3,33.4h20l-45.4-114.2h-31.6ZM467.1,82.7l21.6-54.4,21.6,54.4h-43.2Z"/>
+  <polygon points="364.2 17.9 325.6 121.8 287 17.9 254.9 17.9 254.9 132.1 273.7 132.1 273.7 35.3 309.7 132.1 341.6 132.1 377.6 35.3 377.6 132.1 396.3 132.1 396.3 17.9 364.2 17.9"/>
+  <path d="M92,61.9L46.9,18h-25.7v114.1h25.7l31.6-30.9v-26.2l6.9,6.7h0s51.6,50.3,51.6,50.3h25.7V18h-25.7l-45.1,43.9ZM40,112.6V37.4l38.5,37.6-38.5,37.6ZM144,112.6l-38.5-37.6,38.5-37.6v75.2Z"/>
+</svg>
+      <div class="cv-tag">Projeto Brand Gap · <b>Etapa 2</b> · Onda 02</div>
+    </div>
+    <div class="cv-grid">
+      <div class="cv-main">
+        <p class="cv-kicker">Paraná Moda Park</p>
+        <h1 id="capa-t">Alinhamento estratégico <em>da liderança.</em></h1>
+        <p class="cv-lede" id="capa-s">Os sócios do Paraná Moda Park fecharam, por escrito, o que a marca pretende significar. Este questionário mede em que medida essa intenção é compartilhada pela liderança que a conduz. Não há resposta certa — o que se mede é convergência, não desempenho.</p>
+        <button class="btn btn-1" id="btnComecar">Começar →</button>
+        <p class="capa-meta" id="capa-meta"></p>
+        <div class="err" id="capa-err" hidden></div>
+      </div>
+      <aside class="cv-side">
+        <div class="cv-num" aria-hidden="true">02</div>
+        <div class="cv-side-k">Como funciona</div>
+        <ul class="rules" id="rules">
+          <li>Responda sozinho, sem consultar colegas nem documentos. O que vale é a sua leitura hoje.</li>
+          <li>Nenhuma resposta é associada a você — não se pede nome, área nem cargo. A análise é agregada, por dimensão.</li>
+          <li>Onde diz <b>escolha 1</b>, só uma. Onde diz <b>marque até N</b>, no máximo N.</li>
+          <li>Nas escalas, o meio é “nem um nem outro”. <b>V ou F</b>: verdadeiro se a frase pode ser dita hoje, em voz alta, a um lojista.</li>
+          <li>Salva sozinho. Dá para parar e continuar depois, no mesmo navegador.</li>
+        </ul>
+      </aside>
+    </div>
+    <div class="cv-quote"><q>Antes de construir a marca, alinhar quem a entrega.</q><span>MAM Brand · Consultoria estratégica de marcas</span></div>
   </section>
   <main id="quiz" hidden></main>
   <section id="fim" class="fim" hidden>
@@ -149,7 +186,7 @@ textarea:focus{outline:2px solid var(--gold);outline-offset:1px;border-color:tra
    ═════════════════════════════════════════════════════════ */
 const SUPABASE_URL='https://zokmlfocjalehjvczwep.supabase.co';
 const SUPABASE_KEY='sb_publishable_jiTPujKev4H4m-H_ABFE1w_rRvHNCVZ';
-const TABELA='pmp_lideranca_respostas', ACESSO='pmp_lideranca_acesso', VERSAO='pmp-lideranca-v3';
+const TABELA='pmp_lideranca_respostas', ACESSO='pmp_lideranca_acesso', VERSAO='pmp-lideranca-v4';
 async function supaFetch(method,path,body=null,prefer=null){
   const p=prefer!==null?prefer:(method==='POST'?'return=representation':'');
   const res=await fetch(`${SUPABASE_URL}/rest/v1/${path}`,{method,headers:{'Content-Type':'application/json','apikey':SUPABASE_KEY,'Authorization':`Bearer ${SUPABASE_KEY}`,'Prefer':p},body:body?JSON.stringify(body):null});
@@ -465,7 +502,7 @@ async function enviar(btn){
   }
   el('quiz').hidden=true;el('fim').hidden=false;scrollTo(0,0);
 }
-el('btnComecar').onclick=()=>{ el('capa').hidden=true;el('quiz').hidden=false;salvaLocal();renderBloco();scrollTo(0,0);};
+el('btnComecar').onclick=()=>{ document.body.classList.remove('na-capa'); el('capa').hidden=true;el('quiz').hidden=false;salvaLocal();renderBloco();scrollTo(0,0);};
 document.addEventListener('visibilitychange',()=>{if(document.hidden&&!finalizado&&dirty)sincroniza(true);});
 window.addEventListener('pagehide',()=>{if(!finalizado&&dirty)sincroniza(true);});
 boot();
