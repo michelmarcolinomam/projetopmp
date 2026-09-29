@@ -118,24 +118,16 @@ textarea:focus{outline:2px solid var(--gold);outline-offset:1px;border-color:tra
 
 <div class="wrap">
   <section id="capa" class="cover">
-    <p class="eyebrow">MAM Brand · Projeto de Gestão de Marca · Etapa 2</p>
+    <p class="eyebrow">MAM Brand · Projeto Brand Gap · Etapa 2</p>
     <h1 id="capa-t">Alinhamento estratégico <em>da liderança.</em></h1>
-    <p class="lede" id="capa-s">A diretoria do Paraná Moda Park fechou, por escrito, a intenção estratégica da marca. Este questionário verifica em que medida essa intenção é compartilhada por quem a executa. Não há resposta certa: o que se mede é convergência, não desempenho.</p>
+    <p class="lede" id="capa-s">Os sócios do Paraná Moda Park fecharam, por escrito, a intenção estratégica da marca. Este questionário verifica em que medida essa intenção é compartilhada pela liderança que a conduz. Não há resposta certa: o que se mede é convergência, não desempenho.</p>
     <ul class="rules" id="rules">
       <li>Responda sozinho, sem consultar colegas nem documentos. O que vale é a sua leitura hoje.</li>
-      <li>Nenhuma resposta é associada ao seu nome. A análise é agregada, por dimensão.</li>
+      <li>Nenhuma resposta é associada a você — não se pede nome, área nem cargo. A análise é agregada, por dimensão.</li>
       <li>Onde diz <b>escolha 1</b>, só uma. Onde diz <b>marque até N</b>, no máximo N.</li>
       <li>Nas escalas, o meio é “nem um nem outro” — não “tanto faz”. <b>V ou F</b>: verdadeiro se a frase pode ser dita hoje, em voz alta, a um lojista.</li>
       <li>Salva sozinho. Dá para parar e continuar depois, no mesmo navegador.</li>
     </ul>
-    <div class="meta-in" id="meta-in">
-      <label>Sua área</label>
-      <div class="chips" id="areaChips"></div>
-    </div>
-    <div class="meta-in" id="meta-in2">
-      <label>Tempo de casa</label>
-      <div class="chips" id="tempoChips"></div>
-    </div>
     <button class="btn btn-1" id="btnComecar">Começar →</button>
     <p class="capa-meta" id="capa-meta"></p>
     <div class="err" id="capa-err" hidden></div>
@@ -144,7 +136,7 @@ textarea:focus{outline:2px solid var(--gold);outline-offset:1px;border-color:tra
   <section id="fim" class="fim" hidden>
     <p class="eyebrow">Recebido</p>
     <h2>Obrigado. Sua leitura <em style="color:var(--gold-2)">está registrada.</em></h2>
-    <p class="lede">As respostas da liderança serão consolidadas e devolvidas à diretoria por dimensão — onde a casa converge, onde diverge, e o que isso pede.</p>
+    <p class="lede">As respostas da liderança serão consolidadas e devolvidas aos sócios por dimensão — onde a casa converge, onde diverge, e o que isso pede.</p>
   </section>
 </div>
 
@@ -156,7 +148,7 @@ textarea:focus{outline:2px solid var(--gold);outline-offset:1px;border-color:tra
    ═════════════════════════════════════════════════════════ */
 const SUPABASE_URL='https://zokmlfocjalehjvczwep.supabase.co';
 const SUPABASE_KEY='sb_publishable_jiTPujKev4H4m-H_ABFE1w_rRvHNCVZ';
-const TABELA='pmp_lideranca_respostas', ACESSO='pmp_lideranca_acesso', VERSAO='pmp-lideranca-v1';
+const TABELA='pmp_lideranca_respostas', ACESSO='pmp_lideranca_acesso', VERSAO='pmp-lideranca-v2';
 async function supaFetch(method,path,body=null,prefer=null){
   const p=prefer!==null?prefer:(method==='POST'?'return=representation':'');
   const res=await fetch(`${SUPABASE_URL}/rest/v1/${path}`,{method,headers:{'Content-Type':'application/json','apikey':SUPABASE_KEY,'Authorization':`Bearer ${SUPABASE_KEY}`,'Prefer':p},body:body?JSON.stringify(body):null});
@@ -180,8 +172,6 @@ function ordem(q){
   return idx;
 }
 
-const AREAS=["Comercial","Locação","Marketing","Hotelaria","Eventos","Financeiro / administrativo","Operações","Outra"];
-const TEMPOS=["Até 1 ano","1 a 3 anos","3 a 7 anos","Mais de 7 anos"];
 
 /* ═══════════ CONTEÚDO — mesmas alternativas oferecidas à diretoria ═══════════ */
 const BLOCOS=[
@@ -357,13 +347,13 @@ function sincroniza(agora=false){
   clearTimeout(syncTimer);
   const manda=()=>{ if(finalizado)return; setStatus('saving','Salvando…');
     return enfileira(()=>supaFetch('POST',`${TABELA}?on_conflict=respondente_id`,{
-      chave_acesso:chave,respondente_id:RESPONDENTE,area:META.area,tempo_casa:META.tempo,versao_questionario:VERSAO,
+      chave_acesso:chave,respondente_id:RESPONDENTE,versao_questionario:VERSAO,
       respostas:R,legivel:respostasLegiveis(),bloco_atual:atual,status:'parcial'
     },'resolution=merge-duplicates,return=minimal').then(()=>setStatus('ok','Salvo · '+progresso().n+' de '+NUM)).catch(()=>setStatus('err','Sem conexão — guardado neste aparelho')));
   };
   if(agora)manda(); else syncTimer=setTimeout(manda,2500);
 }
-function capaErro(t,s){el('capa-t').innerHTML=t;el('capa-s').textContent=s;el('rules').hidden=true;el('btnComecar').hidden=true;el('meta-in').hidden=true;el('meta-in2').hidden=true;el('capa-meta').hidden=true;}
+function capaErro(t,s){el('capa-t').innerHTML=t;el('capa-s').textContent=s;el('rules').hidden=true;el('btnComecar').hidden=true;el('capa-meta').hidden=true;}
 
 async function boot(){
   el('capa-meta').textContent=`${BLOCOS.length} blocos · ${NUM} perguntas · 25 a 30 minutos`;
@@ -373,19 +363,14 @@ async function boot(){
       if(!rows||!rows.length){setStatus('err','Link inválido');return capaErro('Esse link não é <em>válido</em>.','Confira o link que você recebeu — ele precisa vir completo, com a chave de acesso.');}
       ACESSO_OK=true;
     }catch{setStatus('err','Sem conexão');return capaErro('Não consegui <em>carregar</em>.','Houve um problema de conexão. Recarregue a página em instantes.');}
-    if(jaEnviado()){finalizado=true;setStatus('ok','Enviado');return capaErro('Já <em>recebemos</em> a sua leitura.','Obrigado. As respostas da liderança serão consolidadas e devolvidas por dimensão.');}
+    if(jaEnviado()){finalizado=true;setStatus('ok','Enviado');return capaErro('Já <em>recebemos</em> a sua leitura.','Obrigado. As respostas da liderança serão consolidadas e devolvidas aos sócios por dimensão.');}
     setStatus('ok','Pronto');
   }
   let salvo=null; try{salvo=JSON.parse(localStorage.getItem(LS_KEY)||'null');}catch{}
   if(salvo&&salvo.R&&Object.keys(salvo.R).length){Object.assign(R,salvo.R);atual=Math.min(salvo.atual||0,BLOCOS.length-1);Object.assign(META,salvo.META||{});el('btnComecar').textContent='Continuar de onde parei →';}
   paintMeta(); progresso();
 }
-function paintMeta(){
-  document.querySelectorAll('#areaChips .chip').forEach(c=>c.setAttribute('aria-pressed',String(META.area===c.textContent)));
-  document.querySelectorAll('#tempoChips .chip').forEach(c=>c.setAttribute('aria-pressed',String(META.tempo===c.textContent)));
-}
-AREAS.forEach(a=>{const b=document.createElement('button');b.type='button';b.className='chip';b.textContent=a;b.onclick=()=>{META.area=a;paintMeta();salvaLocal();};el('areaChips').appendChild(b);});
-TEMPOS.forEach(a=>{const b=document.createElement('button');b.type='button';b.className='chip';b.textContent=a;b.onclick=()=>{META.tempo=a;paintMeta();salvaLocal();};el('tempoChips').appendChild(b);});
+function paintMeta(){}
 
 /* ═══════════ RENDER ═══════════ */
 function h(tag,cls,html){const n=document.createElement(tag);if(cls)n.className=cls;if(html!=null)n.innerHTML=html;return n;}
@@ -473,13 +458,13 @@ function renderRevisao(){
 async function enviar(btn){
   if(!DEMO&&ACESSO_OK){
     btn.disabled=true;btn.textContent='Enviando…';clearTimeout(syncTimer);finalizado=true;await fila;
-    try{ await supaFetch('POST',`${TABELA}?on_conflict=respondente_id`,{chave_acesso:chave,respondente_id:RESPONDENTE,area:META.area,tempo_casa:META.tempo,versao_questionario:VERSAO,respostas:R,legivel:respostasLegiveis(),bloco_atual:BLOCOS.length-1,status:'enviado',enviado_em:new Date().toISOString()},'resolution=merge-duplicates,return=minimal');
+    try{ await supaFetch('POST',`${TABELA}?on_conflict=respondente_id`,{chave_acesso:chave,respondente_id:RESPONDENTE,versao_questionario:VERSAO,respostas:R,legivel:respostasLegiveis(),bloco_atual:BLOCOS.length-1,status:'enviado',enviado_em:new Date().toISOString()},'resolution=merge-duplicates,return=minimal');
       try{localStorage.removeItem(LS_KEY);localStorage.setItem(LS_KEY+'_enviado','1');}catch{} setStatus('ok','Enviado');
     }catch(e){finalizado=false;btn.disabled=false;btn.textContent='Tentar enviar de novo';setStatus('err','Não consegui enviar — suas respostas estão guardadas');return;}
   }
   el('quiz').hidden=true;el('fim').hidden=false;scrollTo(0,0);
 }
-el('btnComecar').onclick=()=>{ if(!META.area){el('capa-err').hidden=false;el('capa-err').textContent='Marque a sua área antes de começar.';return;} el('capa-err').hidden=true; el('capa').hidden=true;el('quiz').hidden=false;salvaLocal();renderBloco();scrollTo(0,0);};
+el('btnComecar').onclick=()=>{ el('capa').hidden=true;el('quiz').hidden=false;salvaLocal();renderBloco();scrollTo(0,0);};
 document.addEventListener('visibilitychange',()=>{if(document.hidden&&!finalizado&&dirty)sincroniza(true);});
 window.addEventListener('pagehide',()=>{if(!finalizado&&dirty)sincroniza(true);});
 boot();
