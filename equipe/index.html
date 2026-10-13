@@ -1,0 +1,505 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="Cache-Control" content="no-cache">
+<title>Alinhamento da Equipe — Paraná Moda Park</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFFFFF; --panel:#FFFFFF; --panel-2:#F6F7F4;
+  --stroke:#E4E4DE; --stroke-2:#C6C6BF;
+  --tx:#0D0D0D; --tx-2:#4A4A45; --tx-3:#8A8A83;
+  --gold:#3A8F4A; --gold-2:#2E5E3A; --gold-mid:#7AB356; --gold-dim:#F0F7EA; --gold-soft:#E7F2E2; --gold-line:#A8D48A;
+  --ink:#0D0D0D;
+  --pos:#3A8F4A; --warn:#8A6D00; --neg:#A83224;
+  --sans:"Inter",ui-sans-serif,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --serif:"Fraunces",Georgia,"Times New Roman",serif;
+}
+*{box-sizing:border-box}
+html{background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:var(--sans);font-size:15px;line-height:1.6}
+.wrap{max-width:820px;margin:0 auto;padding-inline:20px;padding-block:0 120px}
+.bar{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--stroke);position:sticky}
+.bar-in{max-width:820px;margin:0 auto;padding:11px 20px;display:flex;align-items:center;gap:14px;flex-wrap:nowrap;position:relative}
+.bar-id{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--tx-3);flex:1 1 auto;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar-id b{color:var(--gold);font-weight:700}
+.meter{position:absolute;left:0;right:0;bottom:-1px;height:2px;background:transparent;overflow:hidden}
+.meter i{display:block;height:100%;width:0;background:var(--gold-mid);transition:width .4s cubic-bezier(.19,1,.22,1)}
+.status{flex:0 0 auto}
+.status{font-size:11.5px;color:var(--tx-3);white-space:nowrap;display:flex;align-items:center;gap:6px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--tx-3)}
+.status.ok .dot{background:var(--pos)} .status.saving .dot{background:var(--warn)} .status.err .dot{background:var(--neg)}
+body.na-capa .wrap{max-width:1120px}
+.cover{padding-block:28px 48px;min-height:calc(100vh - 52px);display:flex;flex-direction:column}
+.cv-top{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-bottom:22px;border-bottom:1px solid var(--stroke)}
+.cv-logo{height:20px;width:auto;color:var(--ink);display:block}
+.cv-tag{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--tx-3);white-space:nowrap}
+.cv-tag b{color:var(--gold);font-weight:700}
+.cv-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:stretch;flex:1;padding-block:56px 40px}
+.cv-kicker{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin:0 0 22px;font-weight:700}
+.cv-main h1{font-family:var(--serif);font-weight:600;font-variation-settings:"opsz" 144;font-size:clamp(38px,6vw,72px);line-height:1.04;letter-spacing:-.025em;margin:0 0 26px}
+.cv-main h1 em{display:inline-block;font-style:italic;font-weight:500;color:var(--ink);background:#EEF5E9;line-height:1.08;padding:.02em .16em .07em .12em;margin:.1em 0 0 -.1em;border-radius:.1em;white-space:nowrap}
+.cv-lede{color:var(--tx-2);max-width:52ch;margin:0 0 34px;font-size:17px;line-height:1.65}
+.cv-side{background:var(--gold-dim);border-radius:18px;padding:30px 32px 28px;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;min-height:420px}
+.cv-num{position:absolute;right:18px;top:-18px;font-family:var(--serif);font-weight:700;font-variation-settings:"opsz" 144;font-size:240px;line-height:1;color:#CFE6C2;letter-spacing:-.06em;user-select:none;pointer-events:none}
+.cv-side-k{position:relative;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:14px}
+.cv-side .rules{position:relative;margin:0}
+.cv-side .rules li{font-size:14px;color:var(--tx-2)}
+.cv-side .rules li::before{background:var(--gold-mid)}
+.cv-quote{padding-top:24px;border-top:1px solid var(--stroke);display:flex;justify-content:space-between;align-items:baseline;gap:24px;flex-wrap:wrap}
+.cv-quote q{font-family:var(--serif);font-style:italic;font-weight:500;font-size:20px;color:var(--ink)}
+.cv-quote span{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--tx-3)}
+.capa-meta{font-size:13px;color:var(--tx-3);margin-top:14px}
+@media (max-width:820px){.cv-grid{grid-template-columns:1fr;gap:28px;padding-block:36px 28px}.cv-side{min-height:0;padding:26px 24px}.cv-num{font-size:160px;top:-10px;right:10px}.cv-top{flex-wrap:wrap}.cv-tag{white-space:normal}}
+.lede{color:var(--tx-2);max-width:60ch;margin:0 0 24px;font-size:16.5px}
+.fim .eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin:0 0 18px}
+.rules{margin:0 0 28px;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px}
+.rules li{padding-left:22px;position:relative;color:var(--tx-2);font-size:14.5px}
+.rules li::before{content:"";position:absolute;left:0;top:10px;width:9px;height:9px;border-radius:50%;background:var(--gold)}
+.meta-in{margin:0 0 22px}
+.meta-in label{display:block;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--tx-3);margin-bottom:8px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{background:var(--panel);border:1px solid var(--stroke);border-radius:999px;color:var(--tx-2);font-family:var(--sans);font-size:13.5px;padding:8px 15px;cursor:pointer;transition:.18s}
+.chip:hover{border-color:var(--stroke-2);color:var(--tx)}
+.chip[aria-pressed="true"]{background:var(--gold-dim);border-color:var(--gold);color:var(--ink);font-weight:700}
+.capa-meta{font-size:13px;color:var(--tx-3);margin-top:14px}
+.err{margin:20px 0 0;padding:14px 16px;border-radius:9px;border:1px solid rgba(180,68,58,.32);background:rgba(180,68,58,.07);color:#8E3229;font-size:14px}
+.btn{font-family:var(--sans);font-size:14.5px;font-weight:600;cursor:pointer;border-radius:8px;padding:12px 20px;transition:.18s;border:1px solid var(--ink)}
+.btn-1{background:var(--ink);color:#FFF} .btn-1:hover{background:#2A2A28;border-color:#2A2A28}
+.btn-2{background:transparent;color:var(--ink);border-color:var(--stroke-2)} .btn-2:hover{border-color:var(--ink);background:var(--panel-2)}
+.btn[disabled]{opacity:.5;cursor:default}
+.btn-lg{font-size:16px;padding:15px 26px}
+.part{padding-block:40px 0}
+.part-head{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
+.part-n{font-family:var(--serif);font-weight:700;font-size:28px;line-height:1;color:var(--gold);font-variant-numeric:tabular-nums}
+.part-head h2{font-family:var(--serif);font-weight:600;font-variation-settings:"opsz" 72;font-size:clamp(26px,4.8vw,34px);line-height:1.12;margin:0;letter-spacing:-.015em;text-wrap:balance}
+.part-intro{color:var(--tx-2);font-size:15px;margin:10px 0 22px;max-width:62ch}
+.part-count{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--tx-3);margin-bottom:22px}
+.q{border-top:1px solid var(--stroke);padding-block:22px;scroll-margin-top:64px}
+.q-h{display:flex;gap:13px;align-items:flex-start;margin-bottom:12px}
+.q-n{flex:0 0 auto;font-size:11.5px;font-weight:700;color:var(--gold);font-variant-numeric:tabular-nums;padding-top:4px;min-width:22px}
+.q-txt{margin:0;font-size:16px;line-height:1.5}
+.q-hint{margin:6px 0 0;font-size:13px;color:var(--tx-3)}
+.body{margin-left:35px}
+.stack{display:flex;flex-direction:column;gap:8px}
+.opt{display:flex;align-items:flex-start;gap:12px;text-align:left;cursor:pointer;transition:.18s;width:100%;background:var(--panel);border:1px solid var(--stroke);border-radius:9px;color:var(--tx-2);font-family:var(--sans);font-size:14.5px;line-height:1.45;padding:12px 15px}
+.opt:hover{border-color:var(--stroke-2);color:var(--tx)}
+.opt .mk{flex:0 0 auto;width:18px;height:18px;margin-top:2px;border:1.5px solid var(--stroke-2);background:var(--panel);transition:.18s;border-radius:50%;display:grid;place-items:center;font-size:10px;font-weight:800;color:#fff}
+.opt.sq .mk{border-radius:5px}
+.opt[aria-pressed="true"]{background:var(--gold-dim);border-color:var(--gold);color:var(--ink);font-weight:600}
+.opt[aria-pressed="true"] .mk{background:var(--gold);border-color:var(--gold)}
+.opt.dis{opacity:.45}
+.vf{display:grid;grid-template-columns:auto 1fr;gap:10px 14px;align-items:start}
+.vf-btns{display:flex;gap:6px}
+.vf-b{width:42px;height:34px;border-radius:7px;border:1px solid var(--stroke);background:var(--panel);font-family:var(--sans);font-weight:800;font-size:13px;color:var(--tx-3);cursor:pointer;transition:.18s}
+.vf-b[aria-pressed="true"].v{background:var(--gold-dim);border-color:var(--gold);color:var(--gold)}
+.vf-b[aria-pressed="true"].f{background:#FBE4E0;border-color:var(--neg);color:var(--neg)}
+.vf-t{font-size:14.5px;color:var(--tx-2);padding-top:6px}
+.sc{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px;margin-top:4px}
+.sc-l{text-align:right;font-size:13.5px;color:var(--tx-2)} .sc-r{font-size:13.5px;color:var(--tx-2)}
+.dots{display:flex;gap:8px}
+.dot-b{width:22px;height:22px;border-radius:50%;padding:0;cursor:pointer;border:1px solid var(--stroke-2);background:var(--panel);transition:.16s}
+.dot-b:hover{border-color:var(--gold);background:var(--gold-dim)}
+.dot-b[aria-pressed="true"]{background:var(--gold-mid);border-color:var(--gold-mid);box-shadow:0 0 0 3px var(--gold-dim)}
+.sc-lab{font-size:12.5px;color:var(--tx-3);margin:12px 0 4px}
+.rk{display:flex;flex-direction:column;gap:8px}
+.rk .opt .mk{border-radius:5px;font-size:11px}
+.rk-hint{font-size:12.5px;color:var(--tx-3);margin:0 0 8px}
+.cl{display:grid;grid-template-columns:1fr auto;gap:8px 12px;align-items:center}
+.cl-t{font-size:14.5px;color:var(--tx-2)}
+.cl-b{display:flex;gap:5px}
+.cl-b button{height:32px;padding:0 11px;border-radius:7px;border:1px solid var(--stroke);background:var(--panel);font-family:var(--sans);font-weight:700;font-size:12px;color:var(--tx-3);cursor:pointer;transition:.18s}
+.cl-b button[aria-pressed="true"]{background:var(--gold-dim);border-color:var(--gold);color:var(--gold-2)}
+.cl-leg{font-size:12.5px;color:var(--tx-3);margin:0 0 10px}
+textarea{width:100%;background:var(--panel);border:1px solid var(--stroke);border-radius:8px;color:var(--tx);font-family:var(--sans);font-size:14.5px;line-height:1.55;padding:10px 13px;resize:none;min-height:48px;overflow:hidden;margin-top:10px}
+textarea::placeholder{color:#A3ACA0}
+textarea:focus{outline:2px solid var(--gold);outline-offset:1px;border-color:transparent}
+.nav{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:40px;padding-top:24px;border-top:1px solid var(--stroke)}
+.nav .mid{font-size:12.5px;color:var(--tx-3)}
+.fim{padding-block:60px 40px}
+.fim h2{font-family:var(--serif);font-weight:600;font-variation-settings:"opsz" 96;font-size:clamp(30px,6vw,42px);line-height:1.1;margin:0 0 16px}
+.faltam{margin:18px 0 0;padding:14px 16px;border-radius:9px;background:var(--panel-2);border:1px solid var(--stroke);font-size:14px;color:var(--tx-2)}
+.faltam b{color:var(--ink)}
+.demo{display:inline-block;margin-left:10px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--tx-3);border:1px solid var(--stroke-2);border-radius:4px;padding:2px 7px}
+[hidden]{display:none!important}
+@media (max-width:540px){
+  .body{margin-left:0}
+  .bar-in{padding:10px 16px;gap:10px}
+  .demo{margin-left:6px;padding:1px 5px;font-size:9px}
+  .status{font-size:11px}
+  /* pares: esquerda e direita na mesma linha das bolinhas */
+  .sc{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:8px;margin-top:6px}
+  .sc-l{font-size:12px;text-align:right;overflow-wrap:anywhere} .sc-r{font-size:12px;text-align:left;overflow-wrap:anywhere;padding-right:4px}
+  .dots{gap:8px}
+  .dot-b{width:26px;height:26px}
+  /* P/S e O/N/X: botões à direita, na mesma linha, com divisória entre itens */
+  .cl{grid-template-columns:minmax(0,1fr) auto;gap:0 10px}
+  .cl-t{padding:10px 0;border-bottom:1px solid var(--stroke);font-size:14px}
+  .cl-b{padding:7px 0;border-bottom:1px solid var(--stroke)}
+  .cl-b button{height:38px;padding:0 13px;font-size:12.5px}
+  .vf-b{width:44px;height:38px}
+  .opt{padding:13px 14px}
+  /* navegação: contador em cima, botões lado a lado */
+  .nav{flex-wrap:wrap}
+  .nav .mid{width:100%;order:-1;text-align:center}
+  .nav .btn{flex:1 1 0}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body class="na-capa">
+<div class="bar"><div class="bar-in">
+  <div class="bar-id">Paraná Moda Park · <b>Equipe</b><span class="demo" id="demoTag" hidden>Demonstração</span></div>
+  <div class="meter" aria-hidden="true"><i id="meter"></i></div>
+  <div class="status" id="status"><span class="dot"></span><span id="statusTx">Conectando…</span></div>
+</div></div>
+
+<div class="wrap">
+  <section id="capa" class="cover">
+    <div class="cv-top">
+      <svg class="cv-logo" role="img" aria-label="MAM Brand" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 743.9 150" fill="currentColor">
+  <polygon points="690.5 17.9 657.7 106.2 651.9 121.8 646.1 106.2 613.3 17.9 581.2 17.9 581.2 132.1 599.9 132.1 599.9 35.3 635.9 132.1 667.9 132.1 703.9 35.3 703.9 132.1 722.6 132.1 722.6 17.9 690.5 17.9"/>
+  <path d="M473,17.9l-45.4,114.2h20l19.6-49.3,6.3,15.9h43.3l13.3,33.4h20l-45.4-114.2h-31.6ZM467.1,82.7l21.6-54.4,21.6,54.4h-43.2Z"/>
+  <polygon points="364.2 17.9 325.6 121.8 287 17.9 254.9 17.9 254.9 132.1 273.7 132.1 273.7 35.3 309.7 132.1 341.6 132.1 377.6 35.3 377.6 132.1 396.3 132.1 396.3 17.9 364.2 17.9"/>
+  <path d="M92,61.9L46.9,18h-25.7v114.1h25.7l31.6-30.9v-26.2l6.9,6.7h0s51.6,50.3,51.6,50.3h25.7V18h-25.7l-45.1,43.9ZM40,112.6V37.4l38.5,37.6-38.5,37.6ZM144,112.6l-38.5-37.6,38.5-37.6v75.2Z"/>
+</svg>
+      <div class="cv-tag">Projeto Brand Gap · <b>Etapa 3</b> · Onda 03</div>
+    </div>
+    <div class="cv-grid">
+      <div class="cv-main">
+        <p class="cv-kicker">Paraná Moda Park</p>
+        <h1 id="capa-t">O que a gente é,<br><em>na visão da equipe.</em></h1>
+        <p class="cv-lede" id="capa-s">Os sócios e a liderança do Paraná Moda Park escreveram o que o shopping quer ser. Agora queremos saber como isso chega até quem faz o dia a dia acontecer. Não existe resposta certa nem errada, e ninguém vai ser avaliado — a gente só quer entender se todo mundo está falando da mesma empresa.</p>
+        <button class="btn btn-1" id="btnComecar">Começar →</button>
+        <p class="capa-meta" id="capa-meta"></p>
+        <div class="err" id="capa-err" hidden></div>
+      </div>
+      <aside class="cv-side">
+        <div class="cv-num" aria-hidden="true">03</div>
+        <div class="cv-side-k">Como funciona</div>
+        <ul class="rules" id="rules">
+          <li>Responda sozinho, do seu jeito, sem perguntar pra ninguém. O que vale é o que você pensa hoje.</li>
+          <li>Ninguém vai saber o que você respondeu. Não pedimos nome, setor nem cargo. As respostas são lidas todas juntas.</li>
+          <li>Cada pergunta diz quantas opções marcar: uma só, ou até um limite.</li>
+          <li>Nas linhas com cinco bolinhas, o meio quer dizer “nem um nem outro”.</li>
+          <li>Nas frases com <b>V</b> ou <b>F</b>: marque <b>V</b> se você acha que é verdade hoje. Se não, <b>F</b>.</li>
+          <li>Salva sozinho. Dá pra parar e continuar depois, no mesmo celular ou computador.</li>
+        </ul>
+      </aside>
+    </div>
+    <div class="cv-quote"><q>A marca é o que o cliente encontra quando chega.</q><span>MAM Brand · Consultoria estratégica de marcas</span></div>
+  </section>
+  <main id="quiz" hidden></main>
+  <section id="fim" class="fim" hidden>
+    <p class="eyebrow">✓ Respostas enviadas</p>
+    <h2>Concluído. Suas respostas <em style="color:var(--gold)">foram enviadas.</em></h2>
+    <p class="capa-meta" id="fim-quando"></p>
+    <p class="lede">Obrigado. As respostas de toda a equipe serão lidas juntas e devolvidas à direção — onde todo mundo pensa igual, onde não, e o que fazer com isso.</p>
+  </section>
+</div>
+
+<script>
+/* ═════════════════════════════════════════════════════════
+   Paraná Moda Park · Onda 03 · Equipe
+   Espelho simplificado da Onda 02, mesmos ids e mesma ordem de alternativas.
+   Sem ?chave= na URL: demonstração, nada é enviado.
+   ═════════════════════════════════════════════════════════ */
+const SUPABASE_URL='https://zokmlfocjalehjvczwep.supabase.co';
+const SUPABASE_KEY='sb_publishable_jiTPujKev4H4m-H_ABFE1w_rRvHNCVZ';
+const TABELA='pmp_equipe_respostas', ACESSO='pmp_equipe_acesso', VERSAO='pmp-equipe-v1';
+async function supaFetch(method,path,body=null,prefer=null){
+  const p=prefer!==null?prefer:(method==='POST'?'return=representation':'');
+  const res=await fetch(`${SUPABASE_URL}/rest/v1/${path}`,{method,headers:{'Content-Type':'application/json','apikey':SUPABASE_KEY,'Authorization':`Bearer ${SUPABASE_KEY}`,'Prefer':p},body:body?JSON.stringify(body):null});
+  if(res.status===204)return null;
+  if(!res.ok)throw new Error('supabase '+res.status+' '+(await res.text()));
+  const t=await res.text();return t?JSON.parse(t):null;
+}
+const chave=new URLSearchParams(location.search).get('chave');
+const DEMO=!chave;
+const LS_KEY='pmp_eqp_'+(chave||'demo');
+const RID_KEY='pmp_eqp_rid_'+(chave||'demo');
+function rid(){ try{ let r=localStorage.getItem(RID_KEY); if(!r){ r=(crypto.randomUUID?crypto.randomUUID():'r'+Date.now()+Math.random().toString(16).slice(2)); localStorage.setItem(RID_KEY,r);} return r; }catch{ return 'r'+Date.now(); } }
+const RESPONDENTE=rid();
+/* embaralha as alternativas por respondente: mesma ordem se recarregar, ordem diferente entre pessoas */
+function semente(str){let h=2166136261;for(const c of str){h^=c.charCodeAt(0);h=Math.imul(h,16777619)>>>0;}return h;}
+function ordem(q){
+  const n=(q.o||[]).length; const idx=[...Array(n).keys()];
+  if(q.fixed||q.type==='vf'||q.type==='classify'||q.type==='rank'||n<3) return idx;
+  let x=semente(RESPONDENTE+'|'+q.id)||1;
+  for(let i=n-1;i>0;i--){ x^=x<<13; x>>>=0; x^=x>>>17; x^=x<<5; x>>>=0; const j=x%(i+1); [idx[i],idx[j]]=[idx[j],idx[i]]; }
+  return idx;
+}
+
+
+/* ═══════════ CONTEÚDO — Onda 03 · Equipe ═══════════
+   Mesmos ids e mesma ordem de alternativas da Onda 02 nas perguntas espelhadas,
+   com o texto reescrito em linguagem do dia a dia. As perguntas "m" são só da equipe. */
+const BLOCOS=[
+{n:"A",t:"Pra que a gente existe",i:"Por que o Paraná Moda Park existe, e o que ele faz todo dia.",qs:[
+ {id:"a1",type:"single",q:"Se um cliente novo perguntasse “pra que existe o Paraná Moda Park?”, qual frase você diria? Escolha 1.",
+  o:["Pra fazer as marcas crescerem — a gente ajuda o lojista na gestão, no treinamento e no dia a dia.",
+     "Pra deixar o caminho mais curto e mais barato entre quem fabrica e quem compra.",
+     "Pra ser o lugar onde o lojista encontra estrutura, marcas e apoio que não teria sozinho.",
+     "Pra conectar as melhores fábricas de moda com compradores do Brasil inteiro, no melhor lugar pra isso."]},
+ {id:"a3",type:"single",q:"E o que o Paraná Moda Park faz, todo dia? Escolha 1.",
+  o:["Reúne boas marcas fabricantes, dá estrutura e apoio a elas, e traz compradores até elas.",
+     "Mantém o complexo mais completo do atacado de moda — shopping, hotel e eventos — pra comprar aqui ser fácil e valer a pena.",
+     "Cuida do negócio de cada lojista como se fosse nosso, com treinamento, acompanhamento e uma equipe que coordena tudo.",
+     "Faz o comprador de moda encontrar num só lugar as marcas, a estrutura e a facilidade que não encontra em outro polo."]},
+ {id:"a4",type:"vf",q:"Pense no Paraná Moda Park daqui a 5 anos. Marque V se você acredita que a empresa está mesmo buscando isso. Se não, F.",
+  o:["Ser reconhecido como o melhor complexo atacadista de moda do Brasil.","Vender para o Brasil inteiro, não só para a região.","Vender online e ter vendedores visitando clientes, tão forte quanto a venda aqui dentro.","O lojista daqui gastar menos para operar do que gastaria em outro polo.","O desfile de lançamento ser o evento mais importante da moda atacadista do país."]},
+ {id:"c4",type:"single",q:"Qual destas frases mais combina com o jeito da casa? Escolha 1.",
+  o:["O lojista cresce quando alguém cuida do negócio dele","Comprar no atacado deveria ser fácil, e hoje não é","Estrutura qualquer um copia; organização e relacionamento, não","O intermediário tira do lojista o que é dele","Padrão alto atrai o cliente certo e afasta o errado","Quem é bem tratado volta sem precisar de desconto","O shopping tem obrigação de trazer comprador, não só de alugar loja"]}
+]},
+{n:"B",t:"O que não se negocia",i:"O que a casa não abre mão, nem por dinheiro.",qs:[
+ {id:"b1",type:"multi",max:4,q:"Marque as 4 coisas que a casa não abre mão de jeito nenhum. Só 4.",
+  o:["Compromisso com o time","Compromisso com o negócio do lojista","Saúde financeira","Palavra cumprida — o que promete, entrega","Padrão — não vender o que é patrimônio visual do shopping","Honestidade","Lealdade","Serenidade","Ética nas relações comerciais"]},
+ {id:"b3",type:"vf",q:"Verdadeiro ou falso, pensando em como a casa age de verdade:",o:["Se um valor e uma meta de ocupação brigarem, o valor vence.","Um lojista que vende muito, mas trata mal a equipe dele, deveria ser convidado a sair."]},
+ {id:"i4",fixed:true,type:"choice",q:"Se tivesse que escolher uma só: encher todas as lojas, ou escolher bem as marcas mesmo deixando loja vazia?",o:["Encher todas as lojas","Escolher bem as marcas"]},
+ {id:"i5",fixed:true,type:"choice",q:"Fechar a loja com desconto no aluguel, ou segurar o preço e esperar o lojista certo?",o:["Fechar com desconto","Segurar o preço"]},
+ {id:"i7",fixed:true,type:"choice",q:"Crescer em tamanho (mais lojas, mais metros), ou melhorar o que já existe?",o:["Crescer em tamanho","Melhorar o que já existe"]}
+]},
+{n:"C",t:"O que só a gente tem",i:"O que faz o Paraná Moda Park ser diferente dos outros.",qs:[
+ {id:"c1",type:"multi",max:2,q:"Se você tivesse que resumir o Paraná Moda Park em uma palavra, qual seria? Marque até 2.",
+  o:["Estrutura","Parceria","Padrão","Crescimento","Conveniência","Referência","Segurança","Facilidade","Completo","Cuidado","Inteligência","Glamour"]},
+ {id:"c2",type:"single",q:"Complete: “No fundo, o que a gente vende é…” Escolha 1.",
+  o:["…a chance de o lojista crescer com alguém cuidando junto.","…um lugar onde comprar moda no atacado é fácil e vale a pena.","…estrutura e padrão que ninguém mais tem no mesmo lugar.","…marcas fabricantes que o comprador não acha sozinho.","…tranquilidade: o comprador chega, dorme, compra e volta sem susto."]},
+ {id:"d3",type:"single",q:"Complete: “O Paraná Moda Park é o único que…” Escolha 1.",
+  o:["…cuida do crescimento das marcas, com consultoria, treinamento e acompanhamento.","…tem boas fábricas, hotel e centro de eventos no mesmo lugar.","…faz o comprador chegar, dormir, comprar e voltar sem dor de cabeça.","…trabalha pra reduzir o custo do lojista em vez de só cobrar dele.","…virou referência no Brasil em apresentação de coleção."]},
+ {id:"d6",type:"single",q:"Com quem, de verdade, a gente disputa o cliente? Escolha o principal.",
+  o:["Mega Polo — São Paulo","Polo — São José do Rio Preto","Cianorte","Brás / Bom Retiro","Lojas de atacado online","Representantes que vão até o lojista","Ninguém — a disputa é contra o cliente decidir não comprar"]},
+ {id:"d2",fixed:true,type:"single",q:"O guia (quem traz os ônibus de compradores) é, pra gente:",o:["Parte do problema","Parte da solução","Nem um nem outro — só um canal"]}
+]},
+{n:"D",t:"Quem compra aqui",i:"O cliente que o shopping quer, e o que ele pensa.",qs:[
+ {id:"e2",type:"single",q:"O comprador que a gente mais quer vem, na maior parte, de onde?",o:["Do Paraná, até uns 300 km daqui","Dos estados vizinhos — SC, SP, MS","De qualquer lugar do Brasil, se a viagem valer","Cada vez menos ele vem — compra sem sair da loja dele"]},
+ {id:"e3",type:"single",q:"Ele compra aqui com que frequência?",o:["Toda coleção — de 2 a 4 vezes por ano","Uma vez por ano, no lançamento","Quando o guia traz","Não tem rotina — cada compra é uma decisão nova"]},
+ {id:"e4",type:"single",q:"O que mais atrapalha esse comprador a comprar mais aqui? Escolha 1.",o:["O custo da viagem e da hospedagem","O preço das peças","O medo de não conseguir vender o que é mais caro","A falta de tempo pra vir","O guia levar ele pra outro lugar","Não saber o que vai vender"]},
+ {id:"e5",type:"single",q:"Qual frase esse comprador mais diria? Escolha 1.",
+  o:["“Quero comprar melhor, não mais barato — mas tenho medo de não vender o que é mais caro.”","“Se eu compro certo, meu cliente paga mais. O difícil é acertar.”","“Vir até aqui custa. A viagem precisa valer muito a pena.”","“Preciso de marcas que meu cliente conhece e que o meu concorrente não tem.”","“Não quero só produto. Quero alguém que me diga o que vai vender.”"]},
+ {id:"e7",type:"single",q:"O que a gente quer que esse comprador fale do Paraná Moda Park pra outro lojista? Escolha 1.",o:["“Lá é caro, mas é onde tem coisa boa.”","“Lá é fácil — você chega, dorme, compra, volta.”","“Lá eles cuidam de você.”","“Lá tem marca que ninguém mais tem.”","“Lá é sério, não tem picaretagem.”"]},
+ {id:"i6",fixed:true,type:"choice",q:"Se tivesse que escolher: mais compradores, ou compradores melhores?",o:["Mais compradores","Compradores melhores"]}
+]},
+{n:"E",t:"O que a gente promete",i:"O que cada cliente precisa ouvir da gente.",qs:[
+ {id:"f2",type:"single",q:"O que a gente quer que o lojista fale sobre estar aqui? Escolha 1.",o:["“Aqui eu tenho estrutura que não conseguiria sozinho.”","“Aqui alguém se importa se a minha marca cresce.”","“Aqui o comprador chega até mim.”","“Aqui eu pago mais, mas o resultado compensa.”","“Aqui é sério — eu sei com quem estou lidando.”"]},
+ {id:"h3",type:"single",q:"Se você tivesse que dizer uma frase pra um LOJISTA, qual seria? Escolha 1.",o:["“Aqui a sua marca cresce.”","“Aqui você tem estrutura, comprador e apoio.”","“Aqui você paga menos pra operar.”","“Aqui você é sócio, não inquilino.”"]},
+ {id:"h4",type:"single",q:"E pra um COMPRADOR? Escolha 1.",o:["“Aqui você compra certo.”","“Chegue, durma, compre, volte — é fácil.”","“As marcas que o seu cliente quer — e o seu concorrente não tem.”","“É mais caro. E é por isso que vale.”"]},
+ {id:"h6",type:"single",q:"E pro GUIA? Escolha 1.",o:["“Quem traz pra cá volta com cliente satisfeito.”","“Aqui o seu cliente compra mais — e volta a te procurar.”","“Parceiro de verdade, não só comissão.”","Não temos frase pro guia — ele só traz gente, não é cliente."]},
+ {id:"e8",fixed:true,type:"single",q:"Hoje, o que os compradores acham do preço daqui?",o:["Mais barato do que é","Um pouco mais barato","Exatamente o que é","Um pouco mais caro","Mais caro do que é"]}
+]},
+{n:"F",t:"O jeito da marca",i:"Se o Paraná Moda Park fosse uma pessoa, como ele seria e como ele falaria.",qs:[
+ {id:"g1",type:"pares",q:"Em cada linha, marque onde o Paraná Moda Park fica. O meio é “nem um nem outro”."},
+ {id:"g2",type:"ps",q:"Se o Paraná Moda Park fosse um personagem, qual seria? Marque o principal (P) e um de apoio (S).",
+  o:["O que manda — ordem, padrão, liderança. “Aqui as coisas são feitas direito.”","O que cuida — cuida do negócio do outro. “Sua marca é nossa responsabilidade.”","O que sabe — inteligência, consultoria. “A gente sabe o que vai vender.”","O que cria — referência, coleção, desfile. “Aqui nasce a tendência.”","O que faz acontecer — supera, entrega. “A gente entrega o que prometeu.”","O que vai longe — expansão, Brasil. “Vamos mais longe.”","O gente como a gente — próximo, parceiro. “A gente é do ramo, como você.”","O que transforma — muda o negócio do lojista. “Você entra de um jeito e sai de outro.”"]},
+ {id:"g3",type:"single",q:"Numa festa onde ninguém conhece o Paraná Moda Park, ele…",o:["Conversa a fundo com poucas pessoas","Chega abraçando todo mundo","Vira o centro das atenções sem esforço","Fica quieto — mas todo mundo repara","Age como o dono da casa, recebendo bem"]},
+ {id:"g4",type:"ps",q:"Qual clima mais combina com a marca? Marque o principal (P) e um de apoio (S).",
+  o:["História e raiz — a família, o que foi construído","Técnica e desempenho — logística, gestão, inteligência","Comunidade — o time, os lojistas, todo mundo junto","Sofisticação e exclusividade — padrão, marcas de peso","Cuidado e proximidade — o acompanhamento, a relação","Liberdade e expansão — o Brasil, a estrada, ir mais longe","Ordem e confiança — seriedade, padrão, palavra cumprida","Glamour e espetáculo — o desfile, a passarela, a coleção"]},
+ {id:"g5",type:"multi",max:2,q:"O que a marca NÃO é, nem de longe? Marque até 2.",o:["Popular","Luxo","Descolada / jovem","Tradicionalista","Tecnológica","Informal","Agressiva pra vender"]},
+ {id:"g6",type:"single",q:"Um lojista pediu pra entrar e não tem o perfil. Qual resposta é a nossa? Escolha 1.",
+  o:["“Agradecemos o interesse, mas no momento o seu perfil não se encaixa no mix que estamos montando.”","“Vamos ser diretos: hoje a gente não abre espaço pra loja sem estoque e sem escala. Se isso mudar, conversamos.”","“Infelizmente não temos espaço disponível no momento.”","“A gente tem um padrão, e ele existe pra proteger quem já está aqui. Hoje você não entra — e a gente explica o porquê.”"]},
+ {id:"g7",type:"single",q:"Um comprador reclama que está caro. Qual resposta é a nossa? Escolha 1.",
+  o:["“Entendo. Nosso preço reflete as marcas e a estrutura que você não encontra em outro lugar.”","“É mais caro mesmo. E é por isso que o seu cliente vai pagar mais por ele.”","“Vamos ver o que dá pra fazer no preço.”","“Você está comparando com quem? Marca fabricante, com essa estrutura, não tem em outro lugar.”"]},
+ {id:"g8",type:"single",q:"Vai sair o anúncio do desfile. Qual chamada é a nossa? Escolha 1.",o:["“O lançamento que o mercado espera.”","“A coleção que o Brasil vai vender.”","“Imperdível! O maior desfile do atacado!”","“Uma vez por ano, a referência se apresenta.”"]}
+]},
+{n:"G",t:"Quem cuida disso",i:"Onde a marca aparece pro cliente, e quem responde por isso.",qs:[
+ {id:"j1",type:"single",q:"Qual momento mais decide se o comprador volta? Escolha 1.",o:["O guia","A recepção do hotel","O atendimento dentro da loja","O WhatsApp comercial","A chegada / portaria","O desfile e os eventos","O site e as redes","O próprio lojista","O financeiro / cobrança"]},
+ {id:"j2",type:"multi",max:10,q:"Em quais destes momentos hoje ninguém é responsável por como o shopping aparece pro cliente? Marque todos que achar.",o:["O guia","A recepção do hotel","O atendimento dentro da loja","O WhatsApp comercial","A chegada / portaria","O desfile e os eventos","O site","As redes sociais","O próprio lojista","O financeiro"]},
+ {id:"j4",type:"single",q:"Quem deveria ser responsável por conferir se a gente cumpre o que promete ao cliente? Escolha 1.",o:["A diretoria","O comercial","O marketing","Uma pessoa só pra isso","Um grupo de pessoas de várias áreas","Não sei"]},
+ {id:"j5",type:"vf",q:"Verdadeiro ou falso, pensando no seu dia a dia:",o:["Existe alguma orientação escrita sobre como a gente deve atender e falar com o cliente.","Alguma decisão do meu setor já foi mudada porque não combinava com o que o shopping quer ser.","Já vi a comunicação do shopping mudar de uma hora pra outra, sem ninguém explicar o motivo.","Eu sei dizer, hoje, o que o Paraná Moda Park promete ao comprador."]},
+ {id:"k4",fixed:true,type:"single",q:"Quando aparece uma dúvida no seu trabalho sobre o jeito certo de fazer, o que decide na prática?",o:["Uma regra escrita","O que o chefe falou da última vez","O gosto de quem está ali na hora","A meta do mês","Cada caso é um caso"]}
+]},
+{n:"H",t:"Do seu dia a dia",i:"Coisas que só quem está na operação sabe. Não tem resposta certa.",qs:[
+ {id:"m1",type:"single",q:"Como você ficou sabendo do que o Paraná Moda Park quer ser (a visão da empresa)? Escolha o principal.",
+  o:["Nunca me explicaram — eu fui entendendo sozinho","Em conversa com o meu chefe","Em reunião ou treinamento da empresa","Nas redes sociais ou na comunicação do shopping","Ouvindo os sócios falarem","Com os colegas, no dia a dia"]},
+ {id:"m2",type:"single",q:"O que o comprador mais reclama com você, hoje? Escolha 1.",o:["Preço","Falta de novidade nas marcas","Atendimento na loja","Dificuldade pra chegar ou se hospedar","Prazo e entrega","Não reclama comigo — não tenho contato com ele"],other:true},
+ {id:"m3",type:"single",q:"O que o lojista mais pede pra você, hoje? Escolha 1.",o:["Mais compradores circulando","Desconto ou condição no aluguel","Ajuda de gestão e treinamento","Divulgação — evento, desfile, comunicação","Melhorias na estrutura","Não pede nada pra mim — não tenho contato com ele"],other:true},
+ {id:"m4",type:"scale",q:"De 1 a 5: o quanto o que você faz todo dia ajuda o lojista a vender mais?",l:"Quase nada",r:"Muito"},
+ {id:"m5",type:"text",q:"Se um cliente novo te perguntasse “por que comprar aqui e não em outro lugar?”, o que você responderia? Escreva do seu jeito, uma ou duas linhas.",placeholder:"Eu diria que…"},
+ {id:"m6",type:"text",q:"Se você pudesse mudar uma coisa no jeito como a gente atende o cliente, o que seria?",placeholder:"Eu mudaria…"}
+]}
+];
+
+const PARES=[["p_seria","Séria","Leve"],["p_classica","Clássica","Contemporânea"],["p_proxima","Próxima","Autoridade"],["p_discreta","Discreta","Ousada"],["p_formal","Formal","Descontraída"],["p_tecnica","Técnica","Simples"]];
+let NUM=0; BLOCOS.forEach(b=>b.qs.forEach(q=>{q.num=++NUM;}));
+
+/* ═══════════ ESTADO ═══════════ */
+const R={}; const META={area:null,tempo:null};
+let atual=0, ACESSO_OK=false, finalizado=false, syncTimer=null, fila=Promise.resolve(), dirty=false;
+const el=id=>document.getElementById(id);
+const enfileira=fn=>(fila=fila.then(fn,fn));
+function setStatus(k,t){const s=el('status');s.className='status'+(k?' '+k:'');el('statusTx').textContent=t;}
+
+/* ═══════════ LEGÍVEL ═══════════ */
+function legivelDe(q){
+  const v=R[q.id]; const o=q.o||[]; if(v==null)return '—'; let t='—';
+  switch(q.type){
+    case 'single': case 'choice': t=v.v!=null?o[v.v]:'—';break;
+    case 'multi': t=(v.v||[]).map(i=>o[i]).join(' · ')||'—';break;
+    case 'vf': t=o.map((s,i)=>(v.v&&v.v[i]?(v.v[i]==='V'?'[V] ':'[F] '):'[ ] ')+s).join('\n');break;
+    case 'scale': t=v.v!=null?`${v.v+1} de 5  (${q.l} → ${q.r})`:'—';break;
+    case 'pares': t=PARES.map(([k,e,d])=>`${e} ↔ ${d}: ${v.v&&v.v[k]!=null?(v.v[k]+1)+'/5':'—'}`).join('\n');break;
+    case 'rank': t=(v.v||[]).map((idx,pos)=>`${pos+1}º ${o[idx]}`).join('\n')||'—';break;
+    case 'classify': t=o.map((s,i)=>`${s}: ${v.v&&v.v[i]?v.v[i]:'—'}`).join('\n');break;
+    case 'ps': t=`P: ${v.p!=null?o[v.p]:'—'}\nS: ${v.s!=null?o[v.s]:'—'}`;break;
+    case 'text': t=(v.t||'').trim()||'—';break;
+  }
+  if(v.outro&&v.outro.trim())t+=`\nOutra: ${v.outro.trim()}`;
+  return t;
+}
+function respostasLegiveis(){return BLOCOS.map(b=>({bloco:`${b.n} · ${b.t}`,itens:b.qs.map(q=>({n:q.num,pergunta:q.q,resposta:legivelDe(q)}))}));}
+function respondida(q){
+  const v=R[q.id]; if(!v)return false; if(v.outro&&v.outro.trim())return true;
+  switch(q.type){
+    case 'single': case 'choice': return v.v!=null;
+    case 'multi': return (v.v||[]).length>0;
+    case 'vf': return v.v&&v.v.filter(Boolean).length===(q.o||[]).length;
+    case 'scale': return v.v!=null;
+    case 'pares': return v.v&&PARES.every(([k])=>v.v[k]!=null);
+    case 'rank': return (v.v||[]).length===(q.o||[]).length;
+    case 'classify': return v.v&&v.v.filter(Boolean).length===(q.o||[]).length;
+    case 'ps': return v.p!=null;
+    case 'text': return !!(v.t&&v.t.trim());
+  } return false;
+}
+function progresso(){const all=BLOCOS.flatMap(b=>b.qs);const n=all.filter(respondida).length;el('meter').style.width=Math.round(n/all.length*100)+'%';return {n,total:all.length};}
+
+/* ═══════════ PERSISTÊNCIA ═══════════ */
+function salvaLocal(){try{localStorage.setItem(LS_KEY,JSON.stringify({R,atual,META}));}catch{}}
+function jaEnviado(){try{return localStorage.getItem(LS_KEY+'_enviado')==='1';}catch{return false;}}
+function sincroniza(agora=false){
+  dirty=true; salvaLocal(); const pr=progresso();
+  if(DEMO||!ACESSO_OK||finalizado)return;
+  if(jaEnviado()){finalizado=true;return;}
+  if(pr.n===0)return;
+  clearTimeout(syncTimer);
+  const manda=()=>{ if(finalizado)return; setStatus('saving','Salvando…');
+    return enfileira(()=>supaFetch('POST',`${TABELA}?on_conflict=respondente_id`,{
+      chave_acesso:chave,respondente_id:RESPONDENTE,versao_questionario:VERSAO,
+      respostas:R,legivel:respostasLegiveis(),bloco_atual:atual,status:'parcial'
+    },'resolution=merge-duplicates,return=minimal').then(()=>setStatus('ok','Salvo · '+progresso().n+' de '+NUM)).catch(()=>setStatus('err','Sem conexão — guardado neste aparelho')));
+  };
+  if(agora)manda(); else syncTimer=setTimeout(manda,2500);
+}
+function capaErro(t,s){el('capa-t').innerHTML=t;el('capa-s').textContent=s;el('rules').hidden=true;el('btnComecar').hidden=true;el('capa-meta').hidden=true;}
+
+async function boot(){
+  el('capa-meta').textContent=`${BLOCOS.length} blocos · ${NUM} perguntas · 15 a 20 minutos`;
+  if(DEMO){el('demoTag').hidden=false;setStatus('','Demonstração — nada é enviado');}
+  else{
+    try{ const rows=await supaFetch('GET',`${ACESSO}?chave=eq.${encodeURIComponent(chave)}&select=chave,ativo`);
+      if(!rows||!rows.length){setStatus('err','Link inválido');return capaErro('Esse link não é <em>válido</em>.','Confira o link que você recebeu — ele precisa vir completo, com a chave de acesso.');}
+      ACESSO_OK=true;
+    }catch{setStatus('err','Sem conexão');return capaErro('Não consegui <em>carregar</em>.','Houve um problema de conexão. Recarregue a página em instantes.');}
+    if(jaEnviado()){finalizado=true;setStatus('ok','Enviado');return capaErro('Já <em>recebemos</em> as suas respostas.','Obrigado. As respostas da equipe serão lidas todas juntas e devolvidas à direção.');}
+    setStatus('ok','Pronto');
+  }
+  let salvo=null; try{salvo=JSON.parse(localStorage.getItem(LS_KEY)||'null');}catch{}
+  if(salvo&&salvo.R&&Object.keys(salvo.R).length){Object.assign(R,salvo.R);atual=Math.min(salvo.atual||0,BLOCOS.length-1);Object.assign(META,salvo.META||{});el('btnComecar').textContent='Continuar de onde parei →';}
+  paintMeta(); progresso();
+}
+function paintMeta(){}
+
+/* ═══════════ RENDER ═══════════ */
+function h(tag,cls,html){const n=document.createElement(tag);if(cls)n.className=cls;if(html!=null)n.innerHTML=html;return n;}
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');}
+function renderBloco(){
+  const b=BLOCOS[atual]; const main=el('quiz'); main.innerHTML='';
+  const sec=h('section','part'); const head=h('div','part-head'); head.appendChild(h('div','part-n',b.n)); head.appendChild(h('h2',null,esc(b.t))); sec.appendChild(head);
+  if(b.i)sec.appendChild(h('p','part-intro',esc(b.i)));
+  sec.appendChild(h('p','part-count',`Bloco ${atual+1} de ${BLOCOS.length}`));
+  b.qs.forEach(q=>sec.appendChild(renderQ(q)));
+  const nav=h('div','nav');
+  const back=h('button','btn btn-2','← Anterior');back.type='button';back.disabled=atual===0;back.onclick=()=>{atual--;sincroniza(true);renderBloco();scrollTo(0,0);};
+  const mid=h('span','mid','');
+  const next=h('button','btn btn-1',atual===BLOCOS.length-1?'Concluir e enviar →':'Próximo bloco →');next.type='button';
+  next.onclick=()=>{if(atual===BLOCOS.length-1){renderRevisao();}else{atual++;sincroniza(true);renderBloco();scrollTo(0,0);}};
+  nav.append(back,mid,next);sec.appendChild(nav);main.appendChild(sec);atualizaBloco();
+}
+function atualizaBloco(){const b=BLOCOS[atual];const f=b.qs.filter(q=>!respondida(q)).length;const m=document.querySelector('.nav .mid');if(m)m.textContent=f?`${f} sem resposta neste bloco`:'Bloco completo';}
+function renderQ(q){
+  const box=h('div','q');box.dataset.id=q.id;
+  const hd=h('div','q-h');hd.appendChild(h('div','q-n',String(q.num).padStart(2,'0')));
+  const bd=h('div');bd.appendChild(h('p','q-txt',esc(q.q)));if(q.hint)bd.appendChild(h('p','q-hint',esc(q.hint)));hd.appendChild(bd);box.appendChild(hd);
+  const body=h('div','body');box.appendChild(body);
+  R[q.id]=R[q.id]||{}; const v=R[q.id]; const o=q.o||[];
+  const upd=()=>{paintQ(q,body);atualizaBloco();sincroniza();};
+  if(q.type==='single'||q.type==='multi'||q.type==='choice'){
+    const st=h('div','stack');
+    ordem(q).forEach(i=>{const t=o[i];const b=h('button','opt'+(q.type==='multi'?' sq':''),'<span class="mk"></span><span>'+esc(t)+'</span>');b.type='button';
+      b.onclick=()=>{ if(q.type==='multi'){v.v=v.v||[];const k=v.v.indexOf(i);if(k>=0)v.v.splice(k,1);else if(v.v.length<(q.max||99))v.v.push(i);} else {v.v=(v.v===i)?null:i;} upd(); };
+      b.dataset.i=i;st.appendChild(b);});
+    body.appendChild(st);
+  } else if(q.type==='vf'){
+    const g=h('div','vf');
+    o.forEach((t,i)=>{const bt=h('div','vf-btns');['V','F'].forEach(k=>{const b=h('button','vf-b '+k.toLowerCase(),k);b.type='button';b.dataset.i=i;b.dataset.k=k;b.onclick=()=>{v.v=v.v||[];v.v[i]=(v.v[i]===k)?null:k;upd();};bt.appendChild(b);});g.appendChild(bt);g.appendChild(h('div','vf-t',esc(t)));});
+    body.appendChild(g);
+  } else if(q.type==='scale'){
+    body.appendChild(scaleRow(q.l,q.r,i=>{v.v=(v.v===i)?null:i;upd();}));
+  } else if(q.type==='pares'){
+    PARES.forEach(([k,e,d])=>{const row=scaleRow(e,d,i=>{v.v=v.v||{};v.v[k]=(v.v[k]===i)?null:i;upd();});row.dataset.k=k;body.appendChild(row);});
+  } else if(q.type==='rank'){
+    body.appendChild(h('p','rk-hint','Clique nos itens na ordem. Clique de novo pra tirar.'));
+    const st=h('div','rk');o.forEach((t,i)=>{const b=h('button','opt sq','<span class="mk"></span><span>'+esc(t)+'</span>');b.type='button';b.dataset.i=i;b.onclick=()=>{v.v=v.v||[];const k=v.v.indexOf(i);if(k>=0)v.v.splice(k,1);else v.v.push(i);upd();};st.appendChild(b);});body.appendChild(st);
+  } else if(q.type==='classify'){
+    body.appendChild(h('p','cl-leg',esc(q.legend||'')));const g=h('div','cl');
+    o.forEach((t,i)=>{g.appendChild(h('div','cl-t',esc(t)));const bt=h('div','cl-b');q.labels.forEach(L=>{const b=h('button',null,L);b.type='button';b.dataset.i=i;b.dataset.k=L;b.onclick=()=>{v.v=v.v||[];v.v[i]=(v.v[i]===L)?null:L;upd();};bt.appendChild(b);});g.appendChild(bt);});
+    body.appendChild(g);
+  } else if(q.type==='ps'){
+    body.appendChild(h('p','cl-leg','P = principal · S = de apoio. Um de cada.'));const g=h('div','cl');
+    ordem(q).forEach(i=>{const t=o[i];g.appendChild(h('div','cl-t',esc(t)));const bt=h('div','cl-b');['P','S'].forEach(L=>{const b=h('button',null,L);b.type='button';b.dataset.i=i;b.dataset.k=L;
+      b.onclick=()=>{if(L==='P'){v.p=(v.p===i)?null:i;if(v.s===i)v.s=null;}else{v.s=(v.s===i)?null:i;if(v.p===i)v.p=null;}upd();};bt.appendChild(b);});g.appendChild(bt);});
+    body.appendChild(g);
+  } else if(q.type==='text'){
+    const ta=document.createElement('textarea');ta.rows=3;ta.placeholder=q.placeholder||'';ta.value=v.t||'';ta.style.marginTop='0';
+    ta.oninput=()=>{v.t=ta.value;ta.style.height='auto';ta.style.height=(ta.scrollHeight+2)+'px';atualizaBloco();sincroniza();};body.appendChild(ta);
+    requestAnimationFrame(()=>{ta.style.height='auto';ta.style.height=(ta.scrollHeight+2)+'px';});
+  }
+  if(q.other){const ta=document.createElement('textarea');ta.rows=1;ta.placeholder='Outra — qual?';ta.value=v.outro||'';ta.oninput=()=>{v.outro=ta.value;ta.style.height='auto';ta.style.height=(ta.scrollHeight+2)+'px';atualizaBloco();sincroniza();};body.appendChild(ta);}
+  paintQ(q,body);return box;
+}
+function scaleRow(l,r,onPick){const row=h('div','sc');row.appendChild(h('span','sc-l',esc(l)));const d=h('div','dots');for(let i=0;i<5;i++){const b=h('button','dot-b');b.type='button';b.dataset.i=i;b.setAttribute('aria-label',`${l} a ${r}, ponto ${i+1}`);b.onclick=()=>onPick(i);d.appendChild(b);}row.appendChild(d);row.appendChild(h('span','sc-r',esc(r)));return row;}
+function paintQ(q,body){
+  const v=R[q.id]||{};
+  if(q.type==='single'||q.type==='choice')body.querySelectorAll('.opt').forEach(b=>b.setAttribute('aria-pressed',String(v.v===+b.dataset.i)));
+  if(q.type==='multi'){const sel=v.v||[];const full=sel.length>=(q.max||99);body.querySelectorAll('.opt').forEach(b=>{const on=sel.includes(+b.dataset.i);b.setAttribute('aria-pressed',String(on));b.classList.toggle('dis',full&&!on);});}
+  if(q.type==='vf')body.querySelectorAll('.vf-b').forEach(b=>b.setAttribute('aria-pressed',String((v.v||[])[+b.dataset.i]===b.dataset.k)));
+  if(q.type==='scale')body.querySelectorAll('.dot-b').forEach(b=>b.setAttribute('aria-pressed',String(v.v===+b.dataset.i)));
+  if(q.type==='pares')body.querySelectorAll('.sc').forEach(row=>{const k=row.dataset.k;row.querySelectorAll('.dot-b').forEach(b=>b.setAttribute('aria-pressed',String((v.v||{})[k]===+b.dataset.i)));});
+  if(q.type==='rank'){const sel=v.v||[];body.querySelectorAll('.opt').forEach(b=>{const pos=sel.indexOf(+b.dataset.i);b.setAttribute('aria-pressed',String(pos>=0));b.querySelector('.mk').textContent=pos>=0?String(pos+1):'';});}
+  if(q.type==='classify')body.querySelectorAll('.cl-b button').forEach(b=>b.setAttribute('aria-pressed',String((v.v||[])[+b.dataset.i]===b.dataset.k)));
+  if(q.type==='ps')body.querySelectorAll('.cl-b button').forEach(b=>{const i=+b.dataset.i;b.setAttribute('aria-pressed',String((b.dataset.k==='P'&&v.p===i)||(b.dataset.k==='S'&&v.s===i)));});
+}
+function renderRevisao(){
+  sincroniza(true); const main=el('quiz'); main.innerHTML='';
+  const sec=h('section','part'); const head=h('div','part-head'); head.appendChild(h('div','part-n','✓')); head.appendChild(h('h2',null,'Enviar minhas respostas')); sec.appendChild(head);
+  const faltam=BLOCOS.flatMap(b=>b.qs.filter(q=>!respondida(q)).map(q=>({b,q})));
+  if(faltam.length){const box=h('div','faltam',`<b>${faltam.length} pergunta${faltam.length>1?'s':''} sem resposta.</b> Pode enviar assim mesmo — o que ficar em branco não entra na conta. Nada foi enviado ainda.`);
+    const ul=h('ul');ul.style.margin='10px 0 0';ul.style.paddingLeft='18px';faltam.slice(0,12).forEach(({b,q})=>{const li=h('li',null,`<a href="#" data-b="${BLOCOS.indexOf(b)}" style="color:var(--gold)">${String(q.num).padStart(2,'0')} · ${esc(b.t)}</a>`);ul.appendChild(li);});
+    if(faltam.length>12)ul.appendChild(h('li',null,`… e mais ${faltam.length-12}`));box.appendChild(ul);sec.appendChild(box);
+    box.querySelectorAll('a').forEach(a=>a.onclick=e=>{e.preventDefault();atual=+a.dataset.b;renderBloco();scrollTo(0,0);});
+  } else sec.appendChild(h('p','part-intro','Tudo respondido. Nada foi enviado ainda — suas respostas só são enviadas quando você clicar no botão abaixo.'));
+  const nav=h('div','nav');const back=h('button','btn btn-2','← Voltar');back.type='button';back.onclick=()=>{renderBloco();scrollTo(0,0);};
+  const send=h('button','btn btn-1 btn-lg',DEMO?'Enviar minhas respostas (demonstração)':'Enviar minhas respostas');send.type='button';send.id='btnEnviar';send.onclick=()=>enviar(send);
+  nav.append(back,h('span','mid',''),send);sec.appendChild(nav);main.appendChild(sec);
+}
+async function enviar(btn){
+  if(!DEMO&&ACESSO_OK){
+    btn.disabled=true;btn.textContent='Enviando…';clearTimeout(syncTimer);finalizado=true;await fila;
+    try{ await supaFetch('POST',`${TABELA}?on_conflict=respondente_id`,{chave_acesso:chave,respondente_id:RESPONDENTE,versao_questionario:VERSAO,respostas:R,legivel:respostasLegiveis(),bloco_atual:BLOCOS.length-1,status:'enviado',enviado_em:new Date().toISOString()},'resolution=merge-duplicates,return=minimal');
+      try{localStorage.removeItem(LS_KEY);localStorage.setItem(LS_KEY+'_enviado','1');}catch{} setStatus('ok','Enviado ✓');
+    }catch(e){finalizado=false;btn.disabled=false;btn.textContent='Tentar enviar de novo';setStatus('err','Não consegui enviar — suas respostas estão guardadas');return;}
+  }
+  el('fim-quando').textContent=(DEMO?'Demonstração — nada foi enviado de verdade. ':'')+'Registrado em '+new Date().toLocaleString('pt-BR',{dateStyle:'short',timeStyle:'short'})+'. Você já pode fechar esta página.';
+  el('quiz').hidden=true;el('fim').hidden=false;scrollTo(0,0);
+}
+el('btnComecar').onclick=()=>{ document.body.classList.remove('na-capa'); el('capa').hidden=true;el('quiz').hidden=false;salvaLocal();renderBloco();scrollTo(0,0);};
+document.addEventListener('visibilitychange',()=>{if(document.hidden&&!finalizado&&dirty)sincroniza(true);});
+window.addEventListener('pagehide',()=>{if(!finalizado&&dirty)sincroniza(true);});
+boot();
+</script>
+</body>
+</html>
