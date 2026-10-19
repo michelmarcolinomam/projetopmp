@@ -211,7 +211,7 @@ textarea:focus{outline:2px solid var(--gold);outline-offset:1px;border-color:tra
    ═════════════════════════════════════════════════════════ */
 const SUPABASE_URL='https://zokmlfocjalehjvczwep.supabase.co';
 const SUPABASE_KEY='sb_publishable_jiTPujKev4H4m-H_ABFE1w_rRvHNCVZ';
-const TABELA='pmp_equipe_respostas', ACESSO='pmp_equipe_acesso', VERSAO='pmp-equipe-v1';
+const TABELA='pmp_equipe_respostas', ACESSO='pmp_equipe_acesso', VERSAO='pmp-equipe-v2';
 async function supaFetch(method,path,body=null,prefer=null){
   const p=prefer!==null?prefer:(method==='POST'?'return=representation':'');
   const res=await fetch(`${SUPABASE_URL}/rest/v1/${path}`,{method,headers:{'Content-Type':'application/json','apikey':SUPABASE_KEY,'Authorization':`Bearer ${SUPABASE_KEY}`,'Prefer':p},body:body?JSON.stringify(body):null});
@@ -312,7 +312,13 @@ const BLOCOS=[
  {id:"j5",type:"vf",q:"Verdadeiro ou falso, pensando no seu dia a dia:",o:["Existe alguma orientação escrita sobre como a gente deve atender e falar com o cliente.","Alguma decisão do meu setor já foi mudada porque não combinava com o que o shopping quer ser.","Já vi a comunicação do shopping mudar de uma hora pra outra, sem ninguém explicar o motivo.","Eu sei dizer, hoje, o que o Paraná Moda Park promete ao comprador."]},
  {id:"k4",fixed:true,type:"single",q:"Quando aparece uma dúvida no seu trabalho sobre o jeito certo de fazer, o que decide na prática?",o:["Uma regra escrita","O que o chefe falou da última vez","O gosto de quem está ali na hora","A meta do mês","Cada caso é um caso"]}
 ]},
-{n:"H",t:"Do seu dia a dia",i:"Coisas que só quem está na operação sabe. Não tem resposta certa.",qs:[
+{n:"H",t:"VIP Card",i:"Quatro perguntas rápidas sobre o VIP Card do shopping. Se você não conhece, tudo bem — responda isso mesmo.",qs:[
+ {id:"v1",fixed:true,type:"single",q:"Você sabe o que é o VIP Card do Paraná Moda Park?",o:["Sei bem o que é e como funciona","Já ouvi falar, mas não saberia explicar","Nunca ouvi falar"]},
+ {id:"v2",fixed:true,type:"single",q:"No seu trabalho, você tem alguma relação com o VIP Card?",o:["Uso ou falo dele com o cliente quase todo dia","De vez em quando","Nunca — não faz parte do meu trabalho","Não sei como eu usaria"]},
+ {id:"v3",type:"single",q:"Pra que serve o VIP Card, na sua opinião? Escolha 1.",o:["Fazer o comprador voltar ao shopping","Dar benefício e reconhecimento a quem compra mais","Ligar o guia, o comprador e o shopping","Juntar informação sobre quem compra aqui","Não sei dizer"]},
+ {id:"v4",type:"scale",q:"De 1 a 5: hoje, o quanto o VIP Card ajuda o comprador a voltar?",l:"Nada",r:"Muito"}
+]},
+{n:"I",t:"Do seu dia a dia",i:"Coisas que só quem está na operação sabe. Não tem resposta certa.",qs:[
  {id:"m1",type:"single",q:"Como você ficou sabendo do que o Paraná Moda Park quer ser (a visão da empresa)? Escolha o principal.",
   o:["Nunca me explicaram — eu fui entendendo sozinho","Em conversa com o meu chefe","Em reunião ou treinamento da empresa","Nas redes sociais ou na comunicação do shopping","Ouvindo os sócios falarem","Com os colegas, no dia a dia"]},
  {id:"m2",type:"single",q:"O que o comprador mais reclama com você, hoje? Escolha 1.",o:["Preço","Falta de novidade nas marcas","Atendimento na loja","Dificuldade pra chegar ou se hospedar","Prazo e entrega","Não reclama comigo — não tenho contato com ele"],other:true},
