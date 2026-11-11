@@ -185,6 +185,54 @@ table.tb{width:100%;border-collapse:collapse}
 .gc-ul li{font-size:21px;line-height:1.45;color:var(--tx-2);padding-left:22px;position:relative}
 .gc-ul li::before{content:"";position:absolute;left:0;top:11px;width:8px;height:8px;border-radius:50%;background:var(--gold)}
 .gc-ul b{color:var(--tx);font-weight:700}
+.slide.tight{padding:112px 112px 108px;justify-content:flex-start}
+.fx{display:flex;gap:6px;height:230px}
+.fx-z{border-radius:14px;padding:26px 28px;display:flex;flex-direction:column;justify-content:flex-end}
+.fx-z.ok{background:rgba(46,115,80,.14);border:1px solid rgba(46,115,80,.35)}
+.fx-z.at{background:rgba(166,133,44,.14);border:1px solid rgba(166,133,44,.4)}
+.fx-z.cr{background:rgba(180,68,58,.10);border:1px solid rgba(180,68,58,.35)}
+.fx-p{font-size:15px;letter-spacing:.14em;text-transform:uppercase;color:var(--tx-2);margin-bottom:6px}
+.fx-t{font-family:var(--serif);font-size:54px;line-height:1}
+.fx-z.ok .fx-t{color:var(--pos)}.fx-z.at .fx-t{color:#8A6E1E}.fx-z.cr .fx-t{color:var(--neg)}
+.fx-s{font-size:18px;line-height:1.45;color:var(--tx-2);margin-top:10px}
+.fx-rule{position:relative;height:30px;margin-top:10px;border-top:2px solid var(--stroke-2)}
+.fx-rule span{position:absolute;top:8px;transform:translateX(-50%);font-size:15px;color:var(--tx-3);font-weight:600}
+.fx-rule span:first-child{transform:none}.fx-rule span:last-child{transform:translateX(-100%)}
+.dirbox{background:var(--gold-dim);border:1px solid rgba(84,116,44,.35);border-left:6px solid var(--gold);border-radius:0 18px 18px 0;padding:24px 34px}
+.dirbox-k{font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:10px}
+.dirbox-t{font-family:var(--serif);font-size:42px;line-height:1.2;letter-spacing:-.01em;color:var(--tx)}
+.dirbox-t b{font-weight:400;color:var(--gold-2);font-style:italic}
+.cam{background:var(--panel);border:1px solid var(--stroke);border-radius:18px;overflow:hidden;display:flex;flex-direction:column}
+.cam-h{display:flex;justify-content:space-between;align-items:center;padding:14px 26px;background:var(--panel-2);border-bottom:1px solid var(--stroke);font-size:14px;letter-spacing:.16em;text-transform:uppercase;color:var(--tx-2);font-weight:700}
+.cam-h span:last-child{color:var(--tx-3);font-weight:600}
+.cam-b{display:grid;grid-template-columns:230px 1fr;gap:26px;padding:24px 26px 20px}
+.cam-g{border-right:1px solid var(--stroke);padding-right:24px}
+.cam-pct{font-family:var(--serif);font-size:128px;line-height:.85;color:var(--neg);letter-spacing:-.03em}
+.cam-pct small{font-size:54px}
+.cam-lab{font-size:20px;color:var(--tx-2);margin:8px 0 12px}
+.chip{display:inline-block;font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;padding:5px 12px;border-radius:999px}
+.chip.cr{background:rgba(180,68,58,.12);color:var(--neg)}.chip.at{background:rgba(166,133,44,.16);color:#8A6E1E}.chip.ok{background:rgba(46,115,80,.14);color:var(--pos)}
+.cam-split{height:10px;border-radius:5px;background:rgba(180,68,58,.28);overflow:hidden;margin-top:20px}
+.cam-split i{display:block;height:100%;background:var(--gold)}
+.cam-leg{display:flex;justify-content:space-between;font-size:13px;color:var(--tx-3);margin-top:6px}
+.cam-q{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--tx-3);font-weight:700;margin-bottom:12px}
+.vb{display:grid;grid-template-columns:1fr 150px 34px;align-items:center;gap:14px;padding:9px 0;border-top:1px solid var(--stroke)}
+.vb-t{font-size:18px;line-height:1.3;color:var(--tx-2)}
+.vb-t em{font-style:normal;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--gold);background:var(--gold-dim);border-radius:999px;padding:2px 8px;margin-left:8px;white-space:nowrap}
+.vb.d .vb-t{color:var(--tx);font-weight:600}
+.vb-bar{height:12px;border-radius:6px;background:rgba(26,31,24,.07);overflow:hidden}
+.vb-bar i{display:block;height:100%;border-radius:6px;background:#9AA294}
+.vb.d .vb-bar i{background:var(--gold)}
+.vb-n{font-family:var(--serif);font-size:28px;line-height:1;text-align:right;color:var(--tx)}
+.cam-f{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--stroke);margin-top:auto}
+.tile{padding:16px 26px}
+.tile+.tile{border-left:1px solid var(--stroke)}
+.tile.ins{background:rgba(180,68,58,.05)}
+.tile-k{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--tx-3);font-weight:700;margin-bottom:6px}
+.tile.ins .tile-k{color:var(--neg)}
+.tile-t{font-size:18px;line-height:1.4;color:var(--tx-2)}
+.tile-t b{color:var(--tx);font-weight:700}
+.tile.ins .tile-t{color:var(--tx);font-weight:600}
 .casc{display:flex;align-items:stretch;gap:10px}
 .cs{flex:1;background:var(--panel);border:1px dashed var(--stroke-2);border-radius:16px;padding:24px 22px;opacity:.55}
 .cs.on{border:1px solid rgba(84,116,44,.4);background:var(--gold-dim);opacity:1}
@@ -343,7 +391,7 @@ table.tb{width:100%;border-collapse:collapse}
       <div>
         <div class="card q"><div class="card-k">A pergunta</div><div class="card-t">“Pra que existe o Paraná Moda Park?”</div></div>
         <div class="card win" style="margin-top:14px"><div class="card-k">O que a direção respondeu</div><div class="card-t">Para fazer marca de moda crescer — e para que operar aqui custe menos.</div></div>
-        <p class="mini" style="margin-top:18px;font-size:18px">A nota de cada dimensão, de 0 a 10, é a média desse alinhamento em todas as perguntas que a compõem.</p>
+        <p class="mini" style="margin-top:18px;font-size:18px">O resultado de cada dimensão é a média desse alinhamento em todas as perguntas que a compõem.</p>
       </div>
       <div>
         <div class="card-k" style="margin-bottom:14px">Quantos responderam igual à direção</div>
@@ -352,11 +400,24 @@ table.tb{width:100%;border-collapse:collapse}
           <div class="pl" style="grid-template-columns:150px 1fr 150px"><div class="pl-k">Equipe</div><div class="pl-bar low"><i style="width:5%"></i></div><div class="pl-n" style="font-size:30px">2 de 42</div></div>
         </div>
         <div class="leitura" style="margin-top:26px;font-size:20px">A maioria, nas duas camadas, escolheu <b>“conectar fábricas a compradores do Brasil inteiro”</b>. Não é uma resposta errada. É outra marca — e é ela que está sendo entregue.</div>
-        <p class="src" style="margin-top:16px">Abaixo de 5 · <b>lê de outro jeito</b> &nbsp;·&nbsp; 5 a 6,5 · <b>divide-se</b> &nbsp;·&nbsp; acima de 6,5 · <b>converge</b></p>
+        <p class="src" style="margin-top:16px">Nesta pergunta, sozinha: gap de <b>92%</b> na liderança e de <b>95%</b> na equipe</p>
       </div>
     </div>
   </section>
 
+  <!-- FAIXAS DO GAP -->
+  <section class="slide">
+    <div class="anim"><p class="eyebrow">Como se lê o tamanho do gap</p></div>
+    <h3 class="anim" style="margin-bottom:10px">O gap é a parte da definição da direção que não chegou. Vai de 0% a 100%.</h3>
+    <p class="mini anim" style="margin-bottom:30px">Alinhamento perfeito não existe: sempre há alguma variação entre pessoas. O que importa é em que faixa a casa está.</p>
+    <div class="fx anim">
+      <div class="fx-z ok" style="flex:30"><div class="fx-p">0 a 30%</div><div class="fx-t">Aceitável</div><div class="fx-s">Variação natural. A mensagem chegou; basta manter.</div></div>
+      <div class="fx-z at" style="flex:20"><div class="fx-p">30 a 50%</div><div class="fx-t">Atenção</div><div class="fx-s">A mensagem chegou pela metade. Pede reforço.</div></div>
+      <div class="fx-z cr" style="flex:50"><div class="fx-p">Acima de 50%</div><div class="fx-t">Crítico</div><div class="fx-s">A maior parte não chegou. A camada está entregando outra marca. Pede trabalho estruturado.</div></div>
+    </div>
+    <div class="fx-rule anim"><span style="left:0">0%</span><span style="left:30%">30%</span><span style="left:50%">50%</span><span style="left:100%">100%</span></div>
+    <div class="leitura anim" style="margin-top:44px">Exemplo: se uma camada ficou com nota <b>3,4 de 10</b>, significa que 34% da definição chegou. <b>O gap é de 66% — faixa crítica.</b></div>
+  </section>
   <!-- COMO SEGUE -->
   <section class="slide">
     <div class="anim"><p class="eyebrow">Como vamos percorrer o resultado</p></div>
@@ -379,19 +440,62 @@ table.tb{width:100%;border-collapse:collapse}
     </div>
   </section>
   <!-- 01 Propósito · B -->
-  <section class="slide">
-    <div class="anim"><p class="eyebrow">01 · Propósito · o gap</p></div>
-    <h3 class="anim" style="margin-bottom:22px">Quanto da definição da direção chegou em cada camada.</h3>
-    <div class="two anim" style="align-items:stretch"><div class="gc"><div class="gc-h"><div><div class="card-k">Liderança · 13 pessoas</div><div class="gc-l">lê de outro jeito</div></div><div class="gc-n">3,4<small>/10</small></div></div><div class="pl-bar low" style="height:12px;margin:14px 0 20px"><i style="width:34%"></i></div><ul class="gc-ul"><li><b>1 em 13</b> escolheu a frase da direção.</li><li><b>7 em 13</b> responderam “conectar fabricantes a compradores do Brasil inteiro”.</li><li>A direção começa a missão pelo comprador. Para 7 líderes, ela começa pelo lojista.</li></ul></div><div class="gc"><div class="gc-h"><div><div class="card-k">Equipe · 43 pessoas</div><div class="gc-l">lê de outro jeito</div></div><div class="gc-n">3,8<small>/10</small></div></div><div class="pl-bar low" style="height:12px;margin:14px 0 20px"><i style="width:38%"></i></div><ul class="gc-ul"><li><b>2 em 42</b> escolheram a frase da direção.</li><li><b>26</b> repetem a versão da liderança: “conectar fábricas a compradores do Brasil”.</li><li>Nas metas de 2031 todos acreditam: 42 em 42 marcam “ser o melhor do Brasil”.</li></ul></div></div>
-    <p class="src anim">A direção definiu: <b>Existimos para fazer marca de moda crescer — com gestão, treinamento e acompanhamento — e para que operar aqui custe menos.</b></p>
+  <section class="slide tight">
+    <div class="anim"><p class="eyebrow" style="margin-bottom:14px">01 · Propósito · o gap</p></div>
+    <div class="dirbox anim">
+      <div class="dirbox-k">O que a direção definiu</div>
+      <div class="dirbox-t">Existimos para <b>fazer marca de moda crescer</b> — com gestão, treinamento e acompanhamento — e para que <b>operar aqui custe menos.</b></div>
+    </div>
+    <div class="two anim" style="gap:26px;margin-top:22px;align-items:stretch">
+      <div class="cam">
+        <div class="cam-h"><span>Liderança</span><span>13 pessoas</span></div>
+        <div class="cam-b">
+          <div class="cam-g">
+            <div class="cam-pct">66<small>%</small></div>
+            <div class="cam-lab">de gap</div>
+            <div class="chip cr">Crítico</div>
+            <div class="cam-split"><i style="width:34%"></i></div>
+            <div class="cam-leg"><span>chegou 34%</span><span>não chegou 66%</span></div>
+          </div>
+          <div class="cam-v">
+            <div class="cam-q">“Pra que existe o Paraná Moda Park?” — o que responderam</div>
+            <div class="vb d"><div class="vb-t">Fazer marca de moda crescer<em>direção</em></div><div class="vb-bar"><i style="width:7.6923076923076925%"></i></div><div class="vb-n">1</div></div><div class="vb d"><div class="vb-t">Operar aqui custar menos<em>direção</em></div><div class="vb-bar"><i style="width:1.2%"></i></div><div class="vb-n">0</div></div><div class="vb"><div class="vb-t">Dar ao lojista estrutura e apoio que não teria sozinho</div><div class="vb-bar"><i style="width:38.46153846153847%"></i></div><div class="vb-n">5</div></div><div class="vb"><div class="vb-t">Conectar fabricantes a compradores do Brasil inteiro</div><div class="vb-bar"><i style="width:53.84615384615385%"></i></div><div class="vb-n">7</div></div>
+          </div>
+        </div>
+        <div class="cam-f">
+          <div class="tile"><div class="tile-k">Na missão</div><div class="tile-t">A direção começa a frase pelo <b>comprador</b>. Para 7 em 13, ela começa pelo <b>lojista</b>.</div></div>
+          <div class="tile ins"><div class="tile-k">Em uma frase</div><div class="tile-t">Responde ao “por quê” com o “aonde queremos chegar”.</div></div>
+        </div>
+      </div>
+      <div class="cam">
+        <div class="cam-h"><span>Equipe</span><span>43 pessoas</span></div>
+        <div class="cam-b">
+          <div class="cam-g">
+            <div class="cam-pct">62<small>%</small></div>
+            <div class="cam-lab">de gap</div>
+            <div class="chip cr">Crítico</div>
+            <div class="cam-split"><i style="width:38%"></i></div>
+            <div class="cam-leg"><span>chegou 38%</span><span>não chegou 62%</span></div>
+          </div>
+          <div class="cam-v">
+            <div class="cam-q">“Pra que existe o Paraná Moda Park?” — o que responderam</div>
+            <div class="vb d"><div class="vb-t">Fazer marca de moda crescer<em>direção</em></div><div class="vb-bar"><i style="width:2.380952380952381%"></i></div><div class="vb-n">1</div></div><div class="vb d"><div class="vb-t">Operar aqui custar menos<em>direção</em></div><div class="vb-bar"><i style="width:2.380952380952381%"></i></div><div class="vb-n">1</div></div><div class="vb"><div class="vb-t">Dar ao lojista estrutura e apoio que não teria sozinho</div><div class="vb-bar"><i style="width:33.33333333333333%"></i></div><div class="vb-n">14</div></div><div class="vb"><div class="vb-t">Conectar fábricas a compradores do Brasil inteiro</div><div class="vb-bar"><i style="width:61.904761904761905%"></i></div><div class="vb-n">26</div></div>
+          </div>
+        </div>
+        <div class="cam-f">
+          <div class="tile"><div class="tile-k">Nas metas de 2031</div><div class="tile-t"><b>42 em 42</b> acreditam que a casa busca ser a melhor do Brasil.</div></div>
+          <div class="tile ins"><div class="tile-k">Em uma frase</div><div class="tile-t">Sabe para onde a empresa vai. Não sabe dizer por que ela existe.</div></div>
+        </div>
+      </div>
+    </div>
   </section>
   <!-- 01 Propósito · C -->
   <section class="slide">
     <div class="anim"><p class="eyebrow">01 · Propósito · a consequência</p></div>
     <h3 class="anim" style="margin-bottom:24px">O que essa distância provoca no dia a dia.</h3>
     <div class="two anim" style="align-items:stretch">
-      <div class="card out"><div class="card-k">Na liderança · gap de 6,6 pontos</div><div class="card-t" style="font-weight:500;font-size:26px;line-height:1.45">A liderança responde ao “por quê” com o “aonde queremos chegar”. Decide pela ambição, não pelo propósito — e é essa versão que passa adiante.</div></div>
-      <div class="card out"><div class="card-k">Na equipe · gap de 6,2 pontos</div><div class="card-t" style="font-weight:500;font-size:26px;line-height:1.45">A equipe sabe para onde a empresa vai, mas não sabe dizer por que ela existe. Na dúvida, não tem um porquê em que se apoiar: atende pelo que acha certo.</div></div>
+      <div class="card out"><div class="card-k">Na liderança · gap de 66%</div><div class="card-t" style="font-weight:500;font-size:26px;line-height:1.45">A liderança responde ao “por quê” com o “aonde queremos chegar”. Decide pela ambição, não pelo propósito — e é essa versão que passa adiante.</div></div>
+      <div class="card out"><div class="card-k">Na equipe · gap de 62%</div><div class="card-t" style="font-weight:500;font-size:26px;line-height:1.45">A equipe sabe para onde a empresa vai, mas não sabe dizer por que ela existe. Na dúvida, não tem um porquê em que se apoiar: atende pelo que acha certo.</div></div>
     </div>
   </section>
 
@@ -416,8 +520,8 @@ table.tb{width:100%;border-collapse:collapse}
     <div class="anim"><p class="eyebrow">02 · Posicionamento · a consequência</p></div>
     <h3 class="anim" style="margin-bottom:24px">O que essa distância provoca no dia a dia.</h3>
     <div class="two anim" style="align-items:stretch">
-      <div class="card out"><div class="card-k">Na liderança · gap de 5,4 pontos</div><div class="card-t" style="font-weight:500;font-size:26px;line-height:1.45">A direção mira o polo nacional; a liderança disputa com o vizinho. Preço, mix e campanha acabam calibrados para Cianorte, não para a ambição declarada.</div></div>
-      <div class="card out"><div class="card-k">Na equipe · gap de 6,5 pontos</div><div class="card-t" style="font-weight:500;font-size:26px;line-height:1.45">Para quem atende, o adversário é o comprador que não vem. Sem um concorrente claro, a equipe não tem contra quem argumentar — e o argumento vira preço.</div></div>
+      <div class="card out"><div class="card-k">Na liderança · gap de 54%</div><div class="card-t" style="font-weight:500;font-size:26px;line-height:1.45">A direção mira o polo nacional; a liderança disputa com o vizinho. Preço, mix e campanha acabam calibrados para Cianorte, não para a ambição declarada.</div></div>
+      <div class="card out"><div class="card-k">Na equipe · gap de 65%</div><div class="card-t" style="font-weight:500;font-size:26px;line-height:1.45">Para quem atende, o adversário é o comprador que não vem. Sem um concorrente claro, a equipe não tem contra quem argumentar — e o argumento vira preço.</div></div>
     </div>
   </section>
 
@@ -442,8 +546,8 @@ table.tb{width:100%;border-collapse:collapse}
     <div class="anim"><p class="eyebrow">03 · Público · a consequência</p></div>
     <h3 class="anim" style="margin-bottom:24px">O que essa distância provoca no dia a dia.</h3>
     <div class="two anim" style="align-items:stretch">
-      <div class="card out"><div class="card-k">Na liderança · gap de 6,7 pontos</div><div class="card-t" style="font-weight:500;font-size:26px;line-height:1.45">Liderança e direção descrevem dois clientes diferentes. Ação comercial, mix e comunicação são planejados para um comprador que a direção não escolheu.</div></div>
-      <div class="card out"><div class="card-k">Na equipe · gap de 7,5 pontos</div><div class="card-t" style="font-weight:500;font-size:26px;line-height:1.45">Sem um retrato único, cada um atende o comprador que imagina. E a equipe avisa o que vê no balcão: a rotina de compra está se perdendo.</div></div>
+      <div class="card out"><div class="card-k">Na liderança · gap de 67%</div><div class="card-t" style="font-weight:500;font-size:26px;line-height:1.45">Liderança e direção descrevem dois clientes diferentes. Ação comercial, mix e comunicação são planejados para um comprador que a direção não escolheu.</div></div>
+      <div class="card out"><div class="card-k">Na equipe · gap de 75%</div><div class="card-t" style="font-weight:500;font-size:26px;line-height:1.45">Sem um retrato único, cada um atende o comprador que imagina. E a equipe avisa o que vê no balcão: a rotina de compra está se perdendo.</div></div>
     </div>
   </section>
 
@@ -468,8 +572,8 @@ table.tb{width:100%;border-collapse:collapse}
     <div class="anim"><p class="eyebrow">04 · Promessa · a consequência</p></div>
     <h3 class="anim" style="margin-bottom:24px">O que essa distância provoca no dia a dia.</h3>
     <div class="two anim" style="align-items:stretch">
-      <div class="card out"><div class="card-k">Na liderança · gap de 6,0 pontos</div><div class="card-t" style="font-weight:500;font-size:26px;line-height:1.45">A liderança promete exclusividade de marca; a direção promete acerto na compra e cuidado. O comprador ouve uma promessa da gestão e outra do balcão.</div></div>
-      <div class="card out"><div class="card-k">Na equipe · gap de 5,3 pontos</div><div class="card-t" style="font-weight:500;font-size:26px;line-height:1.45">A equipe é quem mais repete a promessa ao comprador. Onde ela falha é com o lojista e com o guia: sem frase combinada, cada um promete o que acha.</div></div>
+      <div class="card out"><div class="card-k">Na liderança · gap de 60%</div><div class="card-t" style="font-weight:500;font-size:26px;line-height:1.45">A liderança promete exclusividade de marca; a direção promete acerto na compra e cuidado. O comprador ouve uma promessa da gestão e outra do balcão.</div></div>
+      <div class="card out"><div class="card-k">Na equipe · gap de 53%</div><div class="card-t" style="font-weight:500;font-size:26px;line-height:1.45">A equipe é quem mais repete a promessa ao comprador. Onde ela falha é com o lojista e com o guia: sem frase combinada, cada um promete o que acha.</div></div>
     </div>
   </section>
 
@@ -494,8 +598,8 @@ table.tb{width:100%;border-collapse:collapse}
     <div class="anim"><p class="eyebrow">05 · Diferencial · a consequência</p></div>
     <h3 class="anim" style="margin-bottom:24px">O que essa distância provoca no dia a dia.</h3>
     <div class="two anim" style="align-items:stretch">
-      <div class="card out"><div class="card-k">Na liderança · gap de 5,6 pontos</div><div class="card-t" style="font-weight:500;font-size:26px;line-height:1.45">A liderança conhece a tese, mas descreve a casa pelo que se vê: tamanho e completude. São justamente os atributos que um concorrente pode construir.</div></div>
-      <div class="card out"><div class="card-k">Na equipe · gap de 6,0 pontos</div><div class="card-t" style="font-weight:500;font-size:26px;line-height:1.45">A equipe vende o prédio e o mix. O diferencial que a direção considera impossível de copiar não é dito a nenhum cliente.</div></div>
+      <div class="card out"><div class="card-k">Na liderança · gap de 56%</div><div class="card-t" style="font-weight:500;font-size:26px;line-height:1.45">A liderança conhece a tese, mas descreve a casa pelo que se vê: tamanho e completude. São justamente os atributos que um concorrente pode construir.</div></div>
+      <div class="card out"><div class="card-k">Na equipe · gap de 60%</div><div class="card-t" style="font-weight:500;font-size:26px;line-height:1.45">A equipe vende o prédio e o mix. O diferencial que a direção considera impossível de copiar não é dito a nenhum cliente.</div></div>
     </div>
   </section>
 
@@ -520,8 +624,8 @@ table.tb{width:100%;border-collapse:collapse}
     <div class="anim"><p class="eyebrow">06 · Valores · a consequência</p></div>
     <h3 class="anim" style="margin-bottom:24px">O que essa distância provoca no dia a dia.</h3>
     <div class="two anim" style="align-items:stretch">
-      <div class="card out"><div class="card-k">Na liderança · gap de 2,6 pontos</div><div class="card-t" style="font-weight:500;font-size:26px;line-height:1.45">É a dimensão mais alinhada, e a que mais engana. A liderança concorda com o valor e decide caso a caso. O valor existe; a regra, não.</div></div>
-      <div class="card out"><div class="card-k">Na equipe · gap de 3,1 pontos</div><div class="card-t" style="font-weight:500;font-size:26px;line-height:1.45">A equipe vê a exceção acontecer. Quando o valor cede na frente dela, deixa de ser valor e vira discurso — e a exceção vira o padrão.</div></div>
+      <div class="card out"><div class="card-k">Na liderança · gap de 26%</div><div class="card-t" style="font-weight:500;font-size:26px;line-height:1.45">É a dimensão mais alinhada, e a que mais engana. A liderança concorda com o valor e decide caso a caso. O valor existe; a regra, não.</div></div>
+      <div class="card out"><div class="card-k">Na equipe · gap de 31%</div><div class="card-t" style="font-weight:500;font-size:26px;line-height:1.45">A equipe vê a exceção acontecer. Quando o valor cede na frente dela, deixa de ser valor e vira discurso — e a exceção vira o padrão.</div></div>
     </div>
   </section>
 
@@ -546,8 +650,8 @@ table.tb{width:100%;border-collapse:collapse}
     <div class="anim"><p class="eyebrow">07 · Tom de voz · a consequência</p></div>
     <h3 class="anim" style="margin-bottom:24px">O que essa distância provoca no dia a dia.</h3>
     <div class="two anim" style="align-items:stretch">
-      <div class="card out"><div class="card-k">Na liderança · gap de 5,5 pontos</div><div class="card-t" style="font-weight:500;font-size:26px;line-height:1.45">A casa se enxerga pelo desfile; a direção, pelo padrão. E, na hora de dizer não, a liderança escolhe a saída que não explica — o contrário de firmeza.</div></div>
-      <div class="card out"><div class="card-k">Na equipe · gap de 5,7 pontos</div><div class="card-t" style="font-weight:500;font-size:26px;line-height:1.45">A equipe tem a resposta certa para o preço porque ouve essa objeção todo dia. Onde nunca foi orientada, improvisa. O tom existe onde houve repetição.</div></div>
+      <div class="card out"><div class="card-k">Na liderança · gap de 55%</div><div class="card-t" style="font-weight:500;font-size:26px;line-height:1.45">A casa se enxerga pelo desfile; a direção, pelo padrão. E, na hora de dizer não, a liderança escolhe a saída que não explica — o contrário de firmeza.</div></div>
+      <div class="card out"><div class="card-k">Na equipe · gap de 57%</div><div class="card-t" style="font-weight:500;font-size:26px;line-height:1.45">A equipe tem a resposta certa para o preço porque ouve essa objeção todo dia. Onde nunca foi orientada, improvisa. O tom existe onde houve repetição.</div></div>
     </div>
   </section>
 
@@ -572,8 +676,8 @@ table.tb{width:100%;border-collapse:collapse}
     <div class="anim"><p class="eyebrow">08 · Papel próprio · a consequência</p></div>
     <h3 class="anim" style="margin-bottom:24px">O que essa distância provoca no dia a dia.</h3>
     <div class="two anim" style="align-items:stretch">
-      <div class="card out"><div class="card-k">Na liderança · gap de 5,2 pontos</div><div class="card-t" style="font-weight:500;font-size:26px;line-height:1.45">Todos concordam sobre o que importa e ninguém responde por isso. Sem dono e sem critério, a marca é decidida por quem está na sala.</div></div>
-      <div class="card out"><div class="card-k">Na equipe · gap de 6,6 pontos</div><div class="card-t" style="font-weight:500;font-size:26px;line-height:1.45">O ponto que mais faz o comprador voltar é o que a equipe diz não ter responsável. É a maior queda entre liderança e equipe em todo o estudo.</div></div>
+      <div class="card out"><div class="card-k">Na liderança · gap de 52%</div><div class="card-t" style="font-weight:500;font-size:26px;line-height:1.45">Todos concordam sobre o que importa e ninguém responde por isso. Sem dono e sem critério, a marca é decidida por quem está na sala.</div></div>
+      <div class="card out"><div class="card-k">Na equipe · gap de 66%</div><div class="card-t" style="font-weight:500;font-size:26px;line-height:1.45">O ponto que mais faz o comprador voltar é o que a equipe diz não ter responsável. É a maior queda entre liderança e equipe em todo o estudo.</div></div>
     </div>
   </section>
 
@@ -596,7 +700,7 @@ const P2=[["01 · Propósito",3.4,3.8],["02 · Posicionamento",4.6,3.5],["03 · 
 const pw=document.getElementById("placar2");
 P2.forEach(([k,l,e])=>{const row=document.createElement("div");row.className="p2";const f=v=>v.toFixed(1).replace(".",",");
  row.innerHTML='<div class="p2-k">'+k+'</div><div class="p2-bar a"><i style="width:'+l*10+'%"></i></div><div class="p2-n">'+f(l)+'</div><div class="p2-bar b"><i style="width:'+e*10+'%"></i></div><div class="p2-n">'+f(e)+'</div>';pw.appendChild(row);});
-const SECOES=["Abertura","De onde partimos","A ideia","A cascata","O que é o gap","Por que custa","As oito dimensões","O trabalho","As regras","Como se lê","Os quatro passos","Propósito","Propósito · gap","Propósito · consequência","Posicionamento","Posicionamento · gap","Posicionamento · consequência","Público","Público · gap","Público · consequência","Promessa","Promessa · gap","Promessa · consequência","Diferencial","Diferencial · gap","Diferencial · consequência","Valores","Valores · gap","Valores · consequência","Tom de voz","Tom de voz · gap","Tom de voz · consequência","Papel próprio","Papel próprio · gap","Papel próprio · consequência","Visão geral"];
+const SECOES=["Abertura","De onde partimos","A ideia","A cascata","O que é o gap","Por que custa","As oito dimensões","O trabalho","As regras","Como se lê","O tamanho do gap","Os quatro passos","Propósito","Propósito · gap","Propósito · consequência","Posicionamento","Posicionamento · gap","Posicionamento · consequência","Público","Público · gap","Público · consequência","Promessa","Promessa · gap","Promessa · consequência","Diferencial","Diferencial · gap","Diferencial · consequência","Valores","Valores · gap","Valores · consequência","Tom de voz","Tom de voz · gap","Tom de voz · consequência","Papel próprio","Papel próprio · gap","Papel próprio · consequência","Visão geral"];
 const slides=[...document.querySelectorAll(".slide")];let i=0;
 document.getElementById("tot").textContent=String(slides.length).padStart(2,"0");
 function show(n){i=Math.max(0,Math.min(slides.length-1,n));slides.forEach((s,k)=>s.classList.toggle("on",k===i));document.getElementById("cur").textContent=String(i+1).padStart(2,"0");document.getElementById("secName").textContent=SECOES[i]||"";document.getElementById("barFill").style.width=((i+1)/slides.length*100)+"%";history.replaceState(null,"","#"+(i+1));}
