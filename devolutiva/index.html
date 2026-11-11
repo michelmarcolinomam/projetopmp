@@ -335,6 +335,25 @@ em,.statement .hl{font-style:normal;color:var(--gold-2)}
 /* cores das camadas */
 .gbar.a,.lg.l1{background:#151A22}.gbar.b,.lg.l2{background:#2F6BF0}
 .gbar.b span{color:#1F55CC}
+
+/* fechamento */
+.fch{display:grid;grid-template-columns:.78fr 60px 1.22fr;align-items:stretch}
+.fch-src{display:flex;flex-direction:column;gap:14px}
+.fsrc{background:var(--panel);border:1px solid var(--stroke);border-radius:16px;padding:16px 22px;flex:1}
+.fsrc.d{border-left:5px solid var(--gold)}.fsrc.l{border-left:5px solid #151A22}
+.fsrc-k{font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:var(--tx-3);margin-bottom:10px}
+.fsrc.d .fsrc-k{color:var(--gold)}
+.fsrc-t{font-size:19px;line-height:1.45;color:var(--tx-2)}
+.fsrc-i{display:grid;grid-template-columns:96px 1fr;gap:12px;align-items:baseline;padding:7px 0;border-top:1px solid var(--stroke);font-size:19px;line-height:1.4;color:var(--tx-2)}
+.fsrc-i b{font-size:18px;color:var(--tx);font-weight:700}
+.fch-arrow{display:flex;align-items:center;justify-content:center;font-size:40px;color:var(--tx-3)}
+.fch-fim{background:#151A22;border-radius:20px;padding:40px 44px;display:flex;flex-direction:column;justify-content:center}
+.fch-k{font-size:13px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:rgba(255,255,255,.55);margin-bottom:18px}
+.fch-t{font-size:46px;line-height:1.2;font-weight:600;letter-spacing:-.035em;color:#fff}
+.fch-t .fpd{color:#8FD49B}.fch-t .fpl{color:#fff;text-decoration:underline;text-decoration-color:rgba(255,255,255,.45);text-decoration-thickness:4px;text-underline-offset:8px}
+.fch-leg{margin-top:16px;font-size:14px;color:rgba(255,255,255,.6);display:flex;align-items:center;gap:8px}
+.lgd{display:inline-block;width:22px;height:5px;border-radius:3px}.lgd.d{background:#8FD49B}.lgd.l{background:rgba(255,255,255,.6);margin-left:18px}
+.tilec{background:var(--panel);border:1px solid var(--stroke);border-radius:14px;padding:14px 20px}
 </style>
 </head>
 <body>
@@ -614,6 +633,36 @@ em,.statement .hl{font-style:normal;color:var(--gold-2)}
       </div>
     </div>
     <div class="cq-fecho anim">Enquanto o propósito não chegar, a casa comunica <b>um destino</b> — não <b>uma razão</b>.</div>
+  </section>
+  <!-- 01 Propósito · D -->
+  <section class="slide tight">
+    <div class="anim"><p class="eyebrow" style="margin-bottom:10px">01 · Propósito · o fechamento</p></div>
+    <h3 class="anim" style="margin-bottom:16px">Uma frase só, construída a partir das duas leituras.</h3>
+    <div class="fch anim">
+      <div class="fch-src">
+        <div class="fsrc d">
+          <div class="fsrc-k">O que a direção definiu</div>
+          <div class="fsrc-t">Existimos para fazer marca de moda crescer — com gestão, treinamento e acompanhamento — e para que operar aqui custe menos.</div>
+        </div>
+        <div class="fsrc l">
+          <div class="fsrc-k">O que a liderança trouxe</div>
+          <div class="fsrc-i"><b>7 em 13</b><span>Conectar fabricantes a compradores do Brasil inteiro.</span></div>
+          <div class="fsrc-i"><b>5 em 13</b><span>Dar ao lojista estrutura e apoio que ele não teria sozinho.</span></div>
+        </div>
+      </div>
+      <div class="fch-arrow">→</div>
+      <div class="fch-fim">
+        <div class="fch-k">Propósito · versão final proposta</div>
+        <p class="fch-t"><span class="fpd">Existimos para fazer marca de moda crescer</span> — <span class="fpd">com gestão, treinamento e acompanhamento, a um custo menor de operar</span> — <span class="fpl">e conectando cada marca a compradores do Brasil inteiro.</span></p>
+        <div class="fch-leg"><span class="lgd d"></span>da direção <span class="lgd l"></span>da liderança</div>
+      </div>
+    </div>
+    <div class="three anim" style="margin-top:16px;gap:18px">
+      <div class="tilec"><div class="tile-k">O que se mantém</div><div class="tile-t">O centro da definição da direção: <b>a marca do lojista é a razão de existir</b>, e a casa entra junto na gestão e no custo.</div></div>
+      <div class="tilec"><div class="tile-k">O que entra</div><div class="tile-t">A resposta mais escolhida pela liderança e pela equipe: <b>a conexão com o comprador</b>, agora como o caminho pelo qual a marca cresce.</div></div>
+      <div class="tilec"><div class="tile-k">O que isso resolve</div><div class="tile-t">A dúvida sobre quem vem primeiro. <b>O lojista é a razão; o comprador é o meio.</b></div></div>
+    </div>
+    <p class="src anim" style="margin-top:12px">Proposta para validação da direção e da liderança · não substitui a definição original até ser aprovada</p>
   </section>
   <!-- 02 Posicionamento · A -->
   <section class="slide">
@@ -1261,7 +1310,7 @@ em,.statement .hl{font-style:normal;color:var(--gold-2)}
 </div></div>
 <script>
 
-const SECOES=["Abertura","De onde partimos","A ideia","A cascata","O que é o gap","Por que custa","As oito dimensões","O trabalho","As regras","Como se lê","O tamanho do gap","Os quatro passos","Visão geral","Propósito","Propósito · gap","Propósito · consequência","Posicionamento","Posicionamento · gap","Posicionamento · consequência","Público","Público · gap","Público · consequência","Promessa","Promessa · gap","Promessa · consequência","Diferencial","Diferencial · gap","Diferencial · consequência","Valores","Valores · gap","Valores · consequência","Tom de voz","Tom de voz · gap","Tom de voz · consequência","Papel próprio","Papel próprio · gap","Papel próprio · consequência"];
+const SECOES=["Abertura","De onde partimos","A ideia","A cascata","O que é o gap","Por que custa","As oito dimensões","O trabalho","As regras","Como se lê","O tamanho do gap","Os quatro passos","Visão geral","Propósito","Propósito · gap","Propósito · consequência","Propósito · fechamento","Posicionamento","Posicionamento · gap","Posicionamento · consequência","Público","Público · gap","Público · consequência","Promessa","Promessa · gap","Promessa · consequência","Diferencial","Diferencial · gap","Diferencial · consequência","Valores","Valores · gap","Valores · consequência","Tom de voz","Tom de voz · gap","Tom de voz · consequência","Papel próprio","Papel próprio · gap","Papel próprio · consequência"];
 const slides=[...document.querySelectorAll(".slide")];let i=0;
 document.getElementById("tot").textContent=String(slides.length).padStart(2,"0");
 function show(n){i=Math.max(0,Math.min(slides.length-1,n));slides.forEach((s,k)=>s.classList.toggle("on",k===i));document.getElementById("cur").textContent=String(i+1).padStart(2,"0");document.getElementById("secName").textContent=SECOES[i]||"";document.getElementById("barFill").style.width=((i+1)/slides.length*100)+"%";history.replaceState(null,"","#"+(i+1));}
