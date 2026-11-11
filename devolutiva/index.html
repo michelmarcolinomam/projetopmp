@@ -175,6 +175,16 @@ table.tb{width:100%;border-collapse:collapse}
 .theme .t{font-size:20px;line-height:1.5;color:var(--tx-2)}
 .theme .t i{color:var(--tx);font-style:italic}
 
+.dim-h{display:flex;align-items:baseline;gap:26px}
+.dim-n{font-family:var(--serif);font-size:150px;line-height:.8;color:rgba(84,116,44,.22)}
+.gc{background:var(--panel);border:1px solid var(--stroke);border-radius:18px;padding:28px 32px}
+.gc-h{display:flex;justify-content:space-between;align-items:flex-end}
+.gc-l{font-size:19px;color:var(--tx-2)}
+.gc-n{font-family:var(--serif);font-size:84px;line-height:.9;color:var(--tx)}.gc-n small{font-size:28px;color:var(--tx-3)}
+.gc-ul{list-style:none;display:flex;flex-direction:column;gap:14px}
+.gc-ul li{font-size:21px;line-height:1.45;color:var(--tx-2);padding-left:22px;position:relative}
+.gc-ul li::before{content:"";position:absolute;left:0;top:11px;width:8px;height:8px;border-radius:50%;background:var(--gold)}
+.gc-ul b{color:var(--tx);font-weight:700}
 .casc{display:flex;align-items:stretch;gap:10px}
 .cs{flex:1;background:var(--panel);border:1px dashed var(--stroke-2);border-radius:16px;padding:24px 22px;opacity:.55}
 .cs.on{border:1px solid rgba(84,116,44,.4);background:var(--gold-dim);opacity:1}
@@ -347,46 +357,233 @@ table.tb{width:100%;border-collapse:collapse}
     </div>
   </section>
 
-  <!-- 11 CAP RÉGUA -->
-  <section class="slide chap"><div class="num anim">0</div><h1 class="anim">O ponto zero.</h1><p class="lede anim">Tudo o que vem a seguir é medido contra isto: o que a direção definiu, por escrito, que a marca quer significar. É a primeira vez que a casa vê essa definição reunida.</p></section>
-
-  <!-- 12 A RÉGUA -->
+  <!-- COMO SEGUE -->
   <section class="slide">
-    <div class="anim"><p class="eyebrow">A régua · o que a direção definiu</p></div>
-    <table class="tb small anim">
-      <tr><th>Dimensão</th><th>A definição da direção</th></tr>
-      <tr><td>01 · Propósito</td><td>Existimos para fazer marca de moda crescer — com gestão, treinamento e acompanhamento — e para que operar aqui custe menos.</td></tr>
-      <tr><td>02 · Posicionamento</td><td>O complexo atacadista de moda que cuida do crescimento das marcas que abriga, sobre marcas fabricantes, estrutura completa e inteligência coordenada.</td></tr>
-      <tr><td>03 · Público</td><td>Comprador: dono de boutique acima de R$ 100 mil por mês, do Paraná, que vem a cada coleção. Lojista: marca fabricante com mix, moda atual, logística e caráter.</td></tr>
-      <tr><td>04 · Promessa</td><td>O que a gente promete, a gente cumpre. Ao comprador: “aqui você compra certo”. Ao lojista: “aqui alguém se importa se a sua marca cresce”.</td></tr>
-      <tr><td>05 · Diferencial</td><td>Marcas fabricantes e uma central que coordena lojista, gerente, funcionário e guia ao mesmo tempo. Estrutura se copia; coordenação, não.</td></tr>
-      <tr><td>06 · Valores</td><td>Compromisso com o time. Compromisso com o projeto do lojista. Saúde financeira. Padrão que não se vende. Palavra cumprida.</td></tr>
-      <tr><td>07 · Tom de voz</td><td>Segurança, respeito, firmeza e propriedade. Séria, próxima e técnica. Quem manda, mas recebe como anfitriã. Nunca popular, nunca arrogante.</td></tr>
-      <tr><td>08 · Papel próprio</td><td>Trazer comprador, não só alugar espaço. Medir se a promessa foi cumprida. Decidir marca pelo combinado, não pelo gosto.</td></tr>
-    </table>
-    <p class="src anim">Fonte: entrevista de 16/09 e questionário de 24/09 · <b>Documento de Intenção Estratégica v1</b></p>
-  </section>
-
-  <!-- 13 COMO SEGUE -->
-  <section class="slide">
-    <div class="anim"><p class="eyebrow">Como a apresentação segue</p></div>
-    <h3 class="anim" style="margin-bottom:26px">Para cada uma das oito dimensões, três perguntas — sempre na mesma ordem.</h3>
-    <div class="three anim">
-      <div class="card"><div class="card-k">1 · O gap</div><div class="card-t">Quanto da definição da direção chegou na liderança e na equipe?</div><div class="card-s">A nota de cada camada, e o que cada uma respondeu no lugar.</div></div>
-      <div class="card out"><div class="card-k">2 · A consequência</div><div class="card-t">Que comportamento ou decisão nasce dessa distância?</div><div class="card-s">O gap traduzido em algo que acontece na operação.</div></div>
-      <div class="card win"><div class="card-k">3 · A ação</div><div class="card-t">O que precisa ser dito, treinado ou decidido para fechar?</div><div class="card-s">O que entra no documento de marca e no programa de alinhamento.</div></div>
+    <div class="anim"><p class="eyebrow">Como vamos percorrer o resultado</p></div>
+    <h3 class="anim" style="margin-bottom:26px">Uma dimensão de cada vez, sempre nos mesmos quatro passos.</h3>
+    <div class="four anim">
+      <div class="card"><div class="card-k">Passo 1</div><div class="card-t">O que é</div><div class="card-s">O que essa dimensão significa, em uma frase.</div></div>
+      <div class="card win"><div class="card-k">Passo 2</div><div class="card-t">O que a direção definiu</div><div class="card-s">A frase que serve de régua.</div></div>
+      <div class="card"><div class="card-k">Passo 3</div><div class="card-t">O gap</div><div class="card-s">Quanto chegou na liderança e na equipe, e o que cada uma respondeu no lugar.</div></div>
+      <div class="card out"><div class="card-k">Passo 4</div><div class="card-t">A consequência</div><div class="card-s">O que essa distância provoca no dia a dia.</div></div>
     </div>
-    <div class="leitura anim" style="margin-top:34px">No fim, as ações das oito dimensões se juntam em <b>um plano só</b>: o documento de marca da casa e o trabalho contínuo de alinhamento com liderança e equipe.</div>
   </section>
 
-  <!-- 14 PLACAR PRÉVIA -->
+  <!-- 01 Propósito · A -->
   <section class="slide">
-    <div class="anim"><p class="eyebrow">O ponto de partida · visão geral</p></div>
+    <div class="anim"><p class="eyebrow">Dimensão 01 de 08</p></div>
+    <div class="dim-h anim"><span class="dim-n">01</span><h1 style="margin:0">Propósito</h1></div>
+    <div class="two anim" style="margin-top:34px;grid-template-columns:.8fr 1.2fr;align-items:stretch">
+      <div class="card"><div class="card-k">O que é</div><div class="card-t" style="font-weight:500">A razão de existir. O porquê que continua de pé quando se tira o produto, o preço e a estrutura.</div></div>
+      <div class="card win"><div class="card-k">O que a direção definiu</div><div class="card-t" style="font-family:var(--serif);font-weight:400;font-size:34px;line-height:1.25">Existimos para fazer marca de moda crescer — com gestão, treinamento e acompanhamento — e para que operar aqui custe menos.</div></div>
+    </div>
+  </section>
+  <!-- 01 Propósito · B -->
+  <section class="slide">
+    <div class="anim"><p class="eyebrow">01 · Propósito · o gap</p></div>
+    <h3 class="anim" style="margin-bottom:22px">Quanto da definição da direção chegou em cada camada.</h3>
+    <div class="two anim" style="align-items:stretch"><div class="gc"><div class="gc-h"><div><div class="card-k">Liderança · 13 pessoas</div><div class="gc-l">lê de outro jeito</div></div><div class="gc-n">3,4<small>/10</small></div></div><div class="pl-bar low" style="height:12px;margin:14px 0 20px"><i style="width:34%"></i></div><ul class="gc-ul"><li><b>1 em 13</b> escolheu a frase da direção.</li><li><b>7 em 13</b> responderam “conectar fabricantes a compradores do Brasil inteiro”.</li><li>A direção começa a missão pelo comprador. Para 7 líderes, ela começa pelo lojista.</li></ul></div><div class="gc"><div class="gc-h"><div><div class="card-k">Equipe · 43 pessoas</div><div class="gc-l">lê de outro jeito</div></div><div class="gc-n">3,8<small>/10</small></div></div><div class="pl-bar low" style="height:12px;margin:14px 0 20px"><i style="width:38%"></i></div><ul class="gc-ul"><li><b>2 em 42</b> escolheram a frase da direção.</li><li><b>26</b> repetem a versão da liderança: “conectar fábricas a compradores do Brasil”.</li><li>Nas metas de 2031 todos acreditam: 42 em 42 marcam “ser o melhor do Brasil”.</li></ul></div></div>
+    <p class="src anim">A direção definiu: <b>Existimos para fazer marca de moda crescer — com gestão, treinamento e acompanhamento — e para que operar aqui custe menos.</b></p>
+  </section>
+  <!-- 01 Propósito · C -->
+  <section class="slide">
+    <div class="anim"><p class="eyebrow">01 · Propósito · a consequência</p></div>
+    <h3 class="anim" style="margin-bottom:24px">O que essa distância provoca no dia a dia.</h3>
+    <div class="two anim" style="align-items:stretch">
+      <div class="card out"><div class="card-k">Na liderança · gap de 6,6 pontos</div><div class="card-t" style="font-weight:500;font-size:26px;line-height:1.45">A liderança responde ao “por quê” com o “aonde queremos chegar”. Decide pela ambição, não pelo propósito — e é essa versão que passa adiante.</div></div>
+      <div class="card out"><div class="card-k">Na equipe · gap de 6,2 pontos</div><div class="card-t" style="font-weight:500;font-size:26px;line-height:1.45">A equipe sabe para onde a empresa vai, mas não sabe dizer por que ela existe. Na dúvida, não tem um porquê em que se apoiar: atende pelo que acha certo.</div></div>
+    </div>
+  </section>
+
+  <!-- 02 Posicionamento · A -->
+  <section class="slide">
+    <div class="anim"><p class="eyebrow">Dimensão 02 de 08</p></div>
+    <div class="dim-h anim"><span class="dim-n">02</span><h1 style="margin:0">Posicionamento</h1></div>
+    <div class="two anim" style="margin-top:34px;grid-template-columns:.8fr 1.2fr;align-items:stretch">
+      <div class="card"><div class="card-k">O que é</div><div class="card-t" style="font-weight:500">O lugar que só a marca ocupa na cabeça do cliente — e contra quem ela disputa esse lugar.</div></div>
+      <div class="card win"><div class="card-k">O que a direção definiu</div><div class="card-t" style="font-family:var(--serif);font-weight:400;font-size:34px;line-height:1.25">O complexo atacadista de moda que cuida do crescimento das marcas que abriga. O concorrente de referência é o Mega Polo, em São Paulo.</div></div>
+    </div>
+  </section>
+  <!-- 02 Posicionamento · B -->
+  <section class="slide">
+    <div class="anim"><p class="eyebrow">02 · Posicionamento · o gap</p></div>
+    <h3 class="anim" style="margin-bottom:22px">Quanto da definição da direção chegou em cada camada.</h3>
+    <div class="two anim" style="align-items:stretch"><div class="gc"><div class="gc-h"><div><div class="card-k">Liderança · 13 pessoas</div><div class="gc-l">lê de outro jeito</div></div><div class="gc-n">4,6<small>/10</small></div></div><div class="pl-bar low" style="height:12px;margin:14px 0 20px"><i style="width:46%"></i></div><ul class="gc-ul"><li><b>6 em 13</b> completam “o único que…” com “cuida do crescimento das marcas”.</li><li>Concorrente: Cianorte (4) e “ninguém” (3). O Mega Polo teve <b>1 voto</b>.</li><li>O guia é parte da solução para 11 em 13.</li></ul></div><div class="gc"><div class="gc-h"><div><div class="card-k">Equipe · 43 pessoas</div><div class="gc-l">lê de outro jeito</div></div><div class="gc-n">3,5<small>/10</small></div></div><div class="pl-bar low" style="height:12px;margin:14px 0 20px"><i style="width:35%"></i></div><ul class="gc-ul"><li><b>17 em 41</b> escolhem “cuida do crescimento das marcas”.</li><li><b>Ninguém</b> citou o Mega Polo. A disputa é com o cliente que não compra (11), o online (9), Cianorte (8) e o representante (8).</li><li>O guia é solução para 27. Para 15, é só um canal.</li></ul></div></div>
+    <p class="src anim">A direção definiu: <b>O complexo atacadista de moda que cuida do crescimento das marcas que abriga.</b></p>
+  </section>
+  <!-- 02 Posicionamento · C -->
+  <section class="slide">
+    <div class="anim"><p class="eyebrow">02 · Posicionamento · a consequência</p></div>
+    <h3 class="anim" style="margin-bottom:24px">O que essa distância provoca no dia a dia.</h3>
+    <div class="two anim" style="align-items:stretch">
+      <div class="card out"><div class="card-k">Na liderança · gap de 5,4 pontos</div><div class="card-t" style="font-weight:500;font-size:26px;line-height:1.45">A direção mira o polo nacional; a liderança disputa com o vizinho. Preço, mix e campanha acabam calibrados para Cianorte, não para a ambição declarada.</div></div>
+      <div class="card out"><div class="card-k">Na equipe · gap de 6,5 pontos</div><div class="card-t" style="font-weight:500;font-size:26px;line-height:1.45">Para quem atende, o adversário é o comprador que não vem. Sem um concorrente claro, a equipe não tem contra quem argumentar — e o argumento vira preço.</div></div>
+    </div>
+  </section>
+
+  <!-- 03 Público · A -->
+  <section class="slide">
+    <div class="anim"><p class="eyebrow">Dimensão 03 de 08</p></div>
+    <div class="dim-h anim"><span class="dim-n">03</span><h1 style="margin:0">Público</h1></div>
+    <div class="two anim" style="margin-top:34px;grid-template-columns:.8fr 1.2fr;align-items:stretch">
+      <div class="card"><div class="card-k">O que é</div><div class="card-t" style="font-weight:500">Para quem a marca trabalha: quem é o cliente que ela escolhe, de onde ele vem e o que o impede de comprar mais.</div></div>
+      <div class="card win"><div class="card-k">O que a direção definiu</div><div class="card-t" style="font-family:var(--serif);font-weight:400;font-size:34px;line-height:1.25">Dono de boutique acima de R$ 100 mil por mês, do Paraná, num raio de 300 km, que vem a cada coleção. O que o impede de comprar mais é a falta de tempo para vir.</div></div>
+    </div>
+  </section>
+  <!-- 03 Público · B -->
+  <section class="slide">
+    <div class="anim"><p class="eyebrow">03 · Público · o gap</p></div>
+    <h3 class="anim" style="margin-bottom:22px">Quanto da definição da direção chegou em cada camada.</h3>
+    <div class="two anim" style="align-items:stretch"><div class="gc"><div class="gc-h"><div><div class="card-k">Liderança · 13 pessoas</div><div class="gc-l">lê de outro jeito</div></div><div class="gc-n">3,3<small>/10</small></div></div><div class="pl-bar low" style="height:12px;margin:14px 0 20px"><i style="width:33%"></i></div><ul class="gc-ul"><li>O que impede: preço (5) e medo de não girar (5). <b>Ninguém</b> escolheu “tempo”.</li><li>Porte: acima de R$ 50 mil (6) ou qualquer porte (4).</li><li>O comprador quer “marcas que o concorrente não tem” (5). A frase da direção teve 2.</li></ul></div><div class="gc"><div class="gc-h"><div><div class="card-k">Equipe · 43 pessoas</div><div class="gc-l">lê de outro jeito</div></div><div class="gc-n">2,5<small>/10</small></div></div><div class="pl-bar low" style="height:12px;margin:14px 0 20px"><i style="width:25%"></i></div><ul class="gc-ul"><li>De onde vem: “de qualquer lugar do Brasil” (16). Paraná: <b>8 em 42</b>.</li><li>Frequência: “toda coleção” (18) empata com “não tem rotina, cada compra é uma decisão nova” (17).</li><li>O que impede: tempo (13) na frente. Aqui a equipe concorda com a direção.</li></ul></div></div>
+    <p class="src anim">A direção definiu: <b>Dono de boutique acima de R$ 100 mil por mês, do Paraná, num raio de 300 km, que vem a cada coleção.</b></p>
+  </section>
+  <!-- 03 Público · C -->
+  <section class="slide">
+    <div class="anim"><p class="eyebrow">03 · Público · a consequência</p></div>
+    <h3 class="anim" style="margin-bottom:24px">O que essa distância provoca no dia a dia.</h3>
+    <div class="two anim" style="align-items:stretch">
+      <div class="card out"><div class="card-k">Na liderança · gap de 6,7 pontos</div><div class="card-t" style="font-weight:500;font-size:26px;line-height:1.45">Liderança e direção descrevem dois clientes diferentes. Ação comercial, mix e comunicação são planejados para um comprador que a direção não escolheu.</div></div>
+      <div class="card out"><div class="card-k">Na equipe · gap de 7,5 pontos</div><div class="card-t" style="font-weight:500;font-size:26px;line-height:1.45">Sem um retrato único, cada um atende o comprador que imagina. E a equipe avisa o que vê no balcão: a rotina de compra está se perdendo.</div></div>
+    </div>
+  </section>
+
+  <!-- 04 Promessa · A -->
+  <section class="slide">
+    <div class="anim"><p class="eyebrow">Dimensão 04 de 08</p></div>
+    <div class="dim-h anim"><span class="dim-n">04</span><h1 style="margin:0">Promessa</h1></div>
+    <div class="two anim" style="margin-top:34px;grid-template-columns:.8fr 1.2fr;align-items:stretch">
+      <div class="card"><div class="card-k">O que é</div><div class="card-t" style="font-weight:500">O que a marca garante a cada público. A frase que o cliente pode cobrar depois.</div></div>
+      <div class="card win"><div class="card-k">O que a direção definiu</div><div class="card-t" style="font-family:var(--serif);font-weight:400;font-size:34px;line-height:1.25">O que a gente promete, a gente cumpre. Ao comprador: “aqui você compra certo”. Ao lojista: “aqui alguém se importa se a sua marca cresce”.</div></div>
+    </div>
+  </section>
+  <!-- 04 Promessa · B -->
+  <section class="slide">
+    <div class="anim"><p class="eyebrow">04 · Promessa · o gap</p></div>
+    <h3 class="anim" style="margin-bottom:22px">Quanto da definição da direção chegou em cada camada.</h3>
+    <div class="two anim" style="align-items:stretch"><div class="gc"><div class="gc-h"><div><div class="card-k">Liderança · 13 pessoas</div><div class="gc-l">lê de outro jeito</div></div><div class="gc-n">4,0<small>/10</small></div></div><div class="pl-bar low" style="height:12px;margin:14px 0 20px"><i style="width:40%"></i></div><ul class="gc-ul"><li>Ao comprador: <b>5 em 13</b> escolhem “aqui você compra certo”. 7 preferem “as marcas que o seu concorrente não tem”.</li><li>Ao lojista: 5 em 13 escolhem “alguém se importa se a minha marca cresce”.</li><li>Ao guia: a frase da direção teve 1 voto.</li></ul></div><div class="gc"><div class="gc-h"><div><div class="card-k">Equipe · 43 pessoas</div><div class="gc-l">lê de outro jeito</div></div><div class="gc-n">4,7<small>/10</small></div></div><div class="pl-bar low" style="height:12px;margin:14px 0 20px"><i style="width:47%"></i></div><ul class="gc-ul"><li>Ao comprador: <b>24 em 42</b> escolhem “aqui você compra certo”.</li><li>Ao lojista: 29 dizem “estrutura, comprador e apoio”. Só 11 esperam ouvir dele “alguém se importa se a minha marca cresce”.</li><li>Ao guia: três frases empatadas (15, 13 e 13).</li></ul></div></div>
+    <p class="src anim">A direção definiu: <b>O que a gente promete, a gente cumpre.</b></p>
+  </section>
+  <!-- 04 Promessa · C -->
+  <section class="slide">
+    <div class="anim"><p class="eyebrow">04 · Promessa · a consequência</p></div>
+    <h3 class="anim" style="margin-bottom:24px">O que essa distância provoca no dia a dia.</h3>
+    <div class="two anim" style="align-items:stretch">
+      <div class="card out"><div class="card-k">Na liderança · gap de 6,0 pontos</div><div class="card-t" style="font-weight:500;font-size:26px;line-height:1.45">A liderança promete exclusividade de marca; a direção promete acerto na compra e cuidado. O comprador ouve uma promessa da gestão e outra do balcão.</div></div>
+      <div class="card out"><div class="card-k">Na equipe · gap de 5,3 pontos</div><div class="card-t" style="font-weight:500;font-size:26px;line-height:1.45">A equipe é quem mais repete a promessa ao comprador. Onde ela falha é com o lojista e com o guia: sem frase combinada, cada um promete o que acha.</div></div>
+    </div>
+  </section>
+
+  <!-- 05 Diferencial · A -->
+  <section class="slide">
+    <div class="anim"><p class="eyebrow">Dimensão 05 de 08</p></div>
+    <div class="dim-h anim"><span class="dim-n">05</span><h1 style="margin:0">Diferencial</h1></div>
+    <div class="two anim" style="margin-top:34px;grid-template-columns:.8fr 1.2fr;align-items:stretch">
+      <div class="card"><div class="card-k">O que é</div><div class="card-t" style="font-weight:500">O que só a marca tem e ninguém consegue copiar. Não é o que ela faz bem: é o que só ela faz.</div></div>
+      <div class="card win"><div class="card-k">O que a direção definiu</div><div class="card-t" style="font-family:var(--serif);font-weight:400;font-size:34px;line-height:1.25">Marcas fabricantes e uma central que coordena lojista, gerente, funcionário e guia ao mesmo tempo. Estrutura se copia; coordenação, não.</div></div>
+    </div>
+  </section>
+  <!-- 05 Diferencial · B -->
+  <section class="slide">
+    <div class="anim"><p class="eyebrow">05 · Diferencial · o gap</p></div>
+    <h3 class="anim" style="margin-bottom:22px">Quanto da definição da direção chegou em cada camada.</h3>
+    <div class="two anim" style="align-items:stretch"><div class="gc"><div class="gc-h"><div><div class="card-k">Liderança · 13 pessoas</div><div class="gc-l">lê de outro jeito</div></div><div class="gc-n">4,4<small>/10</small></div></div><div class="pl-bar low" style="height:12px;margin:14px 0 20px"><i style="width:44%"></i></div><ul class="gc-ul"><li>Em uma palavra: Referência (10) e Completo (7). “Estrutura” fica atrás.</li><li>“O que a gente vende, no fundo”: <b>5 em 13</b> respondem como a direção.</li><li>A crença mais escolhida é a da direção: “estrutura se copia; coordenação e relacionamento, não” (5).</li></ul></div><div class="gc"><div class="gc-h"><div><div class="card-k">Equipe · 43 pessoas</div><div class="gc-l">lê de outro jeito</div></div><div class="gc-n">4,0<small>/10</small></div></div><div class="pl-bar low" style="height:12px;margin:14px 0 20px"><i style="width:40%"></i></div><ul class="gc-ul"><li>Em uma palavra: Referência (23), Estrutura (18), Completo (15).</li><li>“O que a gente vende”: dividido em três — estrutura e padrão (13), facilidade (12), tranquilidade (11).</li><li>Em texto livre, “por que comprar aqui?”: estrutura, variedade de marcas e qualidade. <b>A coordenação não aparece.</b></li></ul></div></div>
+    <p class="src anim">A direção definiu: <b>Marcas fabricantes e uma central que coordena lojista, gerente, funcionário e guia ao mesmo tempo.</b></p>
+  </section>
+  <!-- 05 Diferencial · C -->
+  <section class="slide">
+    <div class="anim"><p class="eyebrow">05 · Diferencial · a consequência</p></div>
+    <h3 class="anim" style="margin-bottom:24px">O que essa distância provoca no dia a dia.</h3>
+    <div class="two anim" style="align-items:stretch">
+      <div class="card out"><div class="card-k">Na liderança · gap de 5,6 pontos</div><div class="card-t" style="font-weight:500;font-size:26px;line-height:1.45">A liderança conhece a tese, mas descreve a casa pelo que se vê: tamanho e completude. São justamente os atributos que um concorrente pode construir.</div></div>
+      <div class="card out"><div class="card-k">Na equipe · gap de 6,0 pontos</div><div class="card-t" style="font-weight:500;font-size:26px;line-height:1.45">A equipe vende o prédio e o mix. O diferencial que a direção considera impossível de copiar não é dito a nenhum cliente.</div></div>
+    </div>
+  </section>
+
+  <!-- 06 Valores · A -->
+  <section class="slide">
+    <div class="anim"><p class="eyebrow">Dimensão 06 de 08</p></div>
+    <div class="dim-h anim"><span class="dim-n">06</span><h1 style="margin:0">Valores</h1></div>
+    <div class="two anim" style="margin-top:34px;grid-template-columns:.8fr 1.2fr;align-items:stretch">
+      <div class="card"><div class="card-k">O que é</div><div class="card-t" style="font-weight:500">Aquilo de que a casa não abre mão, mesmo quando custa dinheiro. Um valor só é valor quando já se recusou receita por ele.</div></div>
+      <div class="card win"><div class="card-k">O que a direção definiu</div><div class="card-t" style="font-family:var(--serif);font-weight:400;font-size:34px;line-height:1.25">Compromisso com o time. Compromisso com o projeto do lojista. Saúde financeira. Padrão que não se vende. Palavra cumprida.</div></div>
+    </div>
+  </section>
+  <!-- 06 Valores · B -->
+  <section class="slide">
+    <div class="anim"><p class="eyebrow">06 · Valores · o gap</p></div>
+    <h3 class="anim" style="margin-bottom:22px">Quanto da definição da direção chegou em cada camada.</h3>
+    <div class="two anim" style="align-items:stretch"><div class="gc"><div class="gc-h"><div><div class="card-k">Liderança · 13 pessoas</div><div class="gc-l">converge</div></div><div class="gc-n">7,4<small>/10</small></div></div><div class="pl-bar " style="height:12px;margin:14px 0 20px"><i style="width:74%"></i></div><ul class="gc-ul"><li>Escolher bem as marcas, mesmo com loja vazia: <b>12 em 13</b>.</li><li>Segurar o preço em vez de dar desconto: 11 em 13.</li><li>Mas, na prática, para 8 em 13: “não há regra para desconto, cada caso é um caso”.</li></ul></div><div class="gc"><div class="gc-h"><div><div class="card-k">Equipe · 43 pessoas</div><div class="gc-l">converge</div></div><div class="gc-n">6,9<small>/10</small></div></div><div class="pl-bar " style="height:12px;margin:14px 0 20px"><i style="width:69%"></i></div><ul class="gc-ul"><li>Escolher bem as marcas: 35 em 42. Melhorar o que já existe: 34 em 42.</li><li>Segurar o preço: 26 em 42. Outros 16 fechariam com desconto.</li><li>Se um valor e uma meta de ocupação brigarem, <b>o valor perde</b> — para 27 em 41.</li></ul></div></div>
+    <p class="src anim">A direção definiu: <b>Compromisso com o time.</b></p>
+  </section>
+  <!-- 06 Valores · C -->
+  <section class="slide">
+    <div class="anim"><p class="eyebrow">06 · Valores · a consequência</p></div>
+    <h3 class="anim" style="margin-bottom:24px">O que essa distância provoca no dia a dia.</h3>
+    <div class="two anim" style="align-items:stretch">
+      <div class="card out"><div class="card-k">Na liderança · gap de 2,6 pontos</div><div class="card-t" style="font-weight:500;font-size:26px;line-height:1.45">É a dimensão mais alinhada, e a que mais engana. A liderança concorda com o valor e decide caso a caso. O valor existe; a regra, não.</div></div>
+      <div class="card out"><div class="card-k">Na equipe · gap de 3,1 pontos</div><div class="card-t" style="font-weight:500;font-size:26px;line-height:1.45">A equipe vê a exceção acontecer. Quando o valor cede na frente dela, deixa de ser valor e vira discurso — e a exceção vira o padrão.</div></div>
+    </div>
+  </section>
+
+  <!-- 07 Tom de voz · A -->
+  <section class="slide">
+    <div class="anim"><p class="eyebrow">Dimensão 07 de 08</p></div>
+    <div class="dim-h anim"><span class="dim-n">07</span><h1 style="margin:0">Tom de voz</h1></div>
+    <div class="two anim" style="margin-top:34px;grid-template-columns:.8fr 1.2fr;align-items:stretch">
+      <div class="card"><div class="card-k">O que é</div><div class="card-t" style="font-weight:500">Como a marca fala e como se comporta. O jeito que faz alguém reconhecer a casa mesmo sem ver o nome.</div></div>
+      <div class="card win"><div class="card-k">O que a direção definiu</div><div class="card-t" style="font-family:var(--serif);font-weight:400;font-size:34px;line-height:1.25">Segurança, respeito, firmeza e propriedade. Séria, próxima e técnica. Quem manda, mas recebe como anfitriã. Nunca popular, nunca arrogante.</div></div>
+    </div>
+  </section>
+  <!-- 07 Tom de voz · B -->
+  <section class="slide">
+    <div class="anim"><p class="eyebrow">07 · Tom de voz · o gap</p></div>
+    <h3 class="anim" style="margin-bottom:22px">Quanto da definição da direção chegou em cada camada.</h3>
+    <div class="two anim" style="align-items:stretch"><div class="gc"><div class="gc-h"><div><div class="card-k">Liderança · 13 pessoas</div><div class="gc-l">lê de outro jeito</div></div><div class="gc-n">4,5<small>/10</small></div></div><div class="pl-bar low" style="height:12px;margin:14px 0 20px"><i style="width:45%"></i></div><ul class="gc-ul"><li>Personagem: “quem manda, com ordem e padrão” para <b>5 em 13</b>.</li><li>Clima da marca: glamour (3) e sofisticação (3) à frente de ordem e confiança.</li><li>Ao recusar um lojista sem perfil: 7 em 13 escolhem “não temos espaço no momento”.</li></ul></div><div class="gc"><div class="gc-h"><div><div class="card-k">Equipe · 43 pessoas</div><div class="gc-l">lê de outro jeito</div></div><div class="gc-n">4,3<small>/10</small></div></div><div class="pl-bar low" style="height:12px;margin:14px 0 20px"><i style="width:43%"></i></div><ul class="gc-ul"><li>Personagem: “o que cria — aqui nasce a tendência” (14). “O que manda”: <b>2</b>.</li><li>Ao comprador que acha caro: 33 em 39 dão a resposta da direção.</li><li>Ao recusar um lojista: 18 dão a resposta firme; 12, “não temos espaço”.</li></ul></div></div>
+    <p class="src anim">A direção definiu: <b>Segurança, respeito, firmeza e propriedade.</b></p>
+  </section>
+  <!-- 07 Tom de voz · C -->
+  <section class="slide">
+    <div class="anim"><p class="eyebrow">07 · Tom de voz · a consequência</p></div>
+    <h3 class="anim" style="margin-bottom:24px">O que essa distância provoca no dia a dia.</h3>
+    <div class="two anim" style="align-items:stretch">
+      <div class="card out"><div class="card-k">Na liderança · gap de 5,5 pontos</div><div class="card-t" style="font-weight:500;font-size:26px;line-height:1.45">A casa se enxerga pelo desfile; a direção, pelo padrão. E, na hora de dizer não, a liderança escolhe a saída que não explica — o contrário de firmeza.</div></div>
+      <div class="card out"><div class="card-k">Na equipe · gap de 5,7 pontos</div><div class="card-t" style="font-weight:500;font-size:26px;line-height:1.45">A equipe tem a resposta certa para o preço porque ouve essa objeção todo dia. Onde nunca foi orientada, improvisa. O tom existe onde houve repetição.</div></div>
+    </div>
+  </section>
+
+  <!-- 08 Papel próprio · A -->
+  <section class="slide">
+    <div class="anim"><p class="eyebrow">Dimensão 08 de 08</p></div>
+    <div class="dim-h anim"><span class="dim-n">08</span><h1 style="margin:0">Papel próprio</h1></div>
+    <div class="two anim" style="margin-top:34px;grid-template-columns:.8fr 1.2fr;align-items:stretch">
+      <div class="card"><div class="card-k">O que é</div><div class="card-t" style="font-weight:500">O que cabe a cada um na entrega da marca: quem responde pelo quê, e como se decide na dúvida.</div></div>
+      <div class="card win"><div class="card-k">O que a direção definiu</div><div class="card-t" style="font-family:var(--serif);font-weight:400;font-size:34px;line-height:1.25">Trazer comprador, não só alugar espaço. Medir se a promessa foi cumprida. Decidir marca pelo combinado, não pelo gosto.</div></div>
+    </div>
+  </section>
+  <!-- 08 Papel próprio · B -->
+  <section class="slide">
+    <div class="anim"><p class="eyebrow">08 · Papel próprio · o gap</p></div>
+    <h3 class="anim" style="margin-bottom:22px">Quanto da definição da direção chegou em cada camada.</h3>
+    <div class="two anim" style="align-items:stretch"><div class="gc"><div class="gc-h"><div><div class="card-k">Liderança · 13 pessoas</div><div class="gc-l">lê de outro jeito</div></div><div class="gc-n">4,8<small>/10</small></div></div><div class="pl-bar low" style="height:12px;margin:14px 0 20px"><i style="width:48%"></i></div><ul class="gc-ul"><li>O que mais faz o comprador voltar: o atendimento na loja (9 em 12).</li><li>Quem mede a promessa: comercial (4), diretoria (4), comitê (4). <b>Sem consenso.</b></li><li>Critério escrito para decidir o que é a marca: não existe, para 8 em 13.</li></ul></div><div class="gc"><div class="gc-h"><div><div class="card-k">Equipe · 43 pessoas</div><div class="gc-l">lê de outro jeito</div></div><div class="gc-n">3,4<small>/10</small></div></div><div class="pl-bar low" style="height:12px;margin:14px 0 20px"><i style="width:34%"></i></div><ul class="gc-ul"><li>O que mais faz voltar: o atendimento na loja (24 em 40) — também o mais citado como <b>“sem responsável”</b> (18).</li><li>Quem confere a promessa: grupo de áreas (12), comercial (11), “não sei” (7). Diretoria: 5.</li><li>Na dúvida, decide “cada caso é um caso” (21) ou “o que o chefe falou” (15). Regra escrita: 3.</li></ul></div></div>
+    <p class="src anim">A direção definiu: <b>Trazer comprador, não só alugar espaço.</b></p>
+  </section>
+  <!-- 08 Papel próprio · C -->
+  <section class="slide">
+    <div class="anim"><p class="eyebrow">08 · Papel próprio · a consequência</p></div>
+    <h3 class="anim" style="margin-bottom:24px">O que essa distância provoca no dia a dia.</h3>
+    <div class="two anim" style="align-items:stretch">
+      <div class="card out"><div class="card-k">Na liderança · gap de 5,2 pontos</div><div class="card-t" style="font-weight:500;font-size:26px;line-height:1.45">Todos concordam sobre o que importa e ninguém responde por isso. Sem dono e sem critério, a marca é decidida por quem está na sala.</div></div>
+      <div class="card out"><div class="card-k">Na equipe · gap de 6,6 pontos</div><div class="card-t" style="font-weight:500;font-size:26px;line-height:1.45">O ponto que mais faz o comprador voltar é o que a equipe diz não ter responsável. É a maior queda entre liderança e equipe em todo o estudo.</div></div>
+    </div>
+  </section>
+
+  <!-- PLACAR -->
+  <section class="slide">
+    <div class="anim"><p class="eyebrow">As oito dimensões, lado a lado</p></div>
     <h3 class="anim" style="margin-bottom:26px">Quanto da definição da direção chegou em cada camada.</h3>
     <div class="placar2 anim" id="placar2"></div>
     <p class="src anim"><span class="lg l1"></span> Liderança · média <b>4,6</b> &nbsp;&nbsp; <span class="lg l2"></span> Equipe · média <b>4,1</b> &nbsp;&nbsp;·&nbsp;&nbsp; calculado nas perguntas respondidas pelas duas camadas</p>
   </section>
-
   <div class="hud hud-b">
     <div class="bar"><i id="barFill"></i></div>
     <div class="hud-line"></div>
@@ -399,7 +596,7 @@ const P2=[["01 · Propósito",3.4,3.8],["02 · Posicionamento",4.6,3.5],["03 · 
 const pw=document.getElementById("placar2");
 P2.forEach(([k,l,e])=>{const row=document.createElement("div");row.className="p2";const f=v=>v.toFixed(1).replace(".",",");
  row.innerHTML='<div class="p2-k">'+k+'</div><div class="p2-bar a"><i style="width:'+l*10+'%"></i></div><div class="p2-n">'+f(l)+'</div><div class="p2-bar b"><i style="width:'+e*10+'%"></i></div><div class="p2-n">'+f(e)+'</div>';pw.appendChild(row);});
-const SECOES=["Abertura","De onde partimos","A ideia","A cascata","O que é o gap","Por que custa","As oito dimensões","O trabalho","As regras","Como se lê","O ponto zero","A régua","Como segue","Visão geral"];
+const SECOES=["Abertura","De onde partimos","A ideia","A cascata","O que é o gap","Por que custa","As oito dimensões","O trabalho","As regras","Como se lê","Os quatro passos","Propósito","Propósito · gap","Propósito · consequência","Posicionamento","Posicionamento · gap","Posicionamento · consequência","Público","Público · gap","Público · consequência","Promessa","Promessa · gap","Promessa · consequência","Diferencial","Diferencial · gap","Diferencial · consequência","Valores","Valores · gap","Valores · consequência","Tom de voz","Tom de voz · gap","Tom de voz · consequência","Papel próprio","Papel próprio · gap","Papel próprio · consequência","Visão geral"];
 const slides=[...document.querySelectorAll(".slide")];let i=0;
 document.getElementById("tot").textContent=String(slides.length).padStart(2,"0");
 function show(n){i=Math.max(0,Math.min(slides.length-1,n));slides.forEach((s,k)=>s.classList.toggle("on",k===i));document.getElementById("cur").textContent=String(i+1).padStart(2,"0");document.getElementById("secName").textContent=SECOES[i]||"";document.getElementById("barFill").style.width=((i+1)/slides.length*100)+"%";history.replaceState(null,"","#"+(i+1));}
