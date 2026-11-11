@@ -318,6 +318,19 @@ em,.statement .hl{font-style:normal;color:var(--gold-2)}
 .cq.at .cq-frase em,.cq.at .ef-k{color:#8A6E1E}.cq.ok .cq-frase em,.cq.ok .ef-k{color:var(--pos)}
 .cq.at .cq-mark{color:rgba(166,133,44,.3)}.cq.ok .cq-mark{color:rgba(47,125,62,.25)}
 .vb-t{font-size:17px}
+
+/* gráfico de colunas */
+.gchart{position:relative;height:540px;border-bottom:2px solid var(--stroke-2);margin-bottom:64px}
+.gline{position:absolute;left:0;right:0;border-top:1.5px dashed rgba(17,20,24,.28);z-index:1}
+.gline span{position:absolute;right:0;top:-24px;font-size:13px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--tx-3);background:var(--bg);padding-left:10px}
+.gcols{position:absolute;inset:0;display:grid;grid-template-columns:repeat(8,1fr);gap:26px;padding-right:230px}
+.gcol{position:relative;height:100%}
+.gbars{height:100%;display:flex;align-items:flex-end;justify-content:center;gap:10px}
+.gbar{width:58px;border-radius:8px 8px 0 0;position:relative}
+.gbar.a{background:#1B1F24}.gbar.b{background:#9AA1AB}
+.gbar span{position:absolute;top:-34px;left:50%;transform:translateX(-50%);font-size:24px;font-weight:700;letter-spacing:-.03em;color:var(--tx)}
+.gname{position:absolute;top:100%;left:0;right:0;text-align:center;padding-top:14px;font-size:18px;font-weight:600;color:var(--tx);line-height:1.2}
+.gname b{display:block;font-size:12px;letter-spacing:.16em;color:var(--tx-3);font-weight:700;margin-bottom:3px}
 </style>
 </head>
 <body>
@@ -495,6 +508,18 @@ em,.statement .hl{font-style:normal;color:var(--gold-2)}
     </div>
   </section>
 
+  <!-- VISÃO GERAL -->
+  <section class="slide tight">
+    <div class="anim"><p class="eyebrow" style="margin-bottom:10px">O resultado · visão geral</p></div>
+    <h3 class="anim" style="margin-bottom:6px">O gap em cada dimensão.</h3>
+    <p class="mini anim" style="margin-bottom:26px">Quanto da definição da direção não chegou na liderança e na equipe. Quanto mais alta a coluna, maior a distância.</p>
+    <div class="gchart anim">
+      <div class="gline" style="bottom:50%"><span>Crítico · acima de 50%</span></div>
+      <div class="gline" style="bottom:30%"><span>Aceitável · até 30%</span></div>
+      <div class="gcols"><div class="gcol"><div class="gbars"><div class="gbar a" style="height:66%"><span>66%</span></div><div class="gbar b" style="height:62%"><span>62%</span></div></div><div class="gname"><b>01</b>Propósito</div></div><div class="gcol"><div class="gbars"><div class="gbar a" style="height:54%"><span>54%</span></div><div class="gbar b" style="height:65%"><span>65%</span></div></div><div class="gname"><b>02</b>Posicionamento</div></div><div class="gcol"><div class="gbars"><div class="gbar a" style="height:67%"><span>67%</span></div><div class="gbar b" style="height:75%"><span>75%</span></div></div><div class="gname"><b>03</b>Público</div></div><div class="gcol"><div class="gbars"><div class="gbar a" style="height:60%"><span>60%</span></div><div class="gbar b" style="height:53%"><span>53%</span></div></div><div class="gname"><b>04</b>Promessa</div></div><div class="gcol"><div class="gbars"><div class="gbar a" style="height:56%"><span>56%</span></div><div class="gbar b" style="height:60%"><span>60%</span></div></div><div class="gname"><b>05</b>Diferencial</div></div><div class="gcol"><div class="gbars"><div class="gbar a" style="height:26%"><span>26%</span></div><div class="gbar b" style="height:31%"><span>31%</span></div></div><div class="gname"><b>06</b>Valores</div></div><div class="gcol"><div class="gbars"><div class="gbar a" style="height:55%"><span>55%</span></div><div class="gbar b" style="height:57%"><span>57%</span></div></div><div class="gname"><b>07</b>Tom de voz</div></div><div class="gcol"><div class="gbars"><div class="gbar a" style="height:52%"><span>52%</span></div><div class="gbar b" style="height:66%"><span>66%</span></div></div><div class="gname"><b>08</b>Papel próprio</div></div></div>
+    </div>
+    <p class="src anim" style="margin-top:22px"><span class="lg l1"></span> Liderança · gap médio <b>54%</b> &nbsp;&nbsp;&nbsp; <span class="lg l2"></span> Equipe · gap médio <b>59%</b></p>
+  </section>
   <!-- 01 Propósito · A -->
   <section class="slide">
     <div class="anim"><p class="eyebrow">Dimensão 01 de 08</p></div>
@@ -1223,13 +1248,6 @@ em,.statement .hl{font-style:normal;color:var(--gold-2)}
     </div>
     <div class="cq-fecho anim">O que é de todos <b>não é de ninguém</b>.</div>
   </section>
-  <!-- PLACAR -->
-  <section class="slide">
-    <div class="anim"><p class="eyebrow">As oito dimensões, lado a lado</p></div>
-    <h3 class="anim" style="margin-bottom:26px">Quanto da definição da direção chegou em cada camada.</h3>
-    <div class="placar2 anim" id="placar2"></div>
-    <p class="src anim"><span class="lg l1"></span> Liderança · média <b>4,6</b> &nbsp;&nbsp; <span class="lg l2"></span> Equipe · média <b>4,1</b> &nbsp;&nbsp;·&nbsp;&nbsp; calculado nas perguntas respondidas pelas duas camadas</p>
-  </section>
   <div class="hud hud-b">
     <div class="bar"><i id="barFill"></i></div>
     <div class="hud-line"></div>
@@ -1238,11 +1256,8 @@ em,.statement .hl{font-style:normal;color:var(--gold-2)}
   </div>
 </div></div>
 <script>
-const P2=[["01 · Propósito",3.4,3.8],["02 · Posicionamento",4.6,3.5],["03 · Público",3.3,2.5],["04 · Promessa",4.0,4.7],["05 · Diferencial",4.4,4.0],["06 · Valores",7.4,6.9],["07 · Tom de voz",4.5,4.3],["08 · Papel próprio",4.8,3.4]];
-const pw=document.getElementById("placar2");
-P2.forEach(([k,l,e])=>{const row=document.createElement("div");row.className="p2";const f=v=>v.toFixed(1).replace(".",",");
- row.innerHTML='<div class="p2-k">'+k+'</div><div class="p2-bar a"><i style="width:'+l*10+'%"></i></div><div class="p2-n">'+f(l)+'</div><div class="p2-bar b"><i style="width:'+e*10+'%"></i></div><div class="p2-n">'+f(e)+'</div>';pw.appendChild(row);});
-const SECOES=["Abertura","De onde partimos","A ideia","A cascata","O que é o gap","Por que custa","As oito dimensões","O trabalho","As regras","Como se lê","O tamanho do gap","Os quatro passos","Propósito","Propósito · gap","Propósito · consequência","Posicionamento","Posicionamento · gap","Posicionamento · consequência","Público","Público · gap","Público · consequência","Promessa","Promessa · gap","Promessa · consequência","Diferencial","Diferencial · gap","Diferencial · consequência","Valores","Valores · gap","Valores · consequência","Tom de voz","Tom de voz · gap","Tom de voz · consequência","Papel próprio","Papel próprio · gap","Papel próprio · consequência","Visão geral"];
+
+const SECOES=["Abertura","De onde partimos","A ideia","A cascata","O que é o gap","Por que custa","As oito dimensões","O trabalho","As regras","Como se lê","O tamanho do gap","Os quatro passos","Visão geral","Propósito","Propósito · gap","Propósito · consequência","Posicionamento","Posicionamento · gap","Posicionamento · consequência","Público","Público · gap","Público · consequência","Promessa","Promessa · gap","Promessa · consequência","Diferencial","Diferencial · gap","Diferencial · consequência","Valores","Valores · gap","Valores · consequência","Tom de voz","Tom de voz · gap","Tom de voz · consequência","Papel próprio","Papel próprio · gap","Papel próprio · consequência"];
 const slides=[...document.querySelectorAll(".slide")];let i=0;
 document.getElementById("tot").textContent=String(slides.length).padStart(2,"0");
 function show(n){i=Math.max(0,Math.min(slides.length-1,n));slides.forEach((s,k)=>s.classList.toggle("on",k===i));document.getElementById("cur").textContent=String(i+1).padStart(2,"0");document.getElementById("secName").textContent=SECOES[i]||"";document.getElementById("barFill").style.width=((i+1)/slides.length*100)+"%";history.replaceState(null,"","#"+(i+1));}
