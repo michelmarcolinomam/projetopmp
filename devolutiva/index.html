@@ -354,6 +354,15 @@ em,.statement .hl{font-style:normal;color:var(--gold-2)}
 .fch-leg{margin-top:16px;font-size:14px;color:rgba(255,255,255,.6);display:flex;align-items:center;gap:8px}
 .lgd{display:inline-block;width:22px;height:5px;border-radius:3px}.lgd.d{background:#8FD49B}.lgd.l{background:rgba(255,255,255,.6);margin-left:18px}
 .tilec{background:var(--panel);border:1px solid var(--stroke);border-radius:14px;padding:14px 20px}
+
+/* promessa por público */
+.fpr{display:flex;flex-direction:column}
+.fpr-r{display:grid;grid-template-columns:230px 1fr;gap:26px;align-items:baseline;padding:20px 0;border-top:1px solid rgba(255,255,255,.16)}
+.fpr-r:first-child{border-top:0;padding-top:4px}
+.fpr-k{font-size:15px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:rgba(255,255,255,.6)}
+.fpr-t{font-size:38px;line-height:1.18;font-weight:600;letter-spacing:-.035em;color:#fff}
+.fpr-t .fpd{color:#8FD49B}
+.fpr-t .fpl{text-decoration:underline;text-decoration-color:rgba(255,255,255,.45);text-decoration-thickness:4px;text-underline-offset:8px}
 </style>
 </head>
 <body>
@@ -1013,14 +1022,18 @@ em,.statement .hl{font-style:normal;color:var(--gold-2)}
       <div class="fch-arrow">→</div>
       <div class="fch-fim">
         <div class="fch-k">Promessa · versão final proposta</div>
-        <p class="fch-t" style="font-size:36px"><span class="fpd">O que a gente promete, a gente cumpre. Ao comprador: aqui você compra certo</span><span class="fpl">, com marcas que o seu concorrente não tem.</span> <span class="fpd">Ao lojista: aqui alguém se importa se a sua marca cresce.</span> <span class="fpl">Ao guia: parceiro de verdade, não só comissão.</span></p>
+        <div class="fpr">
+          <div class="fpr-r"><div class="fpr-k">Aos compradores</div><div class="fpr-t"><span class="fpl">Oferecer marcas exclusivas,</span> <span class="fpd">proporcionando uma compra certa.</span></div></div>
+          <div class="fpr-r"><div class="fpr-k">Aos lojistas</div><div class="fpr-t"><span class="fpd">Acompanhar de perto o crescimento de cada marca.</span></div></div>
+          <div class="fpr-r"><div class="fpr-k">Aos guias</div><div class="fpr-t"><span class="fpl">Ser parceiro de verdade, além da comissão.</span></div></div>
+        </div>
         <div class="fch-leg"><span class="lgd d"></span>da direção <span class="lgd l"></span>da liderança</div>
       </div>
     </div>
     <div class="three anim" style="margin-top:16px;gap:18px">
-      <div class="tilec"><div class="tile-k">O que se mantém</div><div class="tile-t">A palavra cumprida como piso, e as <b>duas frases da direção</b>, ao comprador e ao lojista.</div></div>
-      <div class="tilec"><div class="tile-k">O que entra</div><div class="tile-t">A exclusividade como prova do “compra certo”, e <b>a frase ao guia</b>, que não existia. Foi a mais votada na liderança e na equipe.</div></div>
-      <div class="tilec"><div class="tile-k">O que isso resolve</div><div class="tile-t"><b>Uma frase por público</b>, a mesma na boca de quem dirige, de quem lidera e de quem atende.</div></div>
+      <div class="tilec"><div class="tile-k">O que se mantém</div><div class="tile-t">O sentido das duas frases da direção: <b>compra certa</b> para o comprador e <b>cuidado com o crescimento</b> para o lojista.</div></div>
+      <div class="tilec"><div class="tile-k">O que entra</div><div class="tile-t">As <b>marcas exclusivas</b>, que a liderança põe em primeiro lugar, e <b>a promessa ao guia</b>, que não existia.</div></div>
+      <div class="tilec"><div class="tile-k">O que isso resolve</div><div class="tile-t"><b>Uma promessa por público</b>, curta o bastante para ser repetida igual por quem dirige, lidera e atende.</div></div>
     </div>
     <p class="src anim" style="margin-top:12px">Rascunho para validação da direção e da liderança · não substitui a definição original até ser aprovado</p>
   </section>
