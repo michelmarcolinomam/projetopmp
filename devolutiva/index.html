@@ -233,6 +233,22 @@ table.tb{width:100%;border-collapse:collapse}
 .tile-t{font-size:18px;line-height:1.4;color:var(--tx-2)}
 .tile-t b{color:var(--tx);font-weight:700}
 .tile.ins .tile-t{color:var(--tx);font-weight:600}
+.cq{background:var(--panel);border:1px solid var(--stroke);border-radius:18px;overflow:hidden;display:flex;flex-direction:column}
+.cq-h{display:flex;justify-content:space-between;align-items:center;padding:14px 28px;background:var(--panel-2);border-bottom:1px solid var(--stroke)}
+.cq-nome{font-size:14px;letter-spacing:.16em;text-transform:uppercase;color:var(--tx-2);font-weight:700}
+.cq-body{position:relative;padding:30px 34px 26px 96px;background:linear-gradient(180deg,rgba(180,68,58,.045),rgba(180,68,58,0))}
+.cq-mark{position:absolute;left:26px;top:2px;font-family:var(--serif);font-size:170px;line-height:1;color:rgba(180,68,58,.28)}
+.cq-frase{font-family:var(--serif);font-size:46px;line-height:1.14;letter-spacing:-.012em;color:var(--tx)}
+.cq-frase em{color:var(--neg);font-style:italic}
+.cq-sub{font-size:21px;line-height:1.45;color:var(--tx-2);margin-top:14px}
+.cq-ef{padding:6px 28px 20px;margin-top:auto}
+.cq-ef-k{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--tx-3);font-weight:700;padding:14px 0 8px;border-top:1px solid var(--stroke)}
+.ef{display:grid;grid-template-columns:170px 1fr;gap:18px;padding:11px 0;border-top:1px solid var(--stroke);align-items:baseline}
+.ef-k{font-size:15px;font-weight:700;color:var(--neg)}
+.ef-t{font-size:18px;line-height:1.42;color:var(--tx-2)}
+.ef-t b{color:var(--tx);font-weight:700}
+.cq-fecho{margin-top:20px;text-align:center;font-family:var(--serif);font-size:32px;line-height:1.2;color:var(--tx-2)}
+.cq-fecho b{font-weight:400;font-style:italic;color:var(--gold-2)}
 .casc{display:flex;align-items:stretch;gap:10px}
 .cs{flex:1;background:var(--panel);border:1px dashed var(--stroke-2);border-radius:16px;padding:24px 22px;opacity:.55}
 .cs.on{border:1px solid rgba(84,116,44,.4);background:var(--gold-dim);opacity:1}
@@ -490,15 +506,37 @@ table.tb{width:100%;border-collapse:collapse}
     </div>
   </section>
   <!-- 01 Propósito · C -->
-  <section class="slide">
-    <div class="anim"><p class="eyebrow">01 · Propósito · a consequência</p></div>
-    <h3 class="anim" style="margin-bottom:24px">O que essa distância provoca no dia a dia.</h3>
-    <div class="two anim" style="align-items:stretch">
-      <div class="card out"><div class="card-k">Na liderança · gap de 66%</div><div class="card-t" style="font-weight:500;font-size:26px;line-height:1.45">A liderança responde ao “por quê” com o “aonde queremos chegar”. Decide pela ambição, não pelo propósito — e é essa versão que passa adiante.</div></div>
-      <div class="card out"><div class="card-k">Na equipe · gap de 62%</div><div class="card-t" style="font-weight:500;font-size:26px;line-height:1.45">A equipe sabe para onde a empresa vai, mas não sabe dizer por que ela existe. Na dúvida, não tem um porquê em que se apoiar: atende pelo que acha certo.</div></div>
+  <section class="slide tight">
+    <div class="anim"><p class="eyebrow" style="margin-bottom:10px">01 · Propósito · a consequência</p></div>
+    <h3 class="anim" style="margin-bottom:20px">O que essa distância provoca no dia a dia.</h3>
+    <div class="two anim" style="gap:26px;align-items:stretch">
+      <div class="cq">
+        <div class="cq-h"><span class="cq-nome">Na liderança</span><span class="chip cr">gap de 66%</span></div>
+        <div class="cq-body">
+          <div class="cq-mark">“</div>
+          <p class="cq-frase">Responde ao <em>“por quê”</em> com o <em>“aonde queremos chegar”.</em></p>
+          <p class="cq-sub">Decide pela ambição, não pelo propósito — e é essa versão que passa adiante.</p>
+        </div>
+        <div class="cq-ef">
+          <div class="cq-ef-k">No dia a dia, isso aparece assim</div>
+          <div class="ef"><div class="ef-k">Na decisão</div><div class="ef-t">As prioridades são medidas por alcance e tamanho, não pelo crescimento das marcas que estão na casa.</div></div><div class="ef"><div class="ef-k">Na mensagem</div><div class="ef-t">É a frase da liderança que desce: <b>26 em 42</b> da equipe repetem “conectar fábricas a compradores do Brasil”.</div></div><div class="ef"><div class="ef-k">Para o lojista</div><div class="ef-t">O compromisso com o crescimento dele, que é o centro da definição da direção, não é dito em voz alta.</div></div>
+        </div>
+      </div>
+      <div class="cq">
+        <div class="cq-h"><span class="cq-nome">Na equipe</span><span class="chip cr">gap de 62%</span></div>
+        <div class="cq-body">
+          <div class="cq-mark">“</div>
+          <p class="cq-frase">Sabe <em>para onde</em> a empresa vai. Não sabe dizer <em>por que</em> ela existe.</p>
+          <p class="cq-sub">Na dúvida, não tem um porquê em que se apoiar: atende pelo que acha certo.</p>
+        </div>
+        <div class="cq-ef">
+          <div class="cq-ef-k">No dia a dia, isso aparece assim</div>
+          <div class="ef"><div class="ef-k">No atendimento</div><div class="ef-t">Cada pessoa resolve do seu jeito. O cliente recebe uma casa diferente conforme quem o atende.</div></div><div class="ef"><div class="ef-k">No discurso</div><div class="ef-t">Perguntada “por que comprar aqui?”, a equipe fala de estrutura, variedade de marcas e qualidade. O crescimento das marcas não aparece.</div></div><div class="ef"><div class="ef-k">No próprio papel</div><div class="ef-t"><b>20 em 40</b> dão nota 3 ou menos, de 5, para o quanto o seu trabalho ajuda o lojista a vender.</div></div>
+        </div>
+      </div>
     </div>
+    <div class="cq-fecho anim">Enquanto o propósito não chegar, a casa comunica <b>um destino</b> — não <b>uma razão</b>.</div>
   </section>
-
   <!-- 02 Posicionamento · A -->
   <section class="slide">
     <div class="anim"><p class="eyebrow">Dimensão 02 de 08</p></div>
