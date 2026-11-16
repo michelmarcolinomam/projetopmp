@@ -497,6 +497,8 @@ em,.statement .hl{font-style:normal;color:var(--gold-2)}
 .pr-rest{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;margin-top:18px}
 .pr-rest>div{font-size:16px;line-height:1.45;color:var(--tx-2);padding:14px 20px;border:1px dashed var(--stroke-2);border-radius:12px}
 .pr-rest b{display:block;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--tx-3);font-weight:700;margin-bottom:4px}
+
+.ms-de{color:#F08A7E;text-decoration:line-through;text-decoration-thickness:6px;text-decoration-color:rgba(240,138,126,.55)}
 </style>
 </head>
 <body>
@@ -1970,6 +1972,17 @@ em,.statement .hl{font-style:normal;color:var(--gold-2)}
       <div><b>Legenda</b><span class="lg l1"></span> Liderança &nbsp; <span class="lg l2"></span> Equipe &nbsp; <span class="lg l3"></span> Compradores, recorte inicial</div>
     </div>
   </section>
+  <!-- PLANO 2 -->
+  <section class="slide tight">
+    <div class="mq mq-capa anim">
+      <div class="mq-top"><div class="mq-id"><span>◎</span>Nossa missão</div><div class="mq-q">Prazo · 30 de junho de 2027</div></div>
+      <div class="mq-body">
+        <h1 class="mq-h" style="font-size:132px">Levar o gap médio<br>de <span class="ms-de">68%</span> para <em>30%.</em></h1>
+        <p class="mq-lede">Nas quatro dimensões prioritárias, até 30 de junho de 2027. Trinta por cento é o limite da faixa aceitável: o ponto em que a marca passa a ser entendida do mesmo jeito por quem a dirige e por quem a consome.</p>
+      </div>
+      <div class="mq-idx" style="grid-template-columns:repeat(4,1fr)"><div><b>HOJE 71% → META 30%</b>Promessa</div><div><b>HOJE 67% → META 30%</b>Posicionamento</div><div><b>HOJE 67% → META 30%</b>Papel próprio</div><div><b>HOJE 65% → META 30%</b>Tom de voz</div></div>
+    </div>
+  </section>
   <div class="hud hud-b">
     <div class="bar"><i id="barFill"></i></div>
     <div class="hud-line"></div>
@@ -1979,7 +1992,7 @@ em,.statement .hl{font-style:normal;color:var(--gold-2)}
 </div></div>
 <script>
 
-const SECOES=["Abertura","O que coletamos","De onde partimos","A ideia","A cascata","O que é o gap","Por que custa","As oito dimensões","O trabalho","As regras","Como se lê","O tamanho do gap","Os quatro passos","Visão geral","Propósito","Propósito · gap","Propósito · consequência","Propósito · fechamento","Posicionamento","Posicionamento · gap","Posicionamento · consequência","Posicionamento · fechamento","Público","Público · gap","Público · consequência","Público · fechamento","Promessa","Promessa · gap","Promessa · consequência","Promessa · fechamento","Diferencial","Diferencial · gap","Diferencial · consequência","Diferencial · fechamento","Valores","Valores · gap","Valores · consequência","Valores · fechamento","Tom de voz","Tom de voz · gap","Tom de voz · consequência","Tom de voz · fechamento","Papel próprio","Papel próprio · gap","Papel próprio · consequência","Papel próprio · fechamento","Gap médio por dimensão","A leitura do estudo","A marca, por escrito","Em resumo · Propósito","Em resumo · Posicionamento","Em resumo · Público","Em resumo · Promessa","Em resumo · Diferencial","Em resumo · Valores","Em resumo · Tom de voz","Em resumo · Papel próprio","Plano de alinhamento","Plano de alinhamento · prioridades"];
+const SECOES=["Abertura","O que coletamos","De onde partimos","A ideia","A cascata","O que é o gap","Por que custa","As oito dimensões","O trabalho","As regras","Como se lê","O tamanho do gap","Os quatro passos","Visão geral","Propósito","Propósito · gap","Propósito · consequência","Propósito · fechamento","Posicionamento","Posicionamento · gap","Posicionamento · consequência","Posicionamento · fechamento","Público","Público · gap","Público · consequência","Público · fechamento","Promessa","Promessa · gap","Promessa · consequência","Promessa · fechamento","Diferencial","Diferencial · gap","Diferencial · consequência","Diferencial · fechamento","Valores","Valores · gap","Valores · consequência","Valores · fechamento","Tom de voz","Tom de voz · gap","Tom de voz · consequência","Tom de voz · fechamento","Papel próprio","Papel próprio · gap","Papel próprio · consequência","Papel próprio · fechamento","Gap médio por dimensão","A leitura do estudo","A marca, por escrito","Em resumo · Propósito","Em resumo · Posicionamento","Em resumo · Público","Em resumo · Promessa","Em resumo · Diferencial","Em resumo · Valores","Em resumo · Tom de voz","Em resumo · Papel próprio","Plano de alinhamento","Plano de alinhamento · prioridades","Nossa missão"];
 const slides=[...document.querySelectorAll(".slide")];let i=0;
 document.getElementById("tot").textContent=String(slides.length).padStart(2,"0");
 function show(n){i=Math.max(0,Math.min(slides.length-1,n));slides.forEach((s,k)=>s.classList.toggle("on",k===i));document.getElementById("cur").textContent=String(i+1).padStart(2,"0");document.getElementById("secName").textContent=SECOES[i]||"";document.getElementById("barFill").style.width=((i+1)/slides.length*100)+"%";history.replaceState(null,"","#"+(i+1));}
