@@ -408,6 +408,20 @@ em,.statement .hl{font-style:normal;color:var(--gold-2)}
 .mk-ul li::before{content:"";position:absolute;left:0;top:10px;width:7px;height:7px;border-radius:50%;background:var(--tx-3)}
 .mk.on .mk-ul li::before{background:var(--gold)}
 .mk-ul b{color:var(--tx);font-weight:700}
+
+/* comprador */
+.cam-b3{grid-template-columns:230px 1fr 430px}
+.cam-b3 .vb{grid-template-columns:1fr 190px 64px;padding:13px 0}
+.cam-b3 .vb-t{font-size:19px}
+.cam-c{border-left:1px solid var(--stroke);padding-left:26px}
+.cp{display:grid;grid-template-columns:130px 1fr 62px;align-items:center;gap:12px;padding:12px 0;border-top:1px solid var(--stroke)}
+.cp-n{font-size:18px;font-weight:600;color:var(--tx-2)}
+.cp-bar{height:14px;border-radius:7px;background:rgba(17,20,24,.07);overflow:hidden}
+.cp-bar i{display:block;height:100%;border-radius:7px}
+.cp.a .cp-bar i{background:#151A22}.cp.b .cp-bar i{background:#2F6BF0}.cp.c .cp-bar i{background:#8A4FD6}
+.cp-p{font-size:24px;font-weight:600;letter-spacing:-.03em;text-align:right;color:var(--tx)}
+.cp.c .cp-n,.cp.c .cp-p{color:#6A35B8}
+.cam-note{font-size:17px;line-height:1.45;color:var(--tx-2);margin-top:14px;padding-top:12px;border-top:1px solid var(--stroke)}
 </style>
 </head>
 <body>
@@ -1670,6 +1684,44 @@ em,.statement .hl{font-style:normal;color:var(--gold-2)}
       </div>
     </div>
   </section>
+  <!-- MERCADO 01 -->
+  <section class="slide tight">
+    <div class="anim"><p class="eyebrow" style="margin-bottom:14px">Compradores · 01 · Propósito</p></div>
+    <div class="dirbox anim">
+      <div class="dirbox-k">O que a direção definiu</div>
+      <div class="dirbox-t">Existimos para <b>fazer marca de moda crescer</b> — com gestão, treinamento e acompanhamento — e para que <b>operar aqui custe menos.</b></div>
+    </div>
+    <div class="cam cr anim" style="margin-top:22px">
+      <div class="cam-h"><span>Compradores</span><span>Recorte inicial</span></div>
+      <div class="cam-b cam-b3">
+        <div class="cam-g">
+          <div class="cam-pct">67<small>%</small></div>
+          <div class="cam-lab">de gap</div>
+          <div class="chip cr">Crítico</div>
+          <div class="cam-split"><i style="width:33%"></i></div>
+          <div class="cam-leg"><span>chegou 33%</span><span>não chegou 67%</span></div>
+        </div>
+        <div class="cam-v">
+          <div class="cam-q">“Pra que existe o Paraná Moda Park?” — o que responderam</div>
+          <div class="vb d"><div class="vb-t">Fazer as marcas que estão lá crescerem<em>direção</em></div><div class="vb-bar"><i style="width:1.2%"></i></div><div class="vb-n">0%</div></div>
+          <div class="vb d"><div class="vb-t">Encurtar e baratear o caminho entre quem fabrica e quem compra<em>direção</em></div><div class="vb-bar"><i style="width:33%"></i></div><div class="vb-n">33%</div></div>
+          <div class="vb"><div class="vb-t">Dar às marcas estrutura e apoio que não teriam sozinhas</div><div class="vb-bar"><i style="width:1.2%"></i></div><div class="vb-n">0%</div></div>
+          <div class="vb"><div class="vb-t">Conectar as melhores fábricas a compradores do Brasil inteiro</div><div class="vb-bar"><i style="width:67%"></i></div><div class="vb-n">67%</div></div>
+        </div>
+        <div class="cam-c">
+          <div class="cam-q">O mesmo gap, nas outras camadas</div>
+          <div class="cp a"><div class="cp-n">Liderança</div><div class="cp-bar"><i style="width:66%"></i></div><div class="cp-p">66%</div></div>
+          <div class="cp b"><div class="cp-n">Equipe</div><div class="cp-bar"><i style="width:62%"></i></div><div class="cp-p">62%</div></div>
+          <div class="cp c"><div class="cp-n">Compradores</div><div class="cp-bar"><i style="width:67%"></i></div><div class="cp-p">67%</div></div>
+          <p class="cam-note">A distância é praticamente a mesma dentro e fora da casa.</p>
+        </div>
+      </div>
+      <div class="cam-f">
+        <div class="tile"><div class="tile-k">O que chama atenção</div><div class="tile-t"><b>Nenhum comprador</b> escolheu “fazer as marcas crescerem”, o centro da definição da direção.</div></div>
+        <div class="tile ins"><div class="tile-k">Em uma frase</div><div class="tile-t">O comprador enxerga a ponte entre fábrica e loja. Não enxerga o cuidado com as marcas.</div></div>
+      </div>
+    </div>
+  </section>
   <div class="hud hud-b">
     <div class="bar"><i id="barFill"></i></div>
     <div class="hud-line"></div>
@@ -1679,7 +1731,7 @@ em,.statement .hl{font-style:normal;color:var(--gold-2)}
 </div></div>
 <script>
 
-const SECOES=["Abertura","De onde partimos","A ideia","A cascata","O que é o gap","Por que custa","As oito dimensões","O trabalho","As regras","Como se lê","O tamanho do gap","Os quatro passos","Visão geral","Propósito","Propósito · gap","Propósito · consequência","Propósito · fechamento","Posicionamento","Posicionamento · gap","Posicionamento · consequência","Posicionamento · fechamento","Público","Público · gap","Público · consequência","Público · fechamento","Promessa","Promessa · gap","Promessa · consequência","Promessa · fechamento","Diferencial","Diferencial · gap","Diferencial · consequência","Diferencial · fechamento","Valores","Valores · gap","Valores · consequência","Valores · fechamento","Tom de voz","Tom de voz · gap","Tom de voz · consequência","Tom de voz · fechamento","Papel próprio","Papel próprio · gap","Papel próprio · consequência","Papel próprio · fechamento","A marca, por escrito","Em resumo · Propósito","Em resumo · Posicionamento","Em resumo · Público","Em resumo · Promessa","Em resumo · Diferencial","Em resumo · Valores","Em resumo · Tom de voz","Em resumo · Papel próprio","A visão do mercado"];
+const SECOES=["Abertura","De onde partimos","A ideia","A cascata","O que é o gap","Por que custa","As oito dimensões","O trabalho","As regras","Como se lê","O tamanho do gap","Os quatro passos","Visão geral","Propósito","Propósito · gap","Propósito · consequência","Propósito · fechamento","Posicionamento","Posicionamento · gap","Posicionamento · consequência","Posicionamento · fechamento","Público","Público · gap","Público · consequência","Público · fechamento","Promessa","Promessa · gap","Promessa · consequência","Promessa · fechamento","Diferencial","Diferencial · gap","Diferencial · consequência","Diferencial · fechamento","Valores","Valores · gap","Valores · consequência","Valores · fechamento","Tom de voz","Tom de voz · gap","Tom de voz · consequência","Tom de voz · fechamento","Papel próprio","Papel próprio · gap","Papel próprio · consequência","Papel próprio · fechamento","A marca, por escrito","Em resumo · Propósito","Em resumo · Posicionamento","Em resumo · Público","Em resumo · Promessa","Em resumo · Diferencial","Em resumo · Valores","Em resumo · Tom de voz","Em resumo · Papel próprio","A visão do mercado","Compradores · Propósito"];
 const slides=[...document.querySelectorAll(".slide")];let i=0;
 document.getElementById("tot").textContent=String(slides.length).padStart(2,"0");
 function show(n){i=Math.max(0,Math.min(slides.length-1,n));slides.forEach((s,k)=>s.classList.toggle("on",k===i));document.getElementById("cur").textContent=String(i+1).padStart(2,"0");document.getElementById("secName").textContent=SECOES[i]||"";document.getElementById("barFill").style.width=((i+1)/slides.length*100)+"%";history.replaceState(null,"","#"+(i+1));}
