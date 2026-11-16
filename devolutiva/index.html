@@ -605,6 +605,16 @@ em,.statement .hl{font-style:normal;color:var(--gold-2)}
 
 /* sem viúvas */
 .dirbox-t,.fch-t,.cq-frase,.mq-f,.statement,.fsrc-t,.lede,.mini,.leitura,.card-t,.tile-t,.ef-t,.fc-i p,.fz-li span,.mq-lede{text-wrap:pretty}
+
+/* capa MAM */
+.slide.bgc{padding:0;justify-content:center;align-items:center;background:var(--bg)}
+.bg-wrap{width:100%;height:100%;display:flex;flex-direction:column;justify-content:center;padding:0 150px;position:relative}
+.bg-logo{position:absolute;top:110px;left:150px;width:250px;height:auto;color:var(--tx)}
+.bg-t{font-size:330px;line-height:.86;font-weight:600;letter-spacing:-.065em;color:var(--tx);margin:0}
+.bg-t span{color:var(--gold)}
+.bg-f{position:absolute;left:150px;right:150px;bottom:110px;display:flex;justify-content:space-between;padding-top:26px;border-top:1px solid var(--stroke-2);font-size:20px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:var(--tx-2)}
+#stage.cover-on .hud{display:none}
+@media print{.slide.bgc .hud{display:none}}
 </style>
 </head>
 <body>
@@ -615,6 +625,19 @@ em,.statement .hl{font-style:normal;color:var(--gold-2)}
     <div class="hud-line"></div>
     <div class="hud-k" id="secName">Abertura</div>
   </div>
+  <!-- CAPA MAM -->
+  <section class="slide bgc">
+    <div class="bg-wrap anim">
+      <svg class="bg-logo" role="img" aria-label="MAM Brand" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 743.9 150" fill="currentColor">
+  <polygon points="690.5 17.9 657.7 106.2 651.9 121.8 646.1 106.2 613.3 17.9 581.2 17.9 581.2 132.1 599.9 132.1 599.9 35.3 635.9 132.1 667.9 132.1 703.9 35.3 703.9 132.1 722.6 132.1 722.6 17.9 690.5 17.9"/>
+  <path d="M473,17.9l-45.4,114.2h20l19.6-49.3,6.3,15.9h43.3l13.3,33.4h20l-45.4-114.2h-31.6ZM467.1,82.7l21.6-54.4,21.6,54.4h-43.2Z"/>
+  <polygon points="364.2 17.9 325.6 121.8 287 17.9 254.9 17.9 254.9 132.1 273.7 132.1 273.7 35.3 309.7 132.1 341.6 132.1 377.6 35.3 377.6 132.1 396.3 132.1 396.3 17.9 364.2 17.9"/>
+  <path d="M92,61.9L46.9,18h-25.7v114.1h25.7l31.6-30.9v-26.2l6.9,6.7h0s51.6,50.3,51.6,50.3h25.7V18h-25.7l-45.1,43.9ZM40,112.6V37.4l38.5,37.6-38.5,37.6ZM144,112.6l-38.5-37.6,38.5-37.6v75.2Z"/>
+</svg>
+      <h1 class="bg-t">Brand Gap<span>.</span></h1>
+      <div class="bg-f"><span>Paraná Moda Park</span><span>Devolutiva · Novembro de 2026</span></div>
+    </div>
+  </section>
   <!-- 01 CAPA -->
   <section class="slide">
     <div class="cover-mark anim">Projeto Brand Gap · Paraná Moda Park</div>
@@ -2256,10 +2279,10 @@ em,.statement .hl{font-style:normal;color:var(--gold-2)}
 </div></div>
 <script>
 
-const SECOES=["Abertura","O que coletamos","De onde partimos","A ideia","A cascata","O que é o gap","Por que custa","As oito dimensões","O trabalho","As regras","Como se lê","O tamanho do gap","Os quatro passos","Visão geral","Propósito","Propósito · gap","Propósito · consequência","Propósito · fechamento","Posicionamento","Posicionamento · gap","Posicionamento · consequência","Posicionamento · fechamento","Público","Público · gap","Público · consequência","Público · fechamento","Promessa","Promessa · gap","Promessa · consequência","Promessa · fechamento","Diferencial","Diferencial · gap","Diferencial · consequência","Diferencial · fechamento","Valores","Valores · gap","Valores · consequência","Valores · fechamento","Tom de voz","Tom de voz · gap","Tom de voz · consequência","Tom de voz · fechamento","Papel próprio","Papel próprio · gap","Papel próprio · consequência","Papel próprio · fechamento","Gap médio por dimensão","A leitura do estudo","A marca, por escrito","Em resumo · Propósito","Em resumo · Posicionamento","Em resumo · Público","Em resumo · Promessa","Em resumo · Diferencial","Em resumo · Valores","Em resumo · Tom de voz","Em resumo · Papel próprio","Plano de alinhamento","Plano de alinhamento · prioridades","Nossa missão","Fases · seis meses","Fase 1 · Janeiro","Fase 2 · Fevereiro e março","Fase 3 · Abril e maio","Fase 4 · Junho","Conteúdo de marca","Programa 1 · PMP Cast","Programa 2 · Selo PMP","Selo PMP · como funciona","Programa 3 · Canais","Os canais hoje","Fechamento","Para levar · o que é marca","Para levar · quem define","Vamos começar"];
+const SECOES=["Capa","Abertura","O que coletamos","De onde partimos","A ideia","A cascata","O que é o gap","Por que custa","As oito dimensões","O trabalho","As regras","Como se lê","O tamanho do gap","Os quatro passos","Visão geral","Propósito","Propósito · gap","Propósito · consequência","Propósito · fechamento","Posicionamento","Posicionamento · gap","Posicionamento · consequência","Posicionamento · fechamento","Público","Público · gap","Público · consequência","Público · fechamento","Promessa","Promessa · gap","Promessa · consequência","Promessa · fechamento","Diferencial","Diferencial · gap","Diferencial · consequência","Diferencial · fechamento","Valores","Valores · gap","Valores · consequência","Valores · fechamento","Tom de voz","Tom de voz · gap","Tom de voz · consequência","Tom de voz · fechamento","Papel próprio","Papel próprio · gap","Papel próprio · consequência","Papel próprio · fechamento","Gap médio por dimensão","A leitura do estudo","A marca, por escrito","Em resumo · Propósito","Em resumo · Posicionamento","Em resumo · Público","Em resumo · Promessa","Em resumo · Diferencial","Em resumo · Valores","Em resumo · Tom de voz","Em resumo · Papel próprio","Plano de alinhamento","Plano de alinhamento · prioridades","Nossa missão","Fases · seis meses","Fase 1 · Janeiro","Fase 2 · Fevereiro e março","Fase 3 · Abril e maio","Fase 4 · Junho","Conteúdo de marca","Programa 1 · PMP Cast","Programa 2 · Selo PMP","Selo PMP · como funciona","Programa 3 · Canais","Os canais hoje","Fechamento","Para levar · o que é marca","Para levar · quem define","Vamos começar"];
 const slides=[...document.querySelectorAll(".slide")];let i=0;
 document.getElementById("tot").textContent=String(slides.length).padStart(2,"0");
-function show(n){i=Math.max(0,Math.min(slides.length-1,n));slides.forEach((s,k)=>s.classList.toggle("on",k===i));document.getElementById("cur").textContent=String(i+1).padStart(2,"0");document.getElementById("secName").textContent=SECOES[i]||"";document.getElementById("barFill").style.width=((i+1)/slides.length*100)+"%";history.replaceState(null,"","#"+(i+1));}
+function show(n){i=Math.max(0,Math.min(slides.length-1,n));document.getElementById("stage").classList.toggle("cover-on",i===0);slides.forEach((s,k)=>s.classList.toggle("on",k===i));document.getElementById("cur").textContent=String(i+1).padStart(2,"0");document.getElementById("secName").textContent=SECOES[i]||"";document.getElementById("barFill").style.width=((i+1)/slides.length*100)+"%";history.replaceState(null,"","#"+(i+1));}
 show(Math.max(0,(parseInt(location.hash.slice(1),10)||1)-1));
 addEventListener("hashchange",()=>show((parseInt(location.hash.slice(1),10)||1)-1));
 function toggleFs(){const el=document.documentElement;if(document.fullscreenElement)document.exitFullscreen();else if(el.requestFullscreen)el.requestFullscreen().catch(()=>{});}
