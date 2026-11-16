@@ -574,6 +574,19 @@ em,.statement .hl{font-style:normal;color:var(--gold-2)}
 .sl-f{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:22px}
 .sl-f>div{border:1px dashed var(--stroke-2);border-radius:14px;padding:16px 22px;font-size:19px;line-height:1.4;color:var(--tx-2)}
 .sl-f b{display:block;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--tx-3);font-weight:700;margin-bottom:6px}
+
+/* canais */
+.chg{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.ch{background:var(--panel);border:1px solid var(--stroke);border-top:5px solid var(--neg);border-radius:16px;padding:18px 24px 18px}
+.ch.at{border-top-color:#A6852C}.ch.ok{border-top-color:var(--pos)}
+.ch-h{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:15px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--tx-2)}
+.ch-h .chip{font-size:11px;padding:4px 10px;letter-spacing:.1em}
+.ch-big{font-size:66px;font-weight:600;letter-spacing:-.055em;line-height:.95;color:var(--neg);margin-top:14px}
+.ch.at .ch-big{color:#8A6E1E}.ch.ok .ch-big{color:var(--pos)}
+.ch-l{font-size:15px;color:var(--tx-3);margin-top:4px}
+.ch-x{font-size:17.5px;line-height:1.42;color:var(--tx-2);margin-top:10px;padding-top:10px;border-top:1px solid var(--stroke)}
+.ch-f{margin-top:16px;background:#12161D;color:rgba(255,255,255,.8);border-radius:14px;padding:16px 26px;font-size:20px;line-height:1.45}
+.ch-f b{display:block;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:#8FD49B;font-weight:700;margin-bottom:4px}
 </style>
 </head>
 <body>
@@ -2167,6 +2180,14 @@ em,.statement .hl{font-style:normal;color:var(--gold-2)}
       <div><b>Para o shopping</b>Uma medida contínua da promessa, loja por loja.</div>
     </div>
   </section>
+  <!-- CANAIS -->
+  <section class="slide tight">
+    <div class="anim"><p class="eyebrow" style="margin-bottom:10px">Diagnóstico · os canais da marca</p></div>
+    <h2 class="anim" style="margin-bottom:8px">Onde a marca aparece hoje.</h2>
+    <p class="mini anim" style="margin-bottom:22px">Levantamento dos canais públicos do Paraná Moda Park, em 15 de novembro de 2026.</p>
+    <div class="chg anim"><div class="ch cr"><div class="ch-h"><span>YouTube · vídeos</span><span class="chip cr">sem vídeo novo</span></div><div class="ch-big">13 meses</div><div class="ch-l">sem atualização</div><p class="ch-x">Último em 17/10/2025. O institucional mais recente é de 2024.</p></div><div class="ch at"><div class="ch-h"><span>YouTube · Shorts</span><span class="chip at">sem Short novo</span></div><div class="ch-big">3 meses</div><div class="ch-l">sem atualização</div><p class="ch-x">Último em 31/07/2026, sobre um sorteio.</p></div><div class="ch cr"><div class="ch-h"><span>Meta · anúncios</span><span class="chip cr">criativos antigos</span></div><div class="ch-big">2 anos</div><div class="ch-l">sem atualização</div><p class="ch-x">11 anúncios no ar. O mais novo é de 30/09/2025. Nove rodam desde 2024.</p></div><div class="ch ok"><div class="ch-h"><span>Google · anúncios</span><span class="chip ok">no ar hoje</span></div><div class="ch-big">Ativo</div><div class="ch-l">&nbsp;</div><p class="ch-x">32 anúncios, com Shorts e Maps. A data de criação não é pública.</p></div><div class="ch at"><div class="ch-h"><span>LinkedIn</span><span class="chip at">fala para dentro</span></div><div class="ch-big">3 semanas</div><div class="ch-l">sem atualização</div><p class="ch-x">421 seguidores. Posts de treinamento e RH, nada sobre a marca.</p></div><div class="ch cr"><div class="ch-h"><span>Inteligências artificiais</span><span class="chip cr">sem presença</span></div><div class="ch-big">—</div><div class="ch-l">&nbsp;</div><p class="ch-x">ChatGPT tem anúncios no Brasil desde agosto. No Claude, só aparece quem é citado.</p></div></div>
+    <div class="ch-f anim"><b>O ponto central</b>Nenhum dos anúncios da Meta no ar fala da marca que a direção definiu. Eles dizem “o maior shopping de atacado do Brasil” e pedem novos lojistas. O cuidado com o crescimento das marcas e a compra certa não aparecem.</div>
+  </section>
   <div class="hud hud-b">
     <div class="bar"><i id="barFill"></i></div>
     <div class="hud-line"></div>
@@ -2176,7 +2197,7 @@ em,.statement .hl{font-style:normal;color:var(--gold-2)}
 </div></div>
 <script>
 
-const SECOES=["Abertura","O que coletamos","De onde partimos","A ideia","A cascata","O que é o gap","Por que custa","As oito dimensões","O trabalho","As regras","Como se lê","O tamanho do gap","Os quatro passos","Visão geral","Propósito","Propósito · gap","Propósito · consequência","Propósito · fechamento","Posicionamento","Posicionamento · gap","Posicionamento · consequência","Posicionamento · fechamento","Público","Público · gap","Público · consequência","Público · fechamento","Promessa","Promessa · gap","Promessa · consequência","Promessa · fechamento","Diferencial","Diferencial · gap","Diferencial · consequência","Diferencial · fechamento","Valores","Valores · gap","Valores · consequência","Valores · fechamento","Tom de voz","Tom de voz · gap","Tom de voz · consequência","Tom de voz · fechamento","Papel próprio","Papel próprio · gap","Papel próprio · consequência","Papel próprio · fechamento","Gap médio por dimensão","A leitura do estudo","A marca, por escrito","Em resumo · Propósito","Em resumo · Posicionamento","Em resumo · Público","Em resumo · Promessa","Em resumo · Diferencial","Em resumo · Valores","Em resumo · Tom de voz","Em resumo · Papel próprio","Plano de alinhamento","Plano de alinhamento · prioridades","Nossa missão","Fases · seis meses","Fase 1 · Janeiro","Fase 2 · Fevereiro e março","Fase 3 · Abril e maio","Fase 4 · Junho","Plano · conteúdo","Selo PMP de Excelência","Selo PMP · como funciona"];
+const SECOES=["Abertura","O que coletamos","De onde partimos","A ideia","A cascata","O que é o gap","Por que custa","As oito dimensões","O trabalho","As regras","Como se lê","O tamanho do gap","Os quatro passos","Visão geral","Propósito","Propósito · gap","Propósito · consequência","Propósito · fechamento","Posicionamento","Posicionamento · gap","Posicionamento · consequência","Posicionamento · fechamento","Público","Público · gap","Público · consequência","Público · fechamento","Promessa","Promessa · gap","Promessa · consequência","Promessa · fechamento","Diferencial","Diferencial · gap","Diferencial · consequência","Diferencial · fechamento","Valores","Valores · gap","Valores · consequência","Valores · fechamento","Tom de voz","Tom de voz · gap","Tom de voz · consequência","Tom de voz · fechamento","Papel próprio","Papel próprio · gap","Papel próprio · consequência","Papel próprio · fechamento","Gap médio por dimensão","A leitura do estudo","A marca, por escrito","Em resumo · Propósito","Em resumo · Posicionamento","Em resumo · Público","Em resumo · Promessa","Em resumo · Diferencial","Em resumo · Valores","Em resumo · Tom de voz","Em resumo · Papel próprio","Plano de alinhamento","Plano de alinhamento · prioridades","Nossa missão","Fases · seis meses","Fase 1 · Janeiro","Fase 2 · Fevereiro e março","Fase 3 · Abril e maio","Fase 4 · Junho","Plano · conteúdo","Selo PMP de Excelência","Selo PMP · como funciona","Os canais hoje"];
 const slides=[...document.querySelectorAll(".slide")];let i=0;
 document.getElementById("tot").textContent=String(slides.length).padStart(2,"0");
 function show(n){i=Math.max(0,Math.min(slides.length-1,n));slides.forEach((s,k)=>s.classList.toggle("on",k===i));document.getElementById("cur").textContent=String(i+1).padStart(2,"0");document.getElementById("secName").textContent=SECOES[i]||"";document.getElementById("barFill").style.width=((i+1)/slides.length*100)+"%";history.replaceState(null,"","#"+(i+1));}
