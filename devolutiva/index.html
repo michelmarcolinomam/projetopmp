@@ -499,6 +499,33 @@ em,.statement .hl{font-style:normal;color:var(--gold-2)}
 .pr-rest b{display:block;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--tx-3);font-weight:700;margin-bottom:4px}
 
 .ms-de{color:#F08A7E;text-decoration:line-through;text-decoration-thickness:6px;text-decoration-color:rgba(240,138,126,.55)}
+
+/* calendário */
+.cal-m{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;margin-bottom:10px}
+.cal-m span{font-size:14px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--tx-3);padding:0 4px 8px;border-bottom:2px solid var(--stroke-2)}
+.cal{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+.ph{background:var(--panel);border:1px solid var(--stroke);border-top:5px solid var(--gold);border-radius:16px;padding:22px 24px 24px;min-height:400px;display:flex;flex-direction:column}
+.ph.cr{border-top-color:var(--neg)}
+.ph-k{font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--tx-3)}
+.ph-t{font-size:36px;font-weight:600;letter-spacing:-.035em;line-height:1.08;color:var(--tx);margin:10px 0 12px}
+.ph-g{display:flex;gap:8px;flex-wrap:wrap}
+.ph-x{font-size:19px;line-height:1.45;color:var(--tx-2);margin-top:16px}
+.ph-f{font-size:20px;line-height:1.4;font-weight:600;letter-spacing:-.02em;color:var(--tx);margin-top:auto;padding-top:16px;border-top:1px solid var(--stroke)}
+.cal-end{margin-top:16px;padding:14px 22px;border-radius:12px;background:#12161D;color:rgba(255,255,255,.75);font-size:18px;display:flex;gap:18px;align-items:baseline}
+.cal-end b{color:#8FD49B;font-weight:700;white-space:nowrap}
+/* formatos */
+.fmt{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.fm{background:var(--panel);border:1px solid var(--stroke);border-radius:18px;padding:26px 28px 28px;display:grid;grid-template-columns:auto 1fr;column-gap:14px;align-items:end}
+.fm.on{background:#12161D;border-color:#12161D}
+.fm-n{font-size:150px;font-weight:600;letter-spacing:-.07em;line-height:.8;color:var(--tx)}
+.fm-u{font-size:18px;color:var(--tx-3);padding-bottom:10px}
+.fm-t{grid-column:1/3;font-size:32px;font-weight:600;letter-spacing:-.035em;color:var(--tx);margin-top:24px;line-height:1.1}
+.fm-r{grid-column:1/3;font-size:13px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:var(--gold);margin-top:10px}
+.fm-x{grid-column:1/3;font-size:19px;line-height:1.45;color:var(--tx-2);margin-top:12px;padding-top:14px;border-top:1px solid var(--stroke)}
+.fm.on .fm-n,.fm.on .fm-t{color:#fff}.fm.on .fm-u{color:rgba(255,255,255,.5)}.fm.on .fm-r{color:#8FD49B}.fm.on .fm-x{color:rgba(255,255,255,.72);border-top-color:rgba(255,255,255,.16)}
+.fmt-tot{display:grid;grid-template-columns:auto auto auto 1fr;gap:44px;align-items:baseline;margin-top:22px;padding-top:20px;border-top:1px solid var(--stroke-2);font-size:19px;color:var(--tx-2)}
+.fmt-tot b{font-size:58px;font-weight:600;letter-spacing:-.05em;color:var(--tx);margin-right:12px}
+.fmt-note{font-size:15px;color:var(--tx-3);text-align:right}
 </style>
 </head>
 <body>
@@ -1983,6 +2010,62 @@ em,.statement .hl{font-style:normal;color:var(--gold-2)}
       <div class="mq-idx" style="grid-template-columns:repeat(4,1fr)"><div><b>HOJE 71% → META 30%</b>Promessa</div><div><b>HOJE 67% → META 30%</b>Posicionamento</div><div><b>HOJE 67% → META 30%</b>Papel próprio</div><div><b>HOJE 65% → META 30%</b>Tom de voz</div></div>
     </div>
   </section>
+  <!-- PLANO 3 -->
+  <section class="slide tight">
+    <div class="anim"><p class="eyebrow" style="margin-bottom:10px">Plano de alinhamento · o calendário</p></div>
+    <h2 class="anim" style="margin-bottom:8px">Seis meses, um tema de cada vez.</h2>
+    <p class="mini anim" style="margin-bottom:22px">Cada período ataca um gap. Todo o conteúdo do mês serve ao tema do mês.</p>
+    <div class="cal-m anim"><span>Janeiro</span><span>Fevereiro</span><span>Março</span><span>Abril</span><span>Maio</span><span>Junho</span></div>
+    <div class="cal anim">
+      <div class="ph" style="grid-column:span 1">
+        <div class="ph-k">Fase 1 · Fundamento</div>
+        <div class="ph-t">As oito dimensões</div>
+        <div class="ph-g"><span class="chip ok">Base de tudo</span></div>
+        <p class="ph-x">A marca na visão de quem a idealizou, levada ao conhecimento de todos.</p>
+        <p class="ph-f">“A marca, por escrito.”</p>
+      </div>
+      <div class="ph cr" style="grid-column:span 2">
+        <div class="ph-k">Fase 2 · Prioridade 1</div>
+        <div class="ph-t">Promessa</div>
+        <div class="ph-g"><span class="chip cr">Gap de 71%</span></div>
+        <p class="ph-x">O que a casa garante a cada público, dito do mesmo jeito por todos.</p>
+        <p class="ph-f">“Parceiro do lojista. Compra certa para o comprador. Parceria de verdade com o guia.”</p>
+      </div>
+      <div class="ph cr" style="grid-column:span 2">
+        <div class="ph-k">Fase 3 · Prioridades 3 e 4</div>
+        <div class="ph-t">Papel próprio e Tom de voz</div>
+        <div class="ph-g"><span class="chip cr">Gap de 67%</span><span class="chip cr">Gap de 65%</span></div>
+        <p class="ph-x">Quem responde pela marca, e como ela fala e recebe.</p>
+        <p class="ph-f">“Marca se decide pelo combinado.” · “Firmes como quem lidera, acolhedores como quem recebe em casa.”</p>
+      </div>
+      <div class="ph cr" style="grid-column:span 1">
+        <div class="ph-k">Fase 4 · Prioridade 2</div>
+        <div class="ph-t">Posicionamento</div>
+        <div class="ph-g"><span class="chip cr">Gap de 67%</span></div>
+        <p class="ph-x">O lugar que só a casa ocupa.</p>
+        <p class="ph-f">“O único que cuida do crescimento das marcas que abriga.”</p>
+      </div>
+    </div>
+    <div class="cal-end anim"><b>30 de junho de 2027</b>A mesma pesquisa é reaplicada nas mesmas camadas, para medir quanto o gap caiu.</div>
+  </section>
+  <!-- PLANO 4 -->
+  <section class="slide tight">
+    <div class="anim"><p class="eyebrow" style="margin-bottom:10px">Plano de alinhamento · a estrutura de conteúdo</p></div>
+    <h2 class="anim" style="margin-bottom:8px">O que vai ao ar, todo mês.</h2>
+    <p class="mini anim" style="margin-bottom:24px">Quatro formatos, cada um com uma função. Todos a serviço do tema do mês.</p>
+    <div class="fmt anim">
+      <div class="fm"><div class="fm-n">4</div><div class="fm-u">por mês</div><div class="fm-t">Vídeos</div><div class="fm-r">Mostrar</div><p class="fm-x">A marca acontecendo: o lojista, o comprador, os bastidores da casa.</p></div>
+      <div class="fm"><div class="fm-n">4</div><div class="fm-u">por mês</div><div class="fm-t">Carrosséis</div><div class="fm-r">Explicar</div><p class="fm-x">Cada um abre uma ideia do tema do mês, passo a passo.</p></div>
+      <div class="fm"><div class="fm-n">4</div><div class="fm-u">por mês</div><div class="fm-t">Postagens</div><div class="fm-r">Repetir</div><p class="fm-x">A frase do mês, dita de formas diferentes, até fixar.</p></div>
+      <div class="fm on"><div class="fm-n">1</div><div class="fm-u">por mês</div><div class="fm-t">Podcast com lojistas</div><div class="fm-r">Provar</div><p class="fm-x">Os melhores lojistas, escolhidos por curadoria, contam como crescem aqui.</p></div>
+    </div>
+    <div class="fmt-tot anim">
+      <div><b>13</b>peças por mês</div>
+      <div><b>78</b>peças em seis meses</div>
+      <div><b>6</b>episódios com lojistas</div>
+      <div class="fmt-note">Rascunho em construção. Outras ações entram aqui conforme o plano for fechado.</div>
+    </div>
+  </section>
   <div class="hud hud-b">
     <div class="bar"><i id="barFill"></i></div>
     <div class="hud-line"></div>
@@ -1992,7 +2075,7 @@ em,.statement .hl{font-style:normal;color:var(--gold-2)}
 </div></div>
 <script>
 
-const SECOES=["Abertura","O que coletamos","De onde partimos","A ideia","A cascata","O que é o gap","Por que custa","As oito dimensões","O trabalho","As regras","Como se lê","O tamanho do gap","Os quatro passos","Visão geral","Propósito","Propósito · gap","Propósito · consequência","Propósito · fechamento","Posicionamento","Posicionamento · gap","Posicionamento · consequência","Posicionamento · fechamento","Público","Público · gap","Público · consequência","Público · fechamento","Promessa","Promessa · gap","Promessa · consequência","Promessa · fechamento","Diferencial","Diferencial · gap","Diferencial · consequência","Diferencial · fechamento","Valores","Valores · gap","Valores · consequência","Valores · fechamento","Tom de voz","Tom de voz · gap","Tom de voz · consequência","Tom de voz · fechamento","Papel próprio","Papel próprio · gap","Papel próprio · consequência","Papel próprio · fechamento","Gap médio por dimensão","A leitura do estudo","A marca, por escrito","Em resumo · Propósito","Em resumo · Posicionamento","Em resumo · Público","Em resumo · Promessa","Em resumo · Diferencial","Em resumo · Valores","Em resumo · Tom de voz","Em resumo · Papel próprio","Plano de alinhamento","Plano de alinhamento · prioridades","Nossa missão"];
+const SECOES=["Abertura","O que coletamos","De onde partimos","A ideia","A cascata","O que é o gap","Por que custa","As oito dimensões","O trabalho","As regras","Como se lê","O tamanho do gap","Os quatro passos","Visão geral","Propósito","Propósito · gap","Propósito · consequência","Propósito · fechamento","Posicionamento","Posicionamento · gap","Posicionamento · consequência","Posicionamento · fechamento","Público","Público · gap","Público · consequência","Público · fechamento","Promessa","Promessa · gap","Promessa · consequência","Promessa · fechamento","Diferencial","Diferencial · gap","Diferencial · consequência","Diferencial · fechamento","Valores","Valores · gap","Valores · consequência","Valores · fechamento","Tom de voz","Tom de voz · gap","Tom de voz · consequência","Tom de voz · fechamento","Papel próprio","Papel próprio · gap","Papel próprio · consequência","Papel próprio · fechamento","Gap médio por dimensão","A leitura do estudo","A marca, por escrito","Em resumo · Propósito","Em resumo · Posicionamento","Em resumo · Público","Em resumo · Promessa","Em resumo · Diferencial","Em resumo · Valores","Em resumo · Tom de voz","Em resumo · Papel próprio","Plano de alinhamento","Plano de alinhamento · prioridades","Nossa missão","Plano · calendário","Plano · conteúdo"];
 const slides=[...document.querySelectorAll(".slide")];let i=0;
 document.getElementById("tot").textContent=String(slides.length).padStart(2,"0");
 function show(n){i=Math.max(0,Math.min(slides.length-1,n));slides.forEach((s,k)=>s.classList.toggle("on",k===i));document.getElementById("cur").textContent=String(i+1).padStart(2,"0");document.getElementById("secName").textContent=SECOES[i]||"";document.getElementById("barFill").style.width=((i+1)/slides.length*100)+"%";history.replaceState(null,"","#"+(i+1));}
