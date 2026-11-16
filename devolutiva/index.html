@@ -422,6 +422,52 @@ em,.statement .hl{font-style:normal;color:var(--gold-2)}
 .cp-p{font-size:24px;font-weight:600;letter-spacing:-.03em;text-align:right;color:var(--tx)}
 .cp.c .cp-n,.cp.c .cp-p{color:#6A35B8}
 .cam-note{font-size:17px;line-height:1.45;color:var(--tx-2);margin-top:14px;padding-top:12px;border-top:1px solid var(--stroke)}
+
+/* três camadas */
+.slide.t3{padding:104px 84px 100px}
+.t3 .dirbox{padding:18px 30px}.t3 .dirbox-t{font-size:30px}.t3 .dirbox-k{margin-bottom:6px}
+.two.tri{grid-template-columns:repeat(3,1fr)}
+.tri .cam-h{padding:11px 22px;font-size:13px}
+.tri .cam-b{display:block;padding:16px 22px 12px}
+.tri .cam-g{display:grid;grid-template-columns:auto auto 1fr;column-gap:14px;align-items:center;border-right:0;padding-right:0;padding-bottom:12px;margin-bottom:12px;border-bottom:1px solid var(--stroke)}
+.tri .cam-pct{font-size:78px;grid-row:1/3;grid-column:1;line-height:.9}.tri .cam-pct small{font-size:34px}
+.tri .cam-lab{grid-column:2;grid-row:1;margin:0;font-size:17px;align-self:end}
+.tri .cam-g .chip{grid-column:3;grid-row:1;justify-self:start;align-self:end;font-size:11.5px;padding:4px 10px}
+.tri .cam-split{grid-column:2/4;grid-row:2;margin-top:8px}
+.tri .cam-leg{grid-column:1/4;grid-row:3;font-size:12px}
+.tri .cam-q{font-size:11.5px;margin-bottom:6px;line-height:1.35}
+.tri .vb{grid-template-columns:1fr 78px 40px;gap:10px;padding:7px 0}
+.tri .vb-t{font-size:15px;line-height:1.28}
+.tri .vb-t em{font-size:10px;padding:1px 7px;margin-left:6px}
+.tri .vb-bar{height:10px}
+.tri .vb-n{font-size:19px}
+.tri .cam.cmp .vb{grid-template-columns:1fr 70px 54px}
+.tri .cam-f{grid-template-columns:1fr 1fr}
+.tri .tile{padding:12px 18px}.tri .tile-k{font-size:10.5px;margin-bottom:4px}.tri .tile-t{font-size:14.5px;line-height:1.38}
+.cam.cmp .cam-h span:first-child{color:#6A35B8}
+.cam.cmp{border-color:rgba(138,79,214,.4)}
+/* gráfico com três séries */
+.g3 .gbar{width:42px}.g3 .gbars{gap:7px}.g3 .gbar span{font-size:19px;top:-28px}
+.gbar.c,.lg.l3{background:#8A4FD6}.gbar.c span{color:#6A35B8}
+
+/* gap médio */
+.gmh{display:grid;grid-template-columns:auto 1fr auto;gap:54px;align-items:center;margin-bottom:26px}
+.gmx p{font-size:20px;line-height:1.45;color:var(--tx-2);max-width:620px}.gmx p+p{margin-top:10px}.gmx b{color:var(--tx);font-weight:700}
+.gmg{background:#12161D;color:#fff;border-radius:20px;padding:22px 30px;display:flex;align-items:center;gap:18px}
+.gmg-n{font-size:92px;font-weight:600;letter-spacing:-.06em;line-height:.9}.gmg-n small{font-size:40px}
+.gmg-l{font-size:15px;line-height:1.35;color:rgba(255,255,255,.65)}
+.gmgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.gm{background:var(--panel);border:1px solid var(--stroke);border-radius:16px;padding:18px 22px 16px;display:grid;grid-template-columns:1fr auto;column-gap:10px;align-items:end}
+.gm-h{grid-column:1/3;font-size:19px;font-weight:600;color:var(--tx);letter-spacing:-.02em;display:flex;gap:10px;align-items:baseline;margin-bottom:6px}
+.gm-h span{font-size:12px;letter-spacing:.14em;color:var(--tx-3);font-weight:700}
+.gm-p{font-size:76px;font-weight:600;letter-spacing:-.06em;line-height:.9;color:var(--neg)}.gm-p small{font-size:32px}
+.gm.at .gm-p{color:#8A6E1E}.gm.ok .gm-p{color:var(--pos)}
+.gm .chip{justify-self:end;margin-bottom:6px;font-size:11px;padding:4px 10px}
+.gm-split{grid-column:1/3;height:8px;border-radius:4px;background:rgba(194,57,43,.25);overflow:hidden;margin-top:12px}
+.gm.at .gm-split{background:rgba(166,133,44,.3)}.gm.ok .gm-split{background:rgba(47,125,62,.18)}
+.gm-split i{display:block;height:100%;background:var(--gold)}
+.gm-d{grid-column:1/3;display:flex;gap:16px;margin-top:10px;font-size:15px;font-weight:600;color:var(--tx-2)}
+.gm-d .lg{width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:0}
 </style>
 </head>
 <body>
@@ -440,11 +486,48 @@ em,.statement .hl{font-style:normal;color:var(--gold-2)}
     <p class="lede anim">Nos últimos dois meses, medimos a distância entre o que a direção do Paraná Moda Park quer que a marca signifique e o que chega, de fato, em quem lidera e em quem atende. Este documento mostra como medimos, o que encontramos e o que fazer com isso.</p>
     <div class="cover-foot anim">
       <div><div class="cf-k">Período</div><div class="cf-v">16/09 a 25/10/2026</div></div>
-      <div><div class="cf-k">Quem respondeu</div><div class="cf-v">Direção · 13 líderes · 43 da equipe</div></div>
+      <div><div class="cf-k">Quem respondeu</div><div class="cf-v">Direção · 13 líderes · 43 da equipe · compradores</div></div>
       <div><div class="cf-k">Volume</div><div class="cf-v">2.802 respostas analisadas</div></div>
     </div>
   </section>
 
+  <!-- COLETA -->
+  <section class="slide tight">
+    <div class="anim"><p class="eyebrow" style="margin-bottom:10px">O que coletamos</p></div>
+    <h2 class="anim" style="margin-bottom:8px">Quem ouvimos, e quem ainda falta ouvir.</h2>
+    <p class="mini anim" style="margin-bottom:24px">A marca percorre cinco camadas até chegar ao mercado. Ouvimos quatro delas.</p>
+    <div class="casc casc-s anim">
+      <div class="cs done"><div class="cs-k">Camada 1</div><div class="cs-t">Direção</div><div class="cs-s">Entrevista e questionário</div></div>
+      <div class="cs-a">→</div>
+      <div class="cs done"><div class="cs-k">Camada 2</div><div class="cs-t">Liderança</div><div class="cs-s">13 de 13 responderam</div></div>
+      <div class="cs-a">→</div>
+      <div class="cs done"><div class="cs-k">Camada 3</div><div class="cs-t">Equipe</div><div class="cs-s">43 de 55 responderam</div></div>
+      <div class="cs-a">→</div>
+      <div class="cs"><div class="cs-k">Camada 4</div><div class="cs-t">Lojista</div><div class="cs-s">Não responderam</div></div>
+      <div class="cs-a">→</div>
+      <div class="cs on"><div class="cs-k">Camada 5</div><div class="cs-t">Comprador</div><div class="cs-s">Recorte inicial</div></div>
+    </div>
+    <div class="two anim" style="gap:26px;margin-top:24px;align-items:stretch">
+      <div class="mk">
+        <div class="mk-h"><span>Lojistas</span><span class="chip at">Não responderam</span></div>
+        <div class="mk-big">Sem dado ainda.</div>
+        <ul class="mk-ul">
+          <li>O questionário está pronto. O envio aguarda a reunião pedida pela liderança do Paraná Moda Park.</li>
+          <li><b>Hipótese de trabalho:</b> se a mensagem não chegou inteira à equipe, é improvável que tenha chegado melhor a quem está um degrau depois.</li>
+          <li>Quando responderem, o resultado vira a <b>medição de partida</b> da estratégia de comunicação.</li>
+        </ul>
+      </div>
+      <div class="mk on">
+        <div class="mk-h"><span>Compradores</span><span class="chip ok">Recorte inicial</span></div>
+        <div class="mk-big">Primeiras respostas.</div>
+        <ul class="mk-ul">
+          <li><b>Como chegamos a eles:</b> convite enviado pelo Instagram das lojas, com resposta anônima pelo celular.</li>
+          <li><b>O que não dá para afirmar:</b> que quem respondeu é o dono da loja. É a voz de quem compra, sem confirmação de cargo.</li>
+          <li><b>Como ler:</b> um recorte, não um censo. Mostra a direção da percepção; o tamanho exato se confirma com mais respostas.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
   <!-- 02 DE ONDE PARTIMOS -->
   <section class="slide">
     <div class="anim"><p class="eyebrow">De onde partimos</p></div>
@@ -473,13 +556,12 @@ em,.statement .hl{font-style:normal;color:var(--gold-2)}
       <div class="cs-a">→</div>
       <div class="cs on"><div class="cs-k">Camada 3</div><div class="cs-t">Equipe</div><div class="cs-s">Entrega no atendimento e na operação</div></div>
       <div class="cs-a off">→</div>
-      <div class="cs"><div class="cs-k">Camada 4</div><div class="cs-t">Lojista</div><div class="cs-s">Próxima etapa</div></div>
+      <div class="cs"><div class="cs-k">Camada 4</div><div class="cs-t">Lojista</div><div class="cs-s">Ainda não ouvido</div></div>
       <div class="cs-a off">→</div>
-      <div class="cs"><div class="cs-k">Camada 5</div><div class="cs-t">Comprador</div><div class="cs-s">Próxima etapa</div></div>
+      <div class="cs on"><div class="cs-k">Camada 5</div><div class="cs-t">Comprador</div><div class="cs-s">Recebe a marca na hora da compra</div></div>
     </div>
-    <div class="leitura anim" style="margin-top:36px">Este bloco cobre as <b>três primeiras camadas</b>: tudo o que está dentro de casa. É aqui que a mensagem precisa estar inteira antes de ser levada para fora.</div>
+    <div class="leitura anim" style="margin-top:36px">Este estudo cobre <b>quatro das cinco camadas</b>: as três de dentro de casa, por inteiro, e um recorte inicial de quem compra. <b>Falta o lojista.</b></div>
   </section>
-
   <!-- 05 O QUE É O GAP -->
   <section class="slide">
     <div class="anim"><p class="eyebrow">O que é o gap</p></div>
@@ -603,13 +685,13 @@ em,.statement .hl{font-style:normal;color:var(--gold-2)}
   <section class="slide tight">
     <div class="anim"><p class="eyebrow" style="margin-bottom:10px">O resultado · visão geral</p></div>
     <h3 class="anim" style="margin-bottom:6px">O gap em cada dimensão.</h3>
-    <p class="mini anim" style="margin-bottom:26px">Quanto da definição da direção não chegou na liderança e na equipe. Quanto mais alta a coluna, maior a distância.</p>
-    <div class="gchart anim">
+    <p class="mini anim" style="margin-bottom:26px">Quanto da definição da direção não chegou em cada camada. Quanto mais alta a coluna, maior a distância.</p>
+    <div class="gchart g3 anim">
       <div class="gline" style="bottom:50%"><span>Crítico · acima de 50%</span></div>
       <div class="gline" style="bottom:30%"><span>Aceitável · até 30%</span></div>
-      <div class="gcols"><div class="gcol"><div class="gbars"><div class="gbar a" style="height:66%"><span>66%</span></div><div class="gbar b" style="height:62%"><span>62%</span></div></div><div class="gname"><b>01</b>Propósito</div></div><div class="gcol"><div class="gbars"><div class="gbar a" style="height:54%"><span>54%</span></div><div class="gbar b" style="height:65%"><span>65%</span></div></div><div class="gname"><b>02</b>Posicionamento</div></div><div class="gcol"><div class="gbars"><div class="gbar a" style="height:67%"><span>67%</span></div><div class="gbar b" style="height:75%"><span>75%</span></div></div><div class="gname"><b>03</b>Público</div></div><div class="gcol"><div class="gbars"><div class="gbar a" style="height:60%"><span>60%</span></div><div class="gbar b" style="height:53%"><span>53%</span></div></div><div class="gname"><b>04</b>Promessa</div></div><div class="gcol"><div class="gbars"><div class="gbar a" style="height:56%"><span>56%</span></div><div class="gbar b" style="height:60%"><span>60%</span></div></div><div class="gname"><b>05</b>Diferencial</div></div><div class="gcol"><div class="gbars"><div class="gbar a" style="height:26%"><span>26%</span></div><div class="gbar b" style="height:31%"><span>31%</span></div></div><div class="gname"><b>06</b>Valores</div></div><div class="gcol"><div class="gbars"><div class="gbar a" style="height:55%"><span>55%</span></div><div class="gbar b" style="height:57%"><span>57%</span></div></div><div class="gname"><b>07</b>Tom de voz</div></div><div class="gcol"><div class="gbars"><div class="gbar a" style="height:52%"><span>52%</span></div><div class="gbar b" style="height:66%"><span>66%</span></div></div><div class="gname"><b>08</b>Papel próprio</div></div></div>
+      <div class="gcols"><div class="gcol"><div class="gbars"><div class="gbar a" style="height:66%"><span>66%</span></div><div class="gbar b" style="height:62%"><span>62%</span></div><div class="gbar c" style="height:67%"><span>67%</span></div></div><div class="gname"><b>01</b>Propósito</div></div><div class="gcol"><div class="gbars"><div class="gbar a" style="height:54%"><span>54%</span></div><div class="gbar b" style="height:65%"><span>65%</span></div><div class="gbar c" style="height:83%"><span>83%</span></div></div><div class="gname"><b>02</b>Posicionamento</div></div><div class="gcol"><div class="gbars"><div class="gbar a" style="height:67%"><span>67%</span></div><div class="gbar b" style="height:75%"><span>75%</span></div><div class="gbar c" style="height:58%"><span>58%</span></div></div><div class="gname"><b>03</b>Público</div></div><div class="gcol"><div class="gbars"><div class="gbar a" style="height:60%"><span>60%</span></div><div class="gbar b" style="height:53%"><span>53%</span></div><div class="gbar c" style="height:100%"><span>100%</span></div></div><div class="gname"><b>04</b>Promessa</div></div><div class="gcol"><div class="gbars"><div class="gbar a" style="height:56%"><span>56%</span></div><div class="gbar b" style="height:60%"><span>60%</span></div><div class="gbar c" style="height:46%"><span>46%</span></div></div><div class="gname"><b>05</b>Diferencial</div></div><div class="gcol"><div class="gbars"><div class="gbar a" style="height:26%"><span>26%</span></div><div class="gbar b" style="height:31%"><span>31%</span></div><div class="gbar c" style="height:38%"><span>38%</span></div></div><div class="gname"><b>06</b>Valores</div></div><div class="gcol"><div class="gbars"><div class="gbar a" style="height:55%"><span>55%</span></div><div class="gbar b" style="height:57%"><span>57%</span></div><div class="gbar c" style="height:83%"><span>83%</span></div></div><div class="gname"><b>07</b>Tom de voz</div></div><div class="gcol"><div class="gbars"><div class="gbar a" style="height:52%"><span>52%</span></div><div class="gbar b" style="height:66%"><span>66%</span></div><div class="gbar c" style="height:83%"><span>83%</span></div></div><div class="gname"><b>08</b>Papel próprio</div></div></div>
     </div>
-    <p class="src anim" style="margin-top:22px"><span class="lg l1"></span> Liderança · gap médio <b>54%</b> &nbsp;&nbsp;&nbsp; <span class="lg l2"></span> Equipe · gap médio <b>59%</b></p>
+    <p class="src anim" style="margin-top:22px"><span class="lg l1"></span> Liderança · gap médio <b>54%</b> &nbsp;&nbsp;&nbsp; <span class="lg l2"></span> Equipe · gap médio <b>59%</b> &nbsp;&nbsp;&nbsp; <span class="lg l3"></span> Compradores · gap médio <b>70%</b> · recorte inicial</p>
   </section>
   <!-- 01 Propósito · A -->
   <section class="slide">
@@ -621,13 +703,13 @@ em,.statement .hl{font-style:normal;color:var(--gold-2)}
     </div>
   </section>
   <!-- 01 Propósito · B -->
-  <section class="slide tight">
+  <section class="slide tight t3">
     <div class="anim"><p class="eyebrow" style="margin-bottom:14px">01 · Propósito · o gap</p></div>
     <div class="dirbox anim">
       <div class="dirbox-k">O que a direção definiu</div>
       <div class="dirbox-t">Existimos para <b>fazer marca de moda crescer</b> — com gestão, treinamento e acompanhamento — e para que <b>operar aqui custe menos.</b></div>
     </div>
-    <div class="two anim" style="gap:26px;margin-top:22px;align-items:stretch">
+    <div class="two tri anim" style="gap:18px;margin-top:16px;align-items:stretch">
       <div class="cam">
         <div class="cam-h"><span>Liderança</span><span>13 pessoas</span></div>
         <div class="cam-b">
@@ -666,6 +748,26 @@ em,.statement .hl{font-style:normal;color:var(--gold-2)}
         <div class="cam-f">
           <div class="tile"><div class="tile-k">Nas metas de 2031</div><div class="tile-t"><b>42 em 42</b> acreditam que a casa busca ser a melhor do Brasil.</div></div>
           <div class="tile ins"><div class="tile-k">Em uma frase</div><div class="tile-t">Sabe para onde a empresa vai. Não sabe dizer por que ela existe.</div></div>
+        </div>
+      </div>
+      <div class="cam cmp cr">
+        <div class="cam-h"><span>Compradores</span><span>Recorte inicial</span></div>
+        <div class="cam-b">
+          <div class="cam-g">
+            <div class="cam-pct">67<small>%</small></div>
+            <div class="cam-lab">de gap</div>
+            <div class="chip cr">Crítico</div>
+            <div class="cam-split"><i style="width:33%"></i></div>
+            <div class="cam-leg"><span>chegou 33%</span><span>não chegou 67%</span></div>
+          </div>
+          <div class="cam-v">
+            <div class="cam-q">“Pra que existe o Paraná Moda Park?”</div>
+            <div class="vb d"><div class="vb-t">Fazer as marcas crescerem<em>direção</em></div><div class="vb-bar"><i style="width:1.5%"></i></div><div class="vb-n">0%</div></div><div class="vb d"><div class="vb-t">Encurtar e baratear o caminho entre fábrica e loja<em>direção</em></div><div class="vb-bar"><i style="width:33%"></i></div><div class="vb-n">33%</div></div><div class="vb"><div class="vb-t">Dar às marcas estrutura e apoio</div><div class="vb-bar"><i style="width:1.5%"></i></div><div class="vb-n">0%</div></div><div class="vb"><div class="vb-t">Conectar fábricas a compradores do Brasil inteiro</div><div class="vb-bar"><i style="width:67%"></i></div><div class="vb-n">67%</div></div>
+          </div>
+        </div>
+        <div class="cam-f">
+          <div class="tile"><div class="tile-k">O que chama atenção</div><div class="tile-t"><b>Nenhum</b> escolheu “fazer as marcas crescerem”.</div></div>
+          <div class="tile ins"><div class="tile-k">Em uma frase</div><div class="tile-t">Enxerga a ponte entre fábrica e loja. Não enxerga o cuidado com as marcas.</div></div>
         </div>
       </div>
     </div>
@@ -742,13 +844,13 @@ em,.statement .hl{font-style:normal;color:var(--gold-2)}
     </div>
   </section>
   <!-- 02 Posicionamento · B -->
-  <section class="slide tight">
+  <section class="slide tight t3">
     <div class="anim"><p class="eyebrow" style="margin-bottom:14px">02 · Posicionamento · o gap</p></div>
     <div class="dirbox anim">
       <div class="dirbox-k">O que a direção definiu</div>
       <div class="dirbox-t">O complexo atacadista de moda que <b>cuida do crescimento das marcas</b> que abriga. O concorrente de referência é o <b>Mega Polo</b>, em São Paulo.</div>
     </div>
-    <div class="two anim" style="gap:26px;margin-top:22px;align-items:stretch">
+    <div class="two tri anim" style="gap:18px;margin-top:16px;align-items:stretch">
       <div class="cam cr">
         <div class="cam-h"><span>Liderança</span><span>13 pessoas</span></div>
         <div class="cam-b">
@@ -787,6 +889,26 @@ em,.statement .hl{font-style:normal;color:var(--gold-2)}
         <div class="cam-f">
           <div class="tile"><div class="tile-k">Concorrente</div><div class="tile-t"><b>Ninguém</b> citou o Mega Polo. A disputa é com quem não compra (11), o online (9), Cianorte (8) e o representante (8).</div></div>
           <div class="tile ins"><div class="tile-k">Em uma frase</div><div class="tile-t">O adversário é o comprador que não vem.</div></div>
+        </div>
+      </div>
+      <div class="cam cmp cr">
+        <div class="cam-h"><span>Compradores</span><span>Recorte inicial</span></div>
+        <div class="cam-b">
+          <div class="cam-g">
+            <div class="cam-pct">83<small>%</small></div>
+            <div class="cam-lab">de gap</div>
+            <div class="chip cr">Crítico</div>
+            <div class="cam-split"><i style="width:17%"></i></div>
+            <div class="cam-leg"><span>chegou 17%</span><span>não chegou 83%</span></div>
+          </div>
+          <div class="cam-v">
+            <div class="cam-q">“O único lugar que…”</div>
+            <div class="vb d"><div class="vb-t">…cuida das marcas que estão lá<em>direção</em></div><div class="vb-bar"><i style="width:1.5%"></i></div><div class="vb-n">0%</div></div><div class="vb"><div class="vb-t">…tem fábricas, hotel e eventos no mesmo lugar</div><div class="vb-bar"><i style="width:50%"></i></div><div class="vb-n">50%</div></div><div class="vb"><div class="vb-t">…me deixa chegar, dormir, comprar e voltar</div><div class="vb-bar"><i style="width:1.5%"></i></div><div class="vb-n">0%</div></div><div class="vb"><div class="vb-t">…me oferece custo menor pra comprar</div><div class="vb-bar"><i style="width:17%"></i></div><div class="vb-n">17%</div></div><div class="vb"><div class="vb-t">…é referência em apresentação de coleção</div><div class="vb-bar"><i style="width:33%"></i></div><div class="vb-n">33%</div></div>
+          </div>
+        </div>
+        <div class="cam-f">
+          <div class="tile"><div class="tile-k">Onde mais compra</div><div class="tile-t"><b>Cianorte</b> para 67%. Mega Polo para 33%.</div></div>
+          <div class="tile ins"><div class="tile-k">Em uma frase</div><div class="tile-t">Vê a estrutura e o desfile. O cuidado com as marcas não aparece.</div></div>
         </div>
       </div>
     </div>
@@ -862,13 +984,13 @@ em,.statement .hl{font-style:normal;color:var(--gold-2)}
     </div>
   </section>
   <!-- 03 Público · B -->
-  <section class="slide tight">
+  <section class="slide tight t3">
     <div class="anim"><p class="eyebrow" style="margin-bottom:14px">03 · Público · o gap</p></div>
     <div class="dirbox anim">
       <div class="dirbox-k">O que a direção definiu</div>
       <div class="dirbox-t">Dono de boutique <b>acima de R$ 100 mil por mês</b>, do Paraná, que vem a cada coleção. O que o impede de comprar mais é a <b>falta de tempo para vir</b>.</div>
     </div>
-    <div class="two anim" style="gap:26px;margin-top:22px;align-items:stretch">
+    <div class="two tri anim" style="gap:18px;margin-top:16px;align-items:stretch">
       <div class="cam cr">
         <div class="cam-h"><span>Liderança</span><span>13 pessoas</span></div>
         <div class="cam-b">
@@ -907,6 +1029,26 @@ em,.statement .hl{font-style:normal;color:var(--gold-2)}
         <div class="cam-f">
           <div class="tile"><div class="tile-k">Rotina de compra</div><div class="tile-t">“Toda coleção” (18) empata com “não tem rotina, cada compra é uma decisão nova” (17).</div></div>
           <div class="tile ins"><div class="tile-k">Em uma frase</div><div class="tile-t">Cada um atende o comprador que imagina.</div></div>
+        </div>
+      </div>
+      <div class="cam cmp cr">
+        <div class="cam-h"><span>Compradores</span><span>Recorte inicial</span></div>
+        <div class="cam-b">
+          <div class="cam-g">
+            <div class="cam-pct">58<small>%</small></div>
+            <div class="cam-lab">de gap</div>
+            <div class="chip cr">Crítico</div>
+            <div class="cam-split"><i style="width:42%"></i></div>
+            <div class="cam-leg"><span>chegou 42%</span><span>não chegou 58%</span></div>
+          </div>
+          <div class="cam-v">
+            <div class="cam-q">“O que mais te impede de comprar mais?”</div>
+            <div class="vb d"><div class="vb-t">A falta de tempo pra vir<em>direção</em></div><div class="vb-bar"><i style="width:1.5%"></i></div><div class="vb-n">0%</div></div><div class="vb"><div class="vb-t">O preço das peças</div><div class="vb-bar"><i style="width:17%"></i></div><div class="vb-n">17%</div></div><div class="vb"><div class="vb-t">O medo de não vender o que é mais caro</div><div class="vb-bar"><i style="width:67%"></i></div><div class="vb-n">67%</div></div><div class="vb"><div class="vb-t">Não saber o que vai vender</div><div class="vb-bar"><i style="width:1.5%"></i></div><div class="vb-n">0%</div></div><div class="vb"><div class="vb-t">O guia me levar pra outro lugar</div><div class="vb-bar"><i style="width:17%"></i></div><div class="vb-n">17%</div></div>
+          </div>
+        </div>
+        <div class="cam-f">
+          <div class="tile"><div class="tile-k">Rotina de compra</div><div class="tile-t"><b>83%</b> compram a cada coleção, como a direção descreve.</div></div>
+          <div class="tile ins"><div class="tile-k">Em uma frase</div><div class="tile-t">Volta a cada coleção. O que trava é o medo de não vender, não o tempo.</div></div>
         </div>
       </div>
     </div>
@@ -982,13 +1124,13 @@ em,.statement .hl{font-style:normal;color:var(--gold-2)}
     </div>
   </section>
   <!-- 04 Promessa · B -->
-  <section class="slide tight">
+  <section class="slide tight t3">
     <div class="anim"><p class="eyebrow" style="margin-bottom:14px">04 · Promessa · o gap</p></div>
     <div class="dirbox anim">
       <div class="dirbox-k">O que a direção definiu</div>
       <div class="dirbox-t">O que a gente promete, a gente cumpre. Ao comprador: <b>“aqui você compra certo”</b>. Ao lojista: <b>“aqui alguém se importa se a sua marca cresce”</b>.</div>
     </div>
-    <div class="two anim" style="gap:26px;margin-top:22px;align-items:stretch">
+    <div class="two tri anim" style="gap:18px;margin-top:16px;align-items:stretch">
       <div class="cam cr">
         <div class="cam-h"><span>Liderança</span><span>13 pessoas</span></div>
         <div class="cam-b">
@@ -1027,6 +1169,26 @@ em,.statement .hl{font-style:normal;color:var(--gold-2)}
         <div class="cam-f">
           <div class="tile"><div class="tile-k">Ao guia</div><div class="tile-t">Três frases empatadas: 15, 13 e 13. <b>Não há mensagem combinada.</b></div></div>
           <div class="tile ins"><div class="tile-k">Em uma frase</div><div class="tile-t">É quem mais repete a promessa ao comprador.</div></div>
+        </div>
+      </div>
+      <div class="cam cmp cr">
+        <div class="cam-h"><span>Compradores</span><span>Recorte inicial</span></div>
+        <div class="cam-b">
+          <div class="cam-g">
+            <div class="cam-pct">100<small>%</small></div>
+            <div class="cam-lab">de gap</div>
+            <div class="chip cr">Crítico</div>
+            <div class="cam-split"><i style="width:0%"></i></div>
+            <div class="cam-leg"><span>chegou 0%</span><span>não chegou 100%</span></div>
+          </div>
+          <div class="cam-v">
+            <div class="cam-q">A frase que combina com o que encontra</div>
+            <div class="vb d"><div class="vb-t">“Aqui eu compro certo.”<em>direção</em></div><div class="vb-bar"><i style="width:1.5%"></i></div><div class="vb-n">0%</div></div><div class="vb"><div class="vb-t">“As marcas que o meu cliente quer — e o meu concorrente não tem.”</div><div class="vb-bar"><i style="width:100%"></i></div><div class="vb-n">100%</div></div><div class="vb"><div class="vb-t">“Chego, durmo, compro e volto — é fácil.”</div><div class="vb-bar"><i style="width:1.5%"></i></div><div class="vb-n">0%</div></div><div class="vb"><div class="vb-t">“É mais caro. E é por isso que vale.”</div><div class="vb-bar"><i style="width:1.5%"></i></div><div class="vb-n">0%</div></div>
+          </div>
+        </div>
+        <div class="cam-f">
+          <div class="tile"><div class="tile-k">O que diria a um colega</div><div class="tile-t">“Lá é caro, mas é onde tem coisa boa”: <b>50%</b>. “Lá eles cuidam de você”: <b>0%</b>.</div></div>
+          <div class="tile ins"><div class="tile-k">Em uma frase</div><div class="tile-t">Compra pela marca exclusiva. A “compra certa” não foi citada.</div></div>
         </div>
       </div>
     </div>
@@ -1102,13 +1264,13 @@ em,.statement .hl{font-style:normal;color:var(--gold-2)}
     </div>
   </section>
   <!-- 05 Diferencial · B -->
-  <section class="slide tight">
+  <section class="slide tight t3">
     <div class="anim"><p class="eyebrow" style="margin-bottom:14px">05 · Diferencial · o gap</p></div>
     <div class="dirbox anim">
       <div class="dirbox-k">O que a direção definiu</div>
       <div class="dirbox-t">Marcas fabricantes e uma central que <b>coordena lojista, gerente, funcionário e guia ao mesmo tempo</b>. Estrutura se copia; <b>coordenação, não</b>.</div>
     </div>
-    <div class="two anim" style="gap:26px;margin-top:22px;align-items:stretch">
+    <div class="two tri anim" style="gap:18px;margin-top:16px;align-items:stretch">
       <div class="cam cr">
         <div class="cam-h"><span>Liderança</span><span>13 pessoas</span></div>
         <div class="cam-b">
@@ -1147,6 +1309,26 @@ em,.statement .hl{font-style:normal;color:var(--gold-2)}
         <div class="cam-f">
           <div class="tile"><div class="tile-k">Em texto livre</div><div class="tile-t">“Por que comprar aqui?”: estrutura, variedade de marcas e qualidade. <b>A coordenação não aparece.</b></div></div>
           <div class="tile ins"><div class="tile-k">Em uma frase</div><div class="tile-t">Vende o prédio e o mix.</div></div>
+        </div>
+      </div>
+      <div class="cam cmp at">
+        <div class="cam-h"><span>Compradores</span><span>Recorte inicial</span></div>
+        <div class="cam-b">
+          <div class="cam-g">
+            <div class="cam-pct">46<small>%</small></div>
+            <div class="cam-lab">de gap</div>
+            <div class="chip at">Atenção</div>
+            <div class="cam-split"><i style="width:54%"></i></div>
+            <div class="cam-leg"><span>chegou 54%</span><span>não chegou 46%</span></div>
+          </div>
+          <div class="cam-v">
+            <div class="cam-q">“O que mais te faz vir comprar aqui?”</div>
+            <div class="vb d"><div class="vb-t">As marcas — são fabricantes<em>direção</em></div><div class="vb-bar"><i style="width:50%"></i></div><div class="vb-n">50%</div></div><div class="vb"><div class="vb-t">A estrutura — tudo no mesmo lugar</div><div class="vb-bar"><i style="width:33%"></i></div><div class="vb-n">33%</div></div><div class="vb"><div class="vb-t">O desfile e o lançamento de coleção</div><div class="vb-bar"><i style="width:17%"></i></div><div class="vb-n">17%</div></div><div class="vb"><div class="vb-t">O atendimento e a relação com as lojas</div><div class="vb-bar"><i style="width:1.5%"></i></div><div class="vb-n">0%</div></div><div class="vb"><div class="vb-t">O preço</div><div class="vb-bar"><i style="width:1.5%"></i></div><div class="vb-n">0%</div></div>
+          </div>
+        </div>
+        <div class="cam-f">
+          <div class="tile"><div class="tile-k">Em uma palavra</div><div class="tile-t"><b>“Estrutura”</b> para 100%. É uma das duas palavras da direção.</div></div>
+          <div class="tile ins"><div class="tile-k">Em uma frase</div><div class="tile-t">É onde a marca mais chega: vem pelas marcas fabricantes e pela estrutura.</div></div>
         </div>
       </div>
     </div>
@@ -1222,13 +1404,13 @@ em,.statement .hl{font-style:normal;color:var(--gold-2)}
     </div>
   </section>
   <!-- 06 Valores · B -->
-  <section class="slide tight">
+  <section class="slide tight t3">
     <div class="anim"><p class="eyebrow" style="margin-bottom:14px">06 · Valores · o gap</p></div>
     <div class="dirbox anim">
       <div class="dirbox-k">O que a direção definiu</div>
       <div class="dirbox-t">Compromisso com o time. Compromisso com o projeto do lojista. Saúde financeira. <b>Padrão que não se vende. Palavra cumprida.</b></div>
     </div>
-    <div class="two anim" style="gap:26px;margin-top:22px;align-items:stretch">
+    <div class="two tri anim" style="gap:18px;margin-top:16px;align-items:stretch">
       <div class="cam ok">
         <div class="cam-h"><span>Liderança</span><span>13 pessoas</span></div>
         <div class="cam-b">
@@ -1267,6 +1449,26 @@ em,.statement .hl{font-style:normal;color:var(--gold-2)}
         <div class="cam-f">
           <div class="tile"><div class="tile-k">Valor contra meta</div><div class="tile-t">Se um valor e uma meta de ocupação brigarem, <b>o valor perde</b> — para 27 em 41.</div></div>
           <div class="tile ins"><div class="tile-k">Em uma frase</div><div class="tile-t">Vê a exceção acontecer.</div></div>
+        </div>
+      </div>
+      <div class="cam cmp at">
+        <div class="cam-h"><span>Compradores</span><span>Recorte inicial</span></div>
+        <div class="cam-b">
+          <div class="cam-g">
+            <div class="cam-pct">38<small>%</small></div>
+            <div class="cam-lab">de gap</div>
+            <div class="chip at">Atenção</div>
+            <div class="cam-split"><i style="width:62%"></i></div>
+            <div class="cam-leg"><span>chegou 62%</span><span>não chegou 38%</span></div>
+          </div>
+          <div class="cam-v">
+            <div class="cam-q">“Cumpre o que promete?” — nota de 1 a 5</div>
+            <div class="vb d"><div class="vb-t">Nota 5 — cumpre sempre<em>direção</em></div><div class="vb-bar"><i style="width:1.5%"></i></div><div class="vb-n">0%</div></div><div class="vb"><div class="vb-t">Nota 4</div><div class="vb-bar"><i style="width:67%"></i></div><div class="vb-n">67%</div></div><div class="vb"><div class="vb-t">Nota 3</div><div class="vb-bar"><i style="width:17%"></i></div><div class="vb-n">17%</div></div><div class="vb"><div class="vb-t">Nota 2</div><div class="vb-bar"><i style="width:17%"></i></div><div class="vb-n">17%</div></div><div class="vb"><div class="vb-t">Nota 1 — não cumpre</div><div class="vb-bar"><i style="width:1.5%"></i></div><div class="vb-n">0%</div></div>
+          </div>
+        </div>
+        <div class="cam-f">
+          <div class="tile"><div class="tile-k">Quando algo deu errado</div><div class="tile-t"><b>50%</b> sabiam a quem recorrer, mas o problema não foi resolvido.</div></div>
+          <div class="tile ins"><div class="tile-k">Em uma frase</div><div class="tile-t">Confia, com reserva. Ninguém deu a nota máxima.</div></div>
         </div>
       </div>
     </div>
@@ -1342,13 +1544,13 @@ em,.statement .hl{font-style:normal;color:var(--gold-2)}
     </div>
   </section>
   <!-- 07 Tom de voz · B -->
-  <section class="slide tight">
+  <section class="slide tight t3">
     <div class="anim"><p class="eyebrow" style="margin-bottom:14px">07 · Tom de voz · o gap</p></div>
     <div class="dirbox anim">
       <div class="dirbox-k">O que a direção definiu</div>
       <div class="dirbox-t">Segurança, respeito, <b>firmeza e propriedade</b>. Séria, próxima e técnica. <b>Quem manda, mas recebe como anfitriã.</b> Nunca popular, nunca arrogante.</div>
     </div>
-    <div class="two anim" style="gap:26px;margin-top:22px;align-items:stretch">
+    <div class="two tri anim" style="gap:18px;margin-top:16px;align-items:stretch">
       <div class="cam cr">
         <div class="cam-h"><span>Liderança</span><span>13 pessoas</span></div>
         <div class="cam-b">
@@ -1387,6 +1589,26 @@ em,.statement .hl{font-style:normal;color:var(--gold-2)}
         <div class="cam-f">
           <div class="tile"><div class="tile-k">Personagem da marca</div><div class="tile-t">“O que cria — aqui nasce a tendência”: 14. <b>“O que manda”</b>, a escolha da direção: <b>2</b>.</div></div>
           <div class="tile ins"><div class="tile-k">Em uma frase</div><div class="tile-t">O tom existe onde houve repetição.</div></div>
+        </div>
+      </div>
+      <div class="cam cmp cr">
+        <div class="cam-h"><span>Compradores</span><span>Recorte inicial</span></div>
+        <div class="cam-b">
+          <div class="cam-g">
+            <div class="cam-pct">83<small>%</small></div>
+            <div class="cam-lab">de gap</div>
+            <div class="chip cr">Crítico</div>
+            <div class="cam-split"><i style="width:17%"></i></div>
+            <div class="cam-leg"><span>chegou 17%</span><span>não chegou 83%</span></div>
+          </div>
+          <div class="cam-v">
+            <div class="cam-q">“Como você se sente tratado?”</div>
+            <div class="vb d"><div class="vb-t">Como convidado, com atenção e profissionalismo<em>direção</em></div><div class="vb-bar"><i style="width:1.5%"></i></div><div class="vb-n">0%</div></div><div class="vb"><div class="vb-t">Com profissionalismo, mas de forma fria</div><div class="vb-bar"><i style="width:33%"></i></div><div class="vb-n">33%</div></div><div class="vb"><div class="vb-t">Com pressão pra comprar</div><div class="vb-bar"><i style="width:33%"></i></div><div class="vb-n">33%</div></div><div class="vb"><div class="vb-t">Com simpatia, mas cada loja atende de um jeito</div><div class="vb-bar"><i style="width:17%"></i></div><div class="vb-n">17%</div></div><div class="vb"><div class="vb-t">Como mais um — ninguém me conhece</div><div class="vb-bar"><i style="width:17%"></i></div><div class="vb-n">17%</div></div>
+          </div>
+        </div>
+        <div class="cam-f">
+          <div class="tile"><div class="tile-k">O que a marca não é</div><div class="tile-t"><b>Popular</b>, para 67%. Aqui o comprador concorda com a direção.</div></div>
+          <div class="tile ins"><div class="tile-k">Em uma frase</div><div class="tile-t">Ninguém se sente recebido como convidado.</div></div>
         </div>
       </div>
     </div>
@@ -1462,13 +1684,13 @@ em,.statement .hl{font-style:normal;color:var(--gold-2)}
     </div>
   </section>
   <!-- 08 Papel próprio · B -->
-  <section class="slide tight">
+  <section class="slide tight t3">
     <div class="anim"><p class="eyebrow" style="margin-bottom:14px">08 · Papel próprio · o gap</p></div>
     <div class="dirbox anim">
       <div class="dirbox-k">O que a direção definiu</div>
       <div class="dirbox-t">Trazer comprador, não só alugar espaço. <b>Medir se a promessa foi cumprida.</b> Decidir marca <b>pelo combinado, não pelo gosto</b>.</div>
     </div>
-    <div class="two anim" style="gap:26px;margin-top:22px;align-items:stretch">
+    <div class="two tri anim" style="gap:18px;margin-top:16px;align-items:stretch">
       <div class="cam cr">
         <div class="cam-h"><span>Liderança</span><span>13 pessoas</span></div>
         <div class="cam-b">
@@ -1507,6 +1729,26 @@ em,.statement .hl{font-style:normal;color:var(--gold-2)}
         <div class="cam-f">
           <div class="tile"><div class="tile-k">Na dúvida, quem decide</div><div class="tile-t">“Cada caso é um caso” (21) ou “o que o chefe falou” (15). Regra escrita: <b>3</b>.</div></div>
           <div class="tile ins"><div class="tile-k">Em uma frase</div><div class="tile-t">O momento que mais importa é o que não tem responsável.</div></div>
+        </div>
+      </div>
+      <div class="cam cmp cr">
+        <div class="cam-h"><span>Compradores</span><span>Recorte inicial</span></div>
+        <div class="cam-b">
+          <div class="cam-g">
+            <div class="cam-pct">83<small>%</small></div>
+            <div class="cam-lab">de gap</div>
+            <div class="chip cr">Crítico</div>
+            <div class="cam-split"><i style="width:17%"></i></div>
+            <div class="cam-leg"><span>chegou 17%</span><span>não chegou 83%</span></div>
+          </div>
+          <div class="cam-v">
+            <div class="cam-q">“O que mais pesa pra você voltar?”</div>
+            <div class="vb d"><div class="vb-t">O atendimento dentro da loja<em>direção</em></div><div class="vb-bar"><i style="width:1.5%"></i></div><div class="vb-n">0%</div></div><div class="vb"><div class="vb-t">O desfile e os eventos</div><div class="vb-bar"><i style="width:67%"></i></div><div class="vb-n">67%</div></div><div class="vb"><div class="vb-t">O guia</div><div class="vb-bar"><i style="width:17%"></i></div><div class="vb-n">17%</div></div><div class="vb"><div class="vb-t">A recepção do hotel</div><div class="vb-bar"><i style="width:17%"></i></div><div class="vb-n">17%</div></div>
+          </div>
+        </div>
+        <div class="cam-f">
+          <div class="tile"><div class="tile-k">Quando algo dá errado</div><div class="tile-t">Só <b>33%</b> sabiam a quem recorrer e foram bem atendidos.</div></div>
+          <div class="tile ins"><div class="tile-k">Em uma frase</div><div class="tile-t">Volta pelo desfile. O atendimento na loja não foi citado.</div></div>
         </div>
       </div>
     </div>
@@ -1571,6 +1813,20 @@ em,.statement .hl{font-style:normal;color:var(--gold-2)}
       <div class="tilec"><div class="tile-k">O que fica em aberto</div><div class="tile-t"><b>Quem é o responsável por medir.</b> A liderança se dividiu em três. É uma decisão da direção.</div></div>
     </div>
     <p class="src anim" style="margin-top:12px">Rascunho para validação da direção e da liderança · não substitui a definição original até ser aprovado</p>
+  </section>
+  <!-- GAP MÉDIO -->
+  <section class="slide tight">
+    <div class="anim"><p class="eyebrow" style="margin-bottom:10px">O resultado em um número por dimensão</p></div>
+    <div class="gmh anim">
+      <h1 style="margin:0;font-size:92px">Gap médio<br>por dimensão.</h1>
+      <div class="gmx">
+        <p><b>O que é.</b> A média do gap das três camadas ouvidas: liderança, equipe e compradores. Soma-se o gap de cada uma e divide-se por três.</p>
+        <p><b>Para que serve.</b> Mostra, em um número só, quanto da definição da direção se perde no caminho até o mercado. É o que indica por onde a comunicação precisa começar.</p>
+      </div>
+      <div class="gmg"><div class="gmg-n">61<small>%</small></div><div class="gmg-l">gap médio geral<br>das oito dimensões</div></div>
+    </div>
+    <div class="gmgrid anim"><div class="gm cr"><div class="gm-h"><span>01</span>Propósito</div><div class="gm-p">65<small>%</small></div><div class="chip cr">Crítico</div><div class="gm-split"><i style="width:35%"></i></div><div class="gm-d"><span><i class="lg l1"></i>66%</span><span><i class="lg l2"></i>62%</span><span><i class="lg l3"></i>67%</span></div></div><div class="gm cr"><div class="gm-h"><span>02</span>Posicionamento</div><div class="gm-p">67<small>%</small></div><div class="chip cr">Crítico</div><div class="gm-split"><i style="width:33%"></i></div><div class="gm-d"><span><i class="lg l1"></i>54%</span><span><i class="lg l2"></i>65%</span><span><i class="lg l3"></i>83%</span></div></div><div class="gm cr"><div class="gm-h"><span>03</span>Público</div><div class="gm-p">67<small>%</small></div><div class="chip cr">Crítico</div><div class="gm-split"><i style="width:33%"></i></div><div class="gm-d"><span><i class="lg l1"></i>67%</span><span><i class="lg l2"></i>75%</span><span><i class="lg l3"></i>58%</span></div></div><div class="gm cr"><div class="gm-h"><span>04</span>Promessa</div><div class="gm-p">71<small>%</small></div><div class="chip cr">Crítico</div><div class="gm-split"><i style="width:29%"></i></div><div class="gm-d"><span><i class="lg l1"></i>60%</span><span><i class="lg l2"></i>53%</span><span><i class="lg l3"></i>100%</span></div></div><div class="gm cr"><div class="gm-h"><span>05</span>Diferencial</div><div class="gm-p">54<small>%</small></div><div class="chip cr">Crítico</div><div class="gm-split"><i style="width:46%"></i></div><div class="gm-d"><span><i class="lg l1"></i>56%</span><span><i class="lg l2"></i>60%</span><span><i class="lg l3"></i>46%</span></div></div><div class="gm at"><div class="gm-h"><span>06</span>Valores</div><div class="gm-p">32<small>%</small></div><div class="chip at">Atenção</div><div class="gm-split"><i style="width:68%"></i></div><div class="gm-d"><span><i class="lg l1"></i>26%</span><span><i class="lg l2"></i>31%</span><span><i class="lg l3"></i>38%</span></div></div><div class="gm cr"><div class="gm-h"><span>07</span>Tom de voz</div><div class="gm-p">65<small>%</small></div><div class="chip cr">Crítico</div><div class="gm-split"><i style="width:35%"></i></div><div class="gm-d"><span><i class="lg l1"></i>55%</span><span><i class="lg l2"></i>57%</span><span><i class="lg l3"></i>83%</span></div></div><div class="gm cr"><div class="gm-h"><span>08</span>Papel próprio</div><div class="gm-p">67<small>%</small></div><div class="chip cr">Crítico</div><div class="gm-split"><i style="width:33%"></i></div><div class="gm-d"><span><i class="lg l1"></i>52%</span><span><i class="lg l2"></i>66%</span><span><i class="lg l3"></i>83%</span></div></div></div>
+    <p class="src anim" style="margin-top:14px"><span class="lg l1"></span> Liderança &nbsp;&nbsp; <span class="lg l2"></span> Equipe &nbsp;&nbsp; <span class="lg l3"></span> Compradores, recorte inicial &nbsp;·&nbsp; as três camadas entram com o mesmo peso</p>
   </section>
   <!-- RESUMO 0 -->
   <section class="slide tight">
@@ -1647,81 +1903,6 @@ em,.statement .hl{font-style:normal;color:var(--gold-2)}
       <div class="mq-body"><div class="mq-mark">“</div><p class="mq-f">Marca se decide <em>pelo combinado,</em> não pelo gosto.</p></div>
     </div>
   </section>
-  <!-- MERCADO 0 -->
-  <section class="slide tight">
-    <div class="anim"><p class="eyebrow" style="margin-bottom:10px">Bloco 2 · Para fora da casa</p></div>
-    <h2 class="anim" style="margin-bottom:8px">A marca na visão do mercado.</h2>
-    <p class="mini anim" style="margin-bottom:24px">Até aqui, medimos quem está dentro. Agora, as duas camadas que recebem a marca do lado de fora.</p>
-    <div class="casc casc-s anim">
-      <div class="cs done"><div class="cs-k">Camada 1</div><div class="cs-t">Direção</div><div class="cs-s">Medida</div></div>
-      <div class="cs-a">→</div>
-      <div class="cs done"><div class="cs-k">Camada 2</div><div class="cs-t">Liderança</div><div class="cs-s">Medida · 13 de 13</div></div>
-      <div class="cs-a">→</div>
-      <div class="cs done"><div class="cs-k">Camada 3</div><div class="cs-t">Equipe</div><div class="cs-s">Medida · 43 de 55</div></div>
-      <div class="cs-a">→</div>
-      <div class="cs"><div class="cs-k">Camada 4</div><div class="cs-t">Lojista</div><div class="cs-s">Não responderam</div></div>
-      <div class="cs-a">→</div>
-      <div class="cs on"><div class="cs-k">Camada 5</div><div class="cs-t">Comprador</div><div class="cs-s">Recorte inicial</div></div>
-    </div>
-    <div class="two anim" style="gap:26px;margin-top:24px;align-items:stretch">
-      <div class="mk">
-        <div class="mk-h"><span>Lojistas</span><span class="chip at">Não responderam</span></div>
-        <div class="mk-big">Sem dado ainda.</div>
-        <ul class="mk-ul">
-          <li>O questionário está pronto. O envio aguarda a reunião pedida pela liderança do Paraná Moda Park.</li>
-          <li><b>Hipótese de trabalho:</b> se a mensagem não chegou inteira à equipe, é improvável que tenha chegado melhor a quem está um degrau depois.</li>
-          <li>Quando responderem, o resultado vira a <b>medição de partida</b> da estratégia de comunicação.</li>
-        </ul>
-      </div>
-      <div class="mk on">
-        <div class="mk-h"><span>Compradores</span><span class="chip ok">Recorte inicial</span></div>
-        <div class="mk-big">Primeiras respostas.</div>
-        <ul class="mk-ul">
-          <li><b>Como chegamos a eles:</b> convite enviado pelo Instagram das lojas, com resposta anônima pelo celular.</li>
-          <li><b>O que não dá para afirmar:</b> que quem respondeu é o dono da loja. É a voz de quem compra, sem confirmação de cargo.</li>
-          <li><b>Como ler:</b> um recorte, não um censo. Mostra a direção da percepção; o tamanho exato se confirma com mais respostas.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-  <!-- MERCADO 01 -->
-  <section class="slide tight">
-    <div class="anim"><p class="eyebrow" style="margin-bottom:14px">Compradores · 01 · Propósito</p></div>
-    <div class="dirbox anim">
-      <div class="dirbox-k">O que a direção definiu</div>
-      <div class="dirbox-t">Existimos para <b>fazer marca de moda crescer</b> — com gestão, treinamento e acompanhamento — e para que <b>operar aqui custe menos.</b></div>
-    </div>
-    <div class="cam cr anim" style="margin-top:22px">
-      <div class="cam-h"><span>Compradores</span><span>Recorte inicial</span></div>
-      <div class="cam-b cam-b3">
-        <div class="cam-g">
-          <div class="cam-pct">67<small>%</small></div>
-          <div class="cam-lab">de gap</div>
-          <div class="chip cr">Crítico</div>
-          <div class="cam-split"><i style="width:33%"></i></div>
-          <div class="cam-leg"><span>chegou 33%</span><span>não chegou 67%</span></div>
-        </div>
-        <div class="cam-v">
-          <div class="cam-q">“Pra que existe o Paraná Moda Park?” — o que responderam</div>
-          <div class="vb d"><div class="vb-t">Fazer as marcas que estão lá crescerem<em>direção</em></div><div class="vb-bar"><i style="width:1.2%"></i></div><div class="vb-n">0%</div></div>
-          <div class="vb d"><div class="vb-t">Encurtar e baratear o caminho entre quem fabrica e quem compra<em>direção</em></div><div class="vb-bar"><i style="width:33%"></i></div><div class="vb-n">33%</div></div>
-          <div class="vb"><div class="vb-t">Dar às marcas estrutura e apoio que não teriam sozinhas</div><div class="vb-bar"><i style="width:1.2%"></i></div><div class="vb-n">0%</div></div>
-          <div class="vb"><div class="vb-t">Conectar as melhores fábricas a compradores do Brasil inteiro</div><div class="vb-bar"><i style="width:67%"></i></div><div class="vb-n">67%</div></div>
-        </div>
-        <div class="cam-c">
-          <div class="cam-q">O mesmo gap, nas outras camadas</div>
-          <div class="cp a"><div class="cp-n">Liderança</div><div class="cp-bar"><i style="width:66%"></i></div><div class="cp-p">66%</div></div>
-          <div class="cp b"><div class="cp-n">Equipe</div><div class="cp-bar"><i style="width:62%"></i></div><div class="cp-p">62%</div></div>
-          <div class="cp c"><div class="cp-n">Compradores</div><div class="cp-bar"><i style="width:67%"></i></div><div class="cp-p">67%</div></div>
-          <p class="cam-note">A distância é praticamente a mesma dentro e fora da casa.</p>
-        </div>
-      </div>
-      <div class="cam-f">
-        <div class="tile"><div class="tile-k">O que chama atenção</div><div class="tile-t"><b>Nenhum comprador</b> escolheu “fazer as marcas crescerem”, o centro da definição da direção.</div></div>
-        <div class="tile ins"><div class="tile-k">Em uma frase</div><div class="tile-t">O comprador enxerga a ponte entre fábrica e loja. Não enxerga o cuidado com as marcas.</div></div>
-      </div>
-    </div>
-  </section>
   <div class="hud hud-b">
     <div class="bar"><i id="barFill"></i></div>
     <div class="hud-line"></div>
@@ -1731,7 +1912,7 @@ em,.statement .hl{font-style:normal;color:var(--gold-2)}
 </div></div>
 <script>
 
-const SECOES=["Abertura","De onde partimos","A ideia","A cascata","O que é o gap","Por que custa","As oito dimensões","O trabalho","As regras","Como se lê","O tamanho do gap","Os quatro passos","Visão geral","Propósito","Propósito · gap","Propósito · consequência","Propósito · fechamento","Posicionamento","Posicionamento · gap","Posicionamento · consequência","Posicionamento · fechamento","Público","Público · gap","Público · consequência","Público · fechamento","Promessa","Promessa · gap","Promessa · consequência","Promessa · fechamento","Diferencial","Diferencial · gap","Diferencial · consequência","Diferencial · fechamento","Valores","Valores · gap","Valores · consequência","Valores · fechamento","Tom de voz","Tom de voz · gap","Tom de voz · consequência","Tom de voz · fechamento","Papel próprio","Papel próprio · gap","Papel próprio · consequência","Papel próprio · fechamento","A marca, por escrito","Em resumo · Propósito","Em resumo · Posicionamento","Em resumo · Público","Em resumo · Promessa","Em resumo · Diferencial","Em resumo · Valores","Em resumo · Tom de voz","Em resumo · Papel próprio","A visão do mercado","Compradores · Propósito"];
+const SECOES=["Abertura","O que coletamos","De onde partimos","A ideia","A cascata","O que é o gap","Por que custa","As oito dimensões","O trabalho","As regras","Como se lê","O tamanho do gap","Os quatro passos","Visão geral","Propósito","Propósito · gap","Propósito · consequência","Propósito · fechamento","Posicionamento","Posicionamento · gap","Posicionamento · consequência","Posicionamento · fechamento","Público","Público · gap","Público · consequência","Público · fechamento","Promessa","Promessa · gap","Promessa · consequência","Promessa · fechamento","Diferencial","Diferencial · gap","Diferencial · consequência","Diferencial · fechamento","Valores","Valores · gap","Valores · consequência","Valores · fechamento","Tom de voz","Tom de voz · gap","Tom de voz · consequência","Tom de voz · fechamento","Papel próprio","Papel próprio · gap","Papel próprio · consequência","Papel próprio · fechamento","Gap médio por dimensão","A marca, por escrito","Em resumo · Propósito","Em resumo · Posicionamento","Em resumo · Público","Em resumo · Promessa","Em resumo · Diferencial","Em resumo · Valores","Em resumo · Tom de voz","Em resumo · Papel próprio"];
 const slides=[...document.querySelectorAll(".slide")];let i=0;
 document.getElementById("tot").textContent=String(slides.length).padStart(2,"0");
 function show(n){i=Math.max(0,Math.min(slides.length-1,n));slides.forEach((s,k)=>s.classList.toggle("on",k===i));document.getElementById("cur").textContent=String(i+1).padStart(2,"0");document.getElementById("secName").textContent=SECOES[i]||"";document.getElementById("barFill").style.width=((i+1)/slides.length*100)+"%";history.replaceState(null,"","#"+(i+1));}
