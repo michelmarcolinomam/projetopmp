@@ -559,6 +559,21 @@ em,.statement .hl{font-style:normal;color:var(--gold-2)}
 .fz-li b{display:block;font-size:14px;letter-spacing:.14em;color:#8FD49B;font-weight:700;margin-bottom:8px}
 .fz-li strong{display:block;font-size:27px;font-weight:600;letter-spacing:-.03em;color:#fff;line-height:1.15}
 .fz-li span{display:block;font-size:19px;line-height:1.4;color:rgba(255,255,255,.65);margin-top:8px}
+
+/* selo */
+.sl{display:grid;grid-template-columns:1fr 44px 1fr 44px 1fr 44px 1fr;align-items:stretch}
+.sl-s{background:var(--panel);border:1px solid var(--stroke);border-radius:18px;padding:26px 28px 28px}
+.sl-s.on{background:#12161D;border-color:#12161D}
+.sl-n{font-size:72px;font-weight:600;letter-spacing:-.06em;line-height:.9;color:var(--tx-3)}
+.sl-s.on .sl-n{color:#8FD49B}
+.sl-t{font-size:30px;font-weight:600;letter-spacing:-.035em;color:var(--tx);margin-top:18px;line-height:1.1}
+.sl-s.on .sl-t{color:#fff}
+.sl-x{font-size:19px;line-height:1.45;color:var(--tx-2);margin-top:14px;padding-top:14px;border-top:1px solid var(--stroke)}
+.sl-s.on .sl-x{color:rgba(255,255,255,.72);border-top-color:rgba(255,255,255,.16)}
+.sl-a{display:flex;align-items:center;justify-content:center;font-size:30px;color:var(--tx-3)}
+.sl-f{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:22px}
+.sl-f>div{border:1px dashed var(--stroke-2);border-radius:14px;padding:16px 22px;font-size:19px;line-height:1.4;color:var(--tx-2)}
+.sl-f b{display:block;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--tx-3);font-weight:700;margin-bottom:6px}
 </style>
 </head>
 <body>
@@ -2117,6 +2132,41 @@ em,.statement .hl{font-style:normal;color:var(--gold-2)}
       <div class="fmt-note">Rascunho em construção. Outras ações entram aqui conforme o plano for fechado.</div>
     </div>
   </section>
+  <!-- SELO 0 -->
+  <section class="slide tight">
+    <div class="mq fz anim">
+      <div class="mq-bg">★</div>
+      <div class="mq-top"><div class="mq-id"><span>Programa 1</span>Selo PMP de Excelência</div><div class="mq-q"><span class="fz-gap">Promessa · Tom de voz · Papel próprio</span></div></div>
+      <div class="fz-body"><h1 class="fz-h">Selo PMP de Excelência.<br><em>A promessa, visível na vitrine.</em></h1></div>
+      <div class="fz-k">O que o selo faz</div>
+      <div class="fz-li">
+        <div><b>01</b><strong>Reconhece</strong><span>As lojas que entregam o padrão da casa ao comprador.</span></div>
+        <div><b>02</b><strong>Mede</strong><span>Com a avaliação de quem compra, e não com a opinião da casa.</span></div>
+        <div><b>03</b><strong>Mostra</strong><span>Ao comprador, onde a experiência é garantida.</span></div>
+        <div><b>04</b><strong>Valoriza</strong><span>Quem tem o selo ganha benefícios combinados com o shopping.</span></div>
+      </div>
+    </div>
+  </section>
+  <!-- SELO 1 -->
+  <section class="slide tight">
+    <div class="anim"><p class="eyebrow" style="margin-bottom:10px">Selo PMP de Excelência · como funciona</p></div>
+    <h2 class="anim" style="margin-bottom:8px">Quem dá o selo é o comprador.</h2>
+    <p class="mini anim" style="margin-bottom:24px">Um ciclo por período: a loja convida os seus clientes a avaliar, e o resultado decide quem recebe o selo.</p>
+    <div class="sl anim">
+      <div class="sl-s"><div class="sl-n">1</div><div class="sl-t">Os critérios</div><p class="sl-x">A MAM e o shopping definem os pontos de referência da excelência: atendimento, padrão, entrega e cumprimento do combinado.</p></div>
+      <div class="sl-a">→</div>
+      <div class="sl-s"><div class="sl-n">2</div><div class="sl-t">A pesquisa</div><p class="sl-x">Uma avaliação de qualidade e satisfação, guiada por inteligência artificial, que cada loja envia aos seus clientes.</p></div>
+      <div class="sl-a">→</div>
+      <div class="sl-s"><div class="sl-n">3</div><div class="sl-t">O corte</div><p class="sl-x">Ao fim de cada período, as notas são consolidadas. A loja que atinge o padrão recebe o selo. A que não atinge, recebe o caminho para chegar lá.</p></div>
+      <div class="sl-a">→</div>
+      <div class="sl-s on"><div class="sl-n">4</div><div class="sl-t">Os benefícios</div><p class="sl-x">Definidos com o shopping: visibilidade nos canais da casa, destaque no desfile e na comunicação, prioridade em ações.</p></div>
+    </div>
+    <div class="sl-f anim">
+      <div><b>Para o comprador</b>Saber onde comprar com a experiência garantida.</div>
+      <div><b>Para o lojista</b>Um motivo concreto para elevar o atendimento.</div>
+      <div><b>Para o shopping</b>Uma medida contínua da promessa, loja por loja.</div>
+    </div>
+  </section>
   <div class="hud hud-b">
     <div class="bar"><i id="barFill"></i></div>
     <div class="hud-line"></div>
@@ -2126,7 +2176,7 @@ em,.statement .hl{font-style:normal;color:var(--gold-2)}
 </div></div>
 <script>
 
-const SECOES=["Abertura","O que coletamos","De onde partimos","A ideia","A cascata","O que é o gap","Por que custa","As oito dimensões","O trabalho","As regras","Como se lê","O tamanho do gap","Os quatro passos","Visão geral","Propósito","Propósito · gap","Propósito · consequência","Propósito · fechamento","Posicionamento","Posicionamento · gap","Posicionamento · consequência","Posicionamento · fechamento","Público","Público · gap","Público · consequência","Público · fechamento","Promessa","Promessa · gap","Promessa · consequência","Promessa · fechamento","Diferencial","Diferencial · gap","Diferencial · consequência","Diferencial · fechamento","Valores","Valores · gap","Valores · consequência","Valores · fechamento","Tom de voz","Tom de voz · gap","Tom de voz · consequência","Tom de voz · fechamento","Papel próprio","Papel próprio · gap","Papel próprio · consequência","Papel próprio · fechamento","Gap médio por dimensão","A leitura do estudo","A marca, por escrito","Em resumo · Propósito","Em resumo · Posicionamento","Em resumo · Público","Em resumo · Promessa","Em resumo · Diferencial","Em resumo · Valores","Em resumo · Tom de voz","Em resumo · Papel próprio","Plano de alinhamento","Plano de alinhamento · prioridades","Nossa missão","Fases · seis meses","Fase 1 · Janeiro","Fase 2 · Fevereiro e março","Fase 3 · Abril e maio","Fase 4 · Junho","Plano · conteúdo"];
+const SECOES=["Abertura","O que coletamos","De onde partimos","A ideia","A cascata","O que é o gap","Por que custa","As oito dimensões","O trabalho","As regras","Como se lê","O tamanho do gap","Os quatro passos","Visão geral","Propósito","Propósito · gap","Propósito · consequência","Propósito · fechamento","Posicionamento","Posicionamento · gap","Posicionamento · consequência","Posicionamento · fechamento","Público","Público · gap","Público · consequência","Público · fechamento","Promessa","Promessa · gap","Promessa · consequência","Promessa · fechamento","Diferencial","Diferencial · gap","Diferencial · consequência","Diferencial · fechamento","Valores","Valores · gap","Valores · consequência","Valores · fechamento","Tom de voz","Tom de voz · gap","Tom de voz · consequência","Tom de voz · fechamento","Papel próprio","Papel próprio · gap","Papel próprio · consequência","Papel próprio · fechamento","Gap médio por dimensão","A leitura do estudo","A marca, por escrito","Em resumo · Propósito","Em resumo · Posicionamento","Em resumo · Público","Em resumo · Promessa","Em resumo · Diferencial","Em resumo · Valores","Em resumo · Tom de voz","Em resumo · Papel próprio","Plano de alinhamento","Plano de alinhamento · prioridades","Nossa missão","Fases · seis meses","Fase 1 · Janeiro","Fase 2 · Fevereiro e março","Fase 3 · Abril e maio","Fase 4 · Junho","Plano · conteúdo","Selo PMP de Excelência","Selo PMP · como funciona"];
 const slides=[...document.querySelectorAll(".slide")];let i=0;
 document.getElementById("tot").textContent=String(slides.length).padStart(2,"0");
 function show(n){i=Math.max(0,Math.min(slides.length-1,n));slides.forEach((s,k)=>s.classList.toggle("on",k===i));document.getElementById("cur").textContent=String(i+1).padStart(2,"0");document.getElementById("secName").textContent=SECOES[i]||"";document.getElementById("barFill").style.width=((i+1)/slides.length*100)+"%";history.replaceState(null,"","#"+(i+1));}
